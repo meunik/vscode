@@ -24,7 +24,7 @@
         </svg>
       </div>
 
-      <Pasta :aberto="true" texto="PORTFÓLIO" class="pt-2">
+      <Pasta :aberto="true" texto="PORTFÓLIO" class="pt-2" :primeiro="true">
         <Pasta :aberto="false" texto="Portfólios" :nivelIndentacao="1">
           <Pasta texto="Laravel" :nivelIndentacao="2" :indentacaoSlot="true">
             <span>testando</span>
