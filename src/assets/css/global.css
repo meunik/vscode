@@ -1,0 +1,140 @@
+html, body {
+  background-image: linear-gradient(270deg, #dc8bdf, #6858be, #006891);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  color: #fff;
+}
+
+body {
+  padding: 20px;
+}
+
+.caixa {
+  background: #272822;
+  color: #fff;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 2px 25px -1px #000;
+}
+
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #fff;
+}
+
+nav {
+  padding: 30px 0px;
+}
+
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+nav a.router-link-exact-active {
+  color: #42b983;
+}
+
+.topo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px 10px 0px 0px;
+  background: #1d1e19;
+  border-bottom: 1px solid #161613;
+}
+.rodape {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border-radius: 0px 0px 10px 10px;
+  background: #1d1e19;
+  border-top: 1px solid #161613;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+
+.btn-user {
+  border: none;
+  background: transparent;
+}
+
+.gap-menu-vscode {
+  gap: 20px;
+}
+.icone-menu-vscode-ativo {
+  stroke: #dddddd;
+}
+.icone-menu-vscode-inativo {
+  stroke: #4e5049;
+}
+.menu-vscode {
+  background: #161613;
+}
+.w-menu-vscode {
+  width: 70px;
+}
+
+.navegacao {
+  background: #1d1e19;
+  width: 300px;
+}
+
+.vh-fixo {
+  height: 85vh !important;
+}
+
+.conteudo {
+  width: 100%;
+  height: 100%;
+}
+.scrollbar-edit::-webkit-scrollbar {
+  background: transparent !important;
+}
+.scrollbar-edit::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+.scrollbar-edit::-webkit-scrollbar-thumb {
+  background-color: #3e3f38 !important;
+}
+
+.bg-vermelho {
+  background: #ED6A5E !important;
+  border: none;
+}
+.bg-amarelo {
+  background: #F4BF4F !important;
+  border: none;
+}
+.bg-verde {
+  background: #61C554 !important;
+  border: none;
+}
+
+.gap-bolinhas {
+  gap: 0.5rem;
+}
+.w-bolinhas {
+  width: 0.75rem;
+}
+.h-bolinhas {
+  height: 0.75rem;
+}
+.w-espacinho {
+  width: 3.5rem;
+}
+
+.explorador {
+  color: #4e5049;
+  font-size: 12px;
+}
