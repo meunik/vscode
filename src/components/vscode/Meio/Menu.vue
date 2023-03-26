@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-col justify-content-between py-3 menu-vscode gap-menu-vscode w-menu-vscode">
+  <div class="d-flex flex-col justify-content-between menu-vscode gap-menu-vscode w-menu-vscode">
     <div class="d-flex flex-col gap-menu-vscode">
       <ExploradorSvg />
       <PesquisaSvg />

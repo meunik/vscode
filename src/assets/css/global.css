@@ -70,13 +70,19 @@ nav a.router-link-exact-active {
 }
 
 .gap-menu-vscode {
-  gap: 20px;
+  gap: 0px;
 }
-.icone-menu-vscode-ativo {
-  stroke: #dddddd;
+.box-icon-menu {
+  padding: 10px 0px;
 }
-.icone-menu-vscode-inativo {
-  stroke: #4e5049;
+.box-icon-menu.ativo {
+  border-left: ridge;
+}
+.icone-menu-vscode.ativo {
+  color: #dddddd !important;
+}
+.icone-menu-vscode {
+  color: #787877 !important;
 }
 .menu-vscode {
   background: #161613;

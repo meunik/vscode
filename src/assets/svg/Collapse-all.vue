@@ -1,8 +1,8 @@
 <template>
-  <div class="h-12 d-flex justify-content-center align-items-center border-transparent">
+  <div class="h-12 d-flex justify-content-center align-items-center">
     <svg
-      width="16"
-      height="16"
+      :width="tamanho"
+      :height="tamanho"
       viewBox="0 0 16 16"
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
@@ -12,3 +12,14 @@
     </svg>
   </div>
 </template>
+
+<script>
+  export default {
+    props: {
+      tamanho: {
+        type: Number,
+        default: 16
+      },
+    },
+  }
+</script>
