@@ -17,7 +17,7 @@
         @click="abrir = false"
         :style="`padding-left: ${nivelIndentacao}rem;`"
       >
-        <Collapse-all/>
+        <CollapseAll/>
       </button>
     </div>
     <div class="text-left bg-focus-hover" :style="`padding-left: ${paddingSlot+1}rem !important;`">
@@ -28,7 +28,7 @@
 
 <script>
   import Seta from '../../../assets/svg/Seta.vue'
-  import CollapseAll from '../../../assets/svg/Collapse-all.vue'
+  import CollapseAll from '../../../assets/svg/CollapseAll.vue'
   export default {
     props: {
       primeiro: {
@@ -54,7 +54,7 @@
     },
     components: {
       'Seta': Seta,
-      'Collapse-all': CollapseAll,
+      'CollapseAll': CollapseAll,
     },
     data() {
       return {

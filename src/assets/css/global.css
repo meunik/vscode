@@ -1,3 +1,7 @@
+:root {
+  --texto-navegacao: #9b9b9b;
+}
+
 html, body {
   background-image: linear-gradient(270deg, #dc8bdf, #6858be, #006891);
 }
@@ -24,7 +28,10 @@ body {
 
 .navegacao {
   background: #1d1e19;
-  width: 300px;
+  width: 20rem;
+  height: 100%;
+  overflow: hidden;
+  color: var(--texto-navegacao);
 }
 
 #app {
@@ -88,7 +95,7 @@ nav a.router-link-exact-active {
   color: #dddddd !important;
 }
 .icone-menu-vscode {
-  color: #787877 !important;
+  color: var(--texto-navegacao) !important;
 }
 .menu-vscode {
   background: #161613;
@@ -142,6 +149,58 @@ nav a.router-link-exact-active {
 }
 
 .explorador {
-  color: #4e5049;
+  color: var(--texto-navegacao);
   font-size: 12px;
+}
+
+.overflow-x-three-points {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
+/****************************** Dragbar ***************************************/
+p {
+  color: darkslategray;
+}
+.drag-container {
+  display: flex;
+  min-height: 100vh;
+}
+[class^="panel"] {
+  padding: 60px 24px;
+  background-color: whitesmoke;
+}
+.panel-one {
+  width: 40%;
+}
+.panel-two {
+  flex: 1;
+  width: 60%;
+}
+.dragbar {
+  padding: 6px;
+  cursor: col-resize;
+  background-color: silver;
+}
+
+
+/****************************** PATRONIZADOS ***************************************/
+
+.gap-1 {
+  gap: 0.25rem;
+}
+.gap-2 {
+  gap: 0.50rem;
+}
+.gap-3 {
+  gap: 0.75rem;
+}
+.gap-4 {
+  gap: 1rem;
+}
+
+.white-space-nowrap {
+  white-space: nowrap;
 }

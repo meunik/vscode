@@ -1,18 +1,22 @@
 <template>
   <div class="main">
     <Menu />
-    <nav class="navegacao py-2 scrollbar-edit overflow-auto">
+    <nav class="navegacao py-2 d-flex flex-column">
       <div class="px-3 d-flex align-items-center justify-content-between">
         <span class="explorador">EXPLORADOR</span>
         <TresPontos />
       </div>
 
-      <Pasta :aberto="true" texto="PORTFÓLIO" class="pt-2" :primeiro="true">
-        <Pasta :aberto="true" texto="Portfólios" class="scrollbar-edit overflow-auto" :nivelIndentacao="1">
+      <Pasta
+        :aberto="true"
+        texto="PORTFÓLIO"
+        class="pt-2 overflow-auto d-flex flex-column"
+        :primeiro="true"
+      >
+        <Pasta :aberto="true" texto="Portfólios" :nivelIndentacao="1">
           <Pasta :aberto="true" texto="Laravel" :nivelIndentacao="2" :indentacaoSlot="true">
-            <span class="" v-for="(repo, index) in repositorios" :key="index">
-              {{repo}}
-              <!-- {{repo.full_name}} -->
+            <span v-for="(repo, index) in repositorios" :key="index">
+              <GithubInverted>{{repo.full_name}}</GithubInverted>
             </span>
           </Pasta>
           <Pasta texto="Vue" :nivelIndentacao="2" :indentacaoSlot="true">
@@ -39,6 +43,7 @@
   import Pasta from './Meio/Pasta.vue';
   import Seta from '../../assets/svg/Seta.vue';
   import TresPontos from '../../assets/svg/TresPontos.vue';
+  import GithubInverted from '../../assets/svg/GithubInverted.vue';
 
   import { Model } from './Model.js'
 
@@ -49,11 +54,10 @@
       'Pasta': Pasta,
       'Seta': Seta,
       'TresPontos': TresPontos,
+      'GithubInverted': GithubInverted,
     },
     async created() {
       await this.$store.dispatch("buscaRepositorios");
-      console.log(this.repositorios);
-      // await this.$store.dispatch("Principal/buscaPrincipal");
     },
   }
 </script>

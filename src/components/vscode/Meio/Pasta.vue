@@ -18,10 +18,10 @@
         @click="abrir = false"
         :style="`padding-left: ${nivelIndentacao}rem;`"
       >
-        <Collapse-all/>
+        <CollapseAll/>
       </button>
     </div>
-    <div class="text-left bg-focus-hover" :style="`padding-left: ${paddingSlot+1}rem !important;`">
+    <div class="text-left bg-focus-hover scrollbar-edit overflow-auto h-100" :style="`padding-left: ${paddingSlot+1}rem !important;`">
       <slot v-if="abrir"></slot>
     </div>
   </div>
@@ -29,7 +29,7 @@
 
 <script>
   import Seta from '../../../assets/svg/Seta.vue'
-  import CollapseAll from '../../../assets/svg/Collapse-all.vue'
+  import CollapseAll from '../../../assets/svg/CollapseAll.vue'
   export default {
     props: {
       primeiro: {
@@ -55,7 +55,7 @@
     },
     components: {
       'Seta': Seta,
-      'Collapse-all': CollapseAll,
+      'CollapseAll': CollapseAll,
     },
     data() {
       return {
@@ -72,7 +72,7 @@
 
 <style>
   .pasta-button, .pasta-primeiro, .pasta-icon {
-    color: #747474;
+    color: var(--texto-navegacao);
     font-size: 13px;
     font-weight: 600;
     border: none;
