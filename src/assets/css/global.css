@@ -1,12 +1,5 @@
 html, body {
   background-image: linear-gradient(270deg, #dc8bdf, #6858be, #006891);
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  color: #fff;
 }
 
 body {
@@ -15,10 +8,23 @@ body {
 
 .caixa {
   background: #272822;
-  color: #fff;
   width: 100%;
   border-radius: 10px;
   box-shadow: 0 2px 25px -1px #000;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.main {
+  display: flex;
+  height: 90vh;
+}
+
+.navegacao {
+  background: #1d1e19;
+  width: 300px;
 }
 
 #app {
@@ -89,11 +95,6 @@ nav a.router-link-exact-active {
 }
 .w-menu-vscode {
   width: 70px;
-}
-
-.navegacao {
-  background: #1d1e19;
-  width: 300px;
 }
 
 .vh-fixo {
