@@ -13,14 +13,30 @@
         class="pt-2 overflow-y-auto overflow-x-hidden d-flex flex-column"
         :primeiro="true"
       >
-        <Pasta :aberto="true" texto="Portfólios" :nivelIndentacao="1">
-          <Pasta :aberto="true" texto="Laravel" :nivelIndentacao="2" :indentacaoSlot="true">
+        <Pasta :aberto="false" texto="Portfólios" :nivelIndentacao="1">
+          <Pasta :aberto="false" texto="Laravel" :nivelIndentacao="2" :indentacaoSlot="true">
             <span v-for="(repo, index) in repositorios" :key="index">
-              <GithubInverted>{{(!!repo)?repo.full_name:''}}</GithubInverted>
+              <a
+                :href="(!!repo)?repo.html_url:'#'"
+                target="_blank"
+                class="link-menu"
+              >
+                <GithubInverted>{{(!!repo)?repo.full_name:''}}</GithubInverted>
+              </a>
               <!-- {{repo}} -->
             </span>
           </Pasta>
           <Pasta texto="Vue" :nivelIndentacao="2" :indentacaoSlot="true">
+            <span v-for="(repo, index) in repositorios" :key="index">
+              <a
+                :href="(!!repo)?repo.html_url:'#'"
+                target="_blank"
+                class="link-menu"
+              >
+                <GithubInverted>{{(!!repo)?`${repo.language} - ${repo.name}`:''}}</GithubInverted>
+              </a>
+              <!-- {{repo}} -->
+            </span>
             <span>testando</span>
             <span>testando</span>
             <span>testando</span>
@@ -62,7 +78,8 @@
       'GithubInverted': GithubInverted,
     },
     async created() {
-      // await this.$store.dispatch("buscaRepositorios");
+      await this.$store.dispatch("buscaRepositorios");
+      console.log(this.repositorios);
     },
     mounted() {
       dragbar()
