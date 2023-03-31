@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import Git from './modulos/Git';
+import Utils from './modulos/Utils';
 import Principal from './modulos/Principal';
 
 Vue.use(Vuex)
@@ -18,6 +19,7 @@ export default new Vuex.Store({
   actions,
   modules: {
     Git,
+    Utils,
     Principal,
   }  
 })

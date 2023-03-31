@@ -8,5 +8,13 @@ export let Model = {
         this.$store.commit('repositorios', value)
       }
     },
+    navegacaoWidth: {
+      get() {
+        return this.$store.getters['navegacaoWidth']
+      },
+      set(value) {
+        this.$store.commit('navegacaoWidth', value)
+      }
+    },
   }
 }

@@ -1,7 +1,7 @@
 <template>
-  <div class="main">
+  <div class="main" id="main">
     <Menu />
-    <nav class="navegacao py-2 d-flex flex-column">
+    <nav id="drag-left" class="navegacao py-2 d-flex flex-column" :style="{width: navegacaoWidth}">
       <div class="px-3 d-flex align-items-center justify-content-between">
         <span class="explorador">EXPLORADOR</span>
         <TresPontos />
@@ -9,17 +9,20 @@
 
       <Pasta
         :aberto="true"
-        texto="PORTFÓLIO"
-        class="pt-2 overflow-auto d-flex flex-column"
+        texto="Diretório"
+        class="pt-2 overflow-y-auto overflow-x-hidden d-flex flex-column"
         :primeiro="true"
       >
         <Pasta :aberto="true" texto="Portfólios" :nivelIndentacao="1">
           <Pasta :aberto="true" texto="Laravel" :nivelIndentacao="2" :indentacaoSlot="true">
             <span v-for="(repo, index) in repositorios" :key="index">
-              <GithubInverted>{{repo.full_name}}</GithubInverted>
+              <GithubInverted>{{(!!repo)?repo.full_name:''}}</GithubInverted>
+              <!-- {{repo}} -->
             </span>
           </Pasta>
           <Pasta texto="Vue" :nivelIndentacao="2" :indentacaoSlot="true">
+            <span>testando</span>
+            <span>testando</span>
             <span>testando</span>
             <span>testando</span>
             <span>testando</span>
@@ -34,7 +37,8 @@
       |
       <router-link to="/about">teste</router-link>
     </nav>
-    <router-view class="conteudo scrollbar-edit overflow-auto" />
+    <div class="dragbar" id="dragbar"></div>
+    <router-view id="drag-right" class="conteudo scrollbar-edit overflow-auto flex-1" />
   </div>
 </template>
 
@@ -44,6 +48,7 @@
   import Seta from '../../assets/svg/Seta.vue';
   import TresPontos from '../../assets/svg/TresPontos.vue';
   import GithubInverted from '../../assets/svg/GithubInverted.vue';
+  import { dragbar } from '../../utils/dragbar.js'
 
   import { Model } from './Model.js'
 
@@ -57,7 +62,10 @@
       'GithubInverted': GithubInverted,
     },
     async created() {
-      await this.$store.dispatch("buscaRepositorios");
+      // await this.$store.dispatch("buscaRepositorios");
+    },
+    mounted() {
+      dragbar()
     },
   }
 </script>
@@ -66,5 +74,23 @@
   span {
     display: block;
     word-break: break-word;
+  }
+
+  [class^=panel] {
+    padding: 60px 24px;
+    background-color: transparent;
+  }
+
+  .dragbar {
+    position: initial !important;
+    padding: 1px;
+    cursor: col-resize;
+    background-color: #242424;
+    transition: 0.5s;
+  }
+  .dragbar:hover {
+    padding: 2px;
+    background-color: #818181;
+    transition: 1s;
   }
 </style>

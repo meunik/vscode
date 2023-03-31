@@ -8,6 +8,9 @@ html, body {
 
 body {
   padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .caixa {
@@ -19,6 +22,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  max-width: 1500px;
 }
 
 .main {
@@ -76,8 +80,7 @@ nav a.router-link-exact-active {
   flex-direction: column;
 }
 
-
-.btn-user {
+.btn-menu-vscode {
   border: none;
   background: transparent;
 }
@@ -101,7 +104,7 @@ nav a.router-link-exact-active {
   background: #161613;
 }
 .w-menu-vscode {
-  width: 70px;
+  width: 50px;
 }
 
 .vh-fixo {
@@ -114,12 +117,13 @@ nav a.router-link-exact-active {
 }
 .scrollbar-edit::-webkit-scrollbar {
   background: transparent !important;
+  width: 10px;
 }
 .scrollbar-edit::-webkit-scrollbar-track {
   background: transparent !important;
 }
 .scrollbar-edit::-webkit-scrollbar-thumb {
-  background-color: #3e3f38 !important;
+  background-color: #3e3f38de !important;
 }
 
 .bg-vermelho {
@@ -153,38 +157,6 @@ nav a.router-link-exact-active {
   font-size: 12px;
 }
 
-.overflow-x-three-points {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-
-/****************************** Dragbar ***************************************/
-p {
-  color: darkslategray;
-}
-.drag-container {
-  display: flex;
-  min-height: 100vh;
-}
-[class^="panel"] {
-  padding: 60px 24px;
-  background-color: whitesmoke;
-}
-.panel-one {
-  width: 40%;
-}
-.panel-two {
-  flex: 1;
-  width: 60%;
-}
-.dragbar {
-  padding: 6px;
-  cursor: col-resize;
-  background-color: silver;
-}
-
 
 /****************************** PATRONIZADOS ***************************************/
 
@@ -203,4 +175,34 @@ p {
 
 .white-space-nowrap {
   white-space: nowrap;
+}
+
+.overflow-x-three-points {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.overflow-auto {
+  overflow: auto !important;
+}
+.overflow-x-auto {
+  overflow-x: auto !important;
+}
+.overflow-y-auto {
+  overflow-y: auto !important;
+}
+
+.overflow-hidden {
+  overflow: hidden !important;
+}
+.overflow-x-hidden {
+  overflow-x: hidden !important;
+}
+.overflow-y-hidden {
+  overflow-y: hidden !important;
 }

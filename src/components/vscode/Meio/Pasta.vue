@@ -3,12 +3,12 @@
     <div :class="`${(primeiro)?'pasta-primeiro-bloco':''} d-flex align-items-center justify-content-between`">
       <button
         type="button"
-        :class="`pasta-${(primeiro)?'primeiro':'button'} d-flex align-items-center`"
+        :class="`pasta-${(primeiro)?'primeiro':'button'} d-flex align-items-center white-space-nowrap`"
         @click="abrir = !abrir"
         :style="`padding-left: ${nivelIndentacao}rem;`"
       >
         <Seta :style="`transform: rotate(${(abrir)?90:0}deg);`"/>
-        <span class="pasta-texto">{{texto}}</span>
+        <span :class="`pasta-texto overflow-x-three-points ${(primeiro)?'text-uppercase':''}`">{{texto}}</span>
       </button>
       
       <button

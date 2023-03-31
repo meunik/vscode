@@ -1,6 +1,6 @@
 <template>
   <div class="h-12 d-flex justify-content-center align-items-center box-icon-menu">
-    <button type="button" class="btn-user">
+    <button type="button" class="btn-menu-vscode">
       <svg
       :width="tamanho"
       :height="tamanho"
