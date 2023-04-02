@@ -17,17 +17,10 @@ export function dragbar() {
     let min = (10/100)*mainWidth;
 
     if ((min < widthBar)&&(widthBar < max)) {
-      // left.style.width = `${widthBar}px`;
       store.commit('navegacaoWidth', `${widthBar}px`);
     } else if (min > widthBar) {
-      // left.style.width = `0px`;
       store.commit('navegacaoWidth', '0px');
     }
-
-    // console.log('----------------------');
-    // console.log(mainWidth, max, min);
-    // console.log(e.pageX, wh);
-    // console.log(e.pageX - wh);
   }
 
   bar.addEventListener('mousedown', () => {

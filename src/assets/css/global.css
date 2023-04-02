@@ -4,6 +4,7 @@
 
 html, body {
   background-image: linear-gradient(270deg, #dc8bdf, #6858be, #006891);
+  height: 100%;
 }
 
 body {
@@ -27,7 +28,7 @@ body {
 
 .main {
   display: flex;
-  height: 90vh;
+  overflow: auto;
 }
 
 .navegacao {
@@ -40,9 +41,6 @@ body {
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /* text-align: center; */
   color: #fff;
 }
 
@@ -164,83 +162,6 @@ nav a.router-link-exact-active {
 .link-menu:hover {
   color: #cccccc;
   font-weight: normal;
-}
-
-/****************************** PATRONIZADOS ***************************************/
-
-.gap-1 {
-  gap: 0.25rem;
-}
-.gap-2 {
-  gap: 0.50rem;
-}
-.gap-3 {
-  gap: 0.75rem;
-}
-.gap-4 {
-  gap: 1rem;
-}
-
-.white-space-nowrap {
-  white-space: nowrap;
-}
-
-.overflow-x-three-points {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.flex-1 {
-  flex: 1;
-}
-
-.overflow-auto {
-  overflow: auto !important;
-}
-.overflow-x-auto {
-  overflow-x: auto !important;
-}
-.overflow-y-auto {
-  overflow-y: auto !important;
-}
-
-.overflow-hidden {
-  overflow: hidden !important;
-}
-.overflow-x-hidden {
-  overflow-x: hidden !important;
-}
-.overflow-y-hidden {
-  overflow-y: hidden !important;
-}
-
-
-
-/****************************** MARKDOWN_IT ***************************************/
-code {
-  font-size: 87.5% !important;
-  color: #e83e8c !important;
-  word-wrap: break-word !important;
-}
-pre {
-  display: block !important;
-  padding: 9.5px !important;
-  margin: 0 0 10px !important;
-  font-size: 13px !important;
-  line-height: 1.42857143 !important;
-  word-break: break-all !important;
-  word-wrap: break-word !important;
-  background-color: rgba(22, 27, 34, 0.1)!important;
-  border: 0px solid #ccc !important;
-  border-radius: 4px !important;
-  box-shadow: 0 2px 34px 10px #00000040 !important;
-}
-.hljs code {
-  white-space: pre;
-}
-.hljs {
-  overflow-x: auto;
 }
 
 pre.hljs > code {

@@ -1,11 +1,19 @@
 export let Model = {
   computed: {
-    repositorios: {
+    perfil: {
       get() {
-        return this.$store.getters['repositorios']
+        return this.$store.getters['Git/perfil']
       },
       set(value) {
-        this.$store.commit('repositorios', value)
+        this.$store.commit('Git/perfil', value)
+      }
+    },
+    repositorios: {
+      get() {
+        return this.$store.getters['Git/repositorios']
+      },
+      set(value) {
+        this.$store.commit('Git/repositorios', value)
       }
     },
     navegacaoWidth: {
@@ -18,18 +26,18 @@ export let Model = {
     },
     readme: {
       get() {
-        return this.$store.getters['readme']
+        return this.$store.getters['Git/readme']
       },
       set(value) {
-        this.$store.commit('readme', value)
+        this.$store.commit('Git/readme', value)
       }
     },
     readmePerfil: {
       get() {
-        return this.$store.getters['readmePerfil']
+        return this.$store.getters['Git/readmePerfil']
       },
       set(value) {
-        this.$store.commit('readmePerfil', value)
+        this.$store.commit('Git/readmePerfil', value)
       }
     },
   }

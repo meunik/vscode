@@ -87,8 +87,7 @@
       'GithubInverted': GithubInverted,
     },
     async created() {
-      await this.$store.dispatch("buscaRepositorios");
-      await this.$store.dispatch("buscaReadmePerfil");
+      await this.$store.dispatch("Git/buscaRepositorios");
       // console.log(this.repositorios);
     },
     mounted() {

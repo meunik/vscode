@@ -18,6 +18,9 @@ import './assets/js/markdownIt.min.js'
 
 //Import de CSS Global
 import './assets/css/global.css'
+import './assets/css/padronizados.css'
+import './assets/css/markdown-it.css'
+import './assets/css/media-mobile.css'
 
 Vue.config.productionTip = false
 

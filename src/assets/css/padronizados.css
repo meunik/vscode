@@ -1,0 +1,46 @@
+.gap-1 {
+    gap: 0.25rem;
+  }
+  .gap-2 {
+    gap: 0.50rem;
+  }
+  .gap-3 {
+    gap: 0.75rem;
+  }
+  .gap-4 {
+    gap: 1rem;
+  }
+  
+  .white-space-nowrap {
+    white-space: nowrap;
+  }
+  
+  .overflow-x-three-points {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  
+  .flex-1 {
+    flex: 1;
+  }
+  
+  .overflow-auto {
+    overflow: auto !important;
+  }
+  .overflow-x-auto {
+    overflow-x: auto !important;
+  }
+  .overflow-y-auto {
+    overflow-y: auto !important;
+  }
+  
+  .overflow-hidden {
+    overflow: hidden !important;
+  }
+  .overflow-x-hidden {
+    overflow-x: hidden !important;
+  }
+  .overflow-y-hidden {
+    overflow-y: hidden !important;
+  }

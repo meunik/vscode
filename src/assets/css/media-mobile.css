@@ -1,0 +1,17 @@
+@media (max-width: 768px) {
+  html, body {
+    height: 100%;
+  }
+  body {
+    padding: 0px !important;
+  }
+  .caixa {
+    border-radius: 0px;
+  }
+  .topo {
+    border-radius: 0px;
+  }
+  .rodape {
+    border-radius: 0px;
+  }
+}
