@@ -13,8 +13,8 @@
         class="pt-2 overflow-y-auto overflow-x-hidden d-flex flex-column"
         :primeiro="true"
       >
-        <Pasta :aberto="false" texto="Portfólios" :nivelIndentacao="1">
-          <Pasta :aberto="false" texto="Laravel" :nivelIndentacao="2" :indentacaoSlot="true">
+        <Pasta :aberto="true" texto="Portfólios" :nivelIndentacao="1">
+          <Pasta :aberto="true" texto="Laravel" :nivelIndentacao="2" :indentacaoSlot="true">
             <span v-for="(repo, index) in repositorios" :key="index">
               <a
                 :href="(!!repo)?repo.html_url:'#'"
@@ -26,15 +26,24 @@
               <!-- {{repo}} -->
             </span>
           </Pasta>
-          <Pasta texto="Vue" :nivelIndentacao="2" :indentacaoSlot="true">
+          <Pasta :aberto="true" texto="Vue" :nivelIndentacao="2" :indentacaoSlot="true">
             <span v-for="(repo, index) in repositorios" :key="index">
-              <a
-                :href="(!!repo)?repo.html_url:'#'"
+              
+              <router-link
+                @click.native="buscaReadme(repo.name)"
+                to="/about"
+                class="link-menu"
+              >
+                <GithubInverted>{{(!!repo)?`${repo.language} - ${repo.name}`:''}}</GithubInverted>
+              </router-link>
+
+              <!-- <a
+                @click="buscaReadme(repo.name)"
                 target="_blank"
                 class="link-menu"
               >
                 <GithubInverted>{{(!!repo)?`${repo.language} - ${repo.name}`:''}}</GithubInverted>
-              </a>
+              </a> -->
               <!-- {{repo}} -->
             </span>
             <span>testando</span>
@@ -51,7 +60,7 @@
 
       <router-link to="/">Home</router-link>
       |
-      <router-link to="/about">teste</router-link>
+      <!-- <router-link to="/about">teste</router-link> -->
     </nav>
     <div class="dragbar" id="dragbar"></div>
     <router-view id="drag-right" class="conteudo scrollbar-edit overflow-auto flex-1" />
@@ -79,11 +88,18 @@
     },
     async created() {
       await this.$store.dispatch("buscaRepositorios");
-      console.log(this.repositorios);
+      await this.$store.dispatch("buscaReadmePerfil");
+      // console.log(this.repositorios);
     },
     mounted() {
       dragbar()
     },
+    methods: {
+      async buscaReadme(projeto) {
+        console.log(projeto);
+        if (!!projeto) await this.$store.dispatch("buscaReadme", projeto);
+      }
+    }
   }
 </script>
 

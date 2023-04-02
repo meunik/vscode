@@ -16,5 +16,21 @@ export let Model = {
         this.$store.commit('navegacaoWidth', value)
       }
     },
+    readme: {
+      get() {
+        return this.$store.getters['readme']
+      },
+      set(value) {
+        this.$store.commit('readme', value)
+      }
+    },
+    readmePerfil: {
+      get() {
+        return this.$store.getters['readmePerfil']
+      },
+      set(value) {
+        this.$store.commit('readmePerfil', value)
+      }
+    },
   }
 }
