@@ -4,7 +4,7 @@
     <nav id="drag-left" class="navegacao py-2 d-flex flex-column" :style="{width: navegacaoWidth}">
       <div class="px-3 d-flex align-items-center justify-content-between">
         <span class="explorador">EXPLORADOR</span>
-        <TresPontos />
+        <Icone icone="tresPontos"/>
       </div>
 
       <Pasta
@@ -17,20 +17,20 @@
           <Pasta :aberto="true" texto="Perfil" :nivelIndentacao="2" :indentacaoSlot="true">
             
             <router-link to="/">
-              <GithubInverted>{{(!!perfil)?`${perfil.login}`:''}}</GithubInverted>
+              <Icone icone="github">{{(!!perfil)?`${perfil.login}`:''}}</Icone>
             </router-link>
           </Pasta>
           <Pasta :aberto="false" texto="Repositórios" :nivelIndentacao="2" :indentacaoSlot="true">
-            <!-- <span v-for="(repo, index) in repositorios" :key="index">
+            <span v-for="(repo, index) in repositorios" :key="index">
               <router-link
                 v-if="repo.language"
                 @click.native="buscaReadme(repo.name)"
                 to="/about"
                 class="link-menu"
               >
-                <GithubInverted>{{`${repo.language} - ${repo.name}`}}</GithubInverted>
+                <Icone icone="github">{{`${repo.language} - ${repo.name}`}}</Icone>
               </router-link>
-            </span> -->
+            </span>
           </Pasta>
         </Pasta>
       </Pasta>
@@ -43,21 +43,17 @@
 <script>
   import Menu from './Meio/Menu.vue';
   import Pasta from './Meio/Pasta.vue';
-  import Seta from '../../assets/svg/Seta.vue';
-  import TresPontos from '../../assets/svg/TresPontos.vue';
-  import GithubInverted from '../../assets/svg/GithubInverted.vue';
-  import { dragbar } from '../../utils/dragbar.js'
+  import { dragbar } from '@/utils/dragbar.js'
+  import Icone from '@/assets/svg/Icone.vue'
 
   import { Model } from './Model.js'
 
   export default {
     mixins: [Model],
     components: {
-      'Menu': Menu,
-      'Pasta': Pasta,
-      'Seta': Seta,
-      'TresPontos': TresPontos,
-      'GithubInverted': GithubInverted,
+      Menu,
+      Pasta,
+      Icone,
     },
     async created() {
       await this.$store.dispatch("Git/buscaRepositorios");
