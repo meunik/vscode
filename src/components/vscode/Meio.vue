@@ -13,54 +13,27 @@
         class="pt-2 overflow-y-auto overflow-x-hidden d-flex flex-column"
         :primeiro="true"
       >
-        <Pasta :aberto="true" texto="Portfólios" :nivelIndentacao="1">
-          <Pasta :aberto="true" texto="Laravel" :nivelIndentacao="2" :indentacaoSlot="true">
-            <span v-for="(repo, index) in repositorios" :key="index">
-              <a
-                :href="(!!repo)?repo.html_url:'#'"
-                target="_blank"
-                class="link-menu"
-              >
-                <GithubInverted>{{(!!repo)?repo.full_name:''}}</GithubInverted>
-              </a>
-              <!-- {{repo}} -->
-            </span>
+        <Pasta :aberto="true" texto="Github" :nivelIndentacao="1">
+          <Pasta :aberto="true" texto="Perfil" :nivelIndentacao="2" :indentacaoSlot="true">
+            
+            <router-link to="/">
+              <GithubInverted>{{(!!perfil)?`${perfil.login}`:''}}</GithubInverted>
+            </router-link>
           </Pasta>
-          <Pasta :aberto="true" texto="Vue" :nivelIndentacao="2" :indentacaoSlot="true">
-            <span v-for="(repo, index) in repositorios" :key="index">
-              
+          <Pasta :aberto="false" texto="Repositórios" :nivelIndentacao="2" :indentacaoSlot="true">
+            <!-- <span v-for="(repo, index) in repositorios" :key="index">
               <router-link
+                v-if="repo.language"
                 @click.native="buscaReadme(repo.name)"
                 to="/about"
                 class="link-menu"
               >
-                <GithubInverted>{{(!!repo)?`${repo.language} - ${repo.name}`:''}}</GithubInverted>
+                <GithubInverted>{{`${repo.language} - ${repo.name}`}}</GithubInverted>
               </router-link>
-
-              <!-- <a
-                @click="buscaReadme(repo.name)"
-                target="_blank"
-                class="link-menu"
-              >
-                <GithubInverted>{{(!!repo)?`${repo.language} - ${repo.name}`:''}}</GithubInverted>
-              </a> -->
-              <!-- {{repo}} -->
-            </span>
-            <span>testando</span>
-            <span>testando</span>
-            <span>testando</span>
-            <span>testando</span>
-            <span>testando</span>
-            <span>testando</span>
+            </span> -->
           </Pasta>
         </Pasta>
       </Pasta>
-
-      <br>
-
-      <router-link to="/">Home</router-link>
-      |
-      <!-- <router-link to="/about">teste</router-link> -->
     </nav>
     <div class="dragbar" id="dragbar"></div>
     <router-view id="drag-right" class="conteudo scrollbar-edit overflow-auto flex-1" />
@@ -96,7 +69,7 @@
     methods: {
       async buscaReadme(projeto) {
         console.log(projeto);
-        if (!!projeto) await this.$store.dispatch("buscaReadme", projeto);
+        if (!!projeto) await this.$store.dispatch("Git/buscaReadme", projeto);
       }
     }
   }

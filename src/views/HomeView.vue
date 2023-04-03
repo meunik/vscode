@@ -1,18 +1,20 @@
 <template>
-  <div class="home text-center">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="home">
+    <Perfil v-if="!!perfil" />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+  import HelloWorld from '@/components/HelloWorld.vue'
+  import Perfil from '@/components/vscode/github/Perfil'
+  import { Model } from '@/components/vscode/Model.js'
 
-export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
+  export default {
+    mixins: [Model],
+    name: 'HomeView',
+    components: {
+      Perfil,
+      HelloWorld
+    }
   }
-}
 </script>

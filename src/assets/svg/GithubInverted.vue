@@ -1,13 +1,14 @@
 <template>
   <div class="d-flex align-items-center white-space-nowrap gap-1">
-    <div>
+    <div class="d-flex">
       <svg
-        :width="tamanho"
-        :height="tamanho"
+        :width="(tamanho)?tamanho:padrao"
+        :height="(tamanho)?tamanho:padrao"
         viewBox="0 0 16 16"
         xmlns="http://www.w3.org/2000/svg"
         fill="currentColor"
-        class="icone-menu-vscode"
+        :class="`icone ${(ativo)?'ativo':''}`"
+        :style="`transform: rotate(${rotate}deg);${estilo}`"
       >
         <path
           fill-rule="evenodd"
@@ -16,7 +17,7 @@
         />
       </svg>
     </div>
-    <span class="overflow-x-three-points"><slot></slot></span>
+    <span class="overflow-x-three-points d-contents"><slot></slot></span>
   </div>
 </template>
 
@@ -27,6 +28,23 @@ export default {
       type: Number,
       default: 16,
     },
+    rotate: {
+      type: Number,
+      default: 0,
+    },
+    estilo: {
+      type: String,
+      default: '',
+    },
+    ativo: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  data() {
+    return {
+      padrao: 16,
+    }
   },
 };
 </script>

@@ -16,6 +16,7 @@ export default {
     owner: {},
     html_url: "",
     description: null,
+    language: null,
     fork: false,
     url: "",
   },

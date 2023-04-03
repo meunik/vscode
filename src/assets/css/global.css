@@ -27,6 +27,7 @@ body {
 }
 
 .main {
+  height: 100%;
   display: flex;
   overflow: auto;
 }
@@ -40,7 +41,7 @@ body {
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  /* font-family: Avenir, Helvetica, Arial, sans-serif; */
   color: #fff;
 }
 
@@ -83,6 +84,16 @@ nav a.router-link-exact-active {
   background: transparent;
 }
 
+.icone-menu-vscode.ativo, .icone.ativo{
+  color: #dddddd !important;
+}
+.icone-menu-vscode {
+  color: var(--texto-navegacao) !important;
+}
+.icone {
+  color: var(--texto-navegacao) !important;
+}
+
 .gap-menu-vscode {
   gap: 0px;
 }
@@ -91,12 +102,6 @@ nav a.router-link-exact-active {
 }
 .box-icon-menu.ativo {
   border-left: ridge;
-}
-.icone-menu-vscode.ativo {
-  color: #dddddd !important;
-}
-.icone-menu-vscode {
-  color: var(--texto-navegacao) !important;
 }
 .menu-vscode {
   background: #161613;
