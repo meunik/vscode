@@ -13,9 +13,16 @@ export const actions = {
     commit('repositorios', repositorios);
   },
   async buscaReadme({commit}, projeto) {
-    const response = await axios.get(`https://raw.githubusercontent.com/meunik/${projeto}/master/readme.md`)
-    let readme = response.data
-    commit('readme', readme);
+    console.log(projeto);
+    try {
+      const response = await axios.get(`https://raw.githubusercontent.com/meunik/${projeto}/master/readme.md`)
+      let readme = response.data
+      commit('readme', readme);
+    } catch (error) {
+      const response = await axios.get(`https://raw.githubusercontent.com/meunik/${projeto}/master/README.md`)
+      let readme = response.data
+      commit('readme', readme);
+    }
   },
   async buscaReadmePerfil({commit}) {
     const response = await axios.get(`https://raw.githubusercontent.com/meunik/meunik/main/README.md`)

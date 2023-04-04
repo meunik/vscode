@@ -8,11 +8,23 @@
         </div>
         <h4 class="m-0">{{perfil.name}}</h4>
         <p class="vcard-username">{{perfil.login}}</p>
-        <span>teste</span>
-        <span>teste</span>
-        <span>teste</span>
-        <span>teste</span>
-        <Icone icone="github"><span>Icone</span></Icone>
+        
+        <Icone icone="localizacao">Rio de Janeiro</Icone>
+        <Icone icone="email">
+          <a href="mailto:marcostrab@hotmail.com" to="/about" class="links">
+            marcostrab@hotmail.com
+          </a>
+        </Icone>
+        <Icone icone="linkedin">
+          <a href="https://www.linkedin.com/in/marcospaulo505058185/" to="/about" class="links">
+            in/marcospaulo505058185
+          </a>
+        </Icone>
+        <Icone icone="instagram">
+          <a href="https://www.instagram.com/meunikmp" to="/about" class="links">
+            meunikmp
+          </a>
+        </Icone>
       </b-col>
 
       <b-col cols="12" md="8" class="p-0">

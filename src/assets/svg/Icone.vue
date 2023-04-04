@@ -12,6 +12,11 @@
     <Seta v-if="icone == 'seta'" :tamanho="tamanho"><slot></slot></Seta>
     <TresPontos v-if="icone == 'tresPontos'" :tamanho="tamanho"><slot></slot></TresPontos>
     <UserSvg v-if="icone == 'user'" :tamanho="tamanho"><slot></slot></UserSvg>
+    <MailSvg v-if="icone == 'email'" :tamanho="tamanho"><slot></slot></MailSvg>
+    <LinkedinSvg v-if="icone == 'linkedin'" :tamanho="tamanho"><slot></slot></LinkedinSvg>
+    <InstagramSvg v-if="icone == 'instagram'" :tamanho="tamanho"><slot></slot></InstagramSvg>
+    <RelogioSvg v-if="icone == 'relogio'" :tamanho="tamanho"><slot></slot></RelogioSvg>
+    <LocalizacaoSvg v-if="icone == 'localizacao'" :tamanho="tamanho"><slot></slot></LocalizacaoSvg>
   </div>
 </template>
 
@@ -28,6 +33,11 @@
   import Seta from '@/assets/svg/Seta.vue'
   import TresPontos from '@/assets/svg/TresPontos.vue'
   import UserSvg from '@/assets/svg/UserSvg.vue'
+  import MailSvg from '@/assets/svg/MailSvg.vue'
+  import LinkedinSvg from '@/assets/svg/LinkedinSvg.vue'
+  import InstagramSvg from '@/assets/svg/InstagramSvg.vue'
+  import RelogioSvg from '@/assets/svg/RelogioSvg.vue'
+  import LocalizacaoSvg from '@/assets/svg/LocalizacaoSvg.vue'
 
   export default {
     props: {
@@ -53,6 +63,11 @@
       Seta,
       TresPontos,
       UserSvg,
+      MailSvg,
+      LinkedinSvg,
+      InstagramSvg,
+      RelogioSvg,
+      LocalizacaoSvg,
     },
   };
 </script>

@@ -160,15 +160,6 @@ nav a.router-link-exact-active {
   font-size: 12px;
 }
 
-.link-menu {
-  color: var(--texto-navegacao);
-  font-weight: normal;
-}
-.link-menu:hover {
-  color: #cccccc;
-  font-weight: normal;
-}
-
 pre.hljs > code {
   display: flex !important;
 }

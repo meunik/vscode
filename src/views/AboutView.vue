@@ -1,7 +1,5 @@
 <template>
   <div class="about">
-    <Perfil />
-    <br>
     <div v-if="readme" v-html="readme" class="p-3"></div>
   </div>
 </template>

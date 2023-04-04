@@ -17,7 +17,7 @@
         </svg>
       </button>
     </div>
-    <span class="overflow-x-three-points d-contents"><slot></slot></span>
+    <span class="overflow-x-three-points"><slot></slot></span>
   </div>
 </template>
 

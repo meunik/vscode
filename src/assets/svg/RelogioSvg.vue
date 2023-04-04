@@ -1,18 +1,18 @@
 <template>
-  <div class="h-12 d-flex justify-content-center align-items-center box-icon-menu">
+  <div class="d-flex align-items-center white-space-nowrap gap-1">
     <div class="d-flex">
       <svg
         :width="(tamanho)?tamanho:padrao"
         :height="(tamanho)?tamanho:padrao"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="currentColor"
-        :class="`icone icone-menu-vscode ${(ativo)?'ativo':''}`"
+        viewBox="0 0 16 16"
+        version="1.1"
+        aria-hidden="true"
+        :class="`icone ${ativo ? 'ativo' : ''}`"
         :style="`transform: rotate(${rotate}deg);${estilo}`"
       >
         <path
-          d="M15.25 0a8.25 8.25 0 0 0-6.18 13.72L1 22.88l1.12 1 8.05-9.12A8.251 8.251 0 1 0 15.25.01V0zm0 15a6.75 6.75 0 1 1 0-13.5 6.75 6.75 0 0 1 0 13.5z"
-        />
+          d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm7-3.25v2.992l2.028.812a.75.75 0 0 1-.557 1.392l-2.5-1A.751.751 0 0 1 7 8.25v-3.5a.75.75 0 0 1 1.5 0Z"
+        ></path>
       </svg>
     </div>
     <span class="overflow-x-three-points"><slot></slot></span>
@@ -24,7 +24,7 @@ export default {
   props: {
     tamanho: {
       type: Number,
-      default: 25,
+      default: 16,
     },
     rotate: {
       type: Number,
@@ -32,7 +32,7 @@ export default {
     },
     estilo: {
       type: String,
-      default: '',
+      default: "",
     },
     ativo: {
       type: Boolean,
@@ -41,8 +41,8 @@ export default {
   },
   data() {
     return {
-      padrao: 25,
-    }
+      padrao: 16,
+    };
   },
 };
 </script>

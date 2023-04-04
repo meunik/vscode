@@ -2,9 +2,8 @@
   <div class="d-flex align-items-center white-space-nowrap gap-1">
     <div class="d-flex">
       <svg
-        xmlns="http://www.w3.org/2000/svg"
-          :width="(tamanho)?tamanho:padrao"
-          :height="(tamanho)?tamanho:padrao"
+        :width="(tamanho)?tamanho:padrao"
+        :height="(tamanho)?tamanho:padrao"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"

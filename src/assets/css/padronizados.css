@@ -16,9 +16,9 @@
 }
 
 .overflow-x-three-points {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  overflow-x: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
 }
 
 .flex-1 {
@@ -47,4 +47,37 @@
 
 .d-contents {
   display: contents;
+}
+
+.link-menu {
+  color: var(--texto-navegacao);
+  font-weight: normal;
+}
+.link-menu:hover {
+  color: #cccccc;
+  font-weight: normal;
+}
+
+.link-azul:hover {
+  color: #3f84e4 !important;
+  font-weight: normal;
+}
+
+.link-laranja {
+  color: #ffd866 !important;
+}
+.link-laranja:hover {
+  color: #3f84e4 !important;
+}
+
+.links {
+  color: #fff;
+  font-weight: normal;
+}
+.links:hover {
+  color: #3f84e4 !important;
+}
+
+.text-decoration-none {
+  text-decoration: none !important;
 }

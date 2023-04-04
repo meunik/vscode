@@ -16,19 +16,20 @@
         <Pasta :aberto="true" texto="Github" :nivelIndentacao="1">
           <Pasta :aberto="true" texto="Perfil" :nivelIndentacao="2" :indentacaoSlot="true">
             
-            <router-link to="/">
+            <router-link to="/" class="link-laranja text-decoration-none">
               <Icone icone="github">{{(!!perfil)?`${perfil.login}`:''}}</Icone>
             </router-link>
           </Pasta>
-          <Pasta :aberto="false" texto="Repositórios" :nivelIndentacao="2" :indentacaoSlot="true">
+          <Pasta :aberto="true" texto="Repositórios" :nivelIndentacao="2" :indentacaoSlot="true">
             <span v-for="(repo, index) in repositorios" :key="index">
               <router-link
-                v-if="repo.language"
+                v-if="repo && repo.language"
                 @click.native="buscaReadme(repo.name)"
                 to="/about"
-                class="link-menu"
+                class="link-menu text-decoration-none"
               >
                 <Icone icone="github">{{`${repo.language} - ${repo.name}`}}</Icone>
+                <!-- <GithubInverted>{{`${repo.language} - ${repo.name}`}}</GithubInverted> -->
               </router-link>
             </span>
           </Pasta>
@@ -45,6 +46,7 @@
   import Pasta from './Meio/Pasta.vue';
   import { dragbar } from '@/utils/dragbar.js'
   import Icone from '@/assets/svg/Icone.vue'
+  import GithubInverted from '@/assets/svg/GithubInverted.vue'
 
   import { Model } from './Model.js'
 
@@ -54,6 +56,7 @@
       Menu,
       Pasta,
       Icone,
+      GithubInverted,
     },
     async created() {
       await this.$store.dispatch("Git/buscaRepositorios");
@@ -64,7 +67,6 @@
     },
     methods: {
       async buscaReadme(projeto) {
-        console.log(projeto);
         if (!!projeto) await this.$store.dispatch("Git/buscaReadme", projeto);
       }
     }
