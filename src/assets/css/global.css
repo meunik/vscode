@@ -160,8 +160,9 @@ nav a.router-link-exact-active {
   font-size: 12px;
 }
 
-pre.hljs > code {
-  display: flex !important;
+code > span {
+  display: contents !important;
+  word-break: break-word;
 }
 
 .hljs-string, .hljs-doctag {
