@@ -5,6 +5,7 @@ export default {
     login: '',
     location: '',
   },
+  contributions: '',
   readme: '',
   readmePerfil: '',
   repositorios: {

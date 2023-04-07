@@ -25,6 +25,11 @@
             meunikmp
           </a>
         </Icone>
+        <Icone icone="github">
+          <a href="https://github.com/meunik/vscode" target="_blank" class="links">
+            Github
+          </a>
+        </Icone>
       </b-col>
 
       <b-col cols="12" md="8" class="p-0">
@@ -40,21 +45,32 @@
         </div>
       </b-col>
     </b-row>
+    <b-row>
+      <b-col>
+        <!-- <img src="https://ghchart.rshah.org/HEXCOLORCODE/meunik" alt="Name Your Github chart"> -->
+        <!-- <div v-if="contributions" v-html="contributions" class="p-3"></div> -->
+      </b-col>
+    </b-row>
   </div>
 </template>
 
 <script>
   import { Model } from '@/components/vscode/Model.js'
   import Icone from '@/assets/svg/Icone.vue'
+  // import { contributions } from '@/utils/contributions.js'
 
   export default {
     mixins: [Model],
     async created() {
       await this.$store.dispatch("Git/buscaPerfil");
       await this.$store.dispatch("Git/buscaReadmePerfil");
+      // await this.$store.dispatch("Git/buscaContributions");
     },
     components: {
       Icone,
+    },
+    mounted() {
+      // contributions()
     },
   }
 </script>

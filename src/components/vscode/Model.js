@@ -8,6 +8,14 @@ export let Model = {
         this.$store.commit('Git/perfil', value)
       }
     },
+    contributions: {
+      get() {
+        return this.$store.getters['Git/contributions']
+      },
+      set(value) {
+        this.$store.commit('Git/contributions', value)
+      }
+    },
     repositorios: {
       get() {
         return this.$store.getters['Git/repositorios']

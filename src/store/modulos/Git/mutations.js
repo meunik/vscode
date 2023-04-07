@@ -1,5 +1,6 @@
 export const mutations = {
   perfil: (state, obj) => state.perfil = obj,
+  contributions: (state, obj) => state.contributions = obj,
   repositorios: (state, obj) => state.repositorios = obj,
 
   readmePerfil(state, obj) {
