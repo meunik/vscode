@@ -12,9 +12,8 @@ import { BootstrapVue } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-// import './assets/css/github.min.css'
-
-import './assets/js/markdownIt.min.js'
+//MomentJs
+import MomentJs from 'vue-moment'
 
 //Import de CSS Global
 import './assets/css/global.css'
@@ -41,6 +40,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.use(BootstrapVue);
 Vue.use(VueAxios, axios);
+Vue.use(MomentJs);
 
 Vue.config.productionTip = false
 

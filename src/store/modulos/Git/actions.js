@@ -7,11 +7,11 @@ export const actions = {
     let perfil = response.data
     commit('perfil', perfil);
   },
-  async buscaContributions({commit}) {
-    const response = await axios.get('https://github.com/users/meunik/contributions')
-    let contributions = response.data
-    commit('contributions', contributions);
-  },
+  // async buscaContributions({commit}) {
+  //   const response = await axios.get('https://github.com/users/meunik/contributions')
+  //   let contributions = response.data
+  //   commit('contributions', contributions);
+  // },
   async buscaRepositorios({commit}) {
     const response = await axios.get('https://api.github.com/users/meunik/repos')
     let repositorios = response.data

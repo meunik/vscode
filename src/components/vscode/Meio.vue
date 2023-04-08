@@ -60,10 +60,10 @@
     },
     async created() {
       await this.$store.dispatch("Git/buscaRepositorios");
-      // console.log(this.repositorios);
     },
     mounted() {
       dragbar()
+      if (document.body.clientWidth < 768) this.navegacaoWidth = '0px';
     },
     methods: {
       async buscaReadme(projeto) {

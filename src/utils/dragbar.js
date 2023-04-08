@@ -16,10 +16,12 @@ export function dragbar() {
     let max = (50/100)*mainWidth;
     let min = (10/100)*mainWidth;
 
-    if ((min < widthBar)&&(widthBar < max)) {
-      store.commit('navegacaoWidth', `${widthBar}px`);
-    } else if (min > widthBar) {
-      store.commit('navegacaoWidth', '0px');
+    if (bodyWidth > 768) {
+      if ((min < widthBar)&&(widthBar < max)) {
+        store.commit('navegacaoWidth', `${widthBar}px`);
+      } else if (min > widthBar) {
+        store.commit('navegacaoWidth', '0px');
+      }
     }
   }
 

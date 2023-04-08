@@ -1,6 +1,6 @@
 <template>
   <div :class="`h-12 d-flex justify-content-center align-items-center box-icon-menu ${(navegacaoWidth == '0px') ? '' : 'ativo'}`">
-    <button  data-toggle="tooltip" data-placement="right" title="Explorador (Ctrl+Shift+E)" type="button" class="btn-menu-vscode" @click="navegacaoWidth = (navegacaoWidth == '0px') ? stateNavegacaoWidth : '0px'">
+    <button  data-toggle="tooltip" data-placement="right" title="Explorador (Ctrl+Shift+E)" type="button" class="btn-menu-vscode" @click="navegWidth(navegacaoWidth)">
       <svg
         :width="(tamanho)?tamanho:padrao"
         :height="(tamanho)?tamanho:padrao"
@@ -44,6 +44,17 @@
       return {
         padrao: 25,
         stateNavegacaoWidth: this.$store.state.Utils.navegacaoWidth,
+      }
+    },
+    methods: {
+      navegWidth(tamanho) {
+        var bodyWidth = document.body.clientWidth;
+
+        if (bodyWidth < 768) {
+          this.navegacaoWidth = (this.navegacaoWidth == '0px') ? '100%' : '0px'
+        } else {
+          this.navegacaoWidth = (this.navegacaoWidth == '0px') ? this.stateNavegacaoWidth : '0px'
+        }
       }
     },
   }
