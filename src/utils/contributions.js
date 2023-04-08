@@ -6,7 +6,7 @@ import { getGithubContributions } from 'github-contributions-counter'
 export function contributions() {
   getGithubContributions({
     username: 'meunik',
-    token: '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' // secret
+    token: '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' // secret
   }).then((r) => {
     // console.log(r.data)
     store.commit('Git/contributions', r.data.data.user.contributionsCollection.contributionCalendar);
