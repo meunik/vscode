@@ -43,7 +43,7 @@
           <div v-html="readmePerfil" class="p-3"></div>
           <!-- <img src="https://github.com/meunik/meunik/raw/output/github-contribution-grid-snake.svg" alt="Snake animation" style="max-width: 100%;"> -->
 
-          <!-- <div class="d-flex align-items-center justify-content-center">
+          <div class="d-flex align-items-center justify-content-center">
             <div class="overflow-x-auto py-3">
               <table
                 v-if="contributions"
@@ -56,23 +56,28 @@
                 "
               >
                 <tr v-for="(coluna, index) in colunas" :key="`coluna${index}`" :style="`height: ${contribTamanho}px`">
-                  <td
-                    v-for="(semanas, key) in contributions.weeks"
-                    :key="`semana${index}${key}`"
-                    :style="`
-                      width: ${contribTamanho}px;
-                      fill: #39d353;
-                      background-color: ${(semanas.contributionDays[index].contributionCount != 0)?semanas.contributionDays[index].color:'#ffffff0d'};
-                      outline: 1px solid #ffffff0d;
-                      border-radius: 2px;
-                    `"
-                    v-b-tooltip.hover.top="tooltipsText(semanas.contributionDays[index])" variant="primary"
-                  >
-                  </td>
+                  <template v-for="(semanas, key) in contributions.weeks">
+                    <!-- <div :key="`semana${index}${key}`">
+                      {{key}} - {{contributions.weeks.length - 1}}
+                    </div> -->
+                    <td
+                      v-if="key != (contributions.weeks.length - 1)"
+                      :key="`semana${index}${key}`"
+                      :style="`
+                        width: ${contribTamanho}px;
+                        fill: #39d353;
+                        background-color: ${(semanas.contributionDays[index].contributionCount != 0)?semanas.contributionDays[index].color:'#ffffff0d'};
+                        outline: 1px solid #ffffff0d;
+                        border-radius: 2px;
+                      `"
+                      v-b-tooltip.hover.top="tooltipsText(semanas.contributionDays[index])" variant="primary"
+                    >
+                    </td>
+                  </template>
                 </tr>
               </table>
             </div>
-          </div> -->
+          </div>
 
         </div>
       </b-col>
@@ -83,7 +88,7 @@
 <script>
   import { Model } from '@/components/vscode/Model.js'
   import Icone from '@/assets/svg/Icone.vue'
-  // import { contributions } from '@/utils/contributions.js'
+  import { contributions } from '@/utils/contributions.js'
 
   export default {
     mixins: [Model],
@@ -96,6 +101,7 @@
       return {
         contribTamanho: 10,
         colunas: [0,1,2,3,4,5,6]
+        // colunas: [0]
       }
     },
     components: {
@@ -111,7 +117,7 @@
       }
     },
     mounted() {
-      // contributions()
+      contributions()
     },
   }
 </script>
