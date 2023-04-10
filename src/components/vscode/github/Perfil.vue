@@ -42,36 +42,38 @@
           </span>
           <div v-html="readmePerfil" class="p-3"></div>
           <!-- <img src="https://github.com/meunik/meunik/raw/output/github-contribution-grid-snake.svg" alt="Snake animation" style="max-width: 100%;"> -->
-    <div class="d-flex align-items-center justify-content-center">
-      <div class="overflow-x-auto py-3">
-        <table
-          v-if="contributions"
-          style="
-            width: max-content;
-            border-spacing: 4px;
-            overflow: hidden;
-            position: relative;
-            border-collapse: separate;
-          "
-        >
-          <tr v-for="(coluna, index) in colunas" :key="`coluna${index}`" :style="`height: ${contribTamanho}px`">
-            <td
-              v-for="(semanas, key) in contributions.weeks"
-              :key="`semana${index}${key}`"
-              :style="`
-                width: ${contribTamanho}px;
-                fill: #39d353;
-                background-color: ${(semanas.contributionDays[index].contributionCount != 0)?semanas.contributionDays[index].color:'#ffffff0d'};
-                outline: 1px solid #ffffff0d;
-                border-radius: 2px;
-              `"
-              v-b-tooltip.hover.top="tooltipsText(semanas.contributionDays[index])" variant="primary"
-            >
-            </td>
-          </tr>
-        </table>
-      </div>
-    </div>
+
+          <!-- <div class="d-flex align-items-center justify-content-center">
+            <div class="overflow-x-auto py-3">
+              <table
+                v-if="contributions"
+                style="
+                  width: max-content;
+                  border-spacing: 4px;
+                  overflow: hidden;
+                  position: relative;
+                  border-collapse: separate;
+                "
+              >
+                <tr v-for="(coluna, index) in colunas" :key="`coluna${index}`" :style="`height: ${contribTamanho}px`">
+                  <td
+                    v-for="(semanas, key) in contributions.weeks"
+                    :key="`semana${index}${key}`"
+                    :style="`
+                      width: ${contribTamanho}px;
+                      fill: #39d353;
+                      background-color: ${(semanas.contributionDays[index].contributionCount != 0)?semanas.contributionDays[index].color:'#ffffff0d'};
+                      outline: 1px solid #ffffff0d;
+                      border-radius: 2px;
+                    `"
+                    v-b-tooltip.hover.top="tooltipsText(semanas.contributionDays[index])" variant="primary"
+                  >
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div> -->
+
         </div>
       </b-col>
     </b-row>
@@ -81,7 +83,7 @@
 <script>
   import { Model } from '@/components/vscode/Model.js'
   import Icone from '@/assets/svg/Icone.vue'
-  import { contributions } from '@/utils/contributions.js'
+  // import { contributions } from '@/utils/contributions.js'
 
   export default {
     mixins: [Model],
@@ -109,7 +111,7 @@
       }
     },
     mounted() {
-      contributions()
+      // contributions()
     },
   }
 </script>
