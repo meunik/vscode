@@ -99,7 +99,7 @@
     },
     data() {
       return {
-        contribTamanho: 10,
+        contribTamanho: 7,
         colunas: [0,1,2,3,4,5,6]
         // colunas: [0]
       }
