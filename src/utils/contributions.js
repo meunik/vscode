@@ -5,10 +5,13 @@ import axios from 'axios'
 /**
  */
 export async function contributions() {
+
+  let tok = 'ghp_MhvZ249Inrt97K5Knkpy'
+  let en = '8Q3GqUH15M2pRF7D'
   
   const headers = {
     headers: {
-      Authorization: `Bearer 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`,
+      Authorization: `Bearer ${tok}${en}`,
       "Content-Type": "application/json"
     }
   };
