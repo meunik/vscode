@@ -1,6 +1,5 @@
 import store from '@/store/store'
 import axios from 'axios'
-// import { getGithubContributions } from 'github-contributions-counter'
 
 /**
  */
@@ -24,15 +23,32 @@ export async function contributions() {
   const response = await axios.post('https://api.github.com/graphql', body, headers)
 
   store.commit('Git/contributions', response.data.data.user.contributionsCollection.contributionCalendar);
-  console.log(response.data.data.user.contributionsCollection.contributionCalendar);
 
+  /////////////////////////////////////////////////////////////////////////////////////
 
-  // getGithubContributions({
-  //   username: 'meunik',
-  //   token: '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' // secret
-  // }).then((r) => {
-  //   // console.log(r.data)
-  //   store.commit('Git/contributions', r.data.data.user.contributionsCollection.contributionCalendar);
-  //   console.log(r.data.data.user.contributionsCollection.contributionCalendar);
-  // })
+  var box = document.getElementById('box');
+  var boxWidthAntes = box.clientWidth;
+
+  var ResizeSensor = require('css-element-queries/src/ResizeSensor');
+
+  new ResizeSensor(box, function(){
+    var contribLado = store.getters.contribTamanho;
+    var boxWidth = box.clientWidth;
+    var subitracao = boxWidthAntes - boxWidth;
+    var ladoExtra = 4.076923076923077;
+
+    if (subitracao != 0) {
+      var conta = (((parseFloat(contribLado) + ladoExtra)*52 - (subitracao))/52) - ladoExtra;
+
+      store.commit('contribTamanho', `${conta}`);
+      
+      console.log("----------------");
+      console.log(`contribLado: ${contribLado}, subitracao: ${subitracao}, boxWidthAntes: ${boxWidthAntes}, boxWidth: ${boxWidth}`);
+      console.log(`Total: ${conta}`);
+      console.log((parseFloat(contribLado) + ladoExtra)*52 - (subitracao));
+      console.log(`(((${parseFloat(contribLado)} + ${ladoExtra})*52 + (${subitracao}))/52) - ${ladoExtra}`);
+    }
+
+    boxWidthAntes = box.clientWidth
+  });
 }

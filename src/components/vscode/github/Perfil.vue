@@ -33,7 +33,7 @@
       </b-col>
 
       <b-col cols="12" md="8" class="p-0">
-        <div class="box pb-3">
+        <div class="box pb-3" id="box">
           <span class="px-3 mt-3 texto-sm">
             meunik 
             <b class="color-fg-muted">/</b> 
@@ -46,6 +46,7 @@
           <div class="d-flex align-items-center justify-content-center">
             <div class="overflow-x-auto py-3">
               <table
+                id="tabela"
                 v-if="contributions"
                 style="
                   width: max-content;
@@ -55,11 +56,8 @@
                   border-collapse: separate;
                 "
               >
-                <tr v-for="(coluna, index) in colunas" :key="`coluna${index}`" :style="`height: ${contribTamanho}px`">
+                <tr v-for="(coluna, index) in colunas" :key="`coluna${index}`" :style="`height: ${contribTamanho}px`" class="testando">
                   <template v-for="(semanas, key) in contributions.weeks">
-                    <!-- <div :key="`semana${index}${key}`">
-                      {{key}} - {{contributions.weeks.length - 1}}
-                    </div> -->
                     <td
                       v-if="key != (contributions.weeks.length - 1)"
                       :key="`semana${index}${key}`"
@@ -70,6 +68,7 @@
                         outline: 1px solid #ffffff0d;
                         border-radius: 2px;
                       `"
+                      class="teste"
                       v-b-tooltip.hover.top="tooltipsText(semanas.contributionDays[index])" variant="primary"
                     >
                     </td>
@@ -89,19 +88,17 @@
   import { Model } from '@/components/vscode/Model.js'
   import Icone from '@/assets/svg/Icone.vue'
   import { contributions } from '@/utils/contributions.js'
+  import 'css-element-queries/src/ResizeSensor.js'
 
   export default {
     mixins: [Model],
     async created() {
       await this.$store.dispatch("Git/buscaPerfil");
       await this.$store.dispatch("Git/buscaReadmePerfil");
-      // await this.$store.dispatch("Git/buscaContributions");
     },
     data() {
       return {
-        contribTamanho: 7,
         colunas: [0,1,2,3,4,5,6]
-        // colunas: [0]
       }
     },
     components: {

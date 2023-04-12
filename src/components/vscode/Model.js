@@ -32,6 +32,14 @@ export let Model = {
         this.$store.commit('navegacaoWidth', value)
       }
     },
+    contribTamanho: {
+      get() {
+        return this.$store.getters['contribTamanho']
+      },
+      set(value) {
+        this.$store.commit('contribTamanho', value)
+      }
+    },
     readme: {
       get() {
         return this.$store.getters['Git/readme']
