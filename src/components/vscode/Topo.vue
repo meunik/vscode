@@ -14,7 +14,7 @@
         class="w-bolinhas h-bolinhas bg-verde rounded-circle"
       ></button>
     </div>
-    <span>Titulo</span>
+    <span>Marcos Paulo</span>
     <div class="w-espacinho">&nbsp;</div>
   </div>
 </template>

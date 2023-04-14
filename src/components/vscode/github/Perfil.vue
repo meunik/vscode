@@ -9,7 +9,7 @@
         <h4 class="m-0">{{perfil.name}}</h4>
         <p class="vcard-username">{{perfil.login}}</p>
         
-        <Icone icone="localizacao">Rio de Janeiro</Icone>
+        <Icone icone="localizacao">Rua Conselheiro Paulino, nº 358, apto 207, Rio de Janeiro RJ 21073-240</Icone>
         <Icone icone="email">
           <a href="mailto:marcostrab@hotmail.com" target="_blank" class="links">
             marcostrab@hotmail.com
@@ -25,9 +25,14 @@
             meunikmp
           </a>
         </Icone>
-        <Icone icone="github">
-          <a href="https://github.com/meunik/vscode" target="_blank" class="links">
+        <Icone icone="github" class="noPrint">
+          <a href="https://github.com/meunik" target="_blank" class="links">
             Github
+          </a>
+        </Icone>
+        <Icone icone="github" class="print">
+          <a href="https://github.com/meunik" target="_blank" class="links">
+            meunik
           </a>
         </Icone>
       </b-col>
@@ -40,11 +45,26 @@
             README
             <b class="color-fg-muted">.md</b>
           </span>
-          <div v-html="readmePerfil" class="p-3"></div>
+          <!-- <div v-html="readmePerfil" class="p-3"></div> -->
+          <div class="p-3"><h3>Olá sou Marcos Paulo 👋</h3>
+            <ul>
+              <li>💻 Trabalho como Full Stack (Vue + Laravel).</li>
+            </ul>
+            <div style="display: inline_block">
+              <img align="center" alt="Marcos-php" title="PHP" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg">
+              <img align="center" alt="Marcos-Laravel" title="Laravel" height="30" width="40" src="https://laravel.com/img/logomark.min.svg">
+              <img align="center" alt="Marcos-MySQL" title="MySQL" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg">
+              <img align="center" alt="Marcos-HTML" title="HTML" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
+              <img align="center" alt="Marcos-CSS" title="CSS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
+              <img align="center" alt="Marcos-Js" title="JS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg">
+              <img align="center" alt="Marcos-jQuery" title="jQuery" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/jquery/jquery-original.svg">
+              <img align="center" alt="Marcos-Vue" title="Vue" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original.svg">
+            </div>
+          </div>
           <!-- <img src="https://github.com/meunik/meunik/raw/output/github-contribution-grid-snake.svg" alt="Snake animation" style="max-width: 100%;"> -->
 
-          <div class="d-flex align-items-center justify-content-center">
-            <div class="overflow-x-auto py-3">
+          <div class="d-flex align-items-center justify-content-center noPrint">
+            <div class="overflow-x-auto">
               <table
                 id="tabela"
                 v-if="contributions"
@@ -77,8 +97,35 @@
               </table>
             </div>
           </div>
-
         </div>
+
+        <br>
+
+        <div class="box p-3">
+          <span class="mb-3 texto-sm">
+            meunik 
+            <b class="color-fg-muted">/</b> 
+            RESUMO PROFISSIONAL
+            <b class="color-fg-muted">.txt</b>
+          </span>
+          <p class="m-0">
+            Tenho 4 anos de experiência em desenvolvedor web. Atualmente trabalho no
+            Complexo Regulador do Município do Rio de Janeiro, no qual atuo como
+            Full Stack no desenvolvimento de sistemas para auxiliar a área da saúde do
+            Município do Rio de Janeiro. Já trabalhei e trabalho com as tecnologias:
+            <span class="d-contents text-php">PHP</span>, <span class="d-contents text-laravel">Laravel</span>, <span class="d-contents text-lumen">Lumen</span>, <span class="d-contents text-mysql">MySQL</span>, <span class="d-contents text-html">HTML</span>, <span class="d-contents text-css">CSS</span>, <span class="d-contents text-javascript">JavaScript</span>, <span class="d-contents text-vue">Vue.js</span>, <span class="d-contents text-jquery">jQuery</span>. No
+            meu trabalho anterior desenvolvi um sistema de RH, utilizado por 72
+            clínicas particulares espalhadas pelo Brasil, com mais de 12 mil
+            funcionários inseridos no sistema. Também fiz um sistema para
+            acompanhamento diário de diálises realizadas por 19 clínicas.
+          </p>
+        </div>
+      </b-col>
+    </b-row>
+
+    <b-row class="m-0">
+      <b-col cols="12" md="12">
+        <span></span>
       </b-col>
     </b-row>
   </div>
@@ -88,6 +135,7 @@
   import { Model } from '@/components/vscode/Model.js'
   import Icone from '@/assets/svg/Icone.vue'
   import { contributions } from '@/utils/contributions.js'
+  // import { snakeGame } from '@/utils/snakeGame.js'
   import 'css-element-queries/src/ResizeSensor.js'
 
   export default {
@@ -115,6 +163,7 @@
     },
     mounted() {
       contributions()
+      // snakeGame()
     },
   }
 </script>

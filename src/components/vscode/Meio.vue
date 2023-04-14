@@ -1,7 +1,7 @@
 <template>
   <div class="main" id="main">
     <Menu />
-    <nav id="drag-left" class="navegacao py-2 d-flex flex-column" :style="{width: navegacaoWidth}">
+    <nav id="drag-left" class="navegacao py-2 d-flex flex-column noPrint" :style="{width: navegacaoWidth}">
       <div class="px-3 d-flex align-items-center justify-content-between">
         <span class="explorador">EXPLORADOR</span>
         <Icone icone="tresPontos"/>
@@ -17,10 +17,10 @@
           <Pasta :aberto="true" texto="Perfil" :nivelIndentacao="2" :indentacaoSlot="true">
             
             <router-link to="/" class="link-laranja text-decoration-none">
-              <Icone icone="github">{{(!!perfil)?`${perfil.login}`:''}}</Icone>
+              <Icone icone="github" :completo="false">{{(!!perfil)?`${perfil.login}`:''}}</Icone>
             </router-link>
           </Pasta>
-          <Pasta :aberto="true" texto="Repositórios" :nivelIndentacao="2" :indentacaoSlot="true">
+          <Pasta :aberto="true" texto="Repositórios Público" :nivelIndentacao="2" :indentacaoSlot="true">
             <span v-for="(repo, index) in repositorios" :key="index">
               <router-link
                 v-if="repo && repo.language"
@@ -28,8 +28,7 @@
                 to="/about"
                 class="link-menu text-decoration-none"
               >
-                <Icone icone="github">{{`${repo.language} - ${repo.name}`}}</Icone>
-                <!-- <GithubInverted>{{`${repo.language} - ${repo.name}`}}</GithubInverted> -->
+                <Icone icone="github" :completo="false">{{`${repo.language} - ${repo.name}`}}</Icone>
               </router-link>
             </span>
           </Pasta>
@@ -46,7 +45,6 @@
   import Pasta from './Meio/Pasta.vue';
   import { dragbar } from '@/utils/dragbar.js'
   import Icone from '@/assets/svg/Icone.vue'
-  import GithubInverted from '@/assets/svg/GithubInverted.vue'
 
   import { Model } from './Model.js'
 
@@ -56,7 +54,6 @@
       Menu,
       Pasta,
       Icone,
-      GithubInverted,
     },
     async created() {
       await this.$store.dispatch("Git/buscaRepositorios");

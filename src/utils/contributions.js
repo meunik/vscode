@@ -32,9 +32,14 @@ export async function contributions() {
   var ResizeSensor = require('css-element-queries/src/ResizeSensor');
 
   new ResizeSensor(box, function(){
+
+    //valor dos lados dos quadrados
     var contribLado = store.getters.contribTamanho;
+
     var boxWidth = box.clientWidth;
     var subitracao = boxWidthAntes - boxWidth;
+
+    //valor extra dos lados dos quadrados por causa das linhas da tabela entre eles
     var ladoExtra = 4.076923076923077;
 
     if (subitracao != 0) {
@@ -42,11 +47,11 @@ export async function contributions() {
 
       store.commit('contribTamanho', `${conta}`);
       
-      console.log("----------------");
-      console.log(`contribLado: ${contribLado}, subitracao: ${subitracao}, boxWidthAntes: ${boxWidthAntes}, boxWidth: ${boxWidth}`);
-      console.log(`Total: ${conta}`);
-      console.log((parseFloat(contribLado) + ladoExtra)*52 - (subitracao));
-      console.log(`(((${parseFloat(contribLado)} + ${ladoExtra})*52 + (${subitracao}))/52) - ${ladoExtra}`);
+      // console.log("----------------");
+      // console.log(`contribLado: ${contribLado}, subitracao: ${subitracao}, boxWidthAntes: ${boxWidthAntes}, boxWidth: ${boxWidth}`);
+      // console.log(`Total: ${conta}`);
+      // console.log((parseFloat(contribLado) + ladoExtra)*52 - (subitracao));
+      // console.log(`(((${parseFloat(contribLado)} + ${ladoExtra})*52 + (${subitracao}))/52) - ${ladoExtra}`);
     }
 
     boxWidthAntes = box.clientWidth

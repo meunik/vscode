@@ -1,3 +1,15 @@
+.print {
+  display: none !important;
+}
+@media print {
+  .noPrint {
+    display: none !important;
+  }
+  .print {
+    display: flex !important;
+  }
+}
+
 @media (max-width: 768px) {
   html, body {
     height: 100%;
