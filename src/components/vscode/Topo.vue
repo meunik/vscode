@@ -3,18 +3,24 @@
     <div class="d-flex align-items-center gap-bolinhas">
       <button
         type="button"
-        class="w-bolinhas h-bolinhas bg-vermelho rounded-circle"
+        class="w-bolinhas h-bolinhas bg-vermelho circulo"
       ></button
       ><button
         type="button"
-        class="w-bolinhas h-bolinhas bg-amarelo rounded-circle"
+        class="w-bolinhas h-bolinhas bg-amarelo circulo"
       ></button
       ><button
         type="button"
-        class="w-bolinhas h-bolinhas bg-verde rounded-circle"
+        class="w-bolinhas h-bolinhas bg-verde circulo"
       ></button>
     </div>
     <span>Marcos Paulo</span>
     <div class="w-espacinho">&nbsp;</div>
   </div>
 </template>
+
+<style>
+.circulo {
+  border-radius: 50px !important;
+}
+</style>

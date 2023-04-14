@@ -1,19 +1,5 @@
-# portfolio
+# Meu site
 
-## Project setup
-```
-yarn install
-```
+EM DESENVOLVIMENTO
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Um projeto feito para ser meu site pessoal e profissional, onde eu exibo meus projetos e meu currículo

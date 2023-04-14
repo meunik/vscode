@@ -162,7 +162,17 @@ nav a.router-link-exact-active {
 
 code > span {
   display: contents !important;
-  word-break: break-word;
+  /* word-break: break-word; */
+}
+
+.hljs-class> span {
+  display: contents !important;
+}
+.hljs-function> span {
+  display: contents !important;
+}
+.hljs-params> span {
+  display: contents !important;
 }
 
 .hljs-string, .hljs-doctag {
