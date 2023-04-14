@@ -1,17 +1,17 @@
 <template>
   <div class="topo d-flex align-items-center justify-content-between px-3">
-    <div class="d-flex align-items-center gap-bolinhas" style="height: 50%;">
+    <div class="d-flex align-items-center gap-bolinhas">
       <button
         type="button"
-        class="h-100 bg-vermelho circulo"
+        class="w-bolinhas h-bolinhas bg-vermelho circulo"
       ></button
       ><button
         type="button"
-        class="h-100 bg-amarelo circulo"
+        class="w-bolinhas h-bolinhas bg-amarelo circulo"
       ></button
       ><button
         type="button"
-        class="h-100 bg-verde circulo"
+        class="w-bolinhas h-bolinhas bg-verde circulo"
       ></button>
     </div>
     <span>Marcos Paulo</span>
@@ -22,5 +22,17 @@
 <style>
 .circulo {
   border-radius: 50px !important;
+}
+.gap-bolinhas {
+  gap: 0.5rem;
+}
+.w-bolinhas {
+  width: 0.75rem !important;
+}
+.h-bolinhas {
+  height: 0.75rem !important;
+}
+.w-espacinho {
+  width: 3.5rem !important;
 }
 </style>

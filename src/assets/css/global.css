@@ -142,19 +142,6 @@ nav a.router-link-exact-active {
   border: none;
 }
 
-.gap-bolinhas {
-  gap: 0.5rem;
-}
-.w-bolinhas {
-  width: 0.75rem;
-}
-.h-bolinhas {
-  height: 0.75rem;
-}
-.w-espacinho {
-  width: 3.5rem;
-}
-
 .explorador {
   color: var(--texto-navegacao);
   font-size: 12px;
