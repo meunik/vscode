@@ -6,34 +6,24 @@
         <div class="d-flex align-items-center justify-content-center mb-3">
           <img v-if="perfil.avatar_url" :src="perfil.avatar_url" alt="Foto de Perfil do GitHub" class="avatar-user">
         </div>
-        <h4 class="m-0">{{perfil.name}}</h4>
+        <h4 class="m-0 ">Marcos Paulo <b class="vcard-username">Chagas da Silva</b></h4>
         <p class="vcard-username">{{perfil.login}}</p>
         
         <Icone icone="localizacao">Rua Conselheiro Paulino, nº 358, apto 207, Rio de Janeiro RJ 21073-240</Icone>
         <Icone icone="email">
-          <a href="mailto:marcostrab@hotmail.com" target="_blank" class="links">
-            marcostrab@hotmail.com
-          </a>
+          <a href="mailto:marcostrab@hotmail.com" target="_blank" class="links">marcostrab@hotmail.com</a>
         </Icone>
         <Icone icone="linkedin">
-          <a href="https://www.linkedin.com/in/marcospaulo505058185/" target="_blank" class="links">
-            in/marcospaulo505058185
-          </a>
+          <a href="https://www.linkedin.com/in/marcospaulo505058185/" target="_blank" class="links">in/marcospaulo505058185</a>
         </Icone>
         <Icone icone="instagram">
-          <a href="https://www.instagram.com/meunikmp" target="_blank" class="links">
-            meunikmp
-          </a>
+          <a href="https://www.instagram.com/meunikmp" target="_blank" class="links">meunikmp</a>
         </Icone>
         <Icone icone="github" class="noPrint">
-          <a href="https://github.com/meunik" target="_blank" class="links">
-            Github
-          </a>
+          <a href="https://github.com/meunik" target="_blank" class="links">Github</a>
         </Icone>
         <Icone icone="github" class="print">
-          <a href="https://github.com/meunik" target="_blank" class="links">
-            meunik
-          </a>
+          <a href="https://github.com/meunik" target="_blank" class="links">meunik</a>
         </Icone>
       </b-col>
 
@@ -48,12 +38,13 @@
           <!-- <div v-html="readmePerfil" class="p-3"></div> -->
           <div class="p-3"><h3>Olá sou Marcos Paulo 👋</h3>
             <ul>
-              <li>💻 Trabalho como Full Stack (Vue + Laravel).</li>
+              <li>💻 Atualmente trabalho como Full Stack (Vue + Laravel).</li>
             </ul>
             <div style="display: inline_block">
               <img align="center" alt="Marcos-php" title="PHP" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg">
               <img align="center" alt="Marcos-Laravel" title="Laravel" height="30" width="40" src="https://laravel.com/img/logomark.min.svg">
               <img align="center" alt="Marcos-MySQL" title="MySQL" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg">
+              <img align="center" alt="Marcos-Vue" title="Vue" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg">
               <img align="center" alt="Marcos-HTML" title="HTML" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
               <img align="center" alt="Marcos-CSS" title="CSS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
               <img align="center" alt="Marcos-Js" title="JS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg">
