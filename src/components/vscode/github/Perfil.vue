@@ -160,7 +160,7 @@
             
             <span><i class="texto-fino">06/2019</i> - <i class="texto-fino">05/2021</i></span>
             <span><b class="texto-escuro">Desenvolvedor Web, B2Fly</b> | Rio de Janeiro, Rio de Janeiro</span>
-            <span>Estagiário - Júnior</span>
+            <span>Estagiário / Desenvolvedor Júnior</span>
             <p>
               Auxiliei no desenvolvimento de sistemas web, na qual utilizei tecnologias
               como: <span class="d-contents text-html">HTML5</span>, <span class="d-contents text-css">CSS3</span>, <span class="d-contents text-php">PHP</span>(5.6 e 7), <span class="d-contents text-laravel">Laravel</span>, <span class="d-contents text-lumen">Lumen</span> e <span class="d-contents text-mysql">MySQL</span>.
@@ -169,13 +169,13 @@
             <span><i class="texto-fino">04/2016</i> - <i class="texto-fino">05/2019</i></span>
             <span><b class="texto-escuro">22º Ofício De Notas - RJ</b> | Rio de Janeiro, Rio de Janeiro</span>
             <span>Auxiliar De Serviços Notariais</span>
-            <p>
+            <span>
               Trabalhava em Atendimento ao cliente, lidando diretamente com
               documentos como DUT, Declarações, Comunicações de venda, Apostila
               de Haya e outros. Prestativamente auxiliava em assuntos gerais
               Informáticos, navegação em Browser, manutenção de micros, Word,
               planilhas de Excel e outros.
-            </p>
+            </span>
           </div>
         </div>
       </b-col>
