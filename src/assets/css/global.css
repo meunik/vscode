@@ -177,31 +177,3 @@ code > span {
 .hljs-title, .hljs-section, .hljs-selector-id {
   color: #75dbe7 !important;
 }
-
-.text-php {
-  color: #6181b6;
-}
-.text-laravel {
-  color: #e32b20;
-}
-.text-lumen {
-  color: #e74430;
-}
-.text-mysql {
-  color: #00618a;
-}
-.text-html {
-  color: #e44d26;
-}
-.text-css {
-  color: #33a9dc;
-}
-.text-javascript {
-  color: #f0db4f;
-}
-.text-vue {
-  color: #41b883;
-}
-.text-jquery {
-  color: #0868ac;
-}

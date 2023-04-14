@@ -25,6 +25,24 @@
         <Icone icone="github" class="print">
           <a href="https://github.com/meunik" target="_blank" class="links">meunik</a>
         </Icone>
+        
+        <hr>
+
+        <span class="mb-3 texto-sm">
+          meunik 
+          <b class="color-fg-muted">/</b> 
+          FORMAÇÃO ACADÊMICA
+          <b class="color-fg-muted">.txt</b>
+        </span>
+        <div>
+          <span>Formado em <i class="texto-fino">07/2022</i></span>
+          <b class="texto-escuro">Sistema De Informação</b>
+          <p>Universidade Estácio de Sá (Nova América) | Rio de Janeiro</p>
+
+          <p><b class="texto-escuro">Matemática</b> | UERJ Maracanã</p>
+
+          <span><b class="texto-escuro">Montagem E Manutenção De Micros E Redes</b> | Curso Control C</span>
+        </div>
       </b-col>
 
       <b-col cols="12" md="8" class="p-0">
@@ -44,7 +62,8 @@
               <img align="center" alt="Marcos-php" title="PHP" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg">
               <img align="center" alt="Marcos-Laravel" title="Laravel" height="30" width="40" src="https://laravel.com/img/logomark.min.svg">
               <img align="center" alt="Marcos-MySQL" title="MySQL" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg">
-              <img align="center" alt="Marcos-Vue" title="Vue" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg">
+              <img align="center" alt="Marcos-Vue" title="Docker" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg">
+              <img align="center" alt="Marcos-php" title="Git" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg">
               <img align="center" alt="Marcos-HTML" title="HTML" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
               <img align="center" alt="Marcos-CSS" title="CSS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
               <img align="center" alt="Marcos-Js" title="JS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg">
@@ -110,6 +129,54 @@
             funcionários inseridos no sistema. Também fiz um sistema para
             acompanhamento diário de diálises realizadas por 19 clínicas.
           </p>
+        </div>
+
+        <br>
+
+        <div class="box p-3">
+          <span class="mb-3 texto-sm">
+            meunik 
+            <b class="color-fg-muted">/</b> 
+            HISTÓRICO PROFISSIONAL
+            <b class="color-fg-muted">.txt</b>
+          </span>
+          <div>
+            <span><i class="texto-fino">03/2022</i> - Atual</span>
+            <span><b class="texto-escuro">SPDM</b> | Rio de Janeiro, Rio de Janeiro</span>
+            <span>Analista de sistemas</span>
+            <p>
+              Trabalho Full Stack no desenvolvimento de sistemas para auxiliar a área da
+              saúde do Município do Rio de Janeiro, na qual utilizo tecnologias como:
+              <span class="d-contents text-git">GIT</span>, <span class="d-contents text-html">HTML</span>, <span class="d-contents text-css">CSS</span>, <span class="d-contents text-javascript">JavaScript</span>, <span class="d-contents text-vue">Vue.js</span> com <span class="d-contents text-vue">VueX</span> e <span class="d-contents text-bootstrap-vue">BootstrapVue</span>, <span class="d-contents text-jquery">jQuery</span>, <span class="d-contents text-php">PHP</span>(5.3 e 8), <span class="d-contents text-laravel">Laravel</span>, <span class="d-contents text-mysql">MySQL</span>.
+            </p>
+            
+            <span><i class="texto-fino">06/2021</i> - <i class="texto-fino">02/2022</i></span>
+            <span><b class="texto-escuro">Viva Rio</b> | Rio de Janeiro, Rio de Janeiro</span>
+            <span>Assistente de Informação</span>
+            <p>
+              Desenvolvo sistemas web, na qual utilizo tecnologias como: <span class="d-contents text-git">GIT</span>, <span class="d-contents text-php">PHP</span>(5.3
+              e 8), <span class="d-contents text-laravel">Laravel</span> e <span class="d-contents text-mysql">MySQL</span>.
+            </p>
+            
+            <span><i class="texto-fino">06/2019</i> - <i class="texto-fino">05/2021</i></span>
+            <span><b class="texto-escuro">Desenvolvedor Web, B2Fly</b> | Rio de Janeiro, Rio de Janeiro</span>
+            <span>Estagiário - Júnior</span>
+            <p>
+              Auxiliei no desenvolvimento de sistemas web, na qual utilizei tecnologias
+              como: <span class="d-contents text-html">HTML5</span>, <span class="d-contents text-css">CSS3</span>, <span class="d-contents text-php">PHP</span>(5.6 e 7), <span class="d-contents text-laravel">Laravel</span>, <span class="d-contents text-lumen">Lumen</span> e <span class="d-contents text-mysql">MySQL</span>.
+            </p>
+            
+            <span><i class="texto-fino">04/2016</i> - <i class="texto-fino">05/2019</i></span>
+            <span><b class="texto-escuro">22º Ofício De Notas - RJ</b> | Rio de Janeiro, Rio de Janeiro</span>
+            <span>Auxiliar De Serviços Notariais</span>
+            <p>
+              Trabalhava em Atendimento ao cliente, lidando diretamente com
+              documentos como DUT, Declarações, Comunicações de venda, Apostila
+              de Haya e outros. Prestativamente auxiliava em assuntos gerais
+              Informáticos, navegação em Browser, manutenção de micros, Word,
+              planilhas de Excel e outros.
+            </p>
+          </div>
         </div>
       </b-col>
     </b-row>

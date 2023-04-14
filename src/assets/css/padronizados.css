@@ -81,3 +81,44 @@
 .text-decoration-none {
   text-decoration: none !important;
 }
+
+.text-git {
+  color: #e84d31;
+}
+.text-php {
+  color: #6181b6;
+}
+.text-laravel {
+  color: #e32b20;
+}
+.text-lumen {
+  color: #e74430;
+}
+.text-mysql {
+  color: #00618a;
+}
+.text-html {
+  color: #e44d26;
+}
+.text-css {
+  color: #33a9dc;
+}
+.text-javascript {
+  color: #f0db4f;
+}
+.text-vue {
+  color: #41b883;
+}
+.text-jquery {
+  color: #0868ac;
+}
+.text-bootstrap-vue {
+  color: #563d7c;
+}
+
+.texto-fino {
+  font-weight: 300;
+}
+.texto-escuro {
+  color: #9b9285;
+}
