@@ -27,10 +27,10 @@
   gap: 0.5rem;
 }
 .w-bolinhas {
-  width: 0.75rem !important;
+  width: 12px !important;
 }
 .h-bolinhas {
-  height: 0.75rem !important;
+  height: 12px !important;
 }
 .w-espacinho {
   width: 3.5rem !important;
