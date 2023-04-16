@@ -152,29 +152,6 @@ code > span {
   /* word-break: break-word; */
 }
 
-.hljs-class> span {
-  display: contents !important;
-}
-.hljs-function> span {
-  display: contents !important;
-}
-.hljs-params> span {
-  display: contents !important;
-}
-
-.hljs-string, .hljs-doctag {
-  color: #ffd866 !important;
-}
-.hljs-number, .hljs-literal, .hljs-variable, .hljs-template-variable, .hljs-tag .hljs-attr {
-  color: #ab9df2 !important;
-}
-.hljs-built_in, .hljs-builtin-name {
-  color: rgb(79, 211, 255) !important;
-}
-.hljs-title, .hljs-section, .hljs-selector-id {
-  color: #75dbe7 !important;
-}
-
 .card-header {
   padding: 0rem 0.75rem;
   border-bottom: 1px solid transparent;

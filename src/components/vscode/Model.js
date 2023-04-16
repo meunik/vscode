@@ -1,3 +1,6 @@
+import axios from 'axios'
+import { markdown } from '@/utils/markdown.js'
+
 export let Model = {
   computed: {
     perfil: {
@@ -40,6 +43,22 @@ export let Model = {
         this.$store.commit('contribTamanho', value)
       }
     },
+    abas: {
+      get() {
+        return this.$store.getters['abas']
+      },
+      set(value) {
+        this.$store.commit('abas', value)
+      }
+    },
+    abaIndex: {
+      get() {
+        return this.$store.getters['abaIndex']
+      },
+      set(value) {
+        this.$store.commit('abaIndex', value)
+      }
+    },
     readme: {
       get() {
         return this.$store.getters['Git/readme']
@@ -56,5 +75,48 @@ export let Model = {
         this.$store.commit('Git/readmePerfil', value)
       }
     },
+  },
+  methods: {
+    async novaAba(repo) {
+      let projeto = repo.name;
+      let readme = '';
+      try {
+        const response = await axios.get(`https://raw.githubusercontent.com/meunik/${projeto}/master/readme.md`);
+        readme = response.data;
+      } catch (error) {
+        const response = await axios.get(`https://raw.githubusercontent.com/meunik/${projeto}/master/README.md`);
+        readme = response.data;
+      }
+      // console.clear();
+      this.abas = {
+        ...this.abas,
+        [projeto]: {
+          nome: projeto,
+          linguagem: repo.language,
+          readme: markdown(readme),
+        },
+      };
+      const arrayKeys = Object.keys(this.abas);
+      const key = parseInt(this.getKeyByValue(arrayKeys, projeto));
+      this.abaIndex = key;
+      console.log(key);
+    },
+    getKeyByValue(object, value) {
+      return Object.keys(object).find(key => object[key] === value);
+    },
+    fecharAba(aba, key) {
+      delete this.abas[key];
+      this.abas = {
+        ...this.abas,
+      };
+    },
+    abrivicaoLinguagens(ling) {
+      switch (ling.toLowerCase()) {
+        case 'typescript': return 'ts';
+        case 'javascript': return 'js';
+      
+        default: return ling.toLowerCase();
+      }
+    }
   }
 }

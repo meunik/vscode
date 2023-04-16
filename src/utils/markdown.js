@@ -1,25 +1,32 @@
-import store from '../store/store'
+import store from '@/store/store'
 // import {markdownIt} from '../assets/js/markdown-it.js'
 
-export function markdown() {
-    // console.log(markdownIt);
+export function markdown(obj) {
+    var hljs = require('highlight.js');
+    // var md = window.markdownit();
+    
+    var md = window.markdownit({
+      html: true,
+      linkify: true,
+      typographer: true,
+      highlight: function (str, lang) {
+        if (lang && hljs.getLanguage(lang)) {
+          try {
+            return '<pre class="hljs"><code>' +
+                   hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
+                   '</code></pre>';
+          } catch (__) {}
+        }
+    
+        return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
+      }
+    });
 
-    // var MarkdownIt = require(markdownIt),
-    // md = new MarkdownIt();
-    // var result = md.render('# markdown-it rulezz!');
+    return md.render(obj);
 
     
-    var md = window.markdownit();
-    var result = md.render('# markdown-it rulezz!');
-    console.log(result);
-    return result;
-
-    // // node.js, the same, but with sugar:
-    // var md = require('markdown-it')();
-    // var result = md.render('# markdown-it rulezz!');
-
-    // // browser without AMD, added to "window" on script load
-    // // Note, there is no dash in "markdownit".
     // var md = window.markdownit();
     // var result = md.render('# markdown-it rulezz!');
+    // console.log(result);
+    // return result;
 }

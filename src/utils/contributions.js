@@ -46,12 +46,6 @@ export async function contributions() {
       var conta = (((parseFloat(contribLado) + ladoExtra)*52 - (subitracao))/52) - ladoExtra;
 
       store.commit('contribTamanho', `${conta}`);
-      
-      // console.log("----------------");
-      // console.log(`contribLado: ${contribLado}, subitracao: ${subitracao}, boxWidthAntes: ${boxWidthAntes}, boxWidth: ${boxWidth}`);
-      // console.log(`Total: ${conta}`);
-      // console.log((parseFloat(contribLado) + ladoExtra)*52 - (subitracao));
-      // console.log(`(((${parseFloat(contribLado)} + ${ladoExtra})*52 + (${subitracao}))/52) - ${ladoExtra}`);
     }
 
     boxWidthAntes = box.clientWidth

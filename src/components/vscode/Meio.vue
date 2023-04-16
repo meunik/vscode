@@ -24,7 +24,7 @@
             <span v-for="(repo, index) in repositorios" :key="index">
               <router-link
                 v-if="repo && repo.language"
-                @click.native="buscaReadme(repo.name)"
+                @click.native="novaAba(repo)"
                 to="/about"
                 class="link-menu text-decoration-none"
               >
