@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-tabs v-model="abaIndex" @changed="newTabIndex()">
+    <b-tabs v-model="abaControlador" @changed="attControlador()">
       <b-tab v-for="(aba, key) in abas" :key="`dyn-tab-${key}`" class="overflow-auto">
         <template #title>
           {{ aba.nome }}.{{ abrivicaoLinguagens(aba.linguagem) }}
@@ -8,11 +8,6 @@
           <font-awesome-icon :icon="['fas', 'xmark']" class="pl-1"/>
         </b-button>
         </template>
-        abaIndex: ({{abaIndex}})
-        <b-button-group class="mt-2">
-          <b-button @click="abaIndex--">Previous</b-button>
-          <b-button @click="abaIndex++">Next</b-button>
-        </b-button-group>
         <div v-if="aba.readme" v-html="aba.readme" class="p-3"></div>
         <!-- <Perfil v-if="!!perfil" /> -->
       </b-tab>
@@ -36,9 +31,14 @@
     components: {
       Perfil,
     },
+    data() {
+      return {
+        abaControlador: 0
+      }
+    },
     methods: {
-      newTabIndex() {
-        console.log(`abaIndex Conteudo :${this.abaIndex}`);
+      attControlador() {
+        this.abaControlador = this.abaIndex;
       }
     }
   }

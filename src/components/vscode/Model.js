@@ -106,7 +106,6 @@ export let Model = {
       const arrayKeys = Object.keys(this.abas);
       const key = parseInt(this.getKeyByValue(arrayKeys, projeto));
       this.abaIndex = key;
-      console.log(`key Models :${key}`);
     },
     getKeyByValue(object, value) {
       return Object.keys(object).find(key => object[key] === value);
