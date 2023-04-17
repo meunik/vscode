@@ -21,7 +21,7 @@
         <CollapseAll/>
       </button>
     </div>
-    <div class="text-left bg-focus-hover scrollbar-edit overflow-auto h-100" :style="`padding-left: ${paddingSlot+1}rem !important;`">
+    <div class="text-left bg-focus-hover scrollbar-edit overflow-y-auto overflow-x-hidden h-100" :style="`padding-left: ${paddingSlot+1}rem !important;`">
       <slot v-if="abrir"></slot>
     </div>
   </div>

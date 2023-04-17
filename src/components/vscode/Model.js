@@ -85,26 +85,55 @@ export let Model = {
     },
   },
   methods: {
-    async novaAba(nome, complemento) {
-      let projeto = nome;
-      let readme = '';
-      try {
-        const response = await axios.get(`https://raw.githubusercontent.com/meunik/${projeto}/master/readme.md`);
-        readme = response.data;
-      } catch (error) {
-        const response = await axios.get(`https://raw.githubusercontent.com/meunik/${projeto}/master/README.md`);
-        readme = response.data;
+    async novaAba(tipoAba, complemento) {
+      
+      let nome = null;
+      let linguagem = null;
+      let tipo = null;
+      let icone = null;
+      let img = null;
+      let conteudo = null;
+      let componente = null;
+
+      switch (tipoAba) {
+        case 'explorador': 
+          let readme = await readmeGithub(complemento.name);
+          nome = complemento.name;
+          linguagem = complemento.language;
+          tipo = 'explorador';
+          conteudo = markdown(readme);
+          break;
+
+        case 'perfil': 
+          nome = 'Perfil Github';
+          tipo = 'explorador';
+          componente = complemento;
+          break;
+
+        case 'extensoes':
+          let content = await readmeExtensoes(complemento.versions[0].files);
+          nome = complemento.displayName;
+          tipo = 'extensoes';
+          conteudo = markdown(content);
+          break;
+      
+        default: break;
       }
+      
       this.abas = {
         ...this.abas,
-        [projeto]: {
-          nome: projeto,
-          linguagem: complemento,
-          readme: markdown(readme),
+        [nome]: {
+          nome: nome,
+          linguagem: linguagem,
+          tipo: tipo,
+          icone: icone,
+          img: img,
+          conteudo: conteudo,
+          componente: componente,
         },
       };
       const arrayKeys = Object.keys(this.abas);
-      const key = parseInt(this.getKeyByValue(arrayKeys, projeto));
+      const key = parseInt(this.getKeyByValue(arrayKeys, nome));
       this.abaIndex = key;
     },
     getKeyByValue(object, value) {
@@ -124,5 +153,30 @@ export let Model = {
         default: return ling.toLowerCase();
       }
     }
+  }
+}
+
+async function readmeGithub(projeto) {
+  let readme = '';
+  try {
+    const response = await axios.get(`https://raw.githubusercontent.com/meunik/${projeto}/master/readme.md`);
+    readme = response.data;
+  } catch (error) {
+    const response = await axios.get(`https://raw.githubusercontent.com/meunik/${projeto}/master/README.md`);
+    readme = response.data;
+  }
+  console.clear();
+  return readme;
+}
+async function readmeExtensoes(files) {
+  let url = null;
+  for (let i = 0; i < files.length; i++) {
+    if (files[i].assetType == 'Microsoft.VisualStudio.Services.Content.Details') url = files[i].source;
+  }
+  if (url) {
+    const response = await axios.get(url);
+    return response.data;
+  } else {
+    return 'Nada foi encontrado';
   }
 }

@@ -15,7 +15,7 @@
         v-for="(extend, index) in extensoes"
         :key="index"
         href="#"
-        @click="novaAba(extend)"
+        @click="novaAba('extensoes', extend)"
         class="pl-1 link-menu text-decoration-none d-flex align-items-center"
       >
         <div v-for="(file, fileIndex) in extend.versions[0].files" :key="fileIndex">
@@ -25,7 +25,12 @@
             class="icone-extencao"
           >
         </div>
-        <span>{{ extend.displayName }}</span>
+        <div class="d-flex flex-column overflow-x-hidden font-13">
+          <span class="font-weight-bold">{{ extend.displayName }}</span>
+          <div class="overflow-x-three-points">
+            <span class="d-contents">{{ extend.shortDescription }}</span>
+          </div>
+        </div>
       </a>
     </Pasta>
   </nav>

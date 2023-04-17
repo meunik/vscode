@@ -13,17 +13,20 @@
     >
       <Pasta :aberto="true" texto="Github" :nivelIndentacao="1">
         <Pasta :aberto="true" texto="Perfil" :nivelIndentacao="2" :indentacaoSlot="true">
-          
-          <router-link to="/" class="link-laranja text-decoration-none">
+          <a
+            href="#"
+            @click="novaAba('perfil', perf)"
+            class="link-laranja text-decoration-none"
+          >
             <Icone icone="github" :completo="false">meunik</Icone>
-          </router-link>
+          </a>
         </Pasta>
         <Pasta :aberto="true" texto="Repositórios Público" :nivelIndentacao="2" :indentacaoSlot="true">
           <span v-for="(repo, index) in repositorios" :key="index">
             <a
               href="#"
               v-if="repo && repo.language"
-              @click="novaAba(repo.name, repo.language)"
+              @click="novaAba('explorador', repo)"
               class="link-menu text-decoration-none"
             >
               <Icone icone="github" :completo="false">{{`${repo.language} - ${repo.name}`}}</Icone>
@@ -47,6 +50,11 @@
       Perfil,
       Pasta,
       Icone,
+    },
+    data() {
+      return {
+        perf: Perfil
+      }
     },
   }
 </script>
