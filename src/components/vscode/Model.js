@@ -75,10 +75,18 @@ export let Model = {
         this.$store.commit('Git/readmePerfil', value)
       }
     },
+    extensoes: {
+      get() {
+        return this.$store.getters['VisualStudio/extensoes']
+      },
+      set(value) {
+        this.$store.commit('VisualStudio/extensoes', value)
+      }
+    },
   },
   methods: {
-    async novaAba(repo) {
-      let projeto = repo.name;
+    async novaAba(nome, complemento) {
+      let projeto = nome;
       let readme = '';
       try {
         const response = await axios.get(`https://raw.githubusercontent.com/meunik/${projeto}/master/readme.md`);
@@ -87,19 +95,18 @@ export let Model = {
         const response = await axios.get(`https://raw.githubusercontent.com/meunik/${projeto}/master/README.md`);
         readme = response.data;
       }
-      // console.clear();
       this.abas = {
         ...this.abas,
         [projeto]: {
           nome: projeto,
-          linguagem: repo.language,
+          linguagem: complemento,
           readme: markdown(readme),
         },
       };
       const arrayKeys = Object.keys(this.abas);
       const key = parseInt(this.getKeyByValue(arrayKeys, projeto));
       this.abaIndex = key;
-      console.log(key);
+      console.log(`key Models :${key}`);
     },
     getKeyByValue(object, value) {
       return Object.keys(object).find(key => object[key] === value);

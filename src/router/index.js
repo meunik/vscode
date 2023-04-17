@@ -1,14 +1,26 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import Explorador from '@/components/vscode/Navegacoes/Explorador.vue'
+import Extensoes from '@/components/vscode/Navegacoes/Extensoes.vue'
+import ControleCodigoFonte from '@/components/vscode/Navegacoes/ControleCodigoFonte.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'explorador',
+    component: Explorador
+  },
+  {
+    path: '/extensoes',
+    name: 'extensoes',
+    component: Extensoes
+  },
+  {
+    path: '/controleCodigoFonte',
+    name: 'controleCodigoFonte',
+    component: ControleCodigoFonte
   },
   {
     path: '/about',

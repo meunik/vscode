@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 import Git from './modulos/Git';
 import Utils from './modulos/Utils';
 import Principal from './modulos/Principal';
+import VisualStudio from './modulos/VisualStudio';
 
 Vue.use(Vuex)
 
@@ -21,5 +22,6 @@ export default new Vuex.Store({
     Git,
     Utils,
     Principal,
+    VisualStudio,
   }  
 })

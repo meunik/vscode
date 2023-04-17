@@ -1,59 +1,24 @@
 <template>
   <div class="main" id="main">
     <Menu />
-    <nav id="drag-left" class="navegacao py-2 d-flex flex-column noPrint" :style="{width: navegacaoWidth}">
-      <div class="px-3 d-flex align-items-center justify-content-between">
-        <span class="explorador">EXPLORADOR</span>
-        <Icone icone="tresPontos"/>
-      </div>
-
-      <Pasta
-        :aberto="true"
-        texto="Diretório"
-        class="pt-2 overflow-y-auto overflow-x-hidden d-flex flex-column"
-        :primeiro="true"
-      >
-        <Pasta :aberto="true" texto="Github" :nivelIndentacao="1">
-          <Pasta :aberto="true" texto="Perfil" :nivelIndentacao="2" :indentacaoSlot="true">
-            
-            <router-link to="/" class="link-laranja text-decoration-none">
-              <Icone icone="github" :completo="false">{{(!!perfil)?`${perfil.login}`:''}}</Icone>
-            </router-link>
-          </Pasta>
-          <Pasta :aberto="true" texto="Repositórios Público" :nivelIndentacao="2" :indentacaoSlot="true">
-            <span v-for="(repo, index) in repositorios" :key="index">
-              <router-link
-                v-if="repo && repo.language"
-                @click.native="novaAba(repo)"
-                to="/about"
-                class="link-menu text-decoration-none"
-              >
-                <Icone icone="github" :completo="false">{{`${repo.language} - ${repo.name}`}}</Icone>
-              </router-link>
-            </span>
-          </Pasta>
-        </Pasta>
-      </Pasta>
-    </nav>
+    <router-view id="drag-left" class="navegacao pt-2 pb-0 d-flex flex-column noPrint" :style="{width: navegacaoWidth}" />
     <div class="dragbar" id="dragbar"></div>
-    <router-view id="drag-right" class="conteudo scrollbar-edit overflow-auto flex-1" />
+    <Conteudo id="drag-right" class="conteudo scrollbar-edit overflow-hidden flex-1" />
   </div>
 </template>
 
 <script>
-  import Menu from './Meio/Menu.vue';
-  import Pasta from './Meio/Pasta.vue';
-  import { dragbar } from '@/utils/dragbar.js'
-  import Icone from '@/assets/svg/Icone.vue'
-
-  import { Model } from './Model.js'
+  import {Model} from './Model.js';
+  import Menu from '@/components/vscode/Meio/Menu.vue';
+  import Conteudo from '@/components/vscode/Conteudo.vue'
+  import {dragbar} from '@/utils/dragbar.js';
+  import {buscaExtensoes} from '@/utils/buscaExtensoes.js';
 
   export default {
     mixins: [Model],
     components: {
       Menu,
-      Pasta,
-      Icone,
+      Conteudo,
     },
     async created() {
       await this.$store.dispatch("Git/buscaRepositorios");
@@ -69,28 +34,3 @@
     }
   }
 </script>
-
-<style>
-  span {
-    display: block;
-    word-break: break-word;
-  }
-
-  [class^=panel] {
-    padding: 60px 24px;
-    background-color: transparent;
-  }
-
-  .dragbar {
-    position: initial !important;
-    padding: 1px;
-    cursor: col-resize;
-    background-color: #242424;
-    transition: 0.5s;
-  }
-  .dragbar:hover {
-    padding: 2px;
-    background-color: #818181;
-    transition: 1s;
-  }
-</style>

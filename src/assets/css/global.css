@@ -1,5 +1,7 @@
 :root {
-  --texto-navegacao: #9b9b9b;
+  --texto-navegacao: #919288;
+  --vscode-icon-inativo: #57584f;
+  --vscode-icon-ativo: #c0c1b5;
 }
 
 html, body {
@@ -196,4 +198,59 @@ code > span {
 .nav-link.active:hover {
   color: #e6db74;
   border-color: #e9ecef00 #e9ecef00 #919288;
+}
+
+
+span {
+  display: block;
+  word-break: break-word;
+}
+
+[class^=panel] {
+  padding: 60px 24px;
+  background-color: transparent;
+}
+
+.dragbar {
+  position: initial !important;
+  padding: 1px;
+  cursor: col-resize;
+  background-color: #242424;
+  transition: 0.5s;
+}
+.dragbar:hover {
+  padding: 2px;
+  background-color: #818181;
+  transition: 1s;
+}
+
+a.btn-menu-vscode {
+  color: #ffffff;
+}
+a:hover > div > div > .icone {
+  color: #dddddd !important;
+}
+
+
+li.nav-item {
+  white-space: nowrap;
+}
+.nav-tabs {
+  flex-wrap: nowrap !important;
+}
+.tabs, .tab-content {
+  height: 100%;
+}
+.tabs>div {
+  overflow-x: auto;
+}
+.tabs>div::-webkit-scrollbar {
+  background: transparent !important;
+  height: 4px;
+}
+.tabs>div::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+.tabs>div::-webkit-scrollbar-thumb {
+  background-color: #3e3f38de !important;
 }
