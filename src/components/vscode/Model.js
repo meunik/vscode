@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { markdown } from '@/utils/markdown.js'
+import store from '@/store/store'
 
 export let Model = {
   computed: {
@@ -86,6 +87,7 @@ export let Model = {
   },
   methods: {
     async novaAba(tipoAba, complemento) {
+      esconderMenu();
       
       let nome = null;
       let linguagem = null;
@@ -135,6 +137,8 @@ export let Model = {
       const arrayKeys = Object.keys(this.abas);
       const key = parseInt(this.getKeyByValue(arrayKeys, nome));
       this.abaIndex = key;
+      // store.commit('abaIndex', key)
+      // console.log(key);
     },
     getKeyByValue(object, value) {
       return Object.keys(object).find(key => object[key] === value);
@@ -178,5 +182,15 @@ async function readmeExtensoes(files) {
     return response.data;
   } else {
     return 'Nada foi encontrado';
+  }
+}
+function esconderMenu() {
+  var bodyWidth = document.body.clientWidth;
+  var navegacaoWidth = store.getters.navegacaoWidth;
+
+  if (bodyWidth < 768) {
+    if (navegacaoWidth != '0px') {
+      store.commit('navegacaoWidth', '0px');
+    }
   }
 }
