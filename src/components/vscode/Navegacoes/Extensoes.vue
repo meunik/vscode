@@ -4,6 +4,9 @@
       <span class="explorador">EXTENSÕES</span>
       <Icone icone="tresPontos"/>
     </div>
+    <div class="d-flex align-items-center justify-content-center div-pesquisa">
+      <input type="text" class="input-pesquisa" placeholder="Pesquisar Extensões no Marketplace">
+    </div>
 
     <Pasta
       :aberto="true"
@@ -16,7 +19,7 @@
         :key="index"
         href="#"
         @click="novaAba('extensoes', extend)"
-        class="pl-1 link-menu text-decoration-none d-flex align-items-center"
+        class="pl-3 link-menu hover-bg text-decoration-none d-flex align-items-center h-72"
       >
         <div v-for="(file, fileIndex) in extend.versions[0].files" :key="fileIndex">
           <img
@@ -26,10 +29,16 @@
           >
         </div>
         <div class="d-flex flex-column overflow-x-hidden font-13">
-          <span class="font-weight-bold">{{ extend.displayName }}</span>
           <div class="overflow-x-three-points">
-            <span class="d-contents">{{ extend.shortDescription }}</span>
+            <span class="d-contents font-weight-bold hover-branco">{{ extend.displayName }}</span>
           </div>
+          <div class="overflow-x-three-points">
+            <span class="d-contents hover-normal">{{ extend.shortDescription }}</span>
+          </div>
+          <span class="hover-normal">
+            <font-awesome-icon :icon="['fas', 'certificate']" v-if="extend.publisher.isDomainVerified" style="color: #a6e22e;"/>
+            {{ extend.publisher.displayName }}
+          </span>
         </div>
       </a>
     </Pasta>
@@ -54,13 +63,3 @@
     },
   }
 </script>
-
-<style>
-  .icone-extencao {
-    width: 42px;
-    height: 42px;
-    padding-right: 14px;
-    flex-shrink: 0;
-    object-fit: contain;
-  }
-</style>

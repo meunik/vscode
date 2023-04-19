@@ -107,7 +107,7 @@ export let Model = {
           break;
 
         case 'perfil': 
-          nome = 'Perfil Github';
+          nome = 'Perfil';
           tipo = 'explorador';
           componente = complemento;
           break;

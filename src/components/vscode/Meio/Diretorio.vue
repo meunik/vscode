@@ -68,35 +68,3 @@
     }
   }
 </script>
-
-<style>
-  .pasta-button, .pasta-primeiro, .pasta-icon {
-    color: #747474;
-    font-size: 13px;
-    font-weight: 600;
-    border: none;
-    background: transparent;
-    padding: 2px 0px 2px 0px;
-    width: 100%;
-    border: 1px solid transparent;
-  }
-  .pasta-primeiro-bloco {
-    border: 1px solid transparent;
-  }
-  .pasta-button:focus, .pasta-primeiro-bloco:has(button.pasta-primeiro:focus)  {
-    border: 1px solid #4c4c4c;
-  }
-  .pasta-button:focus, .pasta-button:hover, .pasta-icon:hover {
-    background-color: #a7a7a717;
-  }
-  .pasta-button:focus > .pasta-texto, .pasta-button:hover > .pasta-texto {
-    color: #fff;
-  }
-
-  .collapse-all {
-    padding: 1.2px 1px 1px 1.2px;
-    width: inherit;
-    border-radius: 5px;
-    margin-right: 4px;
-  }
-</style>

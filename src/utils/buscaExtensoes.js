@@ -70,6 +70,6 @@ export async function buscaExtensoes(extensao, tipo) {
   const response = await axios.post('https://marketplace.visualstudio.com/_apis/public/gallery/extensionquery', body, headers)
 
   let dadosExtensao = response.data.results[0].extensions;
-  // console.log(dadosExtensao);
+  console.log(dadosExtensao);
   store.commit('VisualStudio/extensoes', dadosExtensao);
 }
