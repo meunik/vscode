@@ -5,7 +5,12 @@
       <Icone icone="tresPontos"/>
     </div>
     <div class="d-flex align-items-center justify-content-center div-pesquisa">
-      <input type="text" class="input-pesquisa" placeholder="Pesquisar Extensões no Marketplace">
+      <input
+        type="text"
+        class="input-pesquisa"
+        placeholder="Pesquisar Extensões no Marketplace"
+        @input="filteredName($event)"
+      >
     </div>
 
     <Pasta
@@ -15,7 +20,7 @@
       :primeiro="true"
     >
       <a
-        v-for="(extend, index) in extensoes"
+        v-for="(extend, index) in listagemFiltrada"
         :key="index"
         href="#"
         @click="novaAba('extensoes', extend)"
@@ -58,8 +63,30 @@
       Pasta,
       Icone,
     },
+    data() {
+      return {
+        extensoesFiltrada: [],
+      }
+    },
     async created() {
       await this.$store.dispatch("VisualStudio/listaExtensoes");
+    },
+    computed: {
+      listagemFiltrada() {
+        return (this.extensoesFiltrada.length) ? this.extensoesFiltrada : this.extensoes;
+      },
+    },
+    methods:{
+      filteredName(event){
+        let valor = event.target.value;
+        if (valor) {
+          this.extensoesFiltrada = this.extensoes.filter((item)=>{
+            return item.displayName.includes(valor);
+          });
+        } else {
+          this.extensoesFiltrada = this.extensoes;
+        }
+      }
     },
   }
 </script>

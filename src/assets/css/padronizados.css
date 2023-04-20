@@ -81,6 +81,12 @@
 .text-decoration-none {
   text-decoration: none !important;
 }
+.text-padrao {
+  color: var(--texto-navegacao);
+}
+.text-branco {
+  color: #fff;
+}
 
 .text-git {
   color: #e84d31;

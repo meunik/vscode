@@ -103,19 +103,23 @@ export let Model = {
           nome = complemento.name;
           linguagem = complemento.language;
           tipo = 'explorador';
+          icone = 'github';
           conteudo = markdown(readme);
           break;
 
         case 'perfil': 
           nome = 'Perfil';
           tipo = 'explorador';
-          componente = complemento;
+          icone = 'github';
+          // componente = complemento;
+          componente = 'perfil';
           break;
 
         case 'extensoes':
           let content = await readmeExtensoes(complemento.versions[0].files);
           nome = complemento.displayName;
           tipo = 'extensoes';
+          icone = 'extensoes';
           conteudo = markdown(content);
           break;
       
@@ -127,6 +131,7 @@ export let Model = {
         [nome]: {
           nome: nome,
           linguagem: linguagem,
+          tipoAba: tipoAba,
           tipo: tipo,
           icone: icone,
           img: img,
@@ -137,8 +142,9 @@ export let Model = {
       const arrayKeys = Object.keys(this.abas);
       const key = parseInt(this.getKeyByValue(arrayKeys, nome));
       this.abaIndex = key;
-      // store.commit('abaIndex', key)
-      // console.log(key);
+      localStorage.abas = JSON.stringify(this.abas);
+      console.log(this.abas);
+      console.log(JSON.parse(JSON.stringify(this.abas)));
     },
     getKeyByValue(object, value) {
       return Object.keys(object).find(key => object[key] === value);

@@ -16,6 +16,16 @@ body {
   align-items: center;
 }
 
+::-webkit-scrollbar {
+  background: transparent !important;
+}
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #3e3f38de !important;
+}
+
 .caixa {
   background: #272822;
   width: 100%;
@@ -330,7 +340,4 @@ a.hover-bg:hover {
 }
 .input-pesquisa::placeholder {
   font-size: 12px;
-  position: absolute;
-  top: 3px;
-  left: 6px;
 }

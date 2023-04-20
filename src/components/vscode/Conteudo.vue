@@ -13,9 +13,58 @@
       </b-tab>
 
       <template #empty>
-        <div class="text-center text-muted">
-          Não seu o que colocar aqui<br>
-          Vou ver e depois coloco.
+        <div class="text-padrao h-100">
+
+          <div class="gettingStartedCategoriesContainer">
+            <div class="header">
+              <h1 class="text-branco">Bem vindo ao meu site 😁</h1>
+              <p>Sei la</p>
+            </div>
+            <div class="categories-column categories-column-left">
+              <div class="index-list start-container">
+                <h2>Iniciar</h2>
+                <div class="monaco-scrollable-element " role="presentation" style="position: relative; overflow: hidden;">
+                  <ul style="overflow: hidden; list-style: none;">
+                    <li>
+                      <a
+                        href="#"
+                        @click="novaAba('perfil', perf)"
+                        class="link-laranja text-decoration-none"
+                      >
+                        <Icone icone="github" :completo="false">meunik</Icone>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="index-list recently-opened">
+                <h2>Recente</h2>
+                <div class="monaco-scrollable-element " role="presentation" style="position: relative; overflow: hidden;">
+                  <ul style="overflow: hidden; list-style: none;">
+                    <li v-for="(aba, key) in abaStorage" :key="`recente-aba-${key}`">
+                      <a
+                        href="#"
+                        @click="novaAbaRecente(key)"
+                        class="link-laranja text-decoration-none"
+                      >
+                        <Icone v-if="aba.icone" :icone="aba.icone" :tamanho="16" :completo="false">{{aba.nome}}</Icone>
+                        <span v-else>{{aba.nome}}</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="categories-column categories-column-right">
+              <div class="index-list getting-started">
+                <!-- <h2>Passo a passo</h2> -->
+              </div>
+            </div>
+            <div class="footer">
+              <p class="showOnStartup">Mostrar a página inicial na inicialização</p>
+            </div>
+          </div>
+
         </div>
       </template>
     </b-tabs>
@@ -23,19 +72,84 @@
 </template>
 
 <script>
-  import { Model } from '@/components/vscode/Model.js'
+  import { Model } from '@/components/vscode/Model.js';
+  import Icone from '@/assets/svg/Icone.vue';
+  import Perfil from '@/components/vscode/github/Perfil';
 
   export default {
     mixins: [Model],
+    components: {
+      Icone,
+      Perfil,
+    },
     data() {
       return {
-        abaControlador: 0
+        abaControlador: 0,
+        perf: Perfil
       }
+    },
+    created() {
+      // console.log(localStorage);
+      console.log(JSON.parse(localStorage.abas));
+    },
+    computed: {
+      abaStorage() {
+        if (!!localStorage.abas) {
+          return JSON.parse(localStorage.abas);
+        }
+      },
     },
     methods: {
       attControlador() {
         this.abaControlador = this.abaIndex;
+      },
+      novaAbaRecente(abaKey) {
+        this.abas = {
+          ...this.abas,
+          [abaKey]: this.abaStorage[abaKey],
+        };
+        console.log(this.abas);
+        const arrayKeys = Object.keys(this.abas);
+        const key = parseInt(this.getKeyByValue(arrayKeys, abaKey));
+        this.abaIndex = key;
       }
     }
   }
 </script>
+
+<style>
+.gettingStartedCategoriesContainer {
+  display: grid;
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  grid-template-rows: 25% minmax(min-content,auto) min-content;
+  grid-template-columns: 1fr 6fr 1fr 6fr 1fr;
+  grid-template-areas:
+      ". header header header ."
+      ". left-column . right-column ."
+      ". footer footer footer .";
+}
+.gettingStartedCategoriesContainer>.header {
+  grid-area: header;
+  align-self: end;
+}
+.gettingStartedCategoriesContainer>* {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.gettingStartedCategoriesContainer>.categories-column-left {
+  grid-area: left-column;
+}
+.gettingStartedCategoriesContainer>.categories-column-right {
+  grid-area: right-column;
+}
+.gettingStartedCategoriesContainer>.footer {
+  grid-area: footer;
+  justify-self: center;
+  text-align: center;
+}
+.tab-pane {
+  height: 100%;
+}
+</style>
