@@ -4,6 +4,14 @@ import store from '@/store/store'
 
 export let Model = {
   computed: {
+    carregando: {
+      get() {
+        return this.$store.getters['carregando']
+      },
+      set(value) {
+        this.$store.commit('carregando', value)
+      }
+    },
     perfil: {
       get() {
         return this.$store.getters['Git/perfil']
@@ -84,11 +92,22 @@ export let Model = {
         this.$store.commit('VisualStudio/extensoes', value)
       }
     },
+    setup: {
+      get() {
+        return this.$store.getters['VisualStudio/setup']
+      },
+      set(value) {
+        this.$store.commit('VisualStudio/setup', value)
+      }
+    },
   },
   methods: {
     async novaAba(tipoAba, complemento) {
+      this.carregando = true;
       esconderMenu();
       
+      let readme = null;
+
       let nome = null;
       let linguagem = null;
       let tipo = null;
@@ -99,10 +118,19 @@ export let Model = {
 
       switch (tipoAba) {
         case 'explorador': 
-          let readme = await readmeGithub(complemento.name);
+          readme = await readmeGithub(complemento.name);
           nome = complemento.name;
           linguagem = complemento.language;
           tipo = 'explorador';
+          icone = 'github';
+          conteudo = markdown(readme);
+          break;
+
+        case 'github': 
+          readme = await readmeGithub(complemento.name);
+          nome = complemento.name;
+          linguagem = complemento.language;
+          tipo = 'github';
           icone = 'github';
           conteudo = markdown(readme);
           break;
@@ -111,7 +139,13 @@ export let Model = {
           nome = 'Perfil';
           tipo = 'explorador';
           icone = 'github';
-          // componente = complemento;
+          componente = 'perfil';
+          break;
+
+        case 'curriculo': 
+          nome = 'Currículo';
+          tipo = 'explorador';
+          icone = 'github';
           componente = 'perfil';
           break;
 
@@ -121,6 +155,13 @@ export let Model = {
           tipo = 'extensoes';
           icone = 'extensoes';
           conteudo = markdown(content);
+          break;
+
+        case 'setup': 
+          nome = 'Setup';
+          tipo = 'setup';
+          icone = 'monitor';
+          componente = 'setup';
           break;
       
         default: break;
@@ -145,6 +186,7 @@ export let Model = {
       localStorage.abas = JSON.stringify(this.abas);
       console.log(this.abas);
       console.log(JSON.parse(JSON.stringify(this.abas)));
+      this.carregando = false;
     },
     getKeyByValue(object, value) {
       return Object.keys(object).find(key => object[key] === value);

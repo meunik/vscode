@@ -5,6 +5,7 @@ let state = {
   contribTamanho: 7,
   abas: [],
   abaIndex: 0,
+  carregando: false,
 }
 
 const getters = {
@@ -12,6 +13,7 @@ const getters = {
   contribTamanho: store => store.contribTamanho,
   abas: store => store.abas,
   abaIndex: store => store.abaIndex,
+  carregando: store => store.carregando,
 }
   
 const mutations = {
@@ -19,6 +21,7 @@ const mutations = {
   contribTamanho: (state, obj) => state.contribTamanho = obj,
   abas: (state, obj) => state.abas = obj,
   abaIndex: (state, obj) => state.abaIndex = obj,
+  carregando: (state, obj) => state.carregando = obj,
 }
   
 const actions = {

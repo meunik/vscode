@@ -4,21 +4,21 @@
       <b-tab v-for="(aba, key) in abas" :key="`dyn-tab-${key}`" class="overflow-auto">
         <template #title>
           {{ aba.nome }}{{ (!!aba.linguagem) ? `.${abrivicaoLinguagens(aba.linguagem)}` : '' }}
-        <b-button class="float-right btn-sem-borda" @click="fecharAba(aba, key)">
-          <font-awesome-icon :icon="['fas', 'xmark']" class="pl-1"/>
-        </b-button>
+          <b-button class="float-right btn-sem-borda" @click="fecharAba(aba, key)">
+            <font-awesome-icon :icon="['fas', 'xmark']" class="pl-1"/>
+          </b-button>
         </template>
         <div v-if="aba.conteudo" v-html="aba.conteudo" class="p-3"></div>
         <component v-if="aba.componente" :is="aba.componente" />
       </b-tab>
 
       <template #empty>
-        <div class="text-padrao h-100">
+        <div class="text-padrao h-100 gettingStartedContainer">
 
           <div class="gettingStartedCategoriesContainer">
             <div class="header">
               <h1 class="text-branco">Bem vindo ao meu site 😁</h1>
-              <p>Sei la</p>
+              <p>Marcos Paulo</p>
             </div>
             <div class="categories-column categories-column-left">
               <div class="index-list start-container">
@@ -28,10 +28,10 @@
                     <li>
                       <a
                         href="#"
-                        @click="novaAba('perfil', perf)"
+                        @click="novaAba('curriculo', perf)"
                         class="link-laranja text-decoration-none"
                       >
-                        <Icone icone="github" :completo="false">meunik</Icone>
+                        <Icone icone="github" :completo="false">Meu Currículo</Icone>
                       </a>
                     </li>
                   </ul>
@@ -55,11 +55,11 @@
                 </div>
               </div>
             </div>
-            <div class="categories-column categories-column-right">
+            <!-- <div class="categories-column categories-column-right">
               <div class="index-list getting-started">
-                <!-- <h2>Passo a passo</h2> -->
+                <h2>Passo a passo</h2>
               </div>
-            </div>
+            </div> -->
             <div class="footer">
               <p class="showOnStartup">Mostrar a página inicial na inicialização</p>
             </div>
@@ -75,12 +75,14 @@
   import { Model } from '@/components/vscode/Model.js';
   import Icone from '@/assets/svg/Icone.vue';
   import Perfil from '@/components/vscode/github/Perfil';
+  import Setup from '@/components/vscode/Navegacoes/Setup.vue';
 
   export default {
     mixins: [Model],
     components: {
       Icone,
       Perfil,
+      Setup,
     },
     data() {
       return {
@@ -118,38 +120,56 @@
 </script>
 
 <style>
-.gettingStartedCategoriesContainer {
-  display: grid;
-  height: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  grid-template-rows: 25% minmax(min-content,auto) min-content;
-  grid-template-columns: 1fr 6fr 1fr 6fr 1fr;
-  grid-template-areas:
-      ". header header header ."
-      ". left-column . right-column ."
-      ". footer footer footer .";
-}
-.gettingStartedCategoriesContainer>.header {
-  grid-area: header;
-  align-self: end;
-}
-.gettingStartedCategoriesContainer>* {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.gettingStartedCategoriesContainer>.categories-column-left {
-  grid-area: left-column;
-}
-.gettingStartedCategoriesContainer>.categories-column-right {
-  grid-area: right-column;
-}
-.gettingStartedCategoriesContainer>.footer {
-  grid-area: footer;
-  justify-self: center;
-  text-align: center;
-}
-.tab-pane {
-  height: 100%;
-}
+  .gettingStartedCategoriesContainer {
+    display: grid;
+    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    grid-template-rows: 25% minmax(min-content,auto) min-content;
+    grid-template-columns: 1fr 6fr 1fr 6fr 1fr;
+    grid-template-areas:
+        ". header header header ."
+        ". left-column . right-column ."
+        ". footer footer footer .";
+  }
+  .gettingStartedCategoriesContainer>.header {
+    grid-area: header;
+    align-self: end;
+  }
+  .gettingStartedCategoriesContainer>* {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .gettingStartedCategoriesContainer>.categories-column-left {
+    grid-area: left-column;
+  }
+  .gettingStartedCategoriesContainer>.categories-column-right {
+    grid-area: right-column;
+  }
+  .gettingStartedCategoriesContainer>.footer {
+    grid-area: footer;
+    justify-self: center;
+    text-align: center;
+  }
+  .tab-pane {
+    height: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .gettingStartedContainer {
+      padding: 12px 24px;
+    }
+    .gettingStartedCategoriesContainer>.header {
+      display: none;
+    }
+    .gettingStartedCategoriesContainer {
+      grid-template-rows: auto min-content minmax(min-content,auto) min-content;
+      grid-template-columns: 1fr;
+      grid-template-areas:
+          "header"
+          "left-column"
+          "right-column"
+          "footer";
+    }
+  }
 </style>

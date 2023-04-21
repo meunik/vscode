@@ -119,15 +119,33 @@ export default {
   ],
   extensoes: [],
   setup: {
-    cpu: "Intel Core i5 7400",
-    ram: "24GB (2x8GB + 2x4GB) Dual-Channel DDR4 1197MHz",
-    motherboard: "ASUS STRIX B250F GAMING (LGA1151)",
-    graphics: {
-      monitor_um: "Monitor led 29' LG ULTRAWIDE 29UM69G ips 1ms 75kHz (2560x1080@60Hz)",
-      monitor_dois: "Monitor AOC 23.8' LED, 24B1XHM (1920x1080@60Hz)",
-      placa_video: "NVIDIA GeForce GTX 1060 6GB (Gigabyte)",
+    cpu: {
+      icone: "cpu",
+      valor: "Intel Core i5 7400",
     },
-    storage: {
+    ram: {
+      icone: "ram",
+      valor: "24GB (2x8GB + 2x4GB) Dual-Channel DDR4 1197MHz",
+    },
+    placamae: {
+      icone: "placamae",
+      valor: "ASUS STRIX B250F GAMING (LGA1151)",
+    },
+    video: {
+      monitor_um: {
+        icone: "monitor",
+        valor: "Monitor led 29' LG ULTRAWIDE 29UM69G ips 1ms 75kHz (2560x1080@60Hz)",
+      },
+      monitor_dois: {
+        icone: "monitor",
+        valor: "Monitor AOC 23.8' LED, 24B1XHM (1920x1080@60Hz)",
+      },
+      placa_video: {
+        icone: "monitor",
+        valor: "NVIDIA GeForce GTX 1060 6GB (Gigabyte)",
+      }
+    },
+    armazenamento: {
       0: "447GB (M2) Western Digital WDC WDS480G2G0C-00AJM0",
       1: "111GB (SSD) KINGSTON SV300S37A120G",
       2: "223GB (SSD) KINGSTON SUV400S37240G",

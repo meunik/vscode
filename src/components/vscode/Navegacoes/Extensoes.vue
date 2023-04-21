@@ -12,6 +12,7 @@
         @input="filteredName($event)"
       >
     </div>
+    <Loader />
 
     <Pasta
       :aberto="true"
@@ -55,6 +56,7 @@
   import { Model } from '@/components/vscode/Model.js';
   import Pasta from '@/components/vscode/Meio/Pasta.vue';
   import Icone from '@/assets/svg/Icone.vue';
+  import Loader from '@/components/vscode/componets/Loader.vue';
 
   export default {
     mixins: [Model],
@@ -62,6 +64,7 @@
       Perfil,
       Pasta,
       Icone,
+      Loader,
     },
     data() {
       return {
@@ -69,7 +72,9 @@
       }
     },
     async created() {
+      this.carregando = true
       await this.$store.dispatch("VisualStudio/listaExtensoes");
+      this.carregando = false
     },
     computed: {
       listagemFiltrada() {

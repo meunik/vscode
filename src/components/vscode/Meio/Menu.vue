@@ -22,10 +22,10 @@
 
       <router-link
         to="/controleCodigoFonte"
-        id="btn_explorador"
+        id="btn_controleCodigoFonte"
         data-toggle="tooltip"
         data-placement="right"
-        title="Explorador (Ctrl+Shift+E)"
+        title="Controle do Código-Fonte (Ctrl+Shift+G)"
         class="btn-menu-vscode p-0"
         active-class="active"
         @click.native="navegWidth('controleCodigoFonte')"
@@ -41,7 +41,7 @@
 
       <router-link
         to="/extensoes"
-        id="btn_explorador"
+        id="btn_extensoes"
         data-toggle="tooltip"
         data-placement="right"
         title="Explorador (Ctrl+Shift+E)"
@@ -56,7 +56,40 @@
         />
       </router-link>
 
-      <Icone icone="monitor" :classesDiv="'justify-content-center h-12 box-icon-menu'"/>
+      <a
+        id="btn_setup"
+        href="#"
+        @click="novaAba('setup')"
+        data-toggle="tooltip"
+        data-placement="right"
+        title="Setup"
+        class="btn-menu-vscode text-decoration-none p-0"
+      >
+        <Icone
+          icone="monitor"
+          :classesDiv="`justify-content-center h-12 box-icon-menu ${(estaAtiva('setup')) ? 'ativo' : ''}`"
+          :ativo="estaAtiva('setup')"
+        />
+      </a>
+
+      <!-- <router-link
+        to="/setup"
+        id="btn_explorador"
+        data-toggle="tooltip"
+        data-placement="right"
+        title="Explorador (Ctrl+Shift+X)"
+        class="btn-menu-vscode p-0"
+        active-class="active"
+        @click.native="abriSetup()"
+      >
+        <Icone
+          icone="monitor"
+          :classesDiv="`justify-content-center h-12 box-icon-menu ${(estaAtiva('setup')) ? 'ativo' : ''}`"
+          :ativo="estaAtiva('setup')"
+        />
+      </router-link> -->
+
+      <!-- <Icone icone="monitor" :classesDiv="'justify-content-center h-12 box-icon-menu'"/> -->
     </div>
     <div class="d-flex flex-col align-items-center gap-menu-vscode">
       <Icone icone="user" class="justify-content-center h-12 box-icon-menu"/>

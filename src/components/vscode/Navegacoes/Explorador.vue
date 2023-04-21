@@ -4,6 +4,7 @@
       <span class="explorador">EXPLORADOR</span>
       <Icone icone="tresPontos"/>
     </div>
+    <Loader />
 
     <Pasta
       :aberto="true"
@@ -11,17 +12,8 @@
       class="pt-2 overflow-y-auto overflow-x-hidden d-flex flex-column"
       :primeiro="true"
     >
-      <Pasta :aberto="true" texto="Github" :nivelIndentacao="1">
-        <Pasta :aberto="true" texto="Perfil" :nivelIndentacao="2" :indentacaoSlot="true">
-          <a
-            href="#"
-            @click="novaAba('perfil', perf)"
-            class="link-laranja text-decoration-none"
-          >
-            <Icone icone="github" :completo="false">meunik</Icone>
-          </a>
-        </Pasta>
-        <Pasta :aberto="true" texto="Repositórios Público" :nivelIndentacao="2" :indentacaoSlot="true">
+      <Pasta :aberto="true" texto="Profissional" :nivelIndentacao="1" :indentacaoSlot="true">
+        <Pasta :aberto="false" texto="github" :indentacaoSlot="true">
           <span v-for="(repo, index) in repositorios" :key="index">
             <a
               href="#"
@@ -33,6 +25,22 @@
             </a>
           </span>
         </Pasta>
+        <a
+          href="#"
+          @click="novaAba('curriculo', perf)"
+          class="link-laranja text-decoration-none"
+        >
+          <Icone icone="github" :completo="false">Currículo</Icone>
+        </a>
+      </Pasta>
+      <Pasta :aberto="true" texto="Pessoal" :nivelIndentacao="1" :indentacaoSlot="true">
+        <a
+          href="#"
+          @click="novaAba('setup')"
+          class="link-menu text-decoration-none"
+        >
+          <Icone icone="monitor" :tamanho="16" :completo="false">Setup</Icone>
+        </a>
       </Pasta>
     </Pasta>
   </nav>
@@ -43,6 +51,7 @@
   import { Model } from '@/components/vscode/Model.js';
   import Pasta from '@/components/vscode/Meio/Pasta.vue';
   import Icone from '@/assets/svg/Icone.vue';
+  import Loader from '@/components/vscode/componets/Loader.vue';
 
   export default {
     mixins: [Model],
@@ -50,6 +59,7 @@
       Perfil,
       Pasta,
       Icone,
+      Loader,
     },
     data() {
       return {
