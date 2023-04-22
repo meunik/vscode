@@ -25,7 +25,7 @@
         :key="index"
         href="#"
         @click="novaAba('extensoes', extend)"
-        class="pl-3 link-menu hover-bg text-decoration-none d-flex align-items-center h-72"
+        :class="`pl-3 link-menu extensoes hover-bg text-decoration-none d-flex align-items-center h-72 ${linkAtivo(extend.displayName)}`"
       >
         <div v-for="(file, fileIndex) in extend.versions[0].files" :key="fileIndex">
           <img

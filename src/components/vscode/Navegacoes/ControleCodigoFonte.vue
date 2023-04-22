@@ -17,7 +17,7 @@
           <a
             href="#"
             @click="novaAba('perfil', perf)"
-            class="link-laranja text-decoration-none"
+            :class="`link-laranja text-decoration-none ${linkAtivo('perfil')}`"
           >
             <Icone icone="github" :completo="false">meunik</Icone>
           </a>
@@ -28,7 +28,7 @@
               href="#"
               v-if="repo && repo.language"
               @click="novaAba('explorador', repo)"
-              class="link-menu text-decoration-none"
+              :class="`link-menu text-decoration-none ${linkAtivo(repo.name)}`"
             >
               <Icone icone="github" :completo="false">{{`${repo.language} - ${repo.name}`}}</Icone>
             </a>

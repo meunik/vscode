@@ -19,6 +19,7 @@
     "css-element-queries": "^1.2.3",
     "github-contributions-counter": "^2.1.7",
     "https-browserify": "^1.0.0",
+    "lodash": "^4.17.21",
     "os-browserify": "^0.3.0",
     "process": "^0.11.10",
     "stream-browserify": "^3.0.0",

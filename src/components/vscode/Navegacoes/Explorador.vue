@@ -19,7 +19,7 @@
               href="#"
               v-if="repo && repo.language"
               @click="novaAba('explorador', repo)"
-              class="link-menu text-decoration-none"
+              :class="`link-menu text-decoration-none ${linkAtivo(repo.name)}`"
             >
               <Icone icone="github" :completo="false">{{`${repo.language} - ${repo.name}`}}</Icone>
             </a>
@@ -29,6 +29,7 @@
           href="#"
           @click="novaAba('curriculo', perf)"
           class="link-laranja text-decoration-none"
+          :class="`link-laranja text-decoration-none ${linkAtivo('curriculo')}`"
         >
           <Icone icone="github" :completo="false">Currículo</Icone>
         </a>
@@ -37,7 +38,7 @@
         <a
           href="#"
           @click="novaAba('setup')"
-          class="link-menu text-decoration-none"
+          :class="`link-menu text-decoration-none ${linkAtivo('setup')}`"
         >
           <Icone icone="monitor" :tamanho="16" :completo="false">Setup</Icone>
         </a>
@@ -52,6 +53,7 @@
   import Pasta from '@/components/vscode/Meio/Pasta.vue';
   import Icone from '@/assets/svg/Icone.vue';
   import Loader from '@/components/vscode/componets/Loader.vue';
+  import { camelCase } from '@/utils/lodash.js';
 
   export default {
     mixins: [Model],

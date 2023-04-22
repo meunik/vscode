@@ -34,7 +34,7 @@ code {
 }
 
 .hljs-string, .hljs-doctag {
-  color: #ffd866 !important;
+  color: var(--texto-amarelo) !important;
 }
 .hljs-number, .hljs-literal, .hljs-variable, .hljs-template-variable, .hljs-tag .hljs-attr {
   color: #ab9df2 !important;

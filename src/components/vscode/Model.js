@@ -1,6 +1,7 @@
-import axios from 'axios'
-import { markdown } from '@/utils/markdown.js'
-import store from '@/store/store'
+import axios from 'axios';
+import { markdown } from '@/utils/markdown.js';
+import store from '@/store/store';
+import { camelCase } from '@/utils/lodash.js';
 
 export let Model = {
   computed: {
@@ -68,6 +69,22 @@ export let Model = {
         this.$store.commit('abaIndex', value)
       }
     },
+    abaControlador: {
+      get() {
+        return this.$store.getters['abaControlador']
+      },
+      set(value) {
+        this.$store.commit('abaControlador', value)
+      }
+    },
+    abaAbertaKey: {
+      get() {
+        return this.$store.getters['abaAbertaKey']
+      },
+      set(value) {
+        this.$store.commit('abaAbertaKey', value)
+      }
+    },
     readme: {
       get() {
         return this.$store.getters['Git/readme']
@@ -106,6 +123,7 @@ export let Model = {
       this.carregando = true;
       esconderMenu();
       
+      let repetido = false;
       let readme = null;
 
       let nome = null;
@@ -166,10 +184,13 @@ export let Model = {
       
         default: break;
       }
-      
+
+      let nomeCamelCase = camelCase(nome);
+      repetido = (this.abas[nomeCamelCase])?true:false;
+
       this.abas = {
         ...this.abas,
-        [nome]: {
+        [nomeCamelCase]: {
           nome: nome,
           linguagem: linguagem,
           tipoAba: tipoAba,
@@ -180,12 +201,14 @@ export let Model = {
           componente: componente,
         },
       };
+      
       const arrayKeys = Object.keys(this.abas);
-      const key = parseInt(this.getKeyByValue(arrayKeys, nome));
+      const key = parseInt(this.getKeyByValue(arrayKeys, nomeCamelCase));
       this.abaIndex = key;
+      if (repetido) this.abaControlador = key;
       localStorage.abas = JSON.stringify(this.abas);
-      console.log(this.abas);
-      console.log(JSON.parse(JSON.stringify(this.abas)));
+      // console.log(this.abas);
+      // console.log(JSON.parse(JSON.stringify(this.abas)));
       this.carregando = false;
     },
     getKeyByValue(object, value) {
@@ -204,8 +227,11 @@ export let Model = {
       
         default: return ling.toLowerCase();
       }
+    },
+    linkAtivo(nome) {
+      return (this.abaAbertaKey == camelCase(nome))?'ativo':'';
     }
-  }
+  },
 }
 
 async function readmeGithub(projeto) {

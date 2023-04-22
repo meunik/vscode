@@ -1,7 +1,7 @@
 <template>
   <div>
-    <b-tabs v-model="abaControlador" @changed="attControlador()">
-      <b-tab v-for="(aba, key) in abas" :key="`dyn-tab-${key}`" class="overflow-auto">
+    <b-tabs v-model="abaControlador" @changed="attControlador()" @input="trocaAba()">
+      <b-tab v-for="(aba, key) in abas" :key="`dyn-tab-${key}`" :id="`dyn-tab-${key}`" class="overflow-auto">
         <template #title>
           {{ aba.nome }}{{ (!!aba.linguagem) ? `.${abrivicaoLinguagens(aba.linguagem)}` : '' }}
           <b-button class="float-right btn-sem-borda" @click="fecharAba(aba, key)">
@@ -76,6 +76,7 @@
   import Icone from '@/assets/svg/Icone.vue';
   import Perfil from '@/components/vscode/github/Perfil';
   import Setup from '@/components/vscode/Navegacoes/Setup.vue';
+  import { camelCase } from '@/utils/lodash.js';
 
   export default {
     mixins: [Model],
@@ -86,22 +87,23 @@
     },
     data() {
       return {
-        abaControlador: 0,
         perf: Perfil
       }
-    },
-    created() {
-      // console.log(localStorage);
-      console.log(JSON.parse(localStorage.abas));
     },
     computed: {
       abaStorage() {
         if (!!localStorage.abas) {
+          // console.log(JSON.parse(localStorage.abas));
           return JSON.parse(localStorage.abas);
         }
       },
     },
     methods: {
+      trocaAba() {
+        let arrayKeys = Object.keys(this.abas);
+        let abaKey = arrayKeys[this.abaControlador]
+        this.abaAbertaKey = camelCase(abaKey);
+      },
       attControlador() {
         this.abaControlador = this.abaIndex;
       },
@@ -110,7 +112,6 @@
           ...this.abas,
           [abaKey]: this.abaStorage[abaKey],
         };
-        console.log(this.abas);
         const arrayKeys = Object.keys(this.abas);
         const key = parseInt(this.getKeyByValue(arrayKeys, abaKey));
         this.abaIndex = key;
