@@ -6,9 +6,9 @@
         :is="componente"
         :tamanho="tamanho"
         :rotate="rotate"
-        :estilo="`${estilo} ${(!!$slots.default)?'margin-right: 0.25rem; margin-bottom: 2px;':''}`"
+        :estilo="`${estilo}`"
         :ativo="ativo"
-        :class="classesIcone"
+        :class="`${(!!$slots.default)?'m-icon':''} ${classesIcone}`"
       />
       <span :class="`${(!!$slots.default)?'d-contents':''} ${classesSpan}`"><slot></slot></span>
     </div>
@@ -54,6 +54,8 @@
   import Notas from '@/assets/svg/Notas.vue';
   import Verificado from '@/assets/svg/Verificado.vue';
   import Monitor from '@/assets/svg/Monitor.vue';
+  import Pasta from '@/assets/svg/Pasta.vue';
+  import PastaAberta from '@/assets/svg/PastaAberta.vue';
 
   export default {
     props: {
@@ -137,32 +139,38 @@
       Notas,
       Verificado,
       Monitor,
+      Pasta,
+      PastaAberta,
     },
-    data() {
-      return {
-        componente: null
+    computed: {
+      componente() {
+        // definir caso queira definir um nome diferente do nome do componente
+        switch (this.icone) {
+          case 'collapse': return 'CollapseAll';
+          case 'debug': return 'DebugSvg';
+          case 'engrenaguem': return 'EngrenaguemSvg';
+          case 'explorador': return 'ExploradorSvg';
+          case 'github': return 'GithubInverted';
+          case 'git': return 'GitSvg';
+          case 'monitorRemoto': return 'MonitorSvg';
+          case 'pesquisa': return 'PesquisaSvg';
+          case 'user': return 'UserSvg';
+          case 'email': return 'MailSvg';
+          case 'linkedin': return 'LinkedinSvg';
+          case 'instagram': return 'InstagramSvg';
+          case 'relogio': return 'RelogioSvg';
+          case 'localizacao': return 'LocalizacaoSvg';
+        
+          default: return this.icone;
+        }
       }
-    },
-    created() {
-      // definir caso queira definir um nome diferente do nome do componente
-      switch (this.icone) {
-        case 'collapse': this.componente = 'CollapseAll'; break;
-        case 'debug': this.componente = 'DebugSvg'; break;
-        case 'engrenaguem': this.componente = 'EngrenaguemSvg'; break;
-        case 'explorador': this.componente = 'ExploradorSvg'; break;
-        case 'github': this.componente = 'GithubInverted'; break;
-        case 'git': this.componente = 'GitSvg'; break;
-        case 'monitorRemoto': this.componente = 'MonitorSvg'; break;
-        case 'pesquisa': this.componente = 'PesquisaSvg'; break;
-        case 'user': this.componente = 'UserSvg'; break;
-        case 'email': this.componente = 'MailSvg'; break;
-        case 'linkedin': this.componente = 'LinkedinSvg'; break;
-        case 'instagram': this.componente = 'InstagramSvg'; break;
-        case 'relogio': this.componente = 'RelogioSvg'; break;
-        case 'localizacao': this.componente = 'LocalizacaoSvg'; break;
-      
-        default: this.componente = this.icone; break;
-      }
-    },
+    }
   };
 </script>
+
+<style>
+.m-icon {
+  margin-right: 4px;
+  margin-bottom: 2px;
+}
+</style>

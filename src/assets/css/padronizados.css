@@ -59,8 +59,8 @@
   color: var(--texto-navegacao-hover);
   font-weight: normal;
 }
-.link-menu-hover:hover, .link-menu:hover {
-  background-color: #a7a7a717;
+.link-menu-hover:hover {
+  background-color: var(--background-navegacao-hover);
 }
 
 .link-azul:hover {

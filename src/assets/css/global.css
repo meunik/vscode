@@ -2,6 +2,7 @@
   --texto-amarelo: #ffd866;
   --texto-navegacao: #919288;
   --texto-navegacao-hover: #fdfff1;
+  --background-navegacao-hover: #a7a7a717;
   --vscode-icon-inativo: #57584f;
   --vscode-icon-ativo: #c0c1b5;
 }
@@ -296,16 +297,13 @@ ul.nav-tabs {
   padding: 2px 0px 2px 0px;
   width: 100%;
   border: 1px solid transparent;
+  outline: 0 !important;
 }
 .pasta-primeiro-bloco {
   border: 1px solid transparent;
 }
-.pasta-button:focus, .pasta-button:focus-visible, .pasta-primeiro-bloco:has(button.pasta-primeiro:focus)  {
-  border: 0px solid #4c4c4c;
-  outline: none;
-}
 .pasta-button:focus, .pasta-button:focus-visible, .pasta-button:hover, .pasta-icon:hover {
-  background-color: #a7a7a717;
+  background-color: var(--background-navegacao-hover);
 }
 .pasta-button:focus > .pasta-texto, .pasta-button:focus-visible > .pasta-texto, .pasta-button:hover > .pasta-texto {
   color: #fff;
@@ -328,7 +326,8 @@ ul.nav-tabs {
   margin: 0px !important;
 }
 .tree3 .tree-node-inner-back:hover {
-  background: #a7a7a717;
+  color: var(--texto-navegacao-hover);
+  background-color: var(--background-navegacao-hover);
 }
 .tree4 .tree-node-inner {
   border: none;

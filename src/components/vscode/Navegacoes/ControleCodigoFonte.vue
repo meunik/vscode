@@ -13,43 +13,28 @@
       :primeiro="true"
       :collapseAllData="menuData"
     >
-      <Tree class="tree3" :data="menuData" draggable="draggable" cross-tree="cross-tree">
-        <div slot-scope="{data, store}" @click="store.toggleOpen(data)" :style="`padding-left: 1rem;`">
-          <Icone v-if="data.pasta" :icone="data.icone" :tamanho="16" :rotate="(data.open)?data.rotate:0" :completo="false">{{data.text}}</Icone>
-          <a
-            v-else
-            href="#"
-            @click="novaAba(data.tipoAba, data.complemento)"
-            :class="`link-menu text-decoration-none ${linkAtivo(data.linkAtivo)}`"
-          >
-            <Icone :icone="data.icone" :tamanho="16" :rotate="(data.open)?data.rotate:0" :completo="false">{{data.text}}</Icone>
-          </a>
-        </div>
-      </Tree>
+      <Arquivos :dados="menuData"/>
     </Pasta>
   </nav>
 </template>
 
 <script>
-  import { DraggableTree } from "vue-draggable-nested-tree";
-  import Perfil from '@/components/vscode/github/Perfil';
   import { Model } from '@/components/vscode/Model.js';
   import Pasta from '@/components/vscode/Meio/Pasta.vue';
   import Icone from '@/assets/svg/Icone.vue';
   import Loader from '@/components/vscode/components/Loader.vue';
+  import Arquivos from "@/components/vscode/Meio/Arquivos.vue";
 
   export default {
     mixins: [Model],
     components: {
-      Tree: DraggableTree,
-      Perfil,
       Pasta,
       Icone,
       Loader,
+      Arquivos,
     },
     data() {
       return {
-        perf: Perfil,
         menuData: []
       }
     },
