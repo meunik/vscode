@@ -8,6 +8,7 @@
         :rotate="rotate"
         :estilo="`${estilo} ${(!!$slots.default)?'margin-right: 0.25rem; margin-bottom: 2px;':''}`"
         :ativo="ativo"
+        :class="classesIcone"
       />
       <span :class="`${(!!$slots.default)?'d-contents':''} ${classesSpan}`"><slot></slot></span>
     </div>
@@ -89,6 +90,10 @@
         default: "",
       },
       classesSpan: {
+        type: String,
+        default: "",
+      },
+      classesIcone: {
         type: String,
         default: "",
       },

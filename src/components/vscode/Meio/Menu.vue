@@ -83,8 +83,8 @@
         <Icone
           icone="camera"
           :tamanho="26"
-          :classesDiv="`justify-content-center h-12 box-icon-menu ${(estaAtiva('fotos')) ? 'ativo' : ''}`"
-          :ativo="estaAtiva('fotos')"
+          :classesDiv="`justify-content-center h-12 box-icon-menu`"
+          :ativo="(linkAtivo('fotos')=='ativo')?true:false"
         />
       </a>
 

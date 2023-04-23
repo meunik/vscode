@@ -56,8 +56,11 @@
   font-weight: normal;
 }
 .link-menu:hover {
-  color: #cccccc;
+  color: var(--texto-navegacao-hover);
   font-weight: normal;
+}
+.link-menu-hover:hover, .link-menu:hover {
+  background-color: #a7a7a717;
 }
 
 .link-azul:hover {

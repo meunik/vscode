@@ -19,6 +19,7 @@
       texto="Instalados"
       class="pt-2 overflow-y-auto overflow-x-hidden d-flex flex-column"
       :primeiro="true"
+      :quatidade="listagemFiltrada.length"
     >
       <a
         v-for="(extend, index) in listagemFiltrada"
@@ -42,8 +43,7 @@
             <span class="d-contents hover-normal">{{ extend.shortDescription }}</span>
           </div>
           <span class="hover-normal">
-            <font-awesome-icon :icon="['fas', 'certificate']" v-if="extend.publisher.isDomainVerified" style="color: #a6e22e;"/>
-            {{ extend.publisher.displayName }}
+            <Icone icone="verificado" v-if="extend.publisher.isDomainVerified" estilo="color: #a6e22e !important;">{{ extend.publisher.displayName }}</Icone>
           </span>
         </div>
       </a>

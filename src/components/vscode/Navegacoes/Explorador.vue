@@ -11,50 +11,36 @@
       texto="Diretório"
       class="pt-2 overflow-y-auto overflow-x-hidden d-flex flex-column"
       :primeiro="true"
+      :collapseAllData="menuData"
     >
-      <Pasta :aberto="true" texto="Profissional" :nivelIndentacao="1" :indentacaoSlot="true">
-        <Pasta :aberto="false" texto="github" :indentacaoSlot="true">
-          <span v-for="(repo, index) in repositorios" :key="index">
-            <a
-              href="#"
-              v-if="repo && repo.language"
-              @click="novaAba('explorador', repo)"
-              :class="`link-menu text-decoration-none ${linkAtivo(repo.name)}`"
-            >
-              <Icone icone="github" :completo="false">{{`${repo.language} - ${repo.name}`}}</Icone>
-            </a>
-          </span>
-        </Pasta>
-        <a
-          href="#"
-          @click="novaAba('curriculo', perf)"
-          class="link-laranja text-decoration-none"
-          :class="`link-laranja text-decoration-none ${linkAtivo('curriculo')}`"
-        >
-          <Icone icone="github" :completo="false">Currículo</Icone>
-        </a>
-      </Pasta>
-      <Pasta :aberto="true" texto="Pessoal" :nivelIndentacao="1" :indentacaoSlot="true">
-        <a
-          href="#"
-          @click="novaAba('setup')"
-          :class="`link-menu text-decoration-none ${linkAtivo('setup')}`"
-        >
-          <Icone icone="monitor" :tamanho="16" :completo="false">Setup</Icone>
-        </a>
-        <a
-          href="#"
-          @click="novaAba('fotos')"
-          :class="`link-menu text-decoration-none ${linkAtivo('fotos')}`"
-        >
-          <Icone icone="camera" :completo="false">Fotos</Icone>
-        </a>
-      </Pasta>
+      <Tree class="tree3" :data="menuData" draggable="draggable" cross-tree="cross-tree">
+        <div slot-scope="{data, store}" @click="store.toggleOpen(data)" :style="`padding-left: 1rem;`">
+          <Icone
+            v-if="data.pasta"
+            :icone="data.icone"
+            :tamanho="16"
+            :rotate="(data.open)?data.rotate:0"
+            :completo="false"
+            class="link-menu"
+          >
+            {{data.text}}
+          </Icone>
+          <a
+            v-else
+            href="#"
+            @click="novaAba(data.tipoAba, data.complemento)"
+            :class="`link-menu text-decoration-none ${linkAtivo(data.linkAtivo)}`"
+          >
+            <Icone :icone="data.icone" :tamanho="16" :rotate="(data.open)?data.rotate:0" :completo="false">{{data.text}}</Icone>
+          </a>
+        </div>
+      </Tree>
     </Pasta>
   </nav>
 </template>
 
 <script>
+  import { DraggableTree } from "vue-draggable-nested-tree";
   import Perfil from '@/components/vscode/github/Perfil';
   import { Model } from '@/components/vscode/Model.js';
   import Pasta from '@/components/vscode/Meio/Pasta.vue';
@@ -65,6 +51,7 @@
   export default {
     mixins: [Model],
     components: {
+      Tree: DraggableTree,
       Perfil,
       Pasta,
       Icone,
@@ -72,8 +59,77 @@
     },
     data() {
       return {
-        perf: Perfil
+        perf: Perfil,
+        menuData: []
       }
+    },
+    async created() {
+      await this.$store.dispatch("Git/buscaRepositorios");
+
+      let githubMenu = [];
+      this.repositorios.forEach(repo => {
+        if (repo && repo.language) {
+          githubMenu.push({
+            text: `${repo.language} - ${repo.name}`,
+            icone: 'github',
+            rotate: 0,
+            tipoAba: 'explorador',
+            linkAtivo: `${repo.name}`,
+            complemento: repo,
+          })
+        }
+      });
+      this.menuData = [
+        {
+          text: 'Profissional',
+          icone: 'seta',
+          pasta: true,
+          rotate: 90,
+          children: [
+            {
+              text: 'github',
+              icone: 'seta',
+              pasta: true,
+              open: false,
+              rotate: 90,
+              children: githubMenu
+            },
+            {
+              text: 'Currículo',
+              icone: 'github',
+              rotate: 0,
+              tipoAba: 'curriculo',
+              linkAtivo: 'curriculo',
+              complemento: null,
+            },
+          ]
+        },
+        {
+          text: 'Pessoal',
+          icone: 'seta',
+          pasta: true,
+          rotate: 90,
+          droppable: false,
+          children: [
+            {
+              text: 'Setup',
+              icone: 'monitor',
+              rotate: 0,
+              tipoAba: 'setup',
+              linkAtivo: 'setup',
+              complemento: null,
+            },
+            {
+              text: 'Fotos',
+              icone: 'camera',
+              rotate: 0,
+              tipoAba: 'fotos',
+              linkAtivo: 'fotos',
+              complemento: null,
+            },
+          ]
+        },
+      ];
     },
   }
 </script>

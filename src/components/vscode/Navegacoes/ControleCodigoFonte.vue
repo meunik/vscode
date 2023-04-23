@@ -8,38 +8,30 @@
 
     <Pasta
       :aberto="true"
-      texto="Diretório"
+      texto="Github"
       class="pt-2 overflow-y-auto overflow-x-hidden d-flex flex-column"
       :primeiro="true"
+      :collapseAllData="menuData"
     >
-      <Pasta :aberto="true" texto="Github" :nivelIndentacao="1">
-        <Pasta :aberto="true" texto="Perfil" :nivelIndentacao="2" :indentacaoSlot="true">
+      <Tree class="tree3" :data="menuData" draggable="draggable" cross-tree="cross-tree">
+        <div slot-scope="{data, store}" @click="store.toggleOpen(data)" :style="`padding-left: 1rem;`">
+          <Icone v-if="data.pasta" :icone="data.icone" :tamanho="16" :rotate="(data.open)?data.rotate:0" :completo="false">{{data.text}}</Icone>
           <a
+            v-else
             href="#"
-            @click="novaAba('perfil', perf)"
-            :class="`link-laranja text-decoration-none ${linkAtivo('perfil')}`"
+            @click="novaAba(data.tipoAba, data.complemento)"
+            :class="`link-menu text-decoration-none ${linkAtivo(data.linkAtivo)}`"
           >
-            <Icone icone="github" :completo="false">meunik</Icone>
+            <Icone :icone="data.icone" :tamanho="16" :rotate="(data.open)?data.rotate:0" :completo="false">{{data.text}}</Icone>
           </a>
-        </Pasta>
-        <Pasta :aberto="true" texto="Repositórios Público" :nivelIndentacao="2" :indentacaoSlot="true">
-          <span v-for="(repo, index) in repositorios" :key="index">
-            <a
-              href="#"
-              v-if="repo && repo.language"
-              @click="novaAba('explorador', repo)"
-              :class="`link-menu text-decoration-none ${linkAtivo(repo.name)}`"
-            >
-              <Icone icone="github" :completo="false">{{`${repo.language} - ${repo.name}`}}</Icone>
-            </a>
-          </span>
-        </Pasta>
-      </Pasta>
+        </div>
+      </Tree>
     </Pasta>
   </nav>
 </template>
 
 <script>
+  import { DraggableTree } from "vue-draggable-nested-tree";
   import Perfil from '@/components/vscode/github/Perfil';
   import { Model } from '@/components/vscode/Model.js';
   import Pasta from '@/components/vscode/Meio/Pasta.vue';
@@ -49,6 +41,7 @@
   export default {
     mixins: [Model],
     components: {
+      Tree: DraggableTree,
       Perfil,
       Pasta,
       Icone,
@@ -56,8 +49,52 @@
     },
     data() {
       return {
-        perf: Perfil
+        perf: Perfil,
+        menuData: []
       }
+    },
+    async created() {
+      await this.$store.dispatch("Git/buscaRepositorios");
+
+      let githubMenu = [];
+      this.repositorios.forEach(repo => {
+        if (repo && repo.language) {
+          githubMenu.push({
+            text: `${repo.language} - ${repo.name}`,
+            icone: 'github',
+            rotate: 0,
+            tipoAba: 'explorador',
+            linkAtivo: `${repo.name}`,
+            complemento: repo,
+          })
+        }
+      });
+      this.menuData = [
+        {
+          text: 'Perfil',
+          icone: 'seta',
+          pasta: true,
+          rotate: 90,
+          droppable: false,
+          children: [
+            {
+              text: 'Currículo',
+              icone: 'github',
+              rotate: 0,
+              tipoAba: 'curriculo',
+              linkAtivo: 'curriculo',
+              complemento: null,
+            },
+          ]
+        },
+        {
+          text: 'Repositórios Público',
+          icone: 'seta',
+          pasta: true,
+          rotate: 90,
+          children: githubMenu
+        },
+      ];
     },
   }
 </script>

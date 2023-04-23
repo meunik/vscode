@@ -188,6 +188,13 @@ export let Model = {
           icone = 'camera';
           componente = 'fotos';
           break;
+
+        case 'teste': 
+          nome = 'teste';
+          tipo = 'teste';
+          icone = 'circulo';
+          componente = 'teste';
+          break;
       
         default: break;
       }

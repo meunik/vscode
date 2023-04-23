@@ -25,11 +25,13 @@
     "process": "^0.11.10",
     "stream-browserify": "^3.0.0",
     "stream-http": "^3.2.0",
+    "tree-helper": "^1.4.14",
     "tty-browserify": "0.0.1",
     "url": "^0.11.0",
     "util": "^0.12.5",
     "vue": "^2.6.14",
     "vue-axios": "^3.5.2",
+    "vue-draggable-nested-tree": "^3.0.0-beta3",
     "vue-moment": "^4.1.0",
     "vue-router": "^3.5.1",
     "vuex": "^3.6.2"

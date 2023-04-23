@@ -12,14 +12,15 @@
       </button>
       
       <button
-        v-if="primeiro"
+        v-if="primeiro && collapseAllData"
         type="button"
         class="pasta-icon text-text-right collapse-all"
-        @click="abrir = false"
+        @click="collapseAll()"
         :style="`padding-left: ${nivelIndentacao}rem;`"
       >
         <CollapseAll/>
       </button>
+      <span v-if="primeiro && quatidade" class="quatidade-pasta">{{quatidade}}</span>
     </div>
     <div class="text-left bg-focus-hover scrollbar-edit overflow-y-auto overflow-x-hidden h-100" :style="`padding-left: ${paddingSlot+1}rem !important;`">
       <slot v-if="abrir"></slot>
@@ -28,8 +29,10 @@
 </template>
 
 <script>
-  import Seta from '../../../assets/svg/Seta.vue'
-  import CollapseAll from '../../../assets/svg/CollapseAll.vue'
+  import Seta from '../../../assets/svg/Seta.vue';
+  import CollapseAll from '../../../assets/svg/CollapseAll.vue';
+  import { breadthFirstSearch } from 'tree-helper';
+
   export default {
     props: {
       primeiro: {
@@ -52,6 +55,13 @@
         type: Boolean,
         default: false
       },
+      collapseAllData: {
+        type: Array,
+      },
+      quatidade: {
+        type: Number,
+        default: 0
+      },
     },
     components: {
       'Seta': Seta,
@@ -66,6 +76,14 @@
       paddingSlot() {
         if (this.indentacaoSlot) return parseInt(this.nivelIndentacao)+0.5;
       }
-    }
+    },
+    methods: {
+      collapseAll() {
+        this.abrir = false
+        breadthFirstSearch(this.collapseAllData, node => {
+          node.open = false
+        })
+      },
+    },
   }
 </script>
