@@ -74,9 +74,11 @@
 <script>
   import { Model } from '@/components/vscode/Model.js';
   import Icone from '@/assets/svg/Icone.vue';
+  import { camelCase } from '@/utils/lodash.js';
+
   import Perfil from '@/components/vscode/github/Perfil';
   import Setup from '@/components/vscode/Navegacoes/Setup.vue';
-  import { camelCase } from '@/utils/lodash.js';
+  import Fotos from '@/components/vscode/Navegacoes/Fotos.vue';
 
   export default {
     mixins: [Model],
@@ -84,6 +86,7 @@
       Icone,
       Perfil,
       Setup,
+      Fotos,
     },
     data() {
       return {

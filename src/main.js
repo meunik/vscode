@@ -40,6 +40,7 @@ library.add(fab, fas, far)
 /* add font awesome icon component */
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
+// Vue.use(PhotoSwipeLightbox);
 Vue.use(BootstrapVue);
 Vue.use(VueAxios, axios);
 Vue.use(MomentJs);

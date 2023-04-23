@@ -181,6 +181,13 @@ export let Model = {
           icone = 'monitor';
           componente = 'setup';
           break;
+
+        case 'fotos': 
+          nome = 'Fotos';
+          tipo = 'fotos';
+          icone = 'camera';
+          componente = 'fotos';
+          break;
       
         default: break;
       }
@@ -201,7 +208,7 @@ export let Model = {
           componente: componente,
         },
       };
-      
+
       const arrayKeys = Object.keys(this.abas);
       const key = parseInt(this.getKeyByValue(arrayKeys, nomeCamelCase));
       this.abaIndex = key;
@@ -246,6 +253,7 @@ async function readmeGithub(projeto) {
   console.clear();
   return readme;
 }
+
 async function readmeExtensoes(files) {
   let url = null;
   for (let i = 0; i < files.length; i++) {
@@ -258,6 +266,7 @@ async function readmeExtensoes(files) {
     return 'Nada foi encontrado';
   }
 }
+
 function esconderMenu() {
   var bodyWidth = document.body.clientWidth;
   var navegacaoWidth = store.getters.navegacaoWidth;

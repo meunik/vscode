@@ -42,6 +42,13 @@
         >
           <Icone icone="monitor" :tamanho="16" :completo="false">Setup</Icone>
         </a>
+        <a
+          href="#"
+          @click="novaAba('fotos')"
+          :class="`link-menu text-decoration-none ${linkAtivo('fotos')}`"
+        >
+          <Icone icone="camera" :completo="false">Fotos</Icone>
+        </a>
       </Pasta>
     </Pasta>
   </nav>
@@ -52,7 +59,7 @@
   import { Model } from '@/components/vscode/Model.js';
   import Pasta from '@/components/vscode/Meio/Pasta.vue';
   import Icone from '@/assets/svg/Icone.vue';
-  import Loader from '@/components/vscode/componets/Loader.vue';
+  import Loader from '@/components/vscode/components/Loader.vue';
   import { camelCase } from '@/utils/lodash.js';
 
   export default {

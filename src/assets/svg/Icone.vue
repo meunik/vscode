@@ -47,6 +47,12 @@
   import Cadeira from '@/assets/svg/Cadeira.vue';
   import Microfone from '@/assets/svg/Microfone.vue';
   import CaixaSom from '@/assets/svg/CaixaSom.vue';
+  import Circulo from '@/assets/svg/Circulo.vue';
+  import Camera from '@/assets/svg/Camera.vue';
+  import BlocoNotas from '@/assets/svg/BlocoNotas.vue';
+  import Notas from '@/assets/svg/Notas.vue';
+  import Verificado from '@/assets/svg/Verificado.vue';
+  import Monitor from '@/assets/svg/Monitor.vue';
 
   export default {
     props: {
@@ -120,6 +126,12 @@
       Cadeira,
       Microfone,
       CaixaSom,
+      Circulo,
+      Camera,
+      BlocoNotas,
+      Notas,
+      Verificado,
+      Monitor,
     },
     data() {
       return {
@@ -127,41 +139,24 @@
       }
     },
     created() {
+      // definir caso queira definir um nome diferente do nome do componente
       switch (this.icone) {
         case 'collapse': this.componente = 'CollapseAll'; break;
         case 'debug': this.componente = 'DebugSvg'; break;
         case 'engrenaguem': this.componente = 'EngrenaguemSvg'; break;
         case 'explorador': this.componente = 'ExploradorSvg'; break;
-        case 'extensoes': this.componente = 'Extensoes'; break;
         case 'github': this.componente = 'GithubInverted'; break;
         case 'git': this.componente = 'GitSvg'; break;
-        case 'monitor': this.componente = 'MonitorSvg'; break;
+        case 'monitorRemoto': this.componente = 'MonitorSvg'; break;
         case 'pesquisa': this.componente = 'PesquisaSvg'; break;
-        case 'seta': this.componente = 'Seta'; break;
-        case 'tresPontos': this.componente = 'TresPontos'; break;
         case 'user': this.componente = 'UserSvg'; break;
         case 'email': this.componente = 'MailSvg'; break;
         case 'linkedin': this.componente = 'LinkedinSvg'; break;
         case 'instagram': this.componente = 'InstagramSvg'; break;
         case 'relogio': this.componente = 'RelogioSvg'; break;
         case 'localizacao': this.componente = 'LocalizacaoSvg'; break;
-        case 'placaMae': this.componente = 'PlacaMae'; break;
-        case 'ram': this.componente = 'Ram'; break;
-        case 'placaVideo': this.componente = 'PlacaVideo'; break;
-        case 'cpu': this.componente = 'Cpu'; break;
-        case 'monitorWide': this.componente = 'MonitorWide'; break;
-        case 'monitorUltraWide': this.componente = 'MonitorUltraWide'; break;
-        case 'm2': this.componente = 'M2'; break;
-        case 'ssd': this.componente = 'Ssd'; break;
-        case 'hd': this.componente = 'Hd'; break;
-        case 'mouse': this.componente = 'Mouse'; break;
-        case 'teclado': this.componente = 'Teclado'; break;
-        case 'headfone': this.componente = 'Headfone'; break;
-        case 'cadeira': this.componente = 'Cadeira'; break;
-        case 'microfone': this.componente = 'Microfone'; break;
-        case 'caixaSom': this.componente = 'CaixaSom'; break;
       
-        default:break;
+        default: this.componente = this.icone; break;
       }
     },
   };

@@ -37,8 +37,6 @@
         />
       </router-link>
 
-      <Icone icone="debug" :classesDiv="'justify-content-center h-12 box-icon-menu'"/>
-
       <router-link
         to="/extensoes"
         id="btn_extensoes"
@@ -56,7 +54,7 @@
         />
       </router-link>
 
-      <a
+      <!-- <a
         id="btn_setup"
         href="#"
         @click="novaAba('setup')"
@@ -67,29 +65,30 @@
       >
         <Icone
           icone="monitor"
+          :tamanho="26"
           :classesDiv="`justify-content-center h-12 box-icon-menu ${(estaAtiva('setup')) ? 'ativo' : ''}`"
           :ativo="estaAtiva('setup')"
+        />
+      </a> -->
+
+      <a
+        id="btn_fotos"
+        href="#"
+        @click="novaAba('fotos')"
+        data-toggle="tooltip"
+        data-placement="right"
+        title="Fotos"
+        class="btn-menu-vscode text-decoration-none p-0"
+      >
+        <Icone
+          icone="camera"
+          :tamanho="26"
+          :classesDiv="`justify-content-center h-12 box-icon-menu ${(estaAtiva('fotos')) ? 'ativo' : ''}`"
+          :ativo="estaAtiva('fotos')"
         />
       </a>
 
-      <!-- <router-link
-        to="/setup"
-        id="btn_explorador"
-        data-toggle="tooltip"
-        data-placement="right"
-        title="Explorador (Ctrl+Shift+X)"
-        class="btn-menu-vscode p-0"
-        active-class="active"
-        @click.native="abriSetup()"
-      >
-        <Icone
-          icone="monitor"
-          :classesDiv="`justify-content-center h-12 box-icon-menu ${(estaAtiva('setup')) ? 'ativo' : ''}`"
-          :ativo="estaAtiva('setup')"
-        />
-      </router-link> -->
-
-      <!-- <Icone icone="monitor" :classesDiv="'justify-content-center h-12 box-icon-menu'"/> -->
+      <!-- <Icone icone="monitorRemoto" :classesDiv="'justify-content-center h-12 box-icon-menu'"/> -->
     </div>
     <div class="d-flex flex-col align-items-center gap-menu-vscode">
       <Icone icone="user" class="justify-content-center h-12 box-icon-menu"/>

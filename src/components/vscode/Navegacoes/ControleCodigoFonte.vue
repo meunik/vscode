@@ -44,7 +44,7 @@
   import { Model } from '@/components/vscode/Model.js';
   import Pasta from '@/components/vscode/Meio/Pasta.vue';
   import Icone from '@/assets/svg/Icone.vue';
-  import Loader from '@/components/vscode/componets/Loader.vue';
+  import Loader from '@/components/vscode/components/Loader.vue';
 
   export default {
     mixins: [Model],
