@@ -53,7 +53,7 @@ body {
   height: 100%;
   overflow: hidden;
   color: var(--texto-navegacao);
-  font-size: 14px;
+  font-size: 16px;
 }
 
 #app {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-tabs v-model="abaControlador" @changed="attControlador()" @input="trocaAba()">
+    <b-tabs v-model="abaControlador" @changed="attControlador()" @input="trocaAba()" id="abas">
       <b-tab v-for="(aba, key) in abas" :key="`dyn-tab-${key}`" :id="`dyn-tab-${key}`" class="overflow-auto">
         <template #title>
           {{ aba.nome }}{{ (!!aba.linguagem) ? `.${abrivicaoLinguagens(aba.linguagem)}` : '' }}
@@ -92,7 +92,9 @@
     },
     data() {
       return {
-        perf: Perfil
+        perf: Perfil,
+        scrollDireta: 0,
+        scrollEsquerda: 0,
       }
     },
     computed: {
@@ -108,6 +110,9 @@
         let arrayKeys = Object.keys(this.abas);
         let abaKey = arrayKeys[this.abaControlador]
         this.abaAbertaKey = camelCase(abaKey);
+        
+        const elemento = document.getElementById(`dyn-tab-${this.abaAbertaKey}___BV_tab_button__`);
+        elemento.scrollIntoView();
       },
       attControlador() {
         this.abaControlador = this.abaIndex;
