@@ -56,6 +56,7 @@
   import Monitor from '@/assets/svg/Monitor.vue';
   import Pasta from '@/assets/svg/Pasta.vue';
   import PastaAberta from '@/assets/svg/PastaAberta.vue';
+  import Texto from '@/assets/svg/Texto.vue';
 
   export default {
     props: {
@@ -141,6 +142,7 @@
       Monitor,
       Pasta,
       PastaAberta,
+      Texto,
     },
     computed: {
       componente() {

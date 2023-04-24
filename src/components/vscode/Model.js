@@ -195,6 +195,13 @@ export let Model = {
           icone = 'circulo';
           componente = 'teste';
           break;
+
+        case 'editor': 
+          nome = 'Editor';
+          tipo = 'editor';
+          icone = 'texto';
+          componente = 'editor';
+          break;
       
         default: break;
       }

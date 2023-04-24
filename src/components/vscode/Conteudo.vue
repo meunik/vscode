@@ -60,9 +60,9 @@
                 <h2>Passo a passo</h2>
               </div>
             </div> -->
-            <div class="footer">
+            <!-- <div class="footer">
               <p class="showOnStartup">Mostrar a página inicial na inicialização</p>
-            </div>
+            </div> -->
           </div>
 
         </div>
@@ -79,6 +79,7 @@
   import Perfil from '@/components/vscode/github/Perfil';
   import Setup from '@/components/vscode/Navegacoes/Setup.vue';
   import Fotos from '@/components/vscode/Navegacoes/Fotos.vue';
+  import Editor from '@/components/vscode/Navegacoes/Editor.vue';
 
   export default {
     mixins: [Model],
@@ -87,6 +88,7 @@
       Perfil,
       Setup,
       Fotos,
+      Editor,
     },
     data() {
       return {

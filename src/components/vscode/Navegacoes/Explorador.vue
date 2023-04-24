@@ -72,6 +72,7 @@
             {
               text: 'Currículo',
               icone: 'github',
+              classe: 'link-laranja',
               rotate: 0,
               tipoAba: 'curriculo',
               linkAtivo: 'curriculo',
@@ -100,6 +101,14 @@
               rotate: 0,
               tipoAba: 'fotos',
               linkAtivo: 'fotos',
+              complemento: null,
+            },
+            {
+              text: 'Editor',
+              icone: 'texto',
+              rotate: 0,
+              tipoAba: 'editor',
+              linkAtivo: 'editor',
               complemento: null,
             },
           ]

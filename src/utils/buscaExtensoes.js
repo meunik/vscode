@@ -72,4 +72,5 @@ export async function buscaExtensoes(extensao, tipo) {
   let dadosExtensao = response.data.results[0].extensions;
   // console.log(dadosExtensao);
   store.commit('VisualStudio/extensoes', dadosExtensao);
+  store.commit('carregando', false);
 }

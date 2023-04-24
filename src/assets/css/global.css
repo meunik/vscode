@@ -310,6 +310,7 @@ ul.nav-tabs {
 }
 
 
+/* tree */
 .he-tree {
   padding: 0px;
 }
@@ -335,6 +336,7 @@ ul.nav-tabs {
   padding: 5px 10px;
   background: #ccc;
 }
+/* /tree */
 
 
 .collapse-all {

@@ -72,9 +72,8 @@
       }
     },
     async created() {
-      this.carregando = true
+      this.carregando = true;
       await this.$store.dispatch("VisualStudio/listaExtensoes");
-      this.carregando = false
     },
     computed: {
       listagemFiltrada() {

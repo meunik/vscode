@@ -13,7 +13,7 @@
         v-else
         href="#"
         @click="novaAba(data.tipoAba, data.complemento)"
-        :class="`link-menu text-decoration-none ${linkAtivo(data.linkAtivo)}`"
+        :class="`link-menu text-decoration-none ${linkAtivo(data.linkAtivo)} ${data.classe}`"
       >
         <Icone :icone="data.icone" :tamanho="16" :rotate="(data.open)?data.rotate:0" :completo="false">{{data.text}}</Icone>
       </a>
