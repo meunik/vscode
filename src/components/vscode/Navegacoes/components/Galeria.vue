@@ -52,8 +52,7 @@ export default {
       this.lightbox = null;
     }
   },
-  beforeUpdate() {
-    console.log(this.imagesData.length);  
+  beforeUpdate() { 
     this.carregando = (this.imagesData.length == 57)?false:true;
   },
 };
