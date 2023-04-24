@@ -1,3 +1,5 @@
+import store from '@/store/store';
+
 export async function imagens() {
   const resultado = [];
   const r = require.context('@/assets/img/1080/');

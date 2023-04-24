@@ -18,9 +18,11 @@
 <script>
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import 'photoswipe/style.css';
+import { Model } from '@/components/vscode/Model.js';
 import { imagens } from "@/utils/imagens.js";
 
 export default {
+  mixins: [Model],
   name: 'Galeria',
   props: {
     galleryID: String,
@@ -50,7 +52,10 @@ export default {
       this.lightbox = null;
     }
   },
-  methods: {},
+  beforeUpdate() {
+    console.log(this.imagesData.length);  
+    this.carregando = (this.imagesData.length == 57)?false:true;
+  },
 };
 </script>
 
