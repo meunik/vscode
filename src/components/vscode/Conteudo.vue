@@ -112,7 +112,7 @@
         this.abaAbertaKey = camelCase(abaKey);
         
         const elemento = document.getElementById(`dyn-tab-${this.abaAbertaKey}___BV_tab_button__`);
-        elemento.scrollIntoView();
+        if (elemento) elemento.scrollIntoView();
       },
       attControlador() {
         this.abaControlador = this.abaIndex;

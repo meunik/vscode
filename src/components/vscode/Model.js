@@ -45,6 +45,14 @@ export let Model = {
         this.$store.commit('navegacaoWidth', value)
       }
     },
+    editAbertos: {
+      get() {
+        return this.$store.getters['editAbertos']
+      },
+      set(value) {
+        this.$store.commit('editAbertos', value)
+      }
+    },
     contribTamanho: {
       get() {
         return this.$store.getters['contribTamanho']
@@ -223,13 +231,29 @@ export let Model = {
         },
       };
 
+      console.log(issetIn(this.editAbertos, 'text', nome));
+      if (!issetIn(this.editAbertos, 'text', nome)) {
+        this.editAbertos.push({
+          identificador: nomeCamelCase,
+          text: nome,
+          icone: icone,
+          rotate: 0,
+          tipoAba: tipoAba,
+          linkAtivo: tipoAba,
+          conteudo: conteudo,
+          componente: componente,
+        });
+      }
+      console.log(this.editAbertos);
+      console.log(this.editAbertos.findIndex(val => val.text == nome));
+
       const arrayKeys = Object.keys(this.abas);
       const key = parseInt(this.getKeyByValue(arrayKeys, nomeCamelCase));
       this.abaIndex = key;
       if (repetido) this.abaControlador = key;
       localStorage.abas = JSON.stringify(this.abas);
       // console.log(this.abas);
-      // console.log(JSON.parse(JSON.stringify(this.abas)));
+      console.log(JSON.parse(JSON.stringify(this.abas)));
       this.carregando = false;
     },
     getKeyByValue(object, value) {
@@ -290,4 +314,10 @@ function esconderMenu() {
       store.commit('navegacaoWidth', '0px');
     }
   }
+}
+
+
+function issetIn(arr, parametro, valor) {
+  let index = arr.findIndex(val => val[parametro] == valor);
+  return((index == 0)&&(arr.length != 0))?true:false;
 }

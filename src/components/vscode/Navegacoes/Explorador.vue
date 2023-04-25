@@ -6,15 +6,28 @@
     </div>
     <Loader />
 
-    <Pasta
-      :aberto="true"
-      texto="Diretório"
-      class="pt-2 overflow-y-auto overflow-x-hidden d-flex flex-column"
-      :primeiro="true"
-      :collapseAllData="menuData"
-    >
-      <Arquivos :dados="menuData"/>
-    </Pasta>
+    <div class="d-flex flex-column">
+      <Pasta
+        id="editoresAbertos"
+        :aberto="true"
+        texto="Editores Abertos"
+        class="pt-2 overflow-y-auto overflow-x-hidden d-flex flex-column"
+        :primeiro="true"
+      >
+        <Arquivos :dados="editAbertos" estilo="padding-left: 33px !important;"/>
+      </Pasta>
+      <div class="dragbar-vertical" id="dragbarVertical"></div>
+      <Pasta
+        :aberto="true"
+        texto="Diretório"
+        class="pt-2 overflow-y-auto overflow-x-hidden d-flex flex-column"
+        :primeiro="true"
+        :collapseAllData="menuData"
+      >
+        <Arquivos :dados="menuData"/>
+      </Pasta>
+    </div>
+
   </nav>
 </template>
 
@@ -24,6 +37,7 @@
   import Icone from '@/assets/svg/Icone.vue';
   import Loader from '@/components/vscode/components/Loader.vue';
   import Arquivos from "@/components/vscode/Meio/Arquivos.vue";
+  import { dragbarVertical } from '@/utils/dragbar.js';
 
   export default {
     mixins: [Model],
@@ -35,7 +49,8 @@
     },
     data() {
       return {
-        menuData: []
+        menuData: [],
+        editAbertosD: []
       }
     },
     async created() {
@@ -114,6 +129,52 @@
           ]
         },
       ];
+
+      
+      this.editAbertosD = [
+        {
+          text: 'Currículo',
+          icone: 'github',
+          rotate: 0,
+          tipoAba: 'curriculo',
+          linkAtivo: 'curriculo',
+          complemento: null,
+        },
+        ...githubMenu,
+        {
+          text: 'Setup',
+          icone: 'monitor',
+          rotate: 0,
+          tipoAba: 'setup',
+          linkAtivo: 'setup',
+          complemento: null,
+        },
+        {
+          text: 'Fotos',
+          icone: 'camera',
+          rotate: 0,
+          tipoAba: 'fotos',
+          linkAtivo: 'fotos',
+          complemento: null,
+        },
+        {
+          text: 'Editor',
+          icone: 'texto',
+          rotate: 0,
+          tipoAba: 'editor',
+          linkAtivo: 'editor',
+          complemento: null,
+        },
+      ];
+    },
+    mounted() {
+      dragbarVertical()
+    },
+    beforeUpdate() { 
+      var editoresAbertos = document.getElementById('editoresAbertos');
+      if (editoresAbertos.clientHeight > 200) {
+        editoresAbertos.style.height = `200px`;
+      }
     },
   }
 </script>

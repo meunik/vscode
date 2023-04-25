@@ -10,7 +10,7 @@
 <script>
   import {Model} from './Model.js';
   import Menu from '@/components/vscode/Meio/Menu.vue';
-  import Conteudo from '@/components/vscode/Conteudo.vue'
+  import Conteudo from '@/components/vscode/Conteudo.vue';
   import {dragbar} from '@/utils/dragbar.js';
   import {buscaExtensoes} from '@/utils/buscaExtensoes.js';
 

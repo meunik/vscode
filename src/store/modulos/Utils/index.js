@@ -8,6 +8,7 @@ let state = {
   abaControlador: 0,
   abaAbertaKey: '',
   carregando: false,
+  editAbertos: [],
 }
 
 const getters = {
@@ -18,6 +19,7 @@ const getters = {
   abaControlador: store => store.abaControlador,
   abaAbertaKey: store => store.abaAbertaKey,
   carregando: store => store.carregando,
+  editAbertos: store => store.editAbertos,
 }
   
 const mutations = {
@@ -28,6 +30,7 @@ const mutations = {
   abaControlador: (state, obj) => state.abaControlador = obj,
   abaAbertaKey: (state, obj) => state.abaAbertaKey = obj,
   carregando: (state, obj) => state.carregando = obj,
+  editAbertos: (state, obj) => state.editAbertos = obj,
 }
   
 const actions = {

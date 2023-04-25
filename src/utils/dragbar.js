@@ -35,3 +35,36 @@ export function dragbar() {
     document.removeEventListener('mousemove', drag);
   });
 }
+
+export function dragbarVertical() {
+  var main = document.getElementById('editoresAbertos');
+  var bar = document.getElementById('dragbarVertical');
+  var mainHeight = main.clientHeight;
+  var bodyHeight = document.body.clientHeight;
+
+  const drag = (e) => {
+    let hg = mainHeight + 77
+    let heightBar = (e.pageY - hg)+mainHeight;
+    let max = (50/100)*bodyHeight;
+    let min = 35;
+
+    if ((min < heightBar)&&(heightBar < max)) {
+      main.style.height = `${heightBar}px`;
+    }
+  }
+
+  bar.addEventListener('mousedown', () => {
+    window.getSelection().removeAllRanges();
+    document.body.style.userSelect = 'none';
+    document.addEventListener('mousemove', drag);
+  });
+  document.addEventListener('mouseup', () => {
+    document.body.style.userSelect = 'auto';
+    document.removeEventListener('mousemove', drag);
+  });
+}
+
+export default {
+  dragbar,
+  dragbarVertical,
+}

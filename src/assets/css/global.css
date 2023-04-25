@@ -228,11 +228,24 @@ span {
 .dragbar {
   position: initial !important;
   padding: 1px;
-  cursor: col-resize;
+  cursor: e-resize;
   background-color: #242424;
   transition: 0.5s;
 }
 .dragbar:hover {
+  padding: 2px;
+  background-color: #818181;
+  transition: 1s;
+}
+
+.dragbar-vertical {
+  position: initial !important;
+  padding: 1px;
+  cursor: n-resize;
+  background-color: #242424;
+  transition: 0.5s;
+}
+.dragbar-vertical:hover {
   padding: 2px;
   background-color: #818181;
   transition: 1s;
@@ -251,7 +264,7 @@ li.nav-item {
 }
 ul.nav-tabs {
   flex-wrap: nowrap !important;
-  height: 44px !important;
+  margin-bottom: 4px;
 }
 .tabs {
   height: 100%;

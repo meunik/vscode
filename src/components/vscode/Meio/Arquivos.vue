@@ -1,6 +1,11 @@
 <template>
   <Tree class="tree3" :data="menuData" draggable="draggable" cross-tree="cross-tree">
-    <div slot-scope="{data, store}" @click="store.toggleOpen(data)" :style="`padding-left: 1rem;`">
+    <div
+      slot-scope="{data, store}"
+      @click="store.toggleOpen(data)"
+      :class="`pl-3 ${classe}`"
+      :style="` ${estilo}`"
+    >
       <Icone
         v-if="data.pasta"
         :icone="data.icone"
@@ -33,6 +38,14 @@
       dados: {
         type: Array,
       },
+      classe: {
+        type: String,
+        default:''
+      },
+      estilo: {
+        type: String,
+        default:''
+      },
     },
     components: {
       Tree: DraggableTree,
@@ -48,6 +61,6 @@
       menuData() {
         return this.dados;
       }
-    }
+    },
   }
 </script>
