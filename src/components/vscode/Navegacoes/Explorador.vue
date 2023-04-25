@@ -9,7 +9,7 @@
     <div class="d-flex flex-column">
       <Pasta
         id="editoresAbertos"
-        :aberto="true"
+        :aberto="(editAbertos.length)?true:false"
         texto="Editores Abertos"
         class="pt-2 overflow-y-auto overflow-x-hidden d-flex flex-column"
         :primeiro="true"
@@ -57,18 +57,20 @@
       await this.$store.dispatch("Git/buscaRepositorios");
 
       let githubMenu = [];
-      this.repositorios.forEach(repo => {
-        if (repo && repo.language) {
-          githubMenu.push({
-            text: `${repo.language} - ${repo.name}`,
-            icone: 'github',
-            rotate: 0,
-            tipoAba: 'explorador',
-            linkAtivo: `${repo.name}`,
-            complemento: repo,
-          })
-        }
-      });
+      if (this.repositorios) {
+        this.repositorios.forEach(repo => {
+          if (repo && repo.language) {
+            githubMenu.push({
+              text: `${repo.language} - ${repo.name}`,
+              icone: 'github',
+              rotate: 0,
+              tipoAba: 'explorador',
+              linkAtivo: `${repo.name}`,
+              complemento: repo,
+            })
+          }
+        });
+      }
       this.menuData = [
         {
           text: 'Profissional',

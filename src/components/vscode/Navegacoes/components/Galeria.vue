@@ -106,8 +106,8 @@ export default {
   }
 
   @media (max-width: 768px) {
-  .grid-container a img {
-    filter: grayscale(0%);
-  }
+    .grid-container a img {
+      filter: grayscale(0%);
+    }
   }
 </style>

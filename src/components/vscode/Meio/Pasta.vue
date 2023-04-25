@@ -85,5 +85,8 @@
         })
       },
     },
+    beforeUpdate() {
+      this.abrir = this.aberto;
+    }
   }
 </script>

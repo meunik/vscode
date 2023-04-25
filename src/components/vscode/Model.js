@@ -231,21 +231,17 @@ export let Model = {
         },
       };
 
-      console.log(issetIn(this.editAbertos, 'text', nome));
-      if (!issetIn(this.editAbertos, 'text', nome)) {
+      if (issetInEditAbertos(this.editAbertos, nomeCamelCase)) {
         this.editAbertos.push({
           identificador: nomeCamelCase,
           text: nome,
           icone: icone,
           rotate: 0,
           tipoAba: tipoAba,
-          linkAtivo: tipoAba,
-          conteudo: conteudo,
-          componente: componente,
+          linkAtivo: nome,
+          complemento: complemento,
         });
       }
-      console.log(this.editAbertos);
-      console.log(this.editAbertos.findIndex(val => val.text == nome));
 
       const arrayKeys = Object.keys(this.abas);
       const key = parseInt(this.getKeyByValue(arrayKeys, nomeCamelCase));
@@ -253,7 +249,7 @@ export let Model = {
       if (repetido) this.abaControlador = key;
       localStorage.abas = JSON.stringify(this.abas);
       // console.log(this.abas);
-      console.log(JSON.parse(JSON.stringify(this.abas)));
+      // console.log(JSON.parse(JSON.stringify(this.abas)));
       this.carregando = false;
     },
     getKeyByValue(object, value) {
@@ -264,6 +260,18 @@ export let Model = {
       this.abas = {
         ...this.abas,
       };
+      
+      let indexEditAbertos = 0;
+      let filtro = this.editAbertos.filter((val, index) => {
+        indexEditAbertos = index
+        return val.identificador == key;
+      });
+      delete this.editAbertos[indexEditAbertos];
+      let arr = {
+        ...this.editAbertos,
+      };
+      const entries = Object.values(arr);
+      this.editAbertos = entries
     },
     abrivicaoLinguagens(ling) {
       switch (ling.toLowerCase()) {
@@ -316,8 +324,14 @@ function esconderMenu() {
   }
 }
 
+function issetInEditAbertos(arr, valor) {
+  let filtro = arr.filter(val => {
+    return val.identificador == valor;
+  });
+  return (!!filtro.length)?false:true;
+}
 
 function issetIn(arr, parametro, valor) {
-  let index = arr.findIndex(val => val[parametro] == valor);
-  return((index == 0)&&(arr.length != 0))?true:false;
+  // let index = arr.findIndex(val => val[parametro] == valor);
+  // return((index == 0)&&(arr.length != 0))?true:false;
 }
