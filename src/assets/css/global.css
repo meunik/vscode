@@ -240,9 +240,10 @@ span {
 
 .dragbar-vertical {
   position: initial !important;
-  padding: 1px;
+  padding: 2px;
   cursor: n-resize;
-  background-color: #242424;
+  /* background-color: #242424; */
+  background-color: transparent;
   transition: 0.5s;
 }
 .dragbar-vertical:hover {
@@ -351,6 +352,9 @@ ul.nav-tabs {
 }
 /* /tree */
 
+.pasta-primeiro-bloco:hover > .collapse-all {
+  display: flex;
+}
 
 .collapse-all {
   padding: 0px 1px 1px 0px;
@@ -358,7 +362,7 @@ ul.nav-tabs {
   height: 22px;
   border-radius: 5px;
   margin-right: 4px;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
 }

@@ -16,9 +16,10 @@
       ><Icone :icone="(data.open)?'pastaAberta':'pasta'" :tamanho="16">{{data.text}}</Icone></Icone>
       <a
         v-else
+        :id="`link-${data.identificador}`"
         href="#"
         @click="novaAba(data.tipoAba, data.complemento)"
-        :class="`link-menu text-decoration-none ${linkAtivo(data.linkAtivo)} ${data.classe}`"
+        :class="`link-menu text-decoration-none ${linkAtivo(data.linkAtivo)} ${ativoExplorador} ${data.classe}`"
       >
         <Icone :icone="data.icone" :tamanho="16" :rotate="(data.open)?data.rotate:0" :completo="false">{{data.text}}</Icone>
       </a>
@@ -46,6 +47,10 @@
         type: String,
         default:''
       },
+      explorador: {
+        type: Boolean,
+        default: false,
+      },
     },
     components: {
       Tree: DraggableTree,
@@ -60,6 +65,9 @@
     computed: {
       menuData() {
         return this.dados;
+      },
+      ativoExplorador() {
+        return ((this.explorador)&&(this.menuData.length == 1))?'ativo':'';
       }
     },
   }

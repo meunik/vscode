@@ -39,8 +39,6 @@
       }
     },
     async created() {
-      await this.$store.dispatch("Git/buscaRepositorios");
-
       let githubMenu = [];
       if (this.repositorios) {
         this.repositorios.forEach(repo => {

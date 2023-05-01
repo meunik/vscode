@@ -4,11 +4,11 @@ import store from '../store/store'
  * drag-right tem q ter flex-1
  */
 export function dragbar() {
-  var main = document.getElementById('main');
-  var left = document.getElementById('drag-left');
-  var bar = document.getElementById('dragbar');
-  var mainWidth = main.clientWidth;
-  var bodyWidth = document.body.clientWidth;
+  let main = document.getElementById('main');
+  let left = document.getElementById('drag-left');
+  let bar = document.getElementById('dragbar');
+  let mainWidth = main.clientWidth;
+  let bodyWidth = document.body.clientWidth;
 
   const drag = (e) => {
     let wh = ((bodyWidth - mainWidth)/2)+50
@@ -37,19 +37,36 @@ export function dragbar() {
 }
 
 export function dragbarVertical() {
-  var main = document.getElementById('editoresAbertos');
-  var bar = document.getElementById('dragbarVertical');
-  var mainHeight = main.clientHeight;
-  var bodyHeight = document.body.clientHeight;
+  let bar = document.getElementById('dragbarVertical');
 
   const drag = (e) => {
-    let hg = mainHeight + 77
+    let main = document.getElementById('editoresAbertos');
+    let divFilha = main.children[0];
+    let mainHeight = main.clientHeight;
+    let bodyHeight = document.body.clientHeight;
+
+    let hg = mainHeight + 113
     let heightBar = (e.pageY - hg)+mainHeight;
-    let max = (50/100)*bodyHeight;
-    let min = 35;
+    let max = 0;
+    let min = 0;
+
+    // console.log('-------------------------');
+
+    if (divFilha) {
+      min = (divFilha.clientHeight < 200) ? divFilha.clientHeight : 200;
+      max = (50/100)*bodyHeight;
+      // console.log('divFilha: '+divFilha.clientHeight);
+    }
+
+    // console.log('mainHeight: '+mainHeight);
+    // console.log('min: '+min);
+    // console.log('min: '+max);
+    // console.log('heightBar: '+heightBar);
 
     if ((min < heightBar)&&(heightBar < max)) {
       main.style.height = `${heightBar}px`;
+    } else if (min > heightBar) {
+      main.style.height = `${min}px`;
     }
   }
 

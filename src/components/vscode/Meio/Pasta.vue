@@ -14,26 +14,43 @@
       <button
         v-if="primeiro && collapseAllData"
         type="button"
+        data-toggle="tooltip"
+        data-placement="right"
+        title="Recolher Pastas no Explorador"
         class="pasta-icon text-text-right collapse-all"
         @click="collapseAll()"
         :style="`padding-left: ${nivelIndentacao}rem;`"
       >
-        <CollapseAll/>
+        <Icone icone="collapse"/>
+      </button>
+      <button
+        v-if="primeiro && fechaTudo"
+        type="button"
+        data-toggle="tooltip"
+        data-placement="right"
+        title="Fechar Tudo"
+        class="pasta-icon text-text-right collapse-all"
+        @click="fecharTudo()"
+        :style="`padding-left: ${nivelIndentacao}rem;`"
+      >
+        <Icone icone="fechaTudo"/>
       </button>
       <span v-if="primeiro && quatidade" class="quatidade-pasta">{{quatidade}}</span>
     </div>
-    <div class="text-left bg-focus-hover scrollbar-edit overflow-y-auto overflow-x-hidden h-100" :style="`padding-left: ${paddingSlot+1}rem !important;`">
+    <div :id="idDivSlot" class="text-left bg-focus-hover scrollbar-edit overflow-y-auto overflow-x-hidden" :style="`padding-left: ${paddingSlot+1}rem !important;`">
       <slot v-if="abrir"></slot>
     </div>
   </div>
 </template>
 
 <script>
-  import Seta from '../../../assets/svg/Seta.vue';
-  import CollapseAll from '../../../assets/svg/CollapseAll.vue';
+  import Seta from '@/assets/svg/Seta.vue';
+  import Icone from '@/assets/svg/Icone.vue';
   import { breadthFirstSearch } from 'tree-helper';
+  import { Model } from '@/components/vscode/Model.js';
 
   export default {
+    mixins: [Model],
     props: {
       primeiro: {
         type: Boolean,
@@ -41,7 +58,7 @@
       },
       aberto: {
         type: Boolean,
-        default: false
+        default: false,
       },
       texto: {
         type: String,
@@ -58,14 +75,26 @@
       collapseAllData: {
         type: Array,
       },
+      fechaTudo: {
+        type: Array,
+      },
       quatidade: {
         type: Number,
         default: 0
       },
+      idDivSlot: {
+        type: String,
+        default: ''
+      },
+    },
+    watch: {
+      aberto: function(newVal, oldVal) {
+        this.abrir = newVal;
+      },
     },
     components: {
-      'Seta': Seta,
-      'CollapseAll': CollapseAll,
+      Seta,
+      Icone,
     },
     data() {
       return {
@@ -75,7 +104,7 @@
     computed: {
       paddingSlot() {
         if (this.indentacaoSlot) return parseInt(this.nivelIndentacao)+0.5;
-      }
+      },
     },
     methods: {
       collapseAll() {
@@ -84,9 +113,25 @@
           node.open = false
         })
       },
+      fecharTudo() {
+        // console.log(this.fechaTudo);
+        // this.fechaTudo.forEach((aba, key) => {
+        //   this.fecharAba(aba, 0);
+        // });
+      },
     },
-    beforeUpdate() {
-      this.abrir = this.aberto;
-    }
+    updated() {
+      if (this.idDivSlot == 'editoresAbertos') {
+        let main = document.getElementById(this.idDivSlot);
+        let divFilha = main.children[0];
+        let min = 0;
+        
+        if (divFilha) {
+          min = (divFilha.clientHeight < 200) ? divFilha.clientHeight : 200;
+        }
+
+        main.style.height = (this.abrir)?`${min}px`:'0px';
+      }
+    },
   }
 </script>

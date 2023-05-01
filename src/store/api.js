@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const urlDev = 'http://localhost:3000'
+const urlDev = 'http://127.0.0.1:8000'
 const urlProd = 'https://meunik.github.io/'
 
 const api = axios.create({

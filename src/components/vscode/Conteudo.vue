@@ -90,6 +90,11 @@
       Fotos,
       Editor,
     },
+    watch: {
+      abaControlador: function(newVal, oldVal) {
+        console.log('testandooo');
+      },
+    },
     data() {
       return {
         perf: Perfil,

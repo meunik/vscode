@@ -8,19 +8,21 @@
 
     <div class="d-flex flex-column">
       <Pasta
-        id="editoresAbertos"
+        id="editoresAbertosPasta"
+        idDivSlot="editoresAbertos"
         :aberto="(editAbertos.length)?true:false"
         texto="Editores Abertos"
         class="pt-2 overflow-y-auto overflow-x-hidden d-flex flex-column"
         :primeiro="true"
+        :fechaTudo="editAbertos"
       >
-        <Arquivos :dados="editAbertos" estilo="padding-left: 33px !important;"/>
+        <Arquivos :dados="editAbertos" :explorador="true" estilo="padding-left: 33px !important;"/>
       </Pasta>
       <div class="dragbar-vertical" id="dragbarVertical"></div>
       <Pasta
         :aberto="true"
         texto="Diretório"
-        class="pt-2 overflow-y-auto overflow-x-hidden d-flex flex-column"
+        class="overflow-y-auto overflow-x-hidden d-flex flex-column"
         :primeiro="true"
         :collapseAllData="menuData"
       >
@@ -50,12 +52,9 @@
     data() {
       return {
         menuData: [],
-        editAbertosD: []
       }
     },
     async created() {
-      await this.$store.dispatch("Git/buscaRepositorios");
-
       let githubMenu = [];
       if (this.repositorios) {
         this.repositorios.forEach(repo => {
@@ -129,43 +128,6 @@
               complemento: null,
             },
           ]
-        },
-      ];
-
-      
-      this.editAbertosD = [
-        {
-          text: 'Currículo',
-          icone: 'github',
-          rotate: 0,
-          tipoAba: 'curriculo',
-          linkAtivo: 'curriculo',
-          complemento: null,
-        },
-        ...githubMenu,
-        {
-          text: 'Setup',
-          icone: 'monitor',
-          rotate: 0,
-          tipoAba: 'setup',
-          linkAtivo: 'setup',
-          complemento: null,
-        },
-        {
-          text: 'Fotos',
-          icone: 'camera',
-          rotate: 0,
-          tipoAba: 'fotos',
-          linkAtivo: 'fotos',
-          complemento: null,
-        },
-        {
-          text: 'Editor',
-          icone: 'texto',
-          rotate: 0,
-          tipoAba: 'editor',
-          linkAtivo: 'editor',
-          complemento: null,
         },
       ];
     },

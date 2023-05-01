@@ -17,6 +17,7 @@
 
 <script>
   import CollapseAll from '@/assets/svg/CollapseAll.vue';
+  import CloseAll from '@/assets/svg/CloseAll.vue';
   import DebugSvg from '@/assets/svg/DebugSvg.vue';
   import EngrenaguemSvg from '@/assets/svg/EngrenaguemSvg.vue';
   import ExploradorSvg from '@/assets/svg/ExploradorSvg.vue';
@@ -103,6 +104,7 @@
     },
     components: {
       CollapseAll,
+      CloseAll,
       DebugSvg,
       EngrenaguemSvg,
       ExploradorSvg,
@@ -149,6 +151,7 @@
         // definir caso queira definir um nome diferente do nome do componente
         switch (this.icone) {
           case 'collapse': return 'CollapseAll';
+          case 'fechaTudo': return 'CloseAll';
           case 'debug': return 'DebugSvg';
           case 'engrenaguem': return 'EngrenaguemSvg';
           case 'explorador': return 'ExploradorSvg';
