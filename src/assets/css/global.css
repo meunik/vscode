@@ -5,6 +5,12 @@
   --background-navegacao-hover: #a7a7a717;
   --vscode-icon-inativo: #57584f;
   --vscode-icon-ativo: #c0c1b5;
+  --icones: #919288;
+  --background-navegacao: #1d1e19;
+  --calendario: #ffd866;
+  --calendario-border: #ffd966b7;
+  --calendario-box-shadow: #ffd86680;
+  --calendario-box-shadow-claro: #ffd9663b;
 }
 
 html, body {
@@ -48,7 +54,7 @@ body {
 }
 
 .navegacao {
-  background: #1d1e19;
+  background: var(--background-navegacao);
   width: 20rem;
   height: 100%;
   overflow: hidden;
@@ -104,10 +110,10 @@ nav a.router-link-exact-active {
   color: #dddddd !important;
 }
 .icone-menu-vscode {
-  color: var(--texto-navegacao) !important;
+  color: var(--icones) !important;
 }
 .icone {
-  color: var(--texto-navegacao) !important;
+  color: var(--icones) !important;
 }
 
 .gap-menu-vscode {
@@ -405,11 +411,7 @@ ul.nav-tabs {
   font-size: 12px;
 }
 
-
-
-
-
-
+/* spinner */
 .spinner-container {
   display: flex;
   align-items: center;
@@ -436,5 +438,90 @@ ul.nav-tabs {
     transform: translateX(2000%);
   }
 }
+/* /spinner */
 
 
+/* calendario */
+.form-control {
+  color: var(--texto-navegacao);
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+.form-control:focus {
+  color: var(--texto-navegacao);
+  background-color: transparent;
+  border-color: var(--calendario-border);
+  outline: 0;
+  box-shadow: 0 0 0 0.15rem var(--calendario-box-shadow-claro);
+}
+
+.text-dark {
+  color: var(--texto-navegacao) !important;
+}
+.btn-outline-primary {
+  color: var(--texto-amarelo);
+  border-color: var(--texto-amarelo);
+}
+.btn-outline-primary:hover {
+  color: #000 !important;
+  background-color: var(--calendario);
+  border-color: var(--calendario);
+}
+.btn-outline-primary:focus, .btn-outline-primary.focus {
+  box-shadow: 0 0 0 0.15rem var(--calendario-box-shadow);
+}
+
+.btn-outline-light:hover {
+  color: #000 !important;
+  background-color: var(--calendario);
+  border-color: var(--calendario);
+}
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+  color: #000 !important;
+  background-color: var(--calendario);
+  border-color: var(--calendario);
+}
+.btn-primary:focus, .btn-primary.focus {
+  color: #000 !important;
+  background-color: var(--calendario);
+  border-color: var(--calendario);
+  box-shadow: 0 0 0 0.15rem var(--calendario-box-shadow);
+}
+
+.btn-outline-light:not(:disabled):not(.disabled):active, .btn-outline-light:not(:disabled):not(.disabled).active, .show > .btn-outline-light.dropdown-toggle {
+  color: #000 !important;
+  background-color: var(--calendario);
+  border-color: var(--calendario);
+}
+.btn-outline-light:not(:disabled):not(.disabled):active:focus, .btn-outline-light:not(:disabled):not(.disabled).active:focus, .show > .btn-outline-light.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.15rem var(--calendario-box-shadow);
+}
+.btn-light:focus, .btn-light.focus {
+  color: #000 !important;
+  background-color: var(--calendario);
+  border-color: var(--calendario);
+  box-shadow: 0 0 0 0.15rem var(--calendario-box-shadow);
+}
+
+.b-calendar-grid-help.border-top.small.text-muted.text-center.bg-light {
+  display: none !important;
+}
+
+.btn-outline-secondary {
+  color: var(--calendario);
+  border-color: var(--calendario);
+}
+.btn-outline-secondary:hover {
+  color: #000;
+  background-color: var(--calendario);
+  border-color: var(--calendario);
+}
+.btn-outline-secondary:not(:disabled):not(.disabled):active, .btn-outline-secondary:not(:disabled):not(.disabled).active, .show > .btn-outline-secondary.dropdown-toggle {
+  color: #000;
+  background-color: var(--calendario);
+  border-color: var(--calendario);
+}
+.btn-outline-secondary:focus, .btn-outline-secondary.focus {
+  box-shadow: 0 0 0 0.15rem var(--calendario-box-shadow);
+}
+/* /calendario */

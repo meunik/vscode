@@ -72,6 +72,8 @@
       }
     },
     async created() {
+      this.navegacaoWidth = '250px';
+      this.navegacaoWidthMin = null;
       this.carregando = true;
       await this.$store.dispatch("VisualStudio/listaExtensoes");
     },

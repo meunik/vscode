@@ -58,6 +58,7 @@
   import Pasta from '@/assets/svg/Pasta.vue';
   import PastaAberta from '@/assets/svg/PastaAberta.vue';
   import Texto from '@/assets/svg/Texto.vue';
+  import Calendario from '@/assets/svg/Calendario.vue';
 
   export default {
     props: {
@@ -145,6 +146,7 @@
       Pasta,
       PastaAberta,
       Texto,
+      Calendario,
     },
     computed: {
       componente() {
@@ -174,8 +176,8 @@
 </script>
 
 <style>
-.m-icon {
-  margin-right: 4px;
-  margin-bottom: 2px;
-}
+  .m-icon {
+    margin-right: 4px;
+    margin-bottom: 2px;
+  }
 </style>

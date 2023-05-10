@@ -88,6 +88,23 @@
         />
       </a>
 
+      <router-link
+        to="/tarefas"
+        id="btn_tarefas"
+        data-toggle="tooltip"
+        data-placement="right"
+        title="Tarefas"
+        class="btn-menu-vscode p-0"
+        active-class="active"
+        @click.native="navegWidth('tarefas')"
+      >
+        <Icone
+          icone="calendario"
+          :classesDiv="`justify-content-center h-12 box-icon-menu ${(estaAtiva('tarefas')) ? 'ativo' : ''}`"
+          :ativo="estaAtiva('tarefas')"
+        />
+      </router-link>
+
       <!-- <Icone icone="monitorRemoto" :classesDiv="'justify-content-center h-12 box-icon-menu'"/> -->
     </div>
     <div class="d-flex flex-col align-items-center gap-menu-vscode">

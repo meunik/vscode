@@ -14,11 +14,16 @@ export function dragbar() {
     let wh = ((bodyWidth - mainWidth)/2)+50
     let widthBar = e.pageX - wh;
     let max = (50/100)*mainWidth;
-    let min = (10/100)*mainWidth;
-
+    let navegacaoWidthMin = store.getters.navegacaoWidthMin;
+    let min = (navegacaoWidthMin) ? navegacaoWidthMin : (10/100)*mainWidth;
+    
     if (bodyWidth > 768) {
-      if ((min < widthBar)&&(widthBar < max)) {
+      if ((min <= widthBar)&&(widthBar <= max)) {
         store.commit('navegacaoWidth', `${widthBar}px`);
+      } else if (navegacaoWidthMin && (min > widthBar)) {
+        store.commit('navegacaoWidth', `${navegacaoWidthMin}px`);
+      } else if (navegacaoWidthMin && (widthBar > max)) {
+        store.commit('navegacaoWidth', `${max}px`);
       } else if (min > widthBar) {
         store.commit('navegacaoWidth', '0px');
       }
@@ -50,18 +55,10 @@ export function dragbarVertical() {
     let max = 0;
     let min = 0;
 
-    // console.log('-------------------------');
-
     if (divFilha) {
       min = (divFilha.clientHeight < 200) ? divFilha.clientHeight : 200;
       max = (50/100)*bodyHeight;
-      // console.log('divFilha: '+divFilha.clientHeight);
     }
-
-    // console.log('mainHeight: '+mainHeight);
-    // console.log('min: '+min);
-    // console.log('min: '+max);
-    // console.log('heightBar: '+heightBar);
 
     if ((min < heightBar)&&(heightBar < max)) {
       main.style.height = `${heightBar}px`;

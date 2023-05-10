@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Explorador from '@/components/vscode/Navegacoes/Explorador.vue'
 import Extensoes from '@/components/vscode/Navegacoes/Extensoes.vue'
 import ControleCodigoFonte from '@/components/vscode/Navegacoes/ControleCodigoFonte.vue'
+import Tarefas from '@/components/vscode/Navegacoes/Tarefas.vue'
 
 Vue.use(VueRouter)
 
@@ -21,6 +22,11 @@ const routes = [
     path: '/controleCodigoFonte',
     name: 'controleCodigoFonte',
     component: ControleCodigoFonte
+  },
+  {
+    path: '/tarefas',
+    name: 'tarefas',
+    component: Tarefas
   },
   {
     path: '/about',

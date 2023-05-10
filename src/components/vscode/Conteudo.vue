@@ -55,11 +55,17 @@
                 </div>
               </div>
             </div>
-            <!-- <div class="categories-column categories-column-right">
+            <div class="categories-column categories-column-right">
               <div class="index-list getting-started">
-                <h2>Passo a passo</h2>
+                <!-- <h2>Passo a passo</h2> -->
+                <b-row class="gap-4">
+                  <b-col cols="5"><Postit :tipo="1" :tamanho="100" /></b-col>
+                  <b-col cols="5"><Postit :tipo="2" :tamanho="100" cor="#FFD3D3" /></b-col>
+                  <b-col cols="5"><Postit :tipo="3" :tamanho="100" cor="#FFF" /></b-col>
+                  <b-col cols="5"><Postit :tipo="4" :tamanho="100" cor="#26E5FF" /></b-col>
+                </b-row>
               </div>
-            </div> -->
+            </div>
             <!-- <div class="footer">
               <p class="showOnStartup">Mostrar a página inicial na inicialização</p>
             </div> -->
@@ -74,25 +80,29 @@
 <script>
   import { Model } from '@/components/vscode/Model.js';
   import Icone from '@/assets/svg/Icone.vue';
+  import Postit from '@/assets/svg/postit/Postit.vue';
   import { camelCase } from '@/utils/lodash.js';
 
   import Perfil from '@/components/vscode/github/Perfil';
   import Setup from '@/components/vscode/Navegacoes/Setup.vue';
   import Fotos from '@/components/vscode/Navegacoes/Fotos.vue';
   import Editor from '@/components/vscode/Navegacoes/Editor.vue';
+  import QuadroTarefas from '@/components/vscode/Navegacoes/components/QuadroTarefas.vue';
 
   export default {
     mixins: [Model],
     components: {
+      Postit,
       Icone,
       Perfil,
       Setup,
       Fotos,
       Editor,
+      QuadroTarefas,
     },
     watch: {
       abaControlador: function(newVal, oldVal) {
-        console.log('testandooo');
+        // console.log('testandooo');
       },
     },
     data() {

@@ -39,6 +39,9 @@
       }
     },
     async created() {
+      this.navegacaoWidth = '250px';
+      this.navegacaoWidthMin = null;
+
       let githubMenu = [];
       if (this.repositorios) {
         this.repositorios.forEach(repo => {

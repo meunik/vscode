@@ -45,6 +45,14 @@ export let Model = {
         this.$store.commit('navegacaoWidth', value)
       }
     },
+    navegacaoWidthMin: {
+      get() {
+        return this.$store.getters['navegacaoWidthMin']
+      },
+      set(value) {
+        this.$store.commit('navegacaoWidthMin', value)
+      }
+    },
     editAbertos: {
       get() {
         return this.$store.getters['editAbertos']
@@ -161,6 +169,21 @@ export let Model = {
           conteudo = markdown(readme);
           break;
 
+        case 'extensoes':
+          let content = await readmeExtensoes(complemento.versions[0].files);
+          nome = complemento.displayName;
+          tipo = 'extensoes';
+          icone = 'extensoes';
+          conteudo = markdown(content);
+          break;
+
+        case 'quadroTarefas': 
+          nome = complemento;
+          tipo = 'quadroTarefas';
+          icone = 'calendario';
+          componente = 'quadroTarefas';
+          break;
+
         case 'perfil': 
           nome = 'Perfil';
           tipo = 'explorador';
@@ -175,14 +198,6 @@ export let Model = {
           componente = 'perfil';
           break;
 
-        case 'extensoes':
-          let content = await readmeExtensoes(complemento.versions[0].files);
-          nome = complemento.displayName;
-          tipo = 'extensoes';
-          icone = 'extensoes';
-          conteudo = markdown(content);
-          break;
-
         case 'setup': 
           nome = 'Setup';
           tipo = 'setup';
@@ -195,13 +210,6 @@ export let Model = {
           tipo = 'fotos';
           icone = 'camera';
           componente = 'fotos';
-          break;
-
-        case 'teste': 
-          nome = 'teste';
-          tipo = 'teste';
-          icone = 'circulo';
-          componente = 'teste';
           break;
 
         case 'editor': 

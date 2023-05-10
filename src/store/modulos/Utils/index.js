@@ -2,6 +2,7 @@ import axios from 'axios'
 
 let state = {
   navegacaoWidth: '250px',
+  navegacaoWidthMin: null,
   contribTamanho: 7,
   abas: [],
   abaIndex: 0,
@@ -13,6 +14,7 @@ let state = {
 
 const getters = {
   navegacaoWidth: store => store.navegacaoWidth,
+  navegacaoWidthMin: store => store.navegacaoWidthMin,
   contribTamanho: store => store.contribTamanho,
   abas: store => store.abas,
   abaIndex: store => store.abaIndex,
@@ -24,6 +26,7 @@ const getters = {
   
 const mutations = {
   navegacaoWidth: (state, obj) => state.navegacaoWidth = obj,
+  navegacaoWidthMin: (state, obj) => state.navegacaoWidthMin = obj,
   contribTamanho: (state, obj) => state.contribTamanho = obj,
   abas: (state, obj) => state.abas = obj,
   abaIndex: (state, obj) => state.abaIndex = obj,
