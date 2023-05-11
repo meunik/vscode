@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="caixa h-100 ">
+  <div id="app" class="caixa h-100" ref="app">
     <Topo />
     <Meio />
     <Rodape />

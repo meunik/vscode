@@ -8,6 +8,12 @@
   .print {
     display: flex !important;
   }
+  .onPrintNoUnderline {
+    text-decoration: none !important;
+  }
+  .nav-link {
+    text-decoration: none !important;
+  }
 }
 
 @media (max-width: 768px) {

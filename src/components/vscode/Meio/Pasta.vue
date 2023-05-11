@@ -33,7 +33,7 @@
         @click="fecharTudo()"
         :style="`padding-left: ${nivelIndentacao}rem;`"
       >
-        <Icone icone="fechaTudo"/>
+        <Icone icone="CloseAll"/>
       </button>
       <span v-if="primeiro && quatidade" class="quatidade-pasta">{{quatidade}}</span>
     </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="rodape px-2">
+  <div class="rodape noPrint px-2">
     <Icone icone="github">
       <a href="https://github.com/meunik/vscode" target="_blank" class="links pr-2" style="font-size: 14px;">Github</a>
     </Icone>

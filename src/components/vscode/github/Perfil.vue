@@ -1,5 +1,8 @@
 <template>
-  <div class="mt-5">
+  <div>
+    <div class="d-flex justify-content-end px-4 gap-3" style="height: 26.5px;">
+      <a href="#" class="btn-menu-vscode text-decoration-none noPrint" style="z-index: 2;" @click="impirmir"><Icone icone="impressora" /></a>
+    </div>
     <hr class="mb-4">
     <b-row class="m-0 mr-1 mr-md-4">
       <b-col cols="12" md="4" class="p-3" style="margin-top: -60px;">
@@ -7,23 +10,23 @@
           <img v-if="perfil.avatar_url" :src="perfil.avatar_url" alt="Foto de Perfil do GitHub" class="avatar-user">
         </div>
         <h4 class="m-0 ">Marcos Paulo <b class="vcard-username">Chagas da Silva</b></h4>
-        <p class="vcard-username">{{perfil.login}}</p>
+        <p class="vcard-username">@{{perfil.login}}</p>
         
         <Icone icone="localizacao">Rua Conselheiro Paulino, nº 358, apto 207, Rio de Janeiro RJ 21073-240</Icone>
         <Icone icone="email">
-          <a href="mailto:marcostrab@hotmail.com" target="_blank" class="links">marcostrab@hotmail.com</a>
+          <a href="mailto:marcostrab@hotmail.com" target="_blank" class="links onPrintNoUnderline">marcostrab@hotmail.com</a>
         </Icone>
         <Icone icone="linkedin">
-          <a href="https://www.linkedin.com/in/marcospaulo505058185/" target="_blank" class="links">in/marcospaulo505058185</a>
+          <a href="https://www.linkedin.com/in/marcospaulo505058185/" target="_blank" class="links onPrintNoUnderline">in/marcospaulo505058185</a>
         </Icone>
         <Icone icone="instagram">
-          <a href="https://www.instagram.com/meunikmp" target="_blank" class="links">meunikmp</a>
+          <a href="https://www.instagram.com/meunikmp" target="_blank" class="links onPrintNoUnderline">meunikmp</a>
         </Icone>
         <Icone icone="github" class="noPrint">
           <a href="https://github.com/meunik" target="_blank" class="links">Github</a>
         </Icone>
         <Icone icone="github" class="print">
-          <a href="https://github.com/meunik" target="_blank" class="links">meunik</a>
+          <a href="https://github.com/meunik" target="_blank" class="links onPrintNoUnderline">meunik</a>
         </Icone>
         
         <hr>
@@ -43,6 +46,38 @@
 
           <span><b class="texto-escuro">Montagem E Manutenção De Micros E Redes</b> | Curso Control C</span>
         </div>
+        
+        <hr>
+
+        <span class="mb-3 texto-sm">
+          meunik 
+          <b class="color-fg-muted">/</b> 
+          HABILIDADES E COMPETÊNCIAS
+          <b class="color-fg-muted">.html</b>
+        </span>
+        <b-row>
+          <b-col>
+            <div class="d-flex flex-column">
+              <Icone icone="html5">HTML</Icone>
+              <Icone icone="css3">CSS</Icone>
+              <Icone icone="javaScript">JavaScript</Icone>
+              <Icone icone="jquery">jQuery</Icone>
+              <Icone icone="vue">Vue</Icone>
+              <Icone icone="tailwind">Tailwind</Icone>
+              <Icone icone="bootstrap">Bootstrap</Icone>
+            </div>
+          </b-col>
+          <b-col>
+            <div class="d-flex flex-column">
+              <Icone icone="php">PHP</Icone>
+              <Icone icone="laravel">Laravel</Icone>
+              <Icone icone="mysql">MySQL</Icone>
+              <Icone icone="gitStack">Git</Icone>
+              <Icone icone="figma">Figma</Icone>
+              <Icone icone="react">React Native</Icone>
+            </div>
+          </b-col>
+        </b-row>
       </b-col>
 
       <b-col cols="12" md="8" class="p-0">
@@ -194,7 +229,7 @@
   import Icone from '@/assets/svg/Icone.vue'
   import { contributions } from '@/utils/contributions.js'
   // import { snakeGame } from '@/utils/snakeGame.js'
-  import 'css-element-queries/src/ResizeSensor.js'
+  import 'css-element-queries/src/ResizeSensor.js';
 
   export default {
     mixins: [Model],
@@ -217,7 +252,10 @@
         } else {
           return `Nenhuma contribuição em ${this.$moment(contribuicao.date, 'YYYY-MM-DD').format('DD/MM/YYYY')}`
         }
-      }
+      },
+      impirmir() {
+        window.print();
+      },
     },
     mounted() {
       contributions()
@@ -270,5 +308,8 @@
     clip: rect(0, 0, 0, 0);
     word-wrap: normal;
     border: 0;
+  }
+  .list-style-none {
+    list-style-type: none;
   }
 </style>

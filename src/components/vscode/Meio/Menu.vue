@@ -37,6 +37,8 @@
         />
       </router-link>
 
+      <Icone icone="debug" :classesDiv="'justify-content-center h-12 box-icon-menu print'"/>
+
       <router-link
         to="/extensoes"
         id="btn_extensoes"
@@ -78,7 +80,7 @@
         data-toggle="tooltip"
         data-placement="right"
         title="Fotos"
-        class="btn-menu-vscode text-decoration-none p-0"
+        class="btn-menu-vscode text-decoration-none p-0 noPrint"
       >
         <Icone
           icone="camera"
@@ -94,7 +96,7 @@
         data-toggle="tooltip"
         data-placement="right"
         title="Tarefas"
-        class="btn-menu-vscode p-0"
+        class="btn-menu-vscode p-0 noPrint"
         active-class="active"
         @click.native="navegWidth('tarefas')"
       >
@@ -104,8 +106,6 @@
           :ativo="estaAtiva('tarefas')"
         />
       </router-link>
-
-      <!-- <Icone icone="monitorRemoto" :classesDiv="'justify-content-center h-12 box-icon-menu'"/> -->
     </div>
     <div class="d-flex flex-col align-items-center gap-menu-vscode">
       <Icone icone="user" class="justify-content-center h-12 box-icon-menu"/>

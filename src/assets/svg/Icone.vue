@@ -59,6 +59,26 @@
   import PastaAberta from '@/assets/svg/PastaAberta.vue';
   import Texto from '@/assets/svg/Texto.vue';
   import Calendario from '@/assets/svg/Calendario.vue';
+  import Impressora from '@/assets/svg/Impressora.vue';
+  import Pdf from '@/assets/svg/Pdf.vue';
+
+  import Bootstrap from '@/assets/svg/stacks/Bootstrap.vue';
+  import Css3 from '@/assets/svg/stacks/Css3.vue';
+  import MySqlSvg from '@/assets/svg/stacks/MySqlSvg.vue';
+  import Php from '@/assets/svg/stacks/Php.vue';
+  import Postman from '@/assets/svg/stacks/Postman.vue';
+  import React from '@/assets/svg/stacks/React.vue';
+  import Tailwind from '@/assets/svg/stacks/Tailwind.vue';
+  import TypeScript from '@/assets/svg/stacks/TypeScript.vue';
+  import Vue from '@/assets/svg/stacks/Vue.vue';
+  import Docker from '@/assets/svg/stacks/Docker.vue';
+  import Figma from '@/assets/svg/stacks/Figma.vue';
+  import GitStack from '@/assets/svg/stacks/GitStack.vue';
+  import Html5 from '@/assets/svg/stacks/Html5.vue';
+  import JavaScript from '@/assets/svg/stacks/JavaScript.vue';
+  import Jquery from '@/assets/svg/stacks/Jquery.vue';
+  import Laravel from '@/assets/svg/stacks/Laravel.vue';
+  import Linux from '@/assets/svg/stacks/Linux.vue';
 
   export default {
     props: {
@@ -147,11 +167,31 @@
       PastaAberta,
       Texto,
       Calendario,
+      Impressora,
+      Pdf,
+
+      Bootstrap,
+      Css3,
+      MySqlSvg,
+      Php,
+      Postman,
+      React,
+      Tailwind,
+      TypeScript,
+      Vue,
+      Docker,
+      Figma,
+      GitStack,
+      Html5,
+      JavaScript,
+      Jquery,
+      Laravel,
+      Linux,
     },
     computed: {
       componente() {
         // definir caso queira definir um nome diferente do nome do componente
-        switch (this.icone) {
+        switch (this.icone.toLowerCase()) {
           case 'collapse': return 'CollapseAll';
           case 'fechaTudo': return 'CloseAll';
           case 'debug': return 'DebugSvg';
@@ -167,6 +207,8 @@
           case 'instagram': return 'InstagramSvg';
           case 'relogio': return 'RelogioSvg';
           case 'localizacao': return 'LocalizacaoSvg';
+          case 'mysql': return 'MySqlSvg';
+          case 'gitStack': return 'Git';
         
           default: return this.icone;
         }

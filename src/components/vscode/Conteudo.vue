@@ -4,7 +4,7 @@
       <b-tab v-for="(aba, key) in abas" :key="`dyn-tab-${key}`" :id="`dyn-tab-${key}`" class="overflow-auto">
         <template #title>
           {{ aba.nome }}{{ (!!aba.linguagem) ? `.${abrivicaoLinguagens(aba.linguagem)}` : '' }}
-          <b-button class="float-right btn-sem-borda" @click="fecharAba(aba, key)">
+          <b-button class="float-right btn-sem-borda noPrint" @click="fecharAba(aba, key)">
             <font-awesome-icon :icon="['fas', 'xmark']" class="pl-1"/>
           </b-button>
         </template>
