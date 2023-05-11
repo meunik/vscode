@@ -44,7 +44,7 @@
                     <li v-for="(aba, key) in abaStorage" :key="`recente-aba-${key}`">
                       <a
                         href="#"
-                        @click="novaAbaRecente(key)"
+                        @click="novaAba(aba.tipoAba, aba.complemento)"
                         class="link-laranja text-decoration-none"
                       >
                         <Icone v-if="aba.icone" :icone="aba.icone" :tamanho="16" :completo="false">{{aba.nome}}</Icone>
@@ -133,13 +133,14 @@
         this.abaControlador = this.abaIndex;
       },
       novaAbaRecente(abaKey) {
-        this.abas = {
-          ...this.abas,
-          [abaKey]: this.abaStorage[abaKey],
-        };
-        const arrayKeys = Object.keys(this.abas);
-        const key = parseInt(this.getKeyByValue(arrayKeys, abaKey));
-        this.abaIndex = key;
+        console.log(this.abaStorage);
+        // this.abas = {
+        //   ...this.abas,
+        //   [abaKey]: this.abaStorage[abaKey],
+        // };
+        // const arrayKeys = Object.keys(this.abas);
+        // const key = parseInt(this.getKeyByValue(arrayKeys, abaKey));
+        // this.abaIndex = key;
       }
     }
   }

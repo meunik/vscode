@@ -93,17 +93,20 @@
             <ul>
               <li>💻 Atualmente trabalho como Full Stack (Vue + Laravel).</li>
             </ul>
-            <div style="display: inline_block">
-              <img align="center" alt="Marcos-php" title="PHP" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg">
-              <img align="center" alt="Marcos-Laravel" title="Laravel" height="30" width="40" src="https://laravel.com/img/logomark.min.svg">
-              <img align="center" alt="Marcos-MySQL" title="MySQL" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg">
-              <img align="center" alt="Marcos-Vue" title="Docker" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg">
-              <img align="center" alt="Marcos-php" title="Git" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg">
-              <img align="center" alt="Marcos-HTML" title="HTML" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
-              <img align="center" alt="Marcos-CSS" title="CSS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
-              <img align="center" alt="Marcos-Js" title="JS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg">
-              <img align="center" alt="Marcos-jQuery" title="jQuery" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/jquery/jquery-original.svg">
-              <img align="center" alt="Marcos-Vue" title="Vue" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original.svg">
+            <div class="d-flex gap-4">
+              <Icone icone="php" :tamanho="30" />
+              <Icone icone="laravel" :tamanho="30" />
+              <Icone icone="mysql" :tamanho="30" />
+              <Icone icone="gitStack" :tamanho="30" />
+              <Icone icone="figma" :tamanho="30" />
+              <Icone icone="react" :tamanho="30" />
+              <Icone icone="html5" :tamanho="30" />
+              <Icone icone="css3" :tamanho="30" />
+              <Icone icone="javaScript" :tamanho="30" />
+              <Icone icone="jquery" :tamanho="30" />
+              <Icone icone="vue" :tamanho="30" />
+              <Icone icone="tailwind" :tamanho="30" />
+              <Icone icone="bootstrap" :tamanho="30" />
             </div>
           </div>
           <!-- <img src="https://github.com/meunik/meunik/raw/output/github-contribution-grid-snake.svg" alt="Snake animation" style="max-width: 100%;"> -->
@@ -254,7 +257,7 @@
         }
       },
       impirmir() {
-        window.print();
+        window.print({ filename: 'Currículo - Marcos Paulo Chagas da Silva' });
       },
     },
     mounted() {

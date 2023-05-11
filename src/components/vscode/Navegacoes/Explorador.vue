@@ -55,6 +55,7 @@
       }
     },
     async created() {
+      await this.$store.dispatch("Git/buscaRepositorios");
       this.navegacaoWidth = '250px';
       this.navegacaoWidthMin = null;
 

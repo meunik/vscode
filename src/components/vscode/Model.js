@@ -236,6 +236,7 @@ export let Model = {
           img: img,
           conteudo: conteudo,
           componente: componente,
+          complemento: complemento,
         },
       };
 
