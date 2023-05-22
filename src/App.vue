@@ -1,21 +1,21 @@
 <template>
   <div id="app" class="caixa h-100">
     <Topo />
-    <Meio />
+    <Corpo />
     <Rodape />
   </div>
 </template>
 <script>
 
 import Topo from './components/vscode/Topo.vue';
-import Meio from './components/vscode/Meio.vue';
+import Corpo from './components/vscode/Corpo.vue';
 import Rodape from './components/vscode/Rodape.vue';
 
 export default {
   name: 'app',
   components: {
     'Topo': Topo, 
-    'Meio': Meio, 
+    'Corpo': Corpo, 
     'Rodape': Rodape, 
   },
 }

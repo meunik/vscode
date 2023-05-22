@@ -132,13 +132,21 @@
     },
     methods: {
       navegWidth(rota) {
-        if ((this.$route.name == this.rotaAtiva)||(this.navegacaoWidth == '0px')) {
-          var bodyWidth = document.body.clientWidth;
+        console.log('----------------------------');
+        var bodyWidth = document.body.offsetWidth;
 
+        if ((this.$route.name == this.rotaAtiva)||(this.navegacaoWidth == '0px')) {
+          console.log('if');
           if (bodyWidth < 768) {
-            this.navegacaoWidth = (this.navegacaoWidth == '0px') ? '100%' : '0px'
+            this.navegacaoWidth = (this.navegacaoWidth == '0px') ? `${bodyWidth - 50}px` : '0px'
           } else {
             this.navegacaoWidth = (this.navegacaoWidth == '0px') ? this.stateNavegacaoWidth : '0px'
+          }
+        } else {
+          console.log('else');
+          if (bodyWidth < 768) {
+            const numeros = this.navegacaoWidth.match(/\d+/g).map(Number)[0];
+            this.navegacaoWidth = (numeros >= 0) ? `${bodyWidth - 50}px` : '0px';
           }
         }
 
