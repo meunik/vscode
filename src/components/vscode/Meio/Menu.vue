@@ -132,18 +132,18 @@
     },
     methods: {
       navegWidth(rota) {
-        console.log('----------------------------');
+        // console.log('----------------------------');
         var bodyWidth = document.body.offsetWidth;
 
         if ((this.$route.name == this.rotaAtiva)||(this.navegacaoWidth == '0px')) {
-          console.log('if');
+          // console.log('if');
           if (bodyWidth < 768) {
             this.navegacaoWidth = (this.navegacaoWidth == '0px') ? `${bodyWidth - 50}px` : '0px'
           } else {
             this.navegacaoWidth = (this.navegacaoWidth == '0px') ? this.stateNavegacaoWidth : '0px'
           }
         } else {
-          console.log('else');
+          // console.log('else');
           if (bodyWidth < 768) {
             const numeros = this.navegacaoWidth.match(/\d+/g).map(Number)[0];
             this.navegacaoWidth = (numeros >= 0) ? `${bodyWidth - 50}px` : '0px';

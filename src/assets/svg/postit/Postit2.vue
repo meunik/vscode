@@ -22,6 +22,16 @@
     <path
       d="M341.214 335.494H4.72656C7.46729 224.131 9.19465 112.767 5.85511 1.31152H340.086C337.782 113.874 338.819 225.237 341.214 335.494Z"
       fill="url(#paint0_linear_951_90877)" />
+    <text
+      x="50%"
+      y="50%"
+      dominant-baseline="middle"
+      text-anchor="middle"
+      fill="#000"
+      :font-size="`${tamanhoPxTexto}px`"
+    >
+      {{texto}}
+    </text>
     <defs>
       <filter id="filter0_d_951_90877" x="0.726562" y="0.837891" width="352.488" height="347.763"
         filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
@@ -74,6 +84,14 @@ export default {
     cor: {
       type: String,
       default: '#FFD3D3',
+    },
+    texto: {
+      type: String,
+      default: '',
+    },
+    tamanhoPxTexto: {
+      type: Number,
+      default: 40,
     },
   },
   data() {

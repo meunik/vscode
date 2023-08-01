@@ -9,7 +9,7 @@
         classesSpan="link-laranja text-decoration-none"
         classesSegundaDiv="align-items-center pl-3 pb-3"
       >
-        Intel Core i5 7400
+        Intel Core i7-13700F
       </Icone>
 
       <h3>Placa Mãe</h3>
@@ -18,7 +18,7 @@
         classesSpan="link-laranja text-decoration-none"
         classesSegundaDiv="align-items-center pl-3 pb-3"
       >
-        ASUS STRIX B250F GAMING (LGA1151)
+        ASUS TUF GAMING B760M-PLUS WIFI D4 (LGA1700)
       </Icone>
       
       <h3>Memória Ram</h3>
@@ -27,7 +27,7 @@
         classesSpan="link-laranja text-decoration-none"
         classesSegundaDiv="align-items-center pl-3 pb-3"
       >
-        24GB (2x8GB + 2x4GB) Dual-Channel DDR4 1197MHz
+        32GB (4x8GB) Dual-Channel DDR4 3600MHz XPG
       </Icone>
 
       <h3>Video</h3>
@@ -50,7 +50,7 @@
         classesSpan="link-laranja text-decoration-none"
         classesSegundaDiv="align-items-center pl-3 pb-3"
       >
-        NVIDIA GeForce GTX 1060 6GB (Gigabyte)
+        AMD Radeon RX 6750 XT (MSI)
       </Icone>
 
       <h2>Armazenamento</h2>
@@ -94,7 +94,7 @@
         classesSpan="link-laranja text-decoration-none"
         classesSegundaDiv="align-items-center pl-3 pb-3"
       >
-        HD (931GB) Seagate ST1000LM024 HN-M101MBB
+        HD (931GB) Seagate ST1000LM024 HN-M101MBB <i class="font-13 text-dark">(sim, são dois HDs iguais)</i>
       </Icone>
 
       <h2>Periféricos</h2>
@@ -117,7 +117,7 @@
         classesSpan="link-laranja text-decoration-none"
         classesSegundaDiv="align-items-center pl-3 pb-2"
       >
-        Cadeira Gamer Alpha Gamer Nebula - AGNEBULA
+        Cadeira Gamer Terabyte Style, Azul
       </Icone>
       <Icone
         icone="headfone"

@@ -1,17 +1,16 @@
 <template>
-  <div class="container">
-    <div class="circle">
-      <svg class="testeSvg" viewBox="0 0 150 150" fill="currentColor">
-        <rect x="0" y="0" width="150" height="150" />
-        <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#000">Texto no Centro</text>
-      </svg>
+  <div :class="`container container-${complemento.id}`" style="cursor: initial;">
+    <div :class="`objeto objeto-${complemento.id}`">
+      <Postit :tipo="3" :tamanho="150">
+        <textarea :class="`textarea-${complemento.id}`" cols="20" rows="10" class="text-black"></textarea>
+      </Postit>
     </div>
   </div>
 </template>
 
 <script>
   import { Model } from '@/components/vscode/Model.js';
-  import { moverDiv2 } from '@/utils/moverDiv';
+  import { moverDiv } from '@/utils/moverDiv';
   import Postit from '@/assets/svg/postit/Postit.vue';
 
   export default {
@@ -19,27 +18,55 @@
     components: {
       Postit,
     },
+    props: {
+      complemento: {
+        default: null,
+      },
+    },
+    data() {
+      return {
+        id: this.complemento.id,
+      }
+    },
     mounted() {
-      moverDiv2()
+      moverDiv(this.complemento.id)
     },
   }
 </script>
 
 <style>
+  textarea {
+    background: transparent;
+    width:130px;
+    height: 130px;
+    margin:5px 0;
+    padding:3px;
+    border: none;
+    outline: none;
+  }
+  textarea::-webkit-scrollbar-track {
+    background-color: transparent !important;
+  }
+  textarea::-webkit-scrollbar {
+    width: 3px;
+    background-color: transparent !important;
+  }
+  textarea::-webkit-scrollbar-thumb {
+    border-radius: 100px;
+    background-color: #0000005e !important;
+  }
+  textarea::-webkit-resizer {
+    background-color: transparent !important;
+  }
+  textarea::-webkit-scrollbar-corner {
+    background-color: transparent !important;
+  }
+
   .square {
     position: relative;
     width: 100px;
     height: 100px;
   }
-
-  /* .testeSvg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100px;
-    height: 100px;
-    color: #fff;
-  } */
 
   /*/////////////////////*/
   .container {
@@ -48,18 +75,18 @@
     overflow: auto;
     position: relative;
   }
-  .circle {
+  .objeto {
     position: absolute;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
-    background: #f1ecec;
+    background: transparent;
     cursor: grab;
   }
-  .circle:active, .circle:active > svg, .circle:active > svg > rect {
+  .objeto:active, .objeto:active > svg, .objeto:active > svg > rect {
     cursor: grabbing !important;
   }
-  .circle:active ~ .container {
+  .objeto:active ~ .container {
     background: blue;
   }
 

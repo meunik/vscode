@@ -26,7 +26,7 @@ export const actions = {
     }
   },
   async buscaReadme({commit}, projeto) {
-    console.log(projeto);
+    // console.log(projeto);
     try {
       try {
         const response = await axios.get(`https://raw.githubusercontent.com/meunik/${projeto}/master/readme.md`)

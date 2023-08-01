@@ -2,7 +2,7 @@ import { api } from '../../api'
 
 export const actions = {
     async buscaPrincipal({commit}, codigo) {
-        console.log('teste Principal');
+        // console.log('teste Principal');
         // try {
         //     let response = await api.get(``)
         //     let {

@@ -161,7 +161,7 @@
             Complexo Regulador do Município do Rio de Janeiro, no qual atuo como
             Full Stack no desenvolvimento de sistemas para auxiliar a área da saúde do
             Município do Rio de Janeiro. Já trabalhei e trabalho com as tecnologias:
-            <span class="d-contents text-php">PHP</span>, <span class="d-contents text-laravel">Laravel</span>, <span class="d-contents text-lumen">Lumen</span>, <span class="d-contents text-mysql">MySQL</span>, <span class="d-contents text-html">HTML</span>, <span class="d-contents text-css">CSS</span>, <span class="d-contents text-javascript">JavaScript</span>, <span class="d-contents text-vue">Vue.js</span>, <span class="d-contents text-jquery">jQuery</span>. No
+            <PHP/>, <Laravel/>, <Lumen/>, <MySQL/>, <HTML/>, <CSS/>, <JavaScript/>, <Vue/>, <Figma/>, <jQuery/>. No
             meu trabalho anterior desenvolvi um sistema de RH, utilizado por 72
             clínicas particulares espalhadas pelo Brasil, com mais de 12 mil
             funcionários inseridos no sistema. Também fiz um sistema para
@@ -185,15 +185,14 @@
             <p>
               Trabalho Full Stack no desenvolvimento de sistemas para auxiliar a área da
               saúde do Município do Rio de Janeiro, na qual utilizo tecnologias como:
-              <span class="d-contents text-git">GIT</span>, <span class="d-contents text-html">HTML</span>, <span class="d-contents text-css">CSS</span>, <span class="d-contents text-javascript">JavaScript</span>, <span class="d-contents text-vue">Vue.js</span> com <span class="d-contents text-vue">VueX</span> e <span class="d-contents text-bootstrap-vue">BootstrapVue</span>, <span class="d-contents text-jquery">jQuery</span>, <span class="d-contents text-php">PHP</span>(5.3 e 8), <span class="d-contents text-laravel">Laravel</span>, <span class="d-contents text-mysql">MySQL</span>.
+              <GIT/>, <Figma/>, <HTML/>, <CSS/>, <JavaScript/>, <Vue/> com <VueX/> e <BootstrapVue/>, <jQuery/>, <PHP/>(5.3 e 8), <Laravel/>, <MySQL/>.
             </p>
             
             <span><i class="texto-fino">06/2021</i> - <i class="texto-fino">02/2022</i></span>
             <span><b class="texto-escuro">Viva Rio</b> | Rio de Janeiro, Rio de Janeiro</span>
             <span>Assistente de Informação</span>
             <p>
-              Desenvolvo sistemas web, na qual utilizo tecnologias como: <span class="d-contents text-git">GIT</span>, <span class="d-contents text-php">PHP</span>(5.3
-              e 8), <span class="d-contents text-laravel">Laravel</span> e <span class="d-contents text-mysql">MySQL</span>.
+              Desenvolvo sistemas web, na qual utilizo tecnologias como: <GIT/>, <PHP/>(5.3 e 8), <Laravel/> e <MySQL/>.
             </p>
             
             <span><i class="texto-fino">06/2019</i> - <i class="texto-fino">05/2021</i></span>
@@ -201,7 +200,7 @@
             <span>Estagiário / Desenvolvedor Júnior</span>
             <p>
               Auxiliei no desenvolvimento de sistemas web, na qual utilizei tecnologias
-              como: <span class="d-contents text-html">HTML5</span>, <span class="d-contents text-css">CSS3</span>, <span class="d-contents text-php">PHP</span>(5.6 e 7), <span class="d-contents text-laravel">Laravel</span>, <span class="d-contents text-lumen">Lumen</span> e <span class="d-contents text-mysql">MySQL</span>.
+              como: <HTML cinco/>, <CSS tres/>, <PHP/>(5.6 e 7), <Laravel/>, <Lumen/> e <MySQL/>.
             </p>
             
             <span><i class="texto-fino">04/2016</i> - <i class="texto-fino">05/2019</i></span>
@@ -228,11 +227,25 @@
 </template>
 
 <script>
-  import { Model } from '@/components/vscode/Model.js'
-  import Icone from '@/assets/svg/Icone.vue'
-  import { contributions } from '@/utils/contributions.js'
-  // import { snakeGame } from '@/utils/snakeGame.js'
+  import { Model } from '@/components/vscode/Model.js';
+  import Icone from '@/assets/svg/Icone.vue';
+  import { contributions } from '@/utils/contributions.js';
+  // import { snakeGame } from '@/utils/snakeGame.js';
   import 'css-element-queries/src/ResizeSensor.js';
+
+  import Laravel from '@/components/vscode/github/components/Laravel.vue';
+  import PHP from '@/components/vscode/github/components/PHP.vue';
+  import Lumen from '@/components/vscode/github/components/Lumen.vue';
+  import MySQL from '@/components/vscode/github/components/MySQL.vue';
+  import HTML from '@/components/vscode/github/components/HTML.vue';
+  import CSS from '@/components/vscode/github/components/CSS.vue';
+  import JavaScript from '@/components/vscode/github/components/JavaScript.vue';
+  import Vue from '@/components/vscode/github/components/Vue.vue';
+  import jQuery from '@/components/vscode/github/components/jQuery.vue';
+  import BootstrapVue from '@/components/vscode/github/components/BootstrapVue.vue';
+  import VueX from '@/components/vscode/github/components/VueX.vue';
+  import GIT from '@/components/vscode/github/components/GIT.vue';
+  import Figma from '@/components/vscode/github/components/Figma.vue';
 
   export default {
     mixins: [Model],
@@ -247,6 +260,19 @@
     },
     components: {
       Icone,
+      Laravel,
+      PHP,
+      Lumen,
+      MySQL,
+      HTML,
+      CSS,
+      JavaScript,
+      Vue,
+      jQuery,
+      BootstrapVue,
+      VueX,
+      GIT,
+      Figma,
     },
     methods: {
       tooltipsText(contribuicao) {

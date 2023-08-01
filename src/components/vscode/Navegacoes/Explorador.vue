@@ -123,14 +123,14 @@
               linkAtivo: 'fotos',
               complemento: null,
             },
-            {
-              text: 'Editor',
-              icone: 'texto',
-              rotate: 0,
-              tipoAba: 'editor',
-              linkAtivo: 'editor',
-              complemento: null,
-            },
+            // {
+            //   text: 'Editor',
+            //   icone: 'texto',
+            //   rotate: 0,
+            //   tipoAba: 'editor',
+            //   linkAtivo: 'editor',
+            //   complemento: null,
+            // },
           ]
         },
       ];

@@ -178,7 +178,7 @@ export let Model = {
           break;
 
         case 'quadroTarefas': 
-          nome = complemento;
+          nome = complemento.nome;
           tipo = 'quadroTarefas';
           icone = 'calendario';
           componente = 'quadroTarefas';

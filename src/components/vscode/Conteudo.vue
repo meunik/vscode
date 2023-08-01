@@ -9,7 +9,7 @@
           </b-button>
         </template>
         <div v-if="aba.conteudo" v-html="aba.conteudo" class="p-3"></div>
-        <component v-if="aba.componente" :is="aba.componente" />
+        <component v-if="aba.componente" :is="aba.componente" :complemento="aba.complemento"/>
       </b-tab>
 
       <template #empty>
@@ -133,7 +133,7 @@
         this.abaControlador = this.abaIndex;
       },
       novaAbaRecente(abaKey) {
-        console.log(this.abaStorage);
+        // console.log(this.abaStorage);
         // this.abas = {
         //   ...this.abas,
         //   [abaKey]: this.abaStorage[abaKey],

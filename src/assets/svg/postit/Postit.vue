@@ -9,9 +9,12 @@
         :estilo="`${estilo}`"
         :ativo="ativo"
         :cor="cor"
+        :texto="texto"
+        :tamanhoPxTexto="tamanhoPxTexto"
         :class="`${(!!$slots.default)?'m-icon':''} ${classesIcone}`"
       />
-      <span :class="`${(!!$slots.default)?'d-contents':''} ${classesSpan}`"><slot></slot></span>
+      <!-- <span :class="`${(!!$slots.default)?'d-contents':''} ${classesSpan} absoluto`"><slot></slot></span> -->
+      <div :class="`${classesSpan} absoluto`"><slot></slot></div>
     </div>
   </div>
 </template>
@@ -68,6 +71,14 @@
         type: String,
         default: "",
       },
+      texto: {
+        type: String,
+        default: '',
+      },
+      tamanhoPxTexto: {
+        type: Number,
+        default: 40,
+      },
     },
     components: {
       Postit1,
@@ -95,5 +106,14 @@
 .m-icon {
   margin-right: 4px;
   margin-bottom: 2px;
+}
+.absoluto {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

@@ -31,7 +31,10 @@
       selected(ymd, date) {
         let nome = `Terefa ${this.$moment(ymd).format('DD/MM/YYYY')}`;
         console.log(nome);
-        this.novaAba('quadroTarefas', nome)
+        this.novaAba('quadroTarefas', {
+          nome: nome,
+          id: this.$moment(ymd).format('DDMMYYYY')
+        })
       }
     },
   }

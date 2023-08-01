@@ -43,7 +43,7 @@ function windowMarkdownIt(hljs, linguagem) {
     highlight: function (str, lang) {
       if(!!linguagem) lang = linguagem;
       if (lang && hljs.getLanguage(lang)) {
-        console.log(str);
+        // console.log(str);
         try {
           return hljs.highlight(str, {
             language: lang,

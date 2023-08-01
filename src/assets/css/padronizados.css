@@ -11,6 +11,10 @@
   gap: 1rem;
 }
 
+.text-black {
+  color: #000 !important;
+}
+
 .white-space-nowrap {
   white-space: nowrap;
 }
