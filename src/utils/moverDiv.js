@@ -34,5 +34,9 @@ export function moverDiv(id) {
   container.addEventListener('mousemove', onMove);
   container.addEventListener('mouseup', onUp);
 
+  objeto.addEventListener('touchstart', onDown);
+  container.addEventListener('touchmove', onMove);
+  container.addEventListener('touchend', onUp);
+
   container.addEventListener('touchmove', onMove);
 }
