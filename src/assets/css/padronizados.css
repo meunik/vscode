@@ -52,6 +52,9 @@
 .d-contents {
   display: contents;
 }
+.flex-wrap {
+  flex-wrap: wrap;
+}
 
 
 /* links */

@@ -4,7 +4,7 @@
       <a href="#" class="btn-menu-vscode text-decoration-none noPrint" style="z-index: 2;" @click="impirmir"><Icone icone="impressora" /></a>
     </div>
     <hr class="mb-4">
-    <b-row class="m-0 mr-1 mr-md-4">
+    <b-row class="m-0 mr-1 mr-md-4 pb-2">
       <b-col cols="12" md="4" class="p-3" style="margin-top: -60px;">
         <div class="d-flex align-items-center justify-content-center mb-3">
           <img v-if="perfil.avatar_url" :src="perfil.avatar_url" alt="Foto de Perfil do GitHub" class="avatar-user">
@@ -93,7 +93,7 @@
             <ul>
               <li>💻 Atualmente trabalho como Full Stack (Vue + Laravel).</li>
             </ul>
-            <div class="d-flex gap-4">
+            <div class="d-flex gap-4 flex-wrap">
               <Icone icone="php" :tamanho="30" />
               <Icone icone="laravel" :tamanho="30" />
               <Icone icone="mysql" :tamanho="30" />
