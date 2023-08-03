@@ -34,6 +34,29 @@
         <span class="mb-3 texto-sm">
           meunik 
           <b class="color-fg-muted">/</b> 
+          MEUS APPS
+          <b class="color-fg-muted">.aab</b>
+        </span>
+        <div class="noPrint">
+          <a href="https://play.google.com/store/apps/details?id=com.meunik.meuTime" target="_blank" class="links link-app">
+          <img src="https://play-lh.googleusercontent.com/oCMl-DXheVHkV54SkV9pbES5anQicadmK3ab0snA6LnmJZW9e_0SWWpaRDxvDQ2TyA4=w240-h480-rw" alt="Foto de Perfil do GitHub" class="app-icon">
+          <div>
+            <span class="app-text">Meu Time</span>
+            <span class="app-text-sm">
+              <Icone icone="GooglePlay" :tamanho="13">Google Play</Icone>
+            </span>
+          </div>
+          </a>
+        </div>
+        <div class="print">
+          <p><b class="texto-escuro">Meu Time:</b> <a href="https://play.google.com/store/apps/details?id=com.meunik.meuTime" target="_blank" class="links">https://play.google.com/store/apps/details?id=com.meunik.meuTime</a></p>
+        </div>
+        
+        <hr>
+
+        <span class="mb-3 texto-sm">
+          meunik 
+          <b class="color-fg-muted">/</b> 
           FORMAÇÃO ACADÊMICA
           <b class="color-fg-muted">.txt</b>
         </span>
@@ -294,11 +317,43 @@
 </script>
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Righteous&family=Roboto:wght@400;500;700&display=swap');
   .avatar-user {
     border-radius: 50% !important;
     width: 100%;
     border: 1px solid #7a7164 !important;
     box-shadow: 0 0 0 1px rgba(29, 32, 33, 0.1);
+  }
+  .app-icon {
+    border-radius: 20% !important;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0 0 0 1px rgba(29, 32, 33, 0.1);
+  }
+  .link-app:hover .app-text {
+    color: #fff;
+  }
+  .app-text {
+    font-size: 20px;
+    font-family: Righteous;
+    line-height: 22px;
+  }
+  .app-text-sm {
+    font-size: 12px;
+    font-style: normal;
+    line-height: 24px;
+    color: #9b9285;
+  }
+  .link-app:hover .app-text-sm {
+    color: #3f84e4;
+  }
+  .link-app {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .link-app:hover {
+    text-decoration: none;
   }
   .vcard-username {
     font-size: 20px;

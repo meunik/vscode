@@ -56,7 +56,10 @@
     },
     async created() {
       await this.$store.dispatch("Git/buscaRepositorios");
-      this.navegacaoWidth = '250px';
+
+      let curriculo = window.location.href.includes("/curriculo");
+      if (curriculo) this.novaAba('curriculo', null);
+      this.navegacaoWidth = (curriculo || (document.body.clientWidth < 768)) ? '0px' : '250px';
       this.navegacaoWidthMin = null;
 
       let githubMenu = [];

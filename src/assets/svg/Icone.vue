@@ -61,6 +61,7 @@
   import Calendario from '@/assets/svg/Calendario.vue';
   import Impressora from '@/assets/svg/Impressora.vue';
   import Pdf from '@/assets/svg/Pdf.vue';
+  import GooglePlay from '@/assets/svg/GooglePlay.vue';
 
   import Bootstrap from '@/assets/svg/stacks/Bootstrap.vue';
   import Css3 from '@/assets/svg/stacks/Css3.vue';
@@ -169,6 +170,7 @@
       Calendario,
       Impressora,
       Pdf,
+      GooglePlay,
 
       Bootstrap,
       Css3,
