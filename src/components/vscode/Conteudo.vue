@@ -56,7 +56,8 @@
               </div>
             </div>
             <div class="categories-column categories-column-right">
-              <div class="index-list getting-started d-flex flex-column gap-4">
+              <h2 class="mb-3">Resumo</h2>
+              <div class="index-list getting-started d-flex flex-column gap-2 mb-2">
                 
                 <div class="d-flex gap-4">
                   <div class="d-flex align-items-center justify-content-center" style="width: 130px;">
@@ -66,6 +67,8 @@
                     <span>💻 Atualmente trabalho como Full Stack (Vue + Laravel).</span>
                   </div>
                 </div>
+                
+                <Resumo />
                 <div class="d-flex gap-4 flex-wrap">
                   <p class="m-0">Stacks:</p>
                   <Icone icone="php" :tamanho="30" />
@@ -82,6 +85,7 @@
                   <Icone icone="tailwind" :tamanho="30" />
                   <Icone icone="bootstrap" :tamanho="30" />
                 </div>
+
                 <!-- <h2>Passo a passo</h2> -->
                 <!-- <b-row class="gap-4">
                   <b-col cols="5"><Postit :tipo="1" :tamanho="100" /></b-col>
@@ -114,6 +118,8 @@
   import Editor from '@/components/vscode/Navegacoes/Editor.vue';
   import QuadroTarefas from '@/components/vscode/Navegacoes/components/QuadroTarefas.vue';
 
+  import Resumo from '@/components/vscode/Resumo.vue';
+
   export default {
     mixins: [Model],
     components: {
@@ -124,6 +130,7 @@
       Fotos,
       Editor,
       QuadroTarefas,
+      Resumo,
     },
     watch: {
       abaControlador: function(newVal, oldVal) {

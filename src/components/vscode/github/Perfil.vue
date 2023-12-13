@@ -12,7 +12,7 @@
         <h4 class="m-0 ">Marcos Paulo <b class="vcard-username">Chagas da Silva</b></h4>
         <p class="vcard-username">@{{perfil.login}}</p>
         
-        <Icone icone="localizacao">Rua Conselheiro Paulino, nº 358, apto 207, Rio de Janeiro RJ 21073-240</Icone>
+        <Icone icone="localizacao">Rio de Janeiro/RJ</Icone>
         <Icone icone="email">
           <a href="mailto:marcostrab@hotmail.com" target="_blank" class="links onPrintNoUnderline">marcostrab@hotmail.com</a>
         </Icone>
@@ -37,19 +37,43 @@
           MEUS APPS
           <b class="color-fg-muted">.aab</b>
         </span>
-        <div class="noPrint">
-          <a href="https://play.google.com/store/apps/details?id=com.meunik.meuTime" target="_blank" class="links link-app">
-          <img src="https://play-lh.googleusercontent.com/oCMl-DXheVHkV54SkV9pbES5anQicadmK3ab0snA6LnmJZW9e_0SWWpaRDxvDQ2TyA4=w240-h480-rw" alt="Foto de Perfil do GitHub" class="app-icon">
-          <div>
-            <span class="app-text">Meu Time</span>
-            <span class="app-text-sm">
-              <Icone icone="GooglePlay" :tamanho="13">Google Play</Icone>
-            </span>
+        <div class="d-flex flex-column gap-2">
+          <div class="noPrint">
+            <a href="https://play.google.com/store/apps/details?id=com.meunik.meuTime" target="_blank" class="links link-app">
+            <img src="https://play-lh.googleusercontent.com/oCMl-DXheVHkV54SkV9pbES5anQicadmK3ab0snA6LnmJZW9e_0SWWpaRDxvDQ2TyA4=w240-h480-rw" alt="Foto de Perfil do GitHub" class="app-icon">
+            <div>
+              <span class="app-text">Meu Time</span>
+              <span class="app-text-sm">
+                <Icone icone="GooglePlay" :tamanho="13">Google Play</Icone>
+              </span>
+            </div>
+            </a>
           </div>
-          </a>
+        </div>
+        
+        <hr>
+
+        <span class="mb-3 texto-sm">
+          meunik 
+          <b class="color-fg-muted">/</b> 
+          MEUS SITES
+          <b class="color-fg-muted">.html</b>
+        </span>
+        <div class="d-flex flex-column gap-2">
+          <div class="noPrint">
+            <a href="https://monobuilds.meunik.top/" target="_blank" class="links link-app">
+            <img src="/logo-icon-mb.png" alt="Foto de Perfil do GitHub" class="app-icon">
+            <div>
+              <span class="app-text">Mono Builds</span>
+              <span class="app-text-sm">
+                <span>monobuilds.meunik.top</span>
+              </span>
+            </div>
+            </a>
+          </div>
         </div>
         <div class="print">
-          <p><b class="texto-escuro">Meu Time:</b> <a href="https://play.google.com/store/apps/details?id=com.meunik.meuTime" target="_blank" class="links">https://play.google.com/store/apps/details?id=com.meunik.meuTime</a></p>
+          <p><b class="texto-escuro">Mono Builds:</b> <a href="https://monobuilds.meunik.top/" target="_blank" class="links">https://monobuilds.meunik.top/</a></p>
         </div>
         
         <hr>
