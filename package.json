@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "deploy": "vue-cli-service build && gh-pages -d docs"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
@@ -17,6 +18,7 @@
     "bootstrap-vue": "^2.23.1",
     "browserify-zlib": "^0.2.0",
     "css-element-queries": "^1.2.3",
+    "gh-pages": "5.0.0",
     "github-contributions-counter": "^2.1.7",
     "https-browserify": "^1.0.0",
     "lodash": "^4.17.21",

@@ -17,8 +17,8 @@
 
           <div class="gettingStartedCategoriesContainer">
             <div class="header">
-              <h1 class="text-branco">Bem vindo ao meu site 😁</h1>
-              <p>Marcos Paulo</p>
+              <h1 class="text-branco">Olá, sou Marcos Paulo 😁</h1>
+              <p>Bem vindo ao meu site</p>
             </div>
             <div class="categories-column categories-column-left">
               <div class="index-list start-container">
@@ -56,14 +56,39 @@
               </div>
             </div>
             <div class="categories-column categories-column-right">
-              <div class="index-list getting-started">
+              <div class="index-list getting-started d-flex flex-column gap-4">
+                
+                <div class="d-flex gap-4">
+                  <div class="d-flex align-items-center justify-content-center" style="width: 130px;">
+                    <img src="https://avatars.githubusercontent.com/u/50606021?v=4" alt="Foto de Perfil do GitHub" class="avatar-user">
+                  </div>
+                  <div class="d-flex align-items-center justify-content-center">
+                    <span>💻 Atualmente trabalho como Full Stack (Vue + Laravel).</span>
+                  </div>
+                </div>
+                <div class="d-flex gap-4 flex-wrap">
+                  <p class="m-0">Stacks:</p>
+                  <Icone icone="php" :tamanho="30" />
+                  <Icone icone="laravel" :tamanho="30" />
+                  <Icone icone="mysql" :tamanho="30" />
+                  <Icone icone="gitStack" :tamanho="30" />
+                  <Icone icone="figma" :tamanho="30" />
+                  <Icone icone="react" :tamanho="30" />
+                  <Icone icone="html5" :tamanho="30" />
+                  <Icone icone="css3" :tamanho="30" />
+                  <Icone icone="javaScript" :tamanho="30" />
+                  <Icone icone="jquery" :tamanho="30" />
+                  <Icone icone="vue" :tamanho="30" />
+                  <Icone icone="tailwind" :tamanho="30" />
+                  <Icone icone="bootstrap" :tamanho="30" />
+                </div>
                 <!-- <h2>Passo a passo</h2> -->
-                <b-row class="gap-4">
+                <!-- <b-row class="gap-4">
                   <b-col cols="5"><Postit :tipo="1" :tamanho="100" /></b-col>
                   <b-col cols="5"><Postit :tipo="2" :tamanho="100" cor="#FFD3D3" /></b-col>
                   <b-col cols="5"><Postit :tipo="3" :tamanho="100" cor="#FFF" /></b-col>
                   <b-col cols="5"><Postit :tipo="4" :tamanho="100" cor="#26E5FF" /></b-col>
-                </b-row>
+                </b-row> -->
               </div>
             </div>
             <!-- <div class="footer">
