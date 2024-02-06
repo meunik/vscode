@@ -163,16 +163,6 @@
       },
       attControlador() {
         this.abaControlador = this.abaIndex;
-      },
-      novaAbaRecente(abaKey) {
-        // console.log(this.abaStorage);
-        // this.abas = {
-        //   ...this.abas,
-        //   [abaKey]: this.abaStorage[abaKey],
-        // };
-        // const arrayKeys = Object.keys(this.abas);
-        // const key = parseInt(this.getKeyByValue(arrayKeys, abaKey));
-        // this.abaIndex = key;
       }
     }
   }

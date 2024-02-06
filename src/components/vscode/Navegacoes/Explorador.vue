@@ -65,9 +65,9 @@
       let githubMenu = [];
       if (this.repositorios) {
         this.repositorios.forEach(repo => {
-          if (repo && repo.language) {
+          if (repo) {
             githubMenu.push({
-              text: `${repo.language} - ${repo.name}`,
+              text: `${(repo.language)?repo.language+' - ':''}${repo.name}`,
               icone: 'github',
               rotate: 0,
               tipoAba: 'explorador',

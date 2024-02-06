@@ -2,6 +2,7 @@ import axios from 'axios';
 import { markdown } from '@/utils/markdown.js';
 import store from '@/store/store';
 import { camelCase } from '@/utils/lodash.js';
+import { blackList } from "@/utils/RepoBlackList";
 
 export let Model = {
   computed: {
@@ -31,7 +32,8 @@ export let Model = {
     },
     repositorios: {
       get() {
-        return this.$store.getters['Git/repositorios']
+        let repositorios = this.$store.getters['Git/repositorios']
+        return repositorios.filter(item => !blackList.includes(item.name))
       },
       set(value) {
         this.$store.commit('Git/repositorios', value)
