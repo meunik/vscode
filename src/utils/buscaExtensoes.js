@@ -58,7 +58,7 @@ export async function buscaExtensoes(extensao, tipo) {
       {
         "criteria": criteria,
         "pageNumber": 1,
-        "pageSize": 56,
+        "pageSize": -1,
         "sortBy": 0,
         "sortOrder": 0
       }
