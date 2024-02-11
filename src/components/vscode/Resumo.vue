@@ -36,19 +36,19 @@
     </div>
     <div class="d-flex flex-column gap-2">
       <div class="noPrint">
-        <a href="https://monobuilds.meunik.top/" target="_blank" class="links link-app">
+        <a href="https://monobuilds.com.br/" target="_blank" class="links link-app">
         <img src="/logo-icon-mb.png" alt="Foto de Perfil do GitHub" class="app-icon">
         <div>
           <span class="app-text">Mono Builds</span>
           <span class="app-text-sm">
-            <span>monobuilds.meunik.top</span>
+            <span>monobuilds.com.br</span>
           </span>
         </div>
         </a>
       </div>
     </div>
     <div class="print">
-      <p><b class="texto-escuro">Mono Builds:</b> <a href="https://monobuilds.meunik.top/" target="_blank" class="links">https://monobuilds.meunik.top/</a></p>
+      <p><b class="texto-escuro">Mono Builds:</b> <a href="https://monobuilds.com.br/" target="_blank" class="links">https://monobuilds.com.br/</a></p>
     </div>
     <hr class="my-1">
   </div>
