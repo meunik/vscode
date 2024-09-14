@@ -90,7 +90,7 @@
         />
       </a>
 
-      <router-link
+      <!-- <router-link
         to="/tarefas"
         id="btn_tarefas"
         data-toggle="tooltip"
@@ -105,7 +105,7 @@
           :classesDiv="`justify-content-center h-12 box-icon-menu ${(estaAtiva('tarefas')) ? 'ativo' : ''}`"
           :ativo="estaAtiva('tarefas')"
         />
-      </router-link>
+      </router-link> -->
     </div>
     <div class="d-flex flex-col align-items-center gap-menu-vscode">
       <Icone icone="user" class="justify-content-center h-12 box-icon-menu"/>

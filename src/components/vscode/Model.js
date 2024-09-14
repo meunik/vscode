@@ -196,7 +196,7 @@ export let Model = {
         case 'curriculo': 
           nome = 'Currículo';
           tipo = 'explorador';
-          icone = 'github';
+          icone = 'notas';
           componente = 'perfil';
           break;
 

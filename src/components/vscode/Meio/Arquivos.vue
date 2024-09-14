@@ -5,6 +5,7 @@
       @click="store.toggleOpen(data)"
       :class="`pl-3 ${classe}`"
       :style="` ${estilo}`"
+      @mouseover="hover = `hover-${data.linkAtivo}`" @mouseleave="hover = null"
     >
       <Icone
         v-if="data.pasta"
@@ -21,7 +22,20 @@
         @click="novaAba(data.tipoAba, data.complemento)"
         :class="`link-menu text-decoration-none ${linkAtivo(data.linkAtivo)} ${ativoExplorador} ${data.classe}`"
       >
-        <Icone :icone="data.icone" :tamanho="16" :rotate="(data.open)?data.rotate:0" :completo="false">{{data.text}}</Icone>
+        <Icone :icone="data.icone" :tamanho="16" :rotate="(data.open)?data.rotate:0" :completo="false">
+          {{data.text}}
+          <a
+            v-if="(data.icone == 'github')"
+            @click.stop="link"
+            :href="`https://github.com/meunik/${data.linkAtivo}`"
+            target="_blank"
+            class="links-github pr-2"
+            :class="{ 'hovered': (hover == `hover-${data.linkAtivo}`) }"
+            style="font-size: 14px;"
+          >
+            <font-awesome-icon :icon="['fas', 'link']" />
+          </a>
+        </Icone>
       </a>
     </div>
   </Tree>
@@ -60,9 +74,11 @@
     data() {
       return {
         perf: Perfil,
+        hover: null
       }
     },
     computed: {
+      link(event) {},
       menuData() {
         return this.dados;
       },

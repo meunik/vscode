@@ -305,7 +305,17 @@ ul.nav-tabs {
   object-fit: contain;
 }
 
+.links-github {
+  /* color: #ffffff42; */
+  color: transparent;
+}
 
+.links-github.hovered {
+  color: #ffffff42;
+}
+.links-github:hover {
+  color: #ffffffaf;
+}
 
 
 .pasta-button, .pasta-primeiro, .pasta-icon {

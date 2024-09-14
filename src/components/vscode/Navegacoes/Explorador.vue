@@ -94,7 +94,7 @@
             },
             {
               text: 'Currículo',
-              icone: 'github',
+              icone: 'notas',
               classe: 'link-laranja',
               rotate: 0,
               tipoAba: 'curriculo',

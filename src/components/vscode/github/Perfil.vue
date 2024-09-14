@@ -50,6 +50,9 @@
             </a>
           </div>
         </div>
+        <div class="print">
+          <p><b class="texto-escuro">Meu Time:</b> <a href="https://play.google.com/store/apps/details?id=com.meunik.meuTime" target="_blank" class="links">https://play.google.com/store/apps/details?id=com.meunik.meuTime</a></p>
+        </div>
         
         <hr>
 
