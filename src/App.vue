@@ -1,22 +1,14 @@
-<template>
-  <div id="app" class="caixa h-100">
-    <Topo />
-    <Corpo />
-    <Rodape />
-  </div>
-</template>
-<script>
+<script setup>
+import { RouterLink, RouterView } from 'vue-router'
 
-import Topo from './components/vscode/Topo.vue';
-import Corpo from './components/vscode/Corpo.vue';
-import Rodape from './components/vscode/Rodape.vue';
+import * as locales from '@nuxt/ui/locale'
+import { useI18n } from 'vue-i18n'
 
-export default {
-  name: 'app',
-  components: {
-    'Topo': Topo, 
-    'Corpo': Corpo, 
-    'Rodape': Rodape, 
-  },
-}
+const { locale } = useI18n()
 </script>
+
+<template>
+  <UApp :locale="locales[locale]">
+    <RouterView />
+  </UApp>
+</template>
