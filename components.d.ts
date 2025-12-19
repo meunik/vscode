@@ -11,13 +11,22 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AbaCameraConteudo: typeof import('./src/components/abas/AbaCameraConteudo.vue')['default']
+    AbaExploradorConteudo: typeof import('./src/components/abas/AbaExploradorConteudo.vue')['default']
+    AbaExtensoesConteudo: typeof import('./src/components/abas/AbaExtensoesConteudo.vue')['default']
+    AbaGitConteudo: typeof import('./src/components/abas/AbaGitConteudo.vue')['default']
+    AbaPesquisaConteudo: typeof import('./src/components/abas/AbaPesquisaConteudo.vue')['default']
     BarraLateral: typeof import('./src/components/BarraLateral.vue')['default']
+    EditorAbas: typeof import('./src/components/EditorAbas.vue')['default']
+    EditorConteudo: typeof import('./src/components/EditorConteudo.vue')['default']
     Footer: typeof import('./src/components/layout/Footer.vue')['default']
     Header: typeof import('./src/components/layout/Header.vue')['default']
     IconsShowcase: typeof import('./src/components/IconsShowcase.vue')['default']
+    ItemArvore: typeof import('./src/components/abas/ItemArvore.vue')['default']
     Layout: typeof import('./src/components/layout/Layout.vue')['default']
     Main: typeof import('./src/components/Main.vue')['default']
     NavBar: typeof import('./src/components/NavBar.vue')['default']
+    PainelLateral: typeof import('./src/components/PainelLateral.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     UApp: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/App.vue')['default']

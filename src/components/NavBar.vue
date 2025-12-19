@@ -1,25 +1,62 @@
 <script setup>
-import Icon from '@/assets/icons/Icon.vue';
+import Icon from '@/assets/icons/Icon.vue'
+import { useAbas } from '@/composables/useAbas'
+
+const { abaAtiva, alternarAba } = useAbas()
+
+const abas = [
+  { nome: 'explorador', icone: 'explorador' },
+  { nome: 'pesquisa', icone: 'pesquisa' },
+  { nome: 'git', icone: 'git' },
+  { nome: 'extensoes', icone: 'extensoes' },
+  { nome: 'camera', icone: 'camera' }
+]
 </script>
 
 <template>
-  <navbar class="h-full bg-black/50 w-12 flex flex-col gap-0 items-center justify-start noPrint">
-    <div class="flex items-center justify-center py-3 w-full hover:text-nav-text border-l-2 border-nav-border text-nav-text">
-      <Icon name="explorador" :size="24" />
-    </div>
-    <div class="flex items-center justify-center py-4 w-full hover:text-nav-text">
-      <Icon name="pesquisa" :size="24" />
-    </div>
-    <div class="flex items-center justify-center py-4 w-full hover:text-nav-text">
-      <Icon name="git" :size="24" />
-    </div>
-    <div class="flex items-center justify-center py-4 w-full hover:text-nav-text">
-      <Icon name="extensoes" :size="24" />
-    </div>
-    <div class="flex items-center justify-center py-4 w-full hover:text-nav-text">
-      <Icon name="camera" :size="24" />
-    </div>
-  </navbar>
-  <div class="h-full bg-black/50 w-64 flex flex-col gap-0 items-center justify-start noPrint">
+  <div class="navbar">
+    <button
+      v-for="aba in abas"
+      :key="aba.nome"
+      @click="alternarAba(aba.nome)"
+      :class="['navbar-item', { ativo: abaAtiva === aba.nome }]"
+      :title="aba.nome"
+    >
+      <Icon :name="aba.icone" :size="24" />
+    </button>
   </div>
 </template>
+
+<style scoped>
+.navbar {
+  display: flex;
+  flex-direction: column;
+  width: 48px;
+  height: 100%;
+  background-color: #333;
+  border-right: 1px solid #252525;
+}
+
+.navbar-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  width: 100%;
+  background: none;
+  border: none;
+  border-left: 2px solid transparent;
+  color: #858585;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.navbar-item:hover {
+  color: #cccccc;
+}
+
+.navbar-item.ativo {
+  color: #ffffff;
+  border-left-color: #007acc;
+}
+</style>
