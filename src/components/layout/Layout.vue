@@ -7,9 +7,9 @@ import { ref } from 'vue'
 <template>
   <div class="caixa">
     <Header />
-    <main class="flex flex-1 overflow-auto h-full w-full">
+    <div class="flex flex-1 overflow-hidden h-full w-full">
       <slot />
-    </main>
+    </div>
     <Footer />
   </div>
 </template>

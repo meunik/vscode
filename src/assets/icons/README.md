@@ -54,7 +54,7 @@ import Icone from '@/assets/svg/Icone.vue';
 
 ### VSCode (`icons.json`)
 Ícones do editor VSCode:
-- `debug`, `engrenaguem`, `explorador`
+- `debug`, `engrenagem`, `explorador`
 - `extensoes`, `git`, `pesquisa`
 
 ### Social (`icons.json`)

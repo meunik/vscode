@@ -1,0 +1,32 @@
+.solarized {
+  --bg-principal: #fdf6e3;
+  --bg-secundario: #eee8d5;
+  --bg-terciario: #e5dfc8;
+  --bg-navbar: #eee8d5;
+  --bg-hover: #e5dfc8;
+  --bg-ativo: #dcd5be;
+  --bg-botao: #268bd2;
+  --bg-botao-hover: #1f74b0;
+  --bg-input: #eee8d5;
+  
+  --texto-principal: #657b83;
+  --texto-secundario: #93a1a1;
+  --texto-titulo: #073642;
+  --texto-destaque: #2aa198;
+  
+  --borda-principal: #eee8d5;
+  --borda-secundaria: #dcd5be;
+  --borda-destaque: #268bd2;
+  
+  --icone-normal: #93a1a1;
+  --icone-hover: #657b83;
+  --icone-ativo: #268bd2;
+  
+  --aba-bg: #eee8d5;
+  --aba-bg-ativa: #fdf6e3;
+  --aba-borda-ativa: #268bd2;
+  --aba-texto: #93a1a1;
+  --aba-texto-ativo: #657b83;
+  
+  --navbar-borda-ativa: #268bd2;
+}

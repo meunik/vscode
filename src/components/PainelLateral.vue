@@ -36,60 +36,16 @@ const tituloAba = computed(() => {
 </script>
 
 <template>
-  <div v-if="abaAtiva" class="painel-lateral" :style="{ width: largura + 'px' }">
-    <div class="painel-cabecalho">
-      <h3>{{ tituloAba }}</h3>
+  <div v-if="abaAtiva" class="relative h-full bg-secundario border-r border-borda-principal flex flex-col" :style="{ width: largura + 'px' }">
+    <div class="px-5 h-8.75 py-2 bg-secundario border-b border-borda-principal text-texto-principal text-[11px] font-semibold tracking-wider flex items-center">
+      <h3 class="m-0 text-[11px] uppercase">{{ tituloAba }}</h3>
     </div>
-    <div class="painel-conteudo">
+    <div class="flex-1 overflow-y-auto overflow-x-hidden">
       <component :is="componenteAtual" />
     </div>
-    <div class="redimensionador" @mousedown="iniciarRedimensionamento"></div>
+    <div class="absolute top-0 right-0 w-1 h-full cursor-ew-resize z-10 hover:bg-borda-destaque" @mousedown="iniciarRedimensionamento"></div>
   </div>
 </template>
 
 <style scoped>
-.painel-lateral {
-  position: relative;
-  height: 100%;
-  background-color: #252526;
-  border-right: 1px solid #1e1e1e;
-  display: flex;
-  flex-direction: column;
-}
-
-.painel-cabecalho {
-  padding: 8px 20px;
-  background-color: #252526;
-  border-bottom: 1px solid #1e1e1e;
-  color: #cccccc;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-
-.painel-cabecalho h3 {
-  margin: 0;
-  font-size: 11px;
-  text-transform: uppercase;
-}
-
-.painel-conteudo {
-  flex: 1;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.redimensionador {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 4px;
-  height: 100%;
-  cursor: ew-resize;
-  z-index: 10;
-}
-
-.redimensionador:hover {
-  background-color: #007acc;
-}
 </style>

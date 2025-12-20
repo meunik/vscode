@@ -1,0 +1,32 @@
+.monokai {
+  --bg-principal: #272822;
+  --bg-secundario: #2e2e2e;
+  --bg-terciario: #3e3d32;
+  --bg-navbar: #2e2e2e;
+  --bg-hover: #3e3d32;
+  --bg-ativo: #49483e;
+  --bg-botao: #a6e22e;
+  --bg-botao-hover: #8fd928;
+  --bg-input: #3e3d32;
+  
+  --texto-principal: #f8f8f2;
+  --texto-secundario: #75715e;
+  --texto-titulo: #ffffff;
+  --texto-destaque: #66d9ef;
+  
+  --borda-principal: #3e3d32;
+  --borda-secundaria: #49483e;
+  --borda-destaque: #a6e22e;
+  
+  --icone-normal: #75715e;
+  --icone-hover: #f8f8f2;
+  --icone-ativo: #a6e22e;
+  
+  --aba-bg: #3e3d32;
+  --aba-bg-ativa: #272822;
+  --aba-borda-ativa: #a6e22e;
+  --aba-texto: #75715e;
+  --aba-texto-ativo: #f8f8f2;
+  
+  --navbar-borda-ativa: #a6e22e;
+}

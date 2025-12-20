@@ -6,33 +6,78 @@
 
 @custom-variant dark (&:is(.dark *));
 
+:root {
+  --bg-principal: #1e1e1e;
+  --bg-secundario: #252526;
+  --bg-terciario: #2d2d30;
+  --bg-navbar: #333333;
+  --bg-hover: #2a2d2e;
+  --bg-ativo: #37373d;
+  --bg-botao: #0e639c;
+  --bg-botao-hover: #1177bb;
+  --bg-input: #3c3c3c;
+  
+  --texto-principal: #cccccc;
+  --texto-secundario: #858585;
+  --texto-titulo: #ffffff;
+  --texto-destaque: #4fc3f7;
+  
+  --borda-principal: #1e1e1e;
+  --borda-secundaria: #3c3c3c;
+  --borda-destaque: #007acc;
+  
+  --icone-normal: #858585;
+  --icone-hover: #cccccc;
+  --icone-ativo: #ffffff;
+  
+  --aba-bg: #2d2d30;
+  --aba-bg-ativa: #1e1e1e;
+  --aba-borda-ativa: #007acc;
+  --aba-texto: #969696;
+  --aba-texto-ativo: #ffffff;
+  
+  --navbar-borda-ativa: #007acc;
+}
+
 @theme inline {
-  --color-header-background: var(--header-background);
-  --color-header-text: var(--header-text);
-  --color-header-text-sleep: var(--header-text-sleep);
-  --color-header-text-hover: var(--header-text-hover);
-  --color-header-border: var(--header-border);
+  /* --color-padrao: var(--padrao); */
+  --color-principal: var(--bg-principal);
+  --color-secundario: var(--bg-secundario);
+  --color-terciario: var(--bg-terciario);
+  --color-navbar: var(--bg-navbar);
+  --color-hover: var(--bg-hover);
+  --color-ativo: var(--bg-ativo);
+  --color-botao: var(--bg-botao);
+  --color-botao-hover: var(--bg-botao-hover);
+  --color-input: var(--bg-input);
 
-  --color-footer-background: var(--footer-background);
-  --color-footer-text: var(--footer-text);
+  --color-texto-principal: var(--texto-principal);
+  --color-texto-secundario: var(--texto-secundario);
+  --color-texto-titulo: var(--texto-titulo);
+  --color-texto-destaque: var(--texto-destaque);
 
-  --color-nav-text: var(--nav-text);
-  --color-nav-border: var(--nav-border);
+  --color-borda-principal: var(--borda-principal);
+  --color-borda-secundaria: var(--borda-secundaria);
+  --color-borda-destaque: var(--borda-destaque);
 
-  --color-fundo: var(--fundo);
-  --color-fundo-icons: var(--fundo-icons);
-  --color-text-icons: var(--text-icons);
-  --color-padrao: var(--padrao);
+  --color-icone-normal: var(--icone-normal);
+  --color-icone-hover: var(--icone-hover);
+  --color-icone-ativo: var(--icone-ativo);
 
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-aba-bg: var(--aba-bg);
+  --color-aba-bg-ativa: var(--aba-bg-ativa);
+  --color-aba-borda-ativa: var(--aba-borda-ativa);
+  --color-aba-texto: var(--aba-texto);
+  --color-aba-texto-ativo: var(--aba-texto-ativo);
+
+  --color-navbar-borda-ativa: var(--navbar-borda-ativa);
 }
 
 @layer base {
   .caixa {
-    @apply w-full max-w-375 h-full flex flex-col bg-fundo text-white rounded-lg overflow-hidden;
+    @apply w-full max-w-375 h-full flex flex-col bg-principal text-principal rounded-lg overflow-hidden;
   }
   .rodape {
-    @apply bg-footer-background w-full flex justify-end items-center h-6 relative text-sm;
+    @apply bg-principal text-principal w-full flex justify-end items-center h-6 relative text-sm;
   }
 }

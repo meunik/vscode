@@ -209,7 +209,7 @@ Use para compatibilidade com nomes antigos:
   "aliases": {
     "fechar": "close",          // PT → EN
     "fechaTudo": "closeAll",    // Nome antigo
-    "config": "engrenaguem"     // Apelido
+    "config": "engrenagem"     // Apelido
   }
 }
 ```

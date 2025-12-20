@@ -36,18 +36,21 @@ const handleClick = () => {
 </script>
 
 <template>
-  <div class="item-arvore">
+  <div>
     <div
-      :class="['item-linha', item.tipo]"
+      :class="[
+        'flex items-center gap-1.5 py-1 pr-3 cursor-pointer select-none text-texto-principal hover:bg-hover',
+        item.tipo === 'pasta' ? 'font-medium' : ''
+      ]"
       :style="{ paddingLeft: (20 + nivel * 12) + 'px' }"
       @click="handleClick"
     >
-      <span v-if="item.tipo === 'pasta'" class="icone">
+      <span v-if="item.tipo === 'pasta'" class="text-[10px] w-3 flex-shrink-0">
         {{ item.aberta ? '▼' : '▶' }}
       </span>
-      <span v-else class="icone-arquivo">📄</span>
-      <span class="icone-tipo">{{ item.tipo === 'pasta' ? '📁' : '' }}</span>
-      <span class="nome">{{ item.nome }}</span>
+      <span v-else class="text-xs w-3 flex-shrink-0">📄</span>
+      <span class="text-sm flex-shrink-0">{{ item.tipo === 'pasta' ? '📁' : '' }}</span>
+      <span class="flex-1 whitespace-nowrap overflow-hidden text-ellipsis text-[13px]">{{ item.nome }}</span>
     </div>
     <div v-if="item.tipo === 'pasta' && item.aberta && item.filhos">
       <ItemArvore
@@ -63,48 +66,4 @@ const handleClick = () => {
 </template>
 
 <style scoped>
-.item-linha {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-right: 12px;
-  cursor: pointer;
-  user-select: none;
-  color: #cccccc;
-}
-
-.item-linha:hover {
-  background-color: #2a2d2e;
-}
-
-.item-linha.pasta {
-  font-weight: 500;
-}
-
-.icone {
-  font-size: 10px;
-  width: 12px;
-  flex-shrink: 0;
-}
-
-.icone-arquivo {
-  font-size: 12px;
-  width: 12px;
-  flex-shrink: 0;
-}
-
-.icone-tipo {
-  font-size: 14px;
-  flex-shrink: 0;
-}
-
-.nome {
-  flex: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: 13px;
-}
 </style>

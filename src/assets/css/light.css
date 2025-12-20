@@ -1,21 +1,32 @@
-:root {
-  --header-background: #000;
-  --header-text: #ff7cc6;
-  --header-text-sleep: #ffffff99;
-  --header-text-hover: #ff2da3;
-  --header-border: #ff189a87;
+﻿.light {
+  --bg-principal: #ffffff;
+  --bg-secundario: #f3f3f3;
+  --bg-terciario: #e8e8e8;
+  --bg-navbar: #f3f3f3;
+  --bg-hover: #e8e8e8;
+  --bg-ativo: #d6d6d6;
+  --bg-botao: #007acc;
+  --bg-botao-hover: #005a9e;
+  --bg-input: #ffffff;
   
-  --footer-background: #000;
-  --footer-text: #ff7cc6;
+  --texto-principal: #3c3c3c;
+  --texto-secundario: #6a6a6a;
+  --texto-titulo: #000000;
+  --texto-destaque: #0066b8;
   
-  --nav-text: #ff189a;
-  --nav-border: #ff189a;
-
-  --fundo: #1d1d1d;
-  --fundo-icons: #b60066;
-  --text-icons: #ffffff;
-  --padrao: #ff189a;
-
-  --background: #ffffff;
-  --foreground: #cccccc;
+  --borda-principal: #d4d4d4;
+  --borda-secundaria: #e0e0e0;
+  --borda-destaque: #007acc;
+  
+  --icone-normal: #6a6a6a;
+  --icone-hover: #3c3c3c;
+  --icone-ativo: #000000;
+  
+  --aba-bg: #ececec;
+  --aba-bg-ativa: #ffffff;
+  --aba-borda-ativa: #007acc;
+  --aba-texto: #6a6a6a;
+  --aba-texto-ativo: #3c3c3c;
+  
+  --navbar-borda-ativa: #007acc;
 }

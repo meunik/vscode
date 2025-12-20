@@ -20,25 +20,27 @@ const handleAtivarAba = (aba) => {
 </script>
 
 <template>
-  <div class="explorador">
-    <div v-if="abas.length > 0" class="secao">
-      <div class="secao-titulo">EDITORES ABERTOS</div>
-      <div class="editores-abertos">
+  <div class="text-texto-principal text-[13px] h-full overflow-y-auto">
+    <div v-if="abas.length > 0" class="mb-2">
+      <div class="px-5 py-2 pt-2 pb-1 text-[11px] font-semibold text-texto-secundario uppercase tracking-wider">EDITORES ABERTOS</div>
+      <div class="py-1">
         <div
           v-for="aba in abas"
           :key="aba.id"
-          class="editor-item"
+          class="flex items-center gap-2 px-5 py-1 cursor-pointer select-none hover:bg-hover"
           @click="handleAtivarAba(aba)"
         >
-          <span class="icone-arquivo">📄</span>
-          <span class="nome-arquivo">{{ aba.titulo }}</span>
-          <button class="botao-fechar" @click.stop="handleFecharAba(aba)">×</button>
+          <span class="text-xs shrink-0">📄</span>
+          <span class="flex-1 whitespace-nowrap overflow-hidden text-ellipsis text-[13px]">{{ aba.titulo }}</span>
+          <button class="flex items-center justify-center w-4.5 h-4.5 bg-transparent border-none text-texto-secundario text-lg cursor-pointer rounded p-0 leading-none opacity-0 transition-opacity hover:bg-hover hover:text-texto-principal group-hover:opacity-100" @click.stop="handleFecharAba(aba)">
+            ×
+          </button>
         </div>
       </div>
     </div>
-    <div class="secao">
-      <div class="secao-titulo">VSCODE2</div>
-      <div class="arvore">
+    <div class="mb-2">
+      <div class="px-5 py-2 pt-2 pb-1 text-[11px] font-semibold text-texto-secundario uppercase tracking-wider">VSCODE2</div>
+      <div class="mt-1">
         <ItemArvore
           v-for="item in estruturaArquivos"
           :key="item.id"
@@ -53,84 +55,7 @@ const handleAtivarAba = (aba) => {
 </template>
 
 <style scoped>
-.explorador {
-  color: #cccccc;
-  font-size: 13px;
-  height: 100%;
-  overflow-y: auto;
-}
-
-.secao {
-  margin-bottom: 8px;
-}
-
-.secao-titulo {
-  padding: 8px 20px 4px;
-  font-size: 11px;
-  font-weight: 600;
-  color: #858585;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.editores-abertos {
-  padding: 4px 0;
-}
-
-.editor-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 4px 20px;
-  cursor: pointer;
-  user-select: none;
-}
-
-.editor-item:hover {
-  background-color: #2a2d2e;
-}
-
-.icone-arquivo {
-  font-size: 12px;
-  flex-shrink: 0;
-}
-
-.nome-arquivo {
-  flex: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: 13px;
-}
-
-.botao-fechar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 18px;
-  height: 18px;
-  background: none;
-  border: none;
-  color: #858585;
-  font-size: 18px;
-  cursor: pointer;
-  border-radius: 3px;
-  padding: 0;
-  line-height: 1;
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-
-.editor-item:hover .botao-fechar {
+.flex:has(button):hover button {
   opacity: 1;
-}
-
-.botao-fechar:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #cccccc;
-}
-
-.arvore {
-  margin-top: 4px;
 }
 </style>

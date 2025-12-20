@@ -11,9 +11,9 @@ const mostrarPainel = computed(() => abaAtiva.value !== null)
 </script>
 
 <template>
-  <main class="main-container">
+  <main class="flex flex-1 overflow-hidden bg-principal">
     <PainelLateral v-if="mostrarPainel" />
-    <div class="area-editor">
+    <div class="flex flex-col flex-1 overflow-hidden">
       <EditorAbas />
       <EditorConteudo />
     </div>
@@ -21,17 +21,4 @@ const mostrarPainel = computed(() => abaAtiva.value !== null)
 </template>
 
 <style scoped>
-.main-container {
-  display: flex;
-  flex: 1;
-  overflow: hidden;
-  background-color: #1e1e1e;
-}
-
-.area-editor {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  overflow: hidden;
-}
 </style>

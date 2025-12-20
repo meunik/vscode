@@ -1,21 +1,32 @@
-.dark {
-  --header-background: #000;
-  --header-text: #ff7cc6;
-  --header-text-sleep: #ffffff99;
-  --header-text-hover: #ff2da3;
-  --header-border: #ff189a87;
+﻿.dark {
+  --bg-principal: #1e1e1e;
+  --bg-secundario: #252526;
+  --bg-terciario: #2d2d30;
+  --bg-navbar: #333333;
+  --bg-hover: #2a2d2e;
+  --bg-ativo: #37373d;
+  --bg-botao: #0e639c;
+  --bg-botao-hover: #1177bb;
+  --bg-input: #3c3c3c;
   
-  --footer-background: #000;
-  --footer-text: #ff7cc6;
+  --texto-principal: #cccccc;
+  --texto-secundario: #858585;
+  --texto-titulo: #ffffff;
+  --texto-destaque: #4fc3f7;
   
-  --nav-text: #ff189a;
-  --nav-border: #ff189a;
-
-  --fundo: #1d1d1d;
-  --fundo-icons: #b60066;
-  --text-icons: #ffffff;
-  --padrao: #ff189a;
-
-  --background: #ffffff;
-  --foreground: #cccccc;
+  --borda-principal: #1e1e1e;
+  --borda-secundaria: #3c3c3c;
+  --borda-destaque: #007acc;
+  
+  --icone-normal: #858585;
+  --icone-hover: #cccccc;
+  --icone-ativo: #ffffff;
+  
+  --aba-bg: #2d2d30;
+  --aba-bg-ativa: #1e1e1e;
+  --aba-borda-ativa: #007acc;
+  --aba-texto: #969696;
+  --aba-texto-ativo: #ffffff;
+  
+  --navbar-borda-ativa: #007acc;
 }

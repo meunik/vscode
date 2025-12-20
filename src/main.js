@@ -1,5 +1,10 @@
 import { createApp } from 'vue'
 import '@/assets/css/style.css'
+import '@/assets/css/dark.css'
+import '@/assets/css/light.css'
+import '@/assets/css/monokai.css'
+import '@/assets/css/dracula.css'
+import '@/assets/css/solarized.css'
 import App from './App.vue'
 
 import ui from '@nuxt/ui/vue-plugin'
