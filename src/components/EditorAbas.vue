@@ -18,20 +18,20 @@ const fecharAbaComEvento = (evento, id) => {
       <div
         v-for="aba in abas"
         :key="aba.id"
-        class="flex items-center gap-2 px-3 border-r border-borda-principal text-[13px] cursor-pointer select-none min-w-30 max-w-50 transition-colors"
+        class="flex items-center gap-2 pl-3 pr-1 border-r border-borda-principal text-[13px] cursor-pointer select-none min-w-30 max-w-50 transition-colors"
         :class="[
           aba.id === abaAtivaId 
             ? 'bg-aba-bg-ativa text-aba-texto-ativo border-t border-t-aba-borda-ativa' 
-            : 'bg-aba-bg text-aba-texto hover:bg-hover'
+            : 'bg-aba-bg text-aba-texto hover:bg-hover/50'
         ]"
         @click="ativarAba(aba.id)"
       >
         <span class="flex-1 whitespace-nowrap overflow-hidden text-ellipsis">{{ aba.titulo }}</span>
         <button 
-          class="flex items-center justify-center w-5 h-5 bg-transparent border-none text-icone-normal text-xl cursor-pointer rounded p-0 leading-none hover:bg-hover hover:text-icone-hover"
+          class="flex items-center justify-center w-5 h-5 border-none text-icone-normal text-xl cursor-pointer rounded p-0 leading-none hover:bg-hover hover:text-icone-hover"
           @click="fecharAbaComEvento($event, aba.id)"
         >
-          ×
+          <UIcon name="lucide-x" class="text-[14px] shrink-0" />
         </button>
       </div>
     </div>

@@ -19,8 +19,8 @@ const abaAtual = computed(() => {
       </div>
     </div>
     <div v-else class="flex flex-col h-full">
-      <div class="px-4 py-2 bg-principal border-b border-borda-secundaria text-texto-principal text-xs">
-        <span class="font-mono">{{ abaAtual.titulo }}</span>
+      <div class="px-4 pt-2 pb-0.5 bg-principal border-b border-borda-secundaria text-texto-principal text-xs">
+        <span class="font-mono">{{ abaAtual.caminho || abaAtual.titulo }}</span>
       </div>
       <div class="flex-1 overflow-hidden">
         <MarkdownViewer v-if="abaAtual.tipo === 'markdown'" :conteudo="abaAtual.conteudo" />
