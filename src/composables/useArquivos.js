@@ -86,7 +86,7 @@ const estruturaArquivos = ref([
           },
           {
             id: proximoId++,
-            nome: 'useEditorAbas.js',
+            nome: 'TesteDeNomeGrandeDeArquivo.js',
             tipo: 'arquivo',
             caminho: 'src/composables/useEditorAbas.js',
             conteudo: 'export function useEditorAbas() {\n  // implementação\n}'

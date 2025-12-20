@@ -41,9 +41,9 @@ const fecharSeletorTemas = () => {
         v-for="aba in abas"
         :key="aba.nome"
         @click="alternarAba(aba.nome)"
-        class="flex items-center justify-center h-12 w-full bg-transparent border-none border-l-2 cursor-pointer transition-colors text-icone-normal hover:text-icone-hover text-lg"
+        class="flex items-center justify-center h-12 w-full cursor-pointer transition-colors hover:text-icone-hover text-lg"
         :class="[
-          abaAtiva === aba.nome ? 'text-icone-ativo border-l-navbar-borda-ativa' : 'border-l-transparent'
+          abaAtiva === aba.nome ? 'text-icone-ativo border-x-2 border-l-navbar-borda-ativa border-r-transparent' : 'border-x-2 border-x-transparent text-icone-normal'
         ]"
         :title="aba.nome"
       >
@@ -52,9 +52,9 @@ const fecharSeletorTemas = () => {
     </div>
     <div class="relative">
       <button
-        class="botao-configuracoes flex items-center justify-center h-12 w-full bg-transparent border-none border-l-2 cursor-pointer transition-colors text-lg text-icone-normal"
+        class="botao-configuracoes flex items-center justify-center h-12 w-full cursor-pointer transition-colors hover:text-icone-hover text-lg"
         :class="[
-          menuAberto ? 'text-icone-ativo border-l-navbar-borda-ativa' : 'text-icone-normal hover:text-icone-hover border-l-transparent'
+          menuAberto ? 'text-icone-ativo border-x-2 border-l-navbar-borda-ativa border-r-transparent' : 'border-x-2 border-x-transparent text-icone-normal'
         ]"
         @click="alternarMenu"
         title="Configurações"

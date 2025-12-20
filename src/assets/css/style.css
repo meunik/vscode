@@ -80,4 +80,7 @@
   .rodape {
     @apply bg-principal text-principal w-full flex justify-end items-center h-6 relative text-sm;
   }
+  .tresPontinhos {
+    @apply overflow-hidden text-ellipsis whitespace-nowrap;
+  }
 }

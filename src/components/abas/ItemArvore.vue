@@ -47,7 +47,7 @@ const handleClick = () => {
 <template>
   <div>
     <div
-      class="flex items-center py-1 pr-3 gap-1 cursor-pointer select-none text-texto-principal"
+      class="flex items-center py-1 pr-0.5 gap-1 cursor-pointer select-none text-texto-principal"
       :class="[
         item.tipo === 'pasta' ? 'font-medium' : '',
         estaAtivo ? 'bg-ativo' : 'hover:bg-hover'
@@ -59,7 +59,7 @@ const handleClick = () => {
       <UIcon v-else name="" class="w-4 shrink-0" />
       <UIcon v-if="item.tipo === 'pasta'" name="line-md:folder" class="text-[16px] shrink-0" />
       <UIcon v-else name="line-md:file-document-filled" class="text-[16px] shrink-0" />
-      <span class="flex-1 text-[13px] line-clamp-1">{{ item.nome }}</span>
+      <span class="flex-1 text-[13px] tresPontinhos">{{ item.nome }}</span>
     </div>
     <div v-if="item.tipo === 'pasta' && item.aberta && item.filhos">
       <ItemArvore
