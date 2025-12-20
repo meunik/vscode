@@ -118,7 +118,17 @@ const extrairBlocoHtml = (indiceInicial) => {
     htmlLinhas.push(linhas.value[i])
   }
   
-  return { conteudo: htmlLinhas.join('\n'), proximoIndice: i + 1 }
+  // Processar markdown dentro do bloco HTML
+  const conteudoProcessado = htmlLinhas.map((l, idx) => {
+    // Manter tags HTML abertas e fechadas
+    if (idx === 0 || idx === htmlLinhas.length - 1 || l.trim().startsWith('<') && l.trim().endsWith('>')) {
+      return l
+    }
+    // Processar markdown nas outras linhas
+    return formatarTexto(l)
+  }).join('\n')
+  
+  return { conteudo: conteudoProcessado, proximoIndice: i + 1 }
 }
 
 const extrairBlocoCodigo = (indiceInicial) => {
@@ -151,6 +161,19 @@ const extrairLista = (indiceInicial) => {
   return { itens, proximoIndice: i }
 }
 
+const extrairBadgesInline = (indiceInicial) => {
+  const badges = [linhas.value[indiceInicial]]
+  let i = indiceInicial + 1
+  
+  // Continuar enquanto a linha for uma imagem markdown
+  while (i < linhas.value.length && linhas.value[i].match(/^!\[.*\]\(.*\)$/)) {
+    badges.push(linhas.value[i])
+    i++
+  }
+  
+  return { badges, proximoIndice: i }
+}
+
 const parseMarkdown = () => {
   const elementos = []
   let i = 0
@@ -158,7 +181,7 @@ const parseMarkdown = () => {
   while (i < linhas.value.length) {
     const linha = linhas.value[i]
     
-    // Blocos HTML
+    // Blocos HTML com atributos (processar antes para manter estilos)
     if (ehBlocoHtml(linha) && !linha.includes('</')) {
       const resultado = extrairBlocoHtml(i)
       if (resultado) {
@@ -176,8 +199,12 @@ const parseMarkdown = () => {
       continue
     }
     
+    // Linha horizontal (## sozinho ou ---, ***, ___)
+    if (linha.trim() === '##' || linha.trim() === '---' || linha.trim() === '***' || linha.trim() === '___') {
+      elementos.push({ tipo: 'linha' })
+    }
     // Títulos
-    if (linha.startsWith('#### ')) {
+    else if (linha.startsWith('#### ')) {
       elementos.push({ tipo: 'h4', conteudo: linha.slice(5) })
     } else if (linha.startsWith('### ')) {
       elementos.push({ tipo: 'h3', conteudo: linha.slice(4) })
@@ -190,6 +217,13 @@ const parseMarkdown = () => {
     else if (linha.startsWith('- ') || linha.startsWith('* ')) {
       const resultado = extrairLista(i)
       elementos.push({ tipo: 'lista', itens: resultado.itens })
+      i = resultado.proximoIndice
+      continue
+    }
+    // Badges inline (múltiplas imagens consecutivas)
+    else if (linha.match(/^!\[.*\]\(.*\)$/)) {
+      const resultado = extrairBadgesInline(i)
+      elementos.push({ tipo: 'badges', badges: resultado.badges })
       i = resultado.proximoIndice
       continue
     }
@@ -209,19 +243,41 @@ const parseMarkdown = () => {
 }
 
 const formatarTexto = (texto) => {
-  return texto
-    // Badges com link: [![texto](imagem)](link)
-    .replace(/\[!\[([^\]]*)\]\(([^)]+)\)\]\(([^)]+)\)/g, '<a href="$3" target="_blank" class="inline-block"><img src="$2" alt="$1" class="inline-block h-5" /></a>')
-    // Imagens: ![alt](url)
-    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" class="inline-block max-w-full" />')
-    // Links: [texto](url)
-    .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank" class="text-borda-destaque hover:underline">$1</a>')
-    // Bold: **texto**
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    // Italic: *texto*
-    .replace(/\*(.+?)\*/g, '<em>$1</em>')
-    // Code inline: `codigo`
-    .replace(/`(.+?)`/g, '<code class="px-1 py-0.5 bg-terciario text-texto-destaque text-xs rounded">$1</code>')
+  // Se a linha é uma tag HTML pura (sem markdown), retornar como está
+  if (texto.trim().match(/^<[^>]+>$/) || texto.trim().match(/^<\/[^>]+>$/)) {
+    return texto
+  }
+  
+  let resultado = texto
+  
+  // Processar títulos markdown (quando dentro de blocos HTML)
+  if (texto.startsWith('# ')) {
+    const nivel = texto.match(/^#+/)[0].length
+    const conteudo = texto.replace(/^#+\s*/, '')
+    const classes = {
+      1: 'text-3xl font-bold mb-4 text-texto-titulo border-b border-borda-secundaria pb-2',
+      2: 'text-2xl font-bold mb-3 mt-6 text-texto-titulo border-b border-borda-secundaria pb-2',
+      3: 'text-xl font-bold mb-2 mt-5 text-texto-titulo',
+      4: 'text-lg font-bold mb-2 mt-4 text-texto-titulo'
+    }
+    resultado = `<h${nivel} class="${classes[nivel] || classes[4]}">${conteudo}</h${nivel}>`
+  } else {
+    resultado = texto
+      // Badges com link: [![texto](imagem)](link)
+      .replace(/\[!\[([^\]]*)\]\(([^)]+)\)\]\(([^)]+)\)/g, '<a href="$3" target="_blank" rel="noopener noreferrer" class="inline-block"><img src="$2" alt="$1" class="inline-block h-5" style="display: inline-block; vertical-align: middle;" /></a>')
+      // Imagens: ![alt](url)
+      .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" class="inline-block max-w-full" style="display: inline-block; vertical-align: middle;" />')
+      // Links: [texto](url)
+      .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-borda-destaque hover:underline">$1</a>')
+      // Bold: **texto**
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      // Italic: *texto*
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      // Code inline: `codigo`
+      .replace(/`(.+?)`/g, '<code class="px-1 py-0.5 bg-terciario text-texto-destaque text-xs rounded">$1</code>')
+  }
+  
+  return resultado
 }
 
 const elementosRenderizados = computed(() => parseMarkdown())
@@ -238,8 +294,12 @@ const elementosRenderizados = computed(() => parseMarkdown())
       <ul v-else-if="elemento.tipo === 'lista'" class="mb-4 ml-6 list-disc text-texto-principal space-y-1">
         <li v-for="(item, idx) in elemento.itens" :key="idx" v-html="formatarTexto(item)"></li>
       </ul>
+      <div v-else-if="elemento.tipo === 'badges'" class="mb-4 flex items-center gap-2 flex-wrap">
+        <span v-for="(badge, idx) in elemento.badges" :key="idx" v-html="formatarTexto(badge)"></span>
+      </div>
       <pre v-else-if="elemento.tipo === 'codigo'" class="mb-4 bg-[#151b23] rounded-md overflow-x-auto p-4 sm-scrollbar"><code :class="`language-${elemento.linguagem}`" class="text-sm font-mono">{{ elemento.conteudo }}</code></pre>
       <div v-else-if="elemento.tipo === 'html'" class="mb-4" v-html="elemento.conteudo"></div>
+      <hr v-else-if="elemento.tipo === 'linha'" class="my-6 border-t border-borda-secundaria" />
       <div v-else-if="elemento.tipo === 'espaco'" class="h-2"></div>
     </div>
   </div>
@@ -250,6 +310,29 @@ const elementosRenderizados = computed(() => parseMarkdown())
 .hljs {
   color: #fcfcfa;
   background: #151b23;
+}
+
+/* Estilos para imagens e badges */
+img {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Estilos específicos para badges (altura fixa) */
+.inline-block.h-5 {
+  height: 1.25rem;
+  width: auto;
+}
+
+a.inline-block {
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+a.inline-block:hover {
+  opacity: 0.8;
 }
 
 .hljs-comment,
