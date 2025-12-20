@@ -22,7 +22,7 @@ const handleAtivarAba = (aba) => {
 <template>
   <div class="text-texto-principal text-[13px] h-full overflow-y-auto">
     <div v-if="abas.length > 0" class="mb-2">
-      <div class="px-5 py-2 pt-2 pb-1 text-[11px] font-semibold text-texto-secundario uppercase tracking-wider">EDITORES ABERTOS</div>
+      <div class="px-2 py-2 pt-2 pb-1 text-[11px] font-semibold text-texto-secundario uppercase tracking-wider">EDITORES ABERTOS</div>
       <div class="py-1">
         <div
           v-for="aba in abas"
@@ -39,7 +39,7 @@ const handleAtivarAba = (aba) => {
       </div>
     </div>
     <div class="mb-2">
-      <div class="px-5 py-2 pt-2 pb-1 text-[11px] font-semibold text-texto-secundario uppercase tracking-wider">VSCODE2</div>
+      <div class="px-2 py-2 pt-2 pb-1 text-[11px] font-semibold text-texto-secundario uppercase tracking-wider">VSCODE2</div>
       <div class="mt-1">
         <ItemArvore
           v-for="item in estruturaArquivos"

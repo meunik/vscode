@@ -35,8 +35,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="fixed inset-0 bg-black/50 flex items-start justify-center pt-[60px] z-[2000]">
-    <div class="bg-secundario border border-borda-secundaria rounded-md shadow-[0_8px_24px_rgba(0,0,0,0.4)] w-[500px] max-w-[90vw] max-h-[70vh] overflow-hidden flex flex-col">
+  <div class="fixed inset-0 bg-black/50 flex items-start justify-center pt-15 z-2000">
+    <div class="bg-secundario border border-borda-secundaria rounded-md shadow-[0_8px_24px_rgba(0,0,0,0.4)] w-125 max-w-[90vw] max-h-[70vh] overflow-hidden flex flex-col">
       <div class="flex items-center justify-between px-4 py-3 border-b border-borda-secundaria">
         <h3 class="m-0 text-sm font-semibold text-texto-titulo">Selecionar Tema de Cores</h3>
         <button 
@@ -56,7 +56,7 @@ onUnmounted(() => {
           ]"
           @click="selecionarTemaEspecifico(tema)"
         >
-          <div :class="['w-10 h-8 rounded border border-borda-secundaria p-1.5 flex flex-col gap-0.5 flex-shrink-0', tema.id]">
+          <div :class="['w-10 h-8 rounded border border-borda-secundaria p-1.5 flex flex-col gap-0.5 shrink-0', tema.id]">
             <div class="h-0.5 bg-borda-destaque rounded-sm"></div>
             <div class="h-0.5 bg-borda-destaque rounded-sm w-3/5"></div>
             <div class="h-0.5 bg-borda-destaque rounded-sm"></div>

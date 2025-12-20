@@ -38,19 +38,18 @@ const handleClick = () => {
 <template>
   <div>
     <div
+      class="flex items-center py-1 pr-3 gap-1 cursor-pointer select-none text-texto-principal hover:bg-hover"
       :class="[
-        'flex items-center gap-1.5 py-1 pr-3 cursor-pointer select-none text-texto-principal hover:bg-hover',
         item.tipo === 'pasta' ? 'font-medium' : ''
       ]"
-      :style="{ paddingLeft: (20 + nivel * 12) + 'px' }"
+      :style="{ paddingLeft: (10 + nivel * 12) + 'px' }"
       @click="handleClick"
     >
-      <span v-if="item.tipo === 'pasta'" class="text-[10px] w-3 flex-shrink-0">
-        {{ item.aberta ? '▼' : '▶' }}
-      </span>
-      <span v-else class="text-xs w-3 flex-shrink-0">📄</span>
-      <span class="text-sm flex-shrink-0">{{ item.tipo === 'pasta' ? '📁' : '' }}</span>
-      <span class="flex-1 whitespace-nowrap overflow-hidden text-ellipsis text-[13px]">{{ item.nome }}</span>
+      <UIcon v-if="item.tipo === 'pasta'" :name="item.aberta ? 'lucide-chevron-down' : 'lucide-chevron-right'" class="w-4 shrink-0" />
+      <UIcon v-else name="" class="w-4 shrink-0" />
+      <UIcon v-if="item.tipo === 'pasta'" name="lucide-folder" class="shrink-0" />
+      <UIcon v-else name="lucide-file" class="text-xs w-3 shrink-0" />
+      <span class="flex-1 text-[13px] line-clamp-1">{{ item.nome }}</span>
     </div>
     <div v-if="item.tipo === 'pasta' && item.aberta && item.filhos">
       <ItemArvore
