@@ -1,5 +1,72 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, onMounted, nextTick, watch } from 'vue'
+import hljs from 'highlight.js/lib/core'
+import javascript from 'highlight.js/lib/languages/javascript'
+import typescript from 'highlight.js/lib/languages/typescript'
+import python from 'highlight.js/lib/languages/python'
+import java from 'highlight.js/lib/languages/java'
+import json from 'highlight.js/lib/languages/json'
+import xml from 'highlight.js/lib/languages/xml'
+import css from 'highlight.js/lib/languages/css'
+import bash from 'highlight.js/lib/languages/bash'
+import sql from 'highlight.js/lib/languages/sql'
+import markdown from 'highlight.js/lib/languages/markdown'
+import php from 'highlight.js/lib/languages/php'
+import go from 'highlight.js/lib/languages/go'
+import rust from 'highlight.js/lib/languages/rust'
+import c from 'highlight.js/lib/languages/c'
+import cpp from 'highlight.js/lib/languages/cpp'
+import csharp from 'highlight.js/lib/languages/csharp'
+import ruby from 'highlight.js/lib/languages/ruby'
+import swift from 'highlight.js/lib/languages/swift'
+import kotlin from 'highlight.js/lib/languages/kotlin'
+import scala from 'highlight.js/lib/languages/scala'
+import r from 'highlight.js/lib/languages/r'
+import perl from 'highlight.js/lib/languages/perl'
+import dart from 'highlight.js/lib/languages/dart'
+import yaml from 'highlight.js/lib/languages/yaml'
+
+hljs.registerLanguage('javascript', javascript)
+hljs.registerLanguage('js', javascript)
+hljs.registerLanguage('typescript', typescript)
+hljs.registerLanguage('ts', typescript)
+hljs.registerLanguage('python', python)
+hljs.registerLanguage('py', python)
+hljs.registerLanguage('java', java)
+hljs.registerLanguage('json', json)
+hljs.registerLanguage('xml', xml)
+hljs.registerLanguage('html', xml)
+hljs.registerLanguage('vue', xml)
+hljs.registerLanguage('css', css)
+hljs.registerLanguage('scss', css)
+hljs.registerLanguage('sass', css)
+hljs.registerLanguage('bash', bash)
+hljs.registerLanguage('shell', bash)
+hljs.registerLanguage('sh', bash)
+hljs.registerLanguage('sql', sql)
+hljs.registerLanguage('markdown', markdown)
+hljs.registerLanguage('md', markdown)
+hljs.registerLanguage('php', php)
+hljs.registerLanguage('go', go)
+hljs.registerLanguage('rust', rust)
+hljs.registerLanguage('rs', rust)
+hljs.registerLanguage('c', c)
+hljs.registerLanguage('cpp', cpp)
+hljs.registerLanguage('c++', cpp)
+hljs.registerLanguage('csharp', csharp)
+hljs.registerLanguage('cs', csharp)
+hljs.registerLanguage('ruby', ruby)
+hljs.registerLanguage('rb', ruby)
+hljs.registerLanguage('swift', swift)
+hljs.registerLanguage('kotlin', kotlin)
+hljs.registerLanguage('kt', kotlin)
+hljs.registerLanguage('scala', scala)
+hljs.registerLanguage('r', r)
+hljs.registerLanguage('perl', perl)
+hljs.registerLanguage('pl', perl)
+hljs.registerLanguage('dart', dart)
+hljs.registerLanguage('yaml', yaml)
+hljs.registerLanguage('yml', yaml)
 
 const props = defineProps({
   conteudo: {
@@ -13,50 +80,125 @@ const linhas = computed(() => {
   return props.conteudo.split('\n')
 })
 
-const parseMarkdown = (texto) => {
+const aplicarHighlight = () => {
+  nextTick(() => {
+    document.querySelectorAll('pre code').forEach((block) => {
+      if (!block.dataset.highlighted) {
+        hljs.highlightElement(block)
+        block.dataset.highlighted = 'yes'
+      }
+    })
+  })
+}
+
+watch(() => props.conteudo, () => aplicarHighlight())
+onMounted(() => aplicarHighlight())
+
+// Helpers para parsing de markdown
+const TAGS_BLOCO_HTML = ['<div', '<table', '<section', '<article', '<aside', '<header', '<footer', '<nav', '<main', '<figure', '<details', '<summary']
+
+const ehBlocoHtml = (linha) => TAGS_BLOCO_HTML.some(tag => linha.trim().startsWith(tag))
+
+const extrairBlocoHtml = (indiceInicial) => {
+  const linha = linhas.value[indiceInicial]
+  const tagMatch = linha.match(/<(\w+)/)
+  const tagName = tagMatch?.[1]
+  
+  if (!tagName) return null
+  
+  const htmlLinhas = [linha]
+  let i = indiceInicial + 1
+  
+  while (i < linhas.value.length && !linhas.value[i].includes(`</${tagName}>`)) {
+    htmlLinhas.push(linhas.value[i])
+    i++
+  }
+  
+  if (i < linhas.value.length) {
+    htmlLinhas.push(linhas.value[i])
+  }
+  
+  return { conteudo: htmlLinhas.join('\n'), proximoIndice: i + 1 }
+}
+
+const extrairBlocoCodigo = (indiceInicial) => {
+  const linha = linhas.value[indiceInicial]
+  const linguagem = linha.slice(3).trim() || 'plaintext'
+  const codigoLinhas = []
+  let i = indiceInicial + 1
+  
+  while (i < linhas.value.length && !linhas.value[i].startsWith('```')) {
+    codigoLinhas.push(linhas.value[i])
+    i++
+  }
+  
+  return {
+    linguagem,
+    conteudo: codigoLinhas.join('\n'),
+    proximoIndice: i + 1
+  }
+}
+
+const extrairLista = (indiceInicial) => {
+  const itens = [linhas.value[indiceInicial].slice(2)]
+  let i = indiceInicial + 1
+  
+  while (i < linhas.value.length && (linhas.value[i].startsWith('- ') || linhas.value[i].startsWith('* '))) {
+    itens.push(linhas.value[i].slice(2))
+    i++
+  }
+  
+  return { itens, proximoIndice: i }
+}
+
+const parseMarkdown = () => {
   const elementos = []
   let i = 0
   
   while (i < linhas.value.length) {
     const linha = linhas.value[i]
     
-    if (linha.startsWith('```')) {
-      const linguagem = linha.slice(3).trim()
-      const codigoLinhas = []
-      i++
-      
-      while (i < linhas.value.length && !linhas.value[i].startsWith('```')) {
-        codigoLinhas.push(linhas.value[i])
-        i++
+    // Blocos HTML
+    if (ehBlocoHtml(linha) && !linha.includes('</')) {
+      const resultado = extrairBlocoHtml(i)
+      if (resultado) {
+        elementos.push({ tipo: 'html', conteudo: resultado.conteudo })
+        i = resultado.proximoIndice
+        continue
       }
-      
-      elementos.push({ tipo: 'codigo', conteudo: codigoLinhas.join('\n'), linguagem })
-      i++
+    }
+    
+    // Blocos de código
+    if (linha.startsWith('```')) {
+      const resultado = extrairBlocoCodigo(i)
+      elementos.push({ tipo: 'codigo', conteudo: resultado.conteudo, linguagem: resultado.linguagem })
+      i = resultado.proximoIndice
       continue
     }
     
-    if (linha.startsWith('# ')) {
-      elementos.push({ tipo: 'h1', conteudo: linha.slice(2) })
-    } else if (linha.startsWith('## ')) {
-      elementos.push({ tipo: 'h2', conteudo: linha.slice(3) })
+    // Títulos
+    if (linha.startsWith('#### ')) {
+      elementos.push({ tipo: 'h4', conteudo: linha.slice(5) })
     } else if (linha.startsWith('### ')) {
       elementos.push({ tipo: 'h3', conteudo: linha.slice(4) })
-    } else if (linha.startsWith('#### ')) {
-      elementos.push({ tipo: 'h4', conteudo: linha.slice(5) })
-    } else if (linha.startsWith('- ') || linha.startsWith('* ')) {
-      const itens = [linha.slice(2)]
-      i++
-      
-      while (i < linhas.value.length && (linhas.value[i].startsWith('- ') || linhas.value[i].startsWith('* '))) {
-        itens.push(linhas.value[i].slice(2))
-        i++
-      }
-      
-      elementos.push({ tipo: 'lista', itens })
+    } else if (linha.startsWith('## ')) {
+      elementos.push({ tipo: 'h2', conteudo: linha.slice(3) })
+    } else if (linha.startsWith('# ')) {
+      elementos.push({ tipo: 'h1', conteudo: linha.slice(2) })
+    }
+    // Listas
+    else if (linha.startsWith('- ') || linha.startsWith('* ')) {
+      const resultado = extrairLista(i)
+      elementos.push({ tipo: 'lista', itens: resultado.itens })
+      i = resultado.proximoIndice
       continue
-    } else if (linha.trim() === '') {
+    }
+    // Linhas vazias
+    else if (linha.trim() === '') {
       elementos.push({ tipo: 'espaco' })
-    } else {
+    }
+    // Parágrafos
+    else {
       elementos.push({ tipo: 'paragrafo', conteudo: linha })
     }
     
@@ -68,10 +210,18 @@ const parseMarkdown = (texto) => {
 
 const formatarTexto = (texto) => {
   return texto
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.+?)\*/g, '<em>$1</em>')
-    .replace(/`(.+?)`/g, '<code class="px-1 py-0.5 bg-terciario text-texto-destaque text-xs rounded">$1</code>')
+    // Badges com link: [![texto](imagem)](link)
+    .replace(/\[!\[([^\]]*)\]\(([^)]+)\)\]\(([^)]+)\)/g, '<a href="$3" target="_blank" class="inline-block"><img src="$2" alt="$1" class="inline-block h-5" /></a>')
+    // Imagens: ![alt](url)
+    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" class="inline-block max-w-full" />')
+    // Links: [texto](url)
     .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank" class="text-borda-destaque hover:underline">$1</a>')
+    // Bold: **texto**
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    // Italic: *texto*
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    // Code inline: `codigo`
+    .replace(/`(.+?)`/g, '<code class="px-1 py-0.5 bg-terciario text-texto-destaque text-xs rounded">$1</code>')
 }
 
 const elementosRenderizados = computed(() => parseMarkdown())
@@ -80,16 +230,100 @@ const elementosRenderizados = computed(() => parseMarkdown())
 <template>
   <div class="p-6 text-texto-principal leading-relaxed max-w-4xl">
     <div v-for="(elemento, indice) in elementosRenderizados" :key="indice">
-      <h1 v-if="elemento.tipo === 'h1'" class="text-3xl font-bold mb-4 text-texto-titulo border-b border-borda-secundaria pb-2" v-html="formatarTexto(elemento.conteudo)"></h1>
-      <h2 v-else-if="elemento.tipo === 'h2'" class="text-2xl font-bold mb-3 mt-6 text-texto-titulo border-b border-borda-secundaria pb-2" v-html="formatarTexto(elemento.conteudo)"></h2>
-      <h3 v-else-if="elemento.tipo === 'h3'" class="text-xl font-bold mb-2 mt-5 text-texto-titulo" v-html="formatarTexto(elemento.conteudo)"></h3>
-      <h4 v-else-if="elemento.tipo === 'h4'" class="text-lg font-bold mb-2 mt-4 text-texto-titulo" v-html="formatarTexto(elemento.conteudo)"></h4>
-      <p v-else-if="elemento.tipo === 'paragrafo'" class="mb-4 text-texto-principal" v-html="formatarTexto(elemento.conteudo)"></p>
+      <h1 v-if="elemento.tipo === 'h1'" class="text-3xl font-bold mb-4 text-texto-titulo border-b border-borda-secundaria pb-2 flex items-center gap-2 flex-wrap" v-html="formatarTexto(elemento.conteudo)"></h1>
+      <h2 v-else-if="elemento.tipo === 'h2'" class="text-2xl font-bold mb-3 mt-6 text-texto-titulo border-b border-borda-secundaria pb-2 flex items-center gap-2 flex-wrap" v-html="formatarTexto(elemento.conteudo)"></h2>
+      <h3 v-else-if="elemento.tipo === 'h3'" class="text-xl font-bold mb-2 mt-5 text-texto-titulo flex items-center gap-2 flex-wrap" v-html="formatarTexto(elemento.conteudo)"></h3>
+      <h4 v-else-if="elemento.tipo === 'h4'" class="text-lg font-bold mb-2 mt-4 text-texto-titulo flex items-center gap-2 flex-wrap" v-html="formatarTexto(elemento.conteudo)"></h4>
+      <p v-else-if="elemento.tipo === 'paragrafo'" class="mb-4 text-texto-principal flex items-center gap-2 flex-wrap" v-html="formatarTexto(elemento.conteudo)"></p>
       <ul v-else-if="elemento.tipo === 'lista'" class="mb-4 ml-6 list-disc text-texto-principal space-y-1">
         <li v-for="(item, idx) in elemento.itens" :key="idx" v-html="formatarTexto(item)"></li>
       </ul>
-      <pre v-else-if="elemento.tipo === 'codigo'" class="mb-4 p-4 bg-terciario border border-borda-secundaria rounded overflow-x-auto"><code class="text-sm text-texto-principal font-mono">{{ elemento.conteudo }}</code></pre>
+      <pre v-else-if="elemento.tipo === 'codigo'" class="mb-4 bg-[#151b23] rounded-md overflow-x-auto p-4 sm-scrollbar"><code :class="`language-${elemento.linguagem}`" class="text-sm font-mono">{{ elemento.conteudo }}</code></pre>
+      <div v-else-if="elemento.tipo === 'html'" class="mb-4" v-html="elemento.conteudo"></div>
       <div v-else-if="elemento.tipo === 'espaco'" class="h-2"></div>
     </div>
   </div>
 </template>
+
+<style>
+/* Monokai Pro Theme - https://monokai.pro/ */
+.hljs {
+  color: #fcfcfa;
+  background: #151b23;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #727072;
+  font-style: italic;
+}
+
+.hljs-variable,
+.hljs-template-variable,
+.hljs-attribute,
+.hljs-tag,
+.hljs-regexp,
+.hljs-link,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class {
+  color: #ff6188;
+}
+
+.hljs-number,
+.hljs-meta,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params {
+  color: #ab9df2;
+}
+
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet {
+  color: #ffd866;
+}
+
+.hljs-title,
+.hljs-section {
+  color: #78dce8;
+}
+
+.hljs-keyword,
+.hljs-selector-tag {
+  color: #ff6188;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-function .hljs-title,
+.hljs-function .hljs-keyword {
+  color: #a9dc76;
+}
+
+.hljs-class .hljs-title {
+  color: #78dce8;
+}
+
+.hljs-attr {
+  color: #a9dc76;
+}
+
+.hljs-addition {
+  color: #a9dc76;
+  background-color: rgba(169, 220, 118, 0.1);
+}
+
+.hljs-deletion {
+  color: #ff6188;
+  background-color: rgba(255, 97, 136, 0.1);
+}
+</style>
