@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useEditorAbas } from '@/composables/useEditorAbas'
+import MarkdownViewer from './MarkdownViewer.vue'
 
 const { abas, abaAtivaId } = useEditorAbas()
 
@@ -21,10 +22,12 @@ const abaAtual = computed(() => {
       <div class="px-4 py-2 bg-principal border-b border-borda-secundaria text-texto-principal text-xs">
         <span class="font-mono">{{ abaAtual.titulo }}</span>
       </div>
-      <div class="flex-1 overflow-hidden">
+      <div class="flex-1 overflow-auto">
+        <MarkdownViewer v-if="abaAtual.tipo === 'markdown'" :conteudo="abaAtual.conteudo" />
         <textarea
+          v-else
           v-model="abaAtual.conteudo"
-          class="w-full h-full p-4 bg-principal border-none text-texto-principal font-mono text-sm leading-relaxed resize-none outline-none overflow-auto placeholder:text-texto-secundario"
+          class="w-full h-full p-4 bg-principal border-none text-texto-principal font-mono text-sm leading-relaxed resize-none outline-none placeholder:text-texto-secundario"
           placeholder="Digite seu código aqui..."
           spellcheck="false"
         ></textarea>

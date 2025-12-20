@@ -25,6 +25,7 @@ declare module 'vue' {
     ItemArvore: typeof import('./src/components/abas/ItemArvore.vue')['default']
     Layout: typeof import('./src/components/layout/Layout.vue')['default']
     Main: typeof import('./src/components/Main.vue')['default']
+    MarkdownViewer: typeof import('./src/components/MarkdownViewer.vue')['default']
     MenuConfiguracoes: typeof import('./src/components/MenuConfiguracoes.vue')['default']
     NavBar: typeof import('./src/components/NavBar.vue')['default']
     PainelLateral: typeof import('./src/components/PainelLateral.vue')['default']

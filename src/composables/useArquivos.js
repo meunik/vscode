@@ -1,4 +1,5 @@
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
+import { useGithubStore } from '@/stores/github'
 
 let proximoId = 1
 
@@ -16,15 +17,7 @@ const estruturaArquivos = ref([
         tipo: 'pasta',
         aberta: true,
         caminho: 'Profissional/GitHub',
-        filhos: [
-          {
-            id: proximoId++,
-            nome: 'Projeto.js',
-            tipo: 'arquivo',
-            caminho: 'Profissional/GitHub/Projeto.js',
-            conteudo: 'export function useAbas() {\n  // implementação\n}'
-          },
-        ]
+        filhos: []
       }
     ]
   },
@@ -172,7 +165,29 @@ function alternarPasta(item) {
   }
 }
 
+function atualizarRepositorios() {
+  const githubStore = useGithubStore()
+  const pastaGithub = encontrarItemPorCaminho('Profissional/GitHub')
+  
+  if (!pastaGithub) return
+  
+  pastaGithub.filhos = githubStore.repositoriosComExtensao.map(repo => ({
+    id: proximoId++,
+    nome: repo.nomeArquivo,
+    tipo: 'arquivo',
+    caminho: `Profissional/GitHub/${repo.nomeArquivo}`,
+    isGithubRepo: true,
+    repoData: repo
+  }))
+}
+
 export function useArquivos() {
+  const githubStore = useGithubStore()
+  
+  githubStore.buscarRepositorios('meunik')
+  
+  watch(() => githubStore.repositorios, atualizarRepositorios, { immediate: true })
+  
   return {
     estruturaArquivos,
     encontrarItemPorCaminho,

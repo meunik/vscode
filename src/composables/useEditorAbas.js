@@ -6,7 +6,7 @@ const abaAtivaId = ref(null)
 let proximoId = 1
 
 export function useEditorAbas() {
-  const adicionarAba = (titulo, conteudo = '', tipo = 'texto', caminho = null) => {
+  const adicionarAba = (titulo, conteudo = '', tipo = 'texto', caminho = null, metadados = null) => {
     if (caminho) {
       const abaExistente = abas.value.find(aba => aba.caminho === caminho)
       if (abaExistente) {
@@ -20,15 +20,16 @@ export function useEditorAbas() {
       titulo,
       conteudo,
       tipo,
-      caminho
+      caminho,
+      metadados
     }
     abas.value.push(novaAba)
     abaAtivaId.value = novaAba.id
     return novaAba
   }
 
-  const abrirArquivo = (caminho, titulo, conteudo = '') => {
-    return adicionarAba(titulo, conteudo, 'texto', caminho)
+  const abrirArquivo = (caminho, titulo, conteudo = '', tipo = 'texto', metadados = null) => {
+    return adicionarAba(titulo, conteudo, tipo, caminho, metadados)
   }
 
   const fecharAba = (id) => {

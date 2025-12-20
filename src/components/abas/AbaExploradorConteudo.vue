@@ -1,13 +1,20 @@
 <script setup>
 import { useArquivos } from '@/composables/useArquivos'
 import { useEditorAbas } from '@/composables/useEditorAbas'
+import { useGithubStore } from '@/stores/github'
 import ItemArvore from './ItemArvore.vue'
 
 const { estruturaArquivos, alternarPasta } = useArquivos()
 const { abas, abrirArquivo, ativarAba, fecharAba, abaAtivaId } = useEditorAbas()
+const githubStore = useGithubStore()
 
-const handleAbrirArquivo = (item) => {
-  abrirArquivo(item.caminho, item.nome, item.conteudo || '')
+const handleAbrirArquivo = async (item) => {
+  if (item.isGithubRepo) {
+    const readme = await githubStore.buscarReadme(item.repoData)
+    abrirArquivo(item.caminho, item.nome, readme, 'markdown', item.repoData)
+  } else {
+    abrirArquivo(item.caminho, item.nome, item.conteudo || '')
+  }
 }
 
 const handleFecharAba = (aba) => {

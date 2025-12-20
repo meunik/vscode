@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 import '@/assets/css/style.css'
 import '@/assets/css/dark.css'
 import '@/assets/css/light.css'
@@ -11,7 +12,9 @@ import ui from '@nuxt/ui/vue-plugin'
 import router from '@/router'
 import i18n from '@/i18n/i18n'
 
+const pinia = createPinia()
 const app = createApp(App)
+app.use(pinia)
 app.use(router)
 app.use(i18n)
 app.use(ui)
