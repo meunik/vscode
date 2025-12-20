@@ -9,7 +9,7 @@ import Icon from '@/assets/icons/Icon.vue';
       <Icon name="circulo" :size="15" class="text-[#f4bf4f]" />
       <Icon name="circulo" :size="15" class="text-[#61c554]" />
     </div>
-    <span>Marcos Paulo</span>
+    <span class="text-texto-principal">Marcos Paulo</span>
     <div class="w-espacinho">&nbsp;</div>
   </div>
 </template>
