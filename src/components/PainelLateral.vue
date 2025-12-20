@@ -40,7 +40,7 @@ const tituloAba = computed(() => {
     <div class="px-5 h-8.75 py-2 bg-secundario border-b border-borda-principal text-texto-principal text-[11px] font-semibold tracking-wider flex items-center">
       <h3 class="m-0 text-[11px] uppercase">{{ tituloAba }}</h3>
     </div>
-    <div class="flex-1 overflow-y-auto overflow-x-hidden">
+    <div class="flex-1 overflow-hidden">
       <component :is="componenteAtual" />
     </div>
     <div class="absolute top-0 right-0 w-1 h-full cursor-ew-resize z-10 hover:bg-borda-destaque" @mousedown="iniciarRedimensionamento"></div>

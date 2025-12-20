@@ -19,6 +19,7 @@ declare module 'vue' {
     BarraLateral: typeof import('./src/components/BarraLateral.vue')['default']
     EditorAbas: typeof import('./src/components/EditorAbas.vue')['default']
     EditorConteudo: typeof import('./src/components/EditorConteudo.vue')['default']
+    EditoresAbertos: typeof import('./src/components/abas/EditoresAbertos.vue')['default']
     Footer: typeof import('./src/components/layout/Footer.vue')['default']
     Header: typeof import('./src/components/layout/Header.vue')['default']
     IconsShowcase: typeof import('./src/components/IconsShowcase.vue')['default']

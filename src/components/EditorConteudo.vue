@@ -22,7 +22,7 @@ const abaAtual = computed(() => {
       <div class="px-4 pt-2 pb-0.5 bg-principal border-b border-borda-secundaria text-texto-principal text-xs">
         <span class="font-mono">{{ abaAtual.caminho || abaAtual.titulo }}</span>
       </div>
-      <div class="flex-1 overflow-hidden">
+      <div class="flex-1" :class="abaAtual.tipo === 'markdown' ? 'overflow-auto' : 'overflow-hidden'">
         <MarkdownViewer v-if="abaAtual.tipo === 'markdown'" :conteudo="abaAtual.conteudo" />
         <textarea
           v-else

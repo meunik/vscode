@@ -1,5 +1,6 @@
 <script setup>
 import { useEditorAbas } from '@/composables/useEditorAbas'
+import { ref } from 'vue'
 
 const { abas, abaAtivaId, ativarAba, fecharAba } = useEditorAbas()
 
@@ -7,10 +8,15 @@ const fecharAbaComEvento = (evento, id) => {
   evento.stopPropagation()
   fecharAba(id)
 }
+
+const handleWheel = (evento) => {
+  const container = evento.currentTarget
+  container.scrollLeft += evento.deltaY
+}
 </script>
 
 <template>
-  <div class="flex h-8.75 bg-secundario border-b border-borda-principal overflow-x-auto overflow-y-hidden [&::-webkit-scrollbar]:h-0">
+  <div class="flex h-8.75 bg-secundario border-b border-borda-principal overflow-x-auto overflow-y-hidden [&::-webkit-scrollbar]:h-0" @wheel.prevent="handleWheel">
     <div v-if="abas.length === 0" class="flex items-center px-4 text-texto-secundario text-[13px]">
       Nenhum arquivo aberto
     </div>

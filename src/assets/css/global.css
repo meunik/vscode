@@ -20,6 +20,18 @@ body, html, #app {
   background-color: #3e3f38de !important;
 }
 
+.sm-scrollbar::-webkit-scrollbar {
+  background: transparent !important;
+  width: 8px;
+}
+.sm-scrollbar::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+.sm-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #3e3f38de !important;
+  border-radius: 10px !important;
+}
+
 .caixa {
   box-shadow: 0 2px 25px -1px #000;
 }
