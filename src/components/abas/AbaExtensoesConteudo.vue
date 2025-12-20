@@ -28,102 +28,21 @@ const alternarInstalacao = (indice) => {
 </script>
 
 <template>
-  <div class="extensoes">
-    <div class="campo-pesquisa">
-      <input type="text" placeholder="Pesquisar extensões" class="input-pesquisa" />
+  <div class="p-3 text-texto-principal">
+    <div class="mb-4">
+      <input type="text" placeholder="Pesquisar extensões" class="w-full px-3 py-2 bg-input border border-input text-texto-principal text-[13px] outline-none focus:border-borda-destaque" />
     </div>
-    <div class="lista-extensoes">
-      <div v-for="(ext, indice) in extensoes" :key="indice" class="extensao-item">
-        <div class="extensao-info">
-          <div class="extensao-nome">{{ ext.nome }}</div>
-          <div class="extensao-autor">{{ ext.autor }}</div>
-          <div class="extensao-descricao">{{ ext.descricao }}</div>
+    <div class="flex flex-col gap-3">
+      <div v-for="(ext, indice) in extensoes" :key="indice" class="p-3 bg-terciario rounded flex justify-between items-start gap-3">
+        <div class="flex-1">
+          <div class="font-semibold text-sm mb-1 text-texto-titulo">{{ ext.nome }}</div>
+          <div class="text-xs text-texto-secundario mb-1.5">{{ ext.autor }}</div>
+          <div class="text-xs text-texto-principal leading-relaxed">{{ ext.descricao }}</div>
         </div>
-        <button @click="alternarInstalacao(indice)" class="botao-instalar">
+        <button @click="alternarInstalacao(indice)" class="px-4 py-1.5 bg-botao border-none text-white text-xs font-medium cursor-pointer rounded-sm whitespace-nowrap transition-colors hover:bg-botao-hover">
           {{ ext.instalada ? 'Desinstalar' : 'Instalar' }}
         </button>
       </div>
     </div>
   </div>
 </template>
-
-<style scoped>
-.extensoes {
-  padding: 12px;
-  color: #cccccc;
-}
-
-.campo-pesquisa {
-  margin-bottom: 16px;
-}
-
-.input-pesquisa {
-  width: 100%;
-  padding: 8px 12px;
-  background-color: #3c3c3c;
-  border: 1px solid #3c3c3c;
-  color: #cccccc;
-  font-size: 13px;
-  outline: none;
-}
-
-.input-pesquisa:focus {
-  border-color: #007acc;
-}
-
-.lista-extensoes {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.extensao-item {
-  padding: 12px;
-  background-color: #2d2d30;
-  border-radius: 4px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.extensao-info {
-  flex: 1;
-}
-
-.extensao-nome {
-  font-weight: 600;
-  font-size: 14px;
-  margin-bottom: 4px;
-  color: #e4e4e4;
-}
-
-.extensao-autor {
-  font-size: 12px;
-  color: #858585;
-  margin-bottom: 6px;
-}
-
-.extensao-descricao {
-  font-size: 12px;
-  color: #cccccc;
-  line-height: 1.4;
-}
-
-.botao-instalar {
-  padding: 6px 16px;
-  background-color: #0e639c;
-  border: none;
-  color: #ffffff;
-  font-size: 12px;
-  font-weight: 500;
-  cursor: pointer;
-  border-radius: 2px;
-  white-space: nowrap;
-  transition: background-color 0.2s;
-}
-
-.botao-instalar:hover {
-  background-color: #1177bb;
-}
-</style>

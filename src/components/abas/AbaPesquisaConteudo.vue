@@ -17,91 +17,27 @@ const pesquisar = () => {
 </script>
 
 <template>
-  <div class="pesquisa">
-    <div class="campo-pesquisa">
+  <div class="p-2">
+    <div class="mb-3">
       <input
         v-model="termoPesquisa"
         @input="pesquisar"
         type="text"
         placeholder="Pesquisar"
-        class="input-pesquisa"
+        class="w-full px-3 py-2 bg-input border border-input text-texto-principal text-[13px] outline-none focus:border-borda-destaque"
       />
     </div>
-    <div class="resultados">
-      <div v-if="resultados.length === 0" class="sem-resultados">
+    <div class="text-texto-principal text-[13px]">
+      <div v-if="resultados.length === 0" class="p-3 text-texto-secundario text-center">
         {{ termoPesquisa ? 'Nenhum resultado encontrado' : 'Digite para pesquisar' }}
       </div>
-      <div v-for="(resultado, indice) in resultados" :key="indice" class="resultado-item">
-        <div class="resultado-arquivo">{{ resultado.arquivo }}</div>
-        <div class="resultado-linha">
-          <span class="numero-linha">{{ resultado.linha }}:</span>
-          <span class="texto-linha">{{ resultado.texto }}</span>
+      <div v-for="(resultado, indice) in resultados" :key="indice" class="px-3 py-2 cursor-pointer hover:bg-hover">
+        <div class="font-medium mb-1">{{ resultado.arquivo }}</div>
+        <div class="pl-3 text-texto-secundario text-xs">
+          <span class="text-texto-secundario mr-2">{{ resultado.linha }}:</span>
+          <span class="text-texto-principal">{{ resultado.texto }}</span>
         </div>
       </div>
     </div>
   </div>
 </template>
-
-<style scoped>
-.pesquisa {
-  padding: 8px;
-}
-
-.campo-pesquisa {
-  margin-bottom: 12px;
-}
-
-.input-pesquisa {
-  width: 100%;
-  padding: 8px 12px;
-  background-color: #3c3c3c;
-  border: 1px solid #3c3c3c;
-  color: #cccccc;
-  font-size: 13px;
-  outline: none;
-}
-
-.input-pesquisa:focus {
-  border-color: #007acc;
-}
-
-.resultados {
-  color: #cccccc;
-  font-size: 13px;
-}
-
-.sem-resultados {
-  padding: 12px;
-  color: #858585;
-  text-align: center;
-}
-
-.resultado-item {
-  padding: 8px 12px;
-  cursor: pointer;
-}
-
-.resultado-item:hover {
-  background-color: #2a2d2e;
-}
-
-.resultado-arquivo {
-  font-weight: 500;
-  margin-bottom: 4px;
-}
-
-.resultado-linha {
-  padding-left: 12px;
-  color: #858585;
-  font-size: 12px;
-}
-
-.numero-linha {
-  color: #858585;
-  margin-right: 8px;
-}
-
-.texto-linha {
-  color: #cccccc;
-}
-</style>

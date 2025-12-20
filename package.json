@@ -18,6 +18,7 @@
     "vue-router": "^4.6.4"
   },
   "devDependencies": {
+    "@iconify-json/material-icon-theme": "^1.2.44",
     "@vitejs/plugin-vue": "^6.0.1",
     "vite": "^7.2.4"
   }

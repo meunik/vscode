@@ -376,6 +376,13 @@
     "@floating-ui/utils" "^0.2.10"
     vue-demi ">=0.13.0"
 
+"@iconify-json/material-icon-theme@^1.2.44":
+  version "1.2.44"
+  resolved "https://registry.yarnpkg.com/@iconify-json/material-icon-theme/-/material-icon-theme-1.2.44.tgz#e44f7e68ae0aae255a55bbe8d07f4dc647158a55"
+  integrity sha512-fw6hluIUX2rudZucEBevvKHHnR7GQOyjHHXUXRJsv8KmdHqxsV7JPPUlNnVO/eAELuXjM+UgtuAeRE9WlCPHog==
+  dependencies:
+    "@iconify/types" "*"
+
 "@iconify/collections@^1.0.628":
   version "1.0.630"
   resolved "https://registry.yarnpkg.com/@iconify/collections/-/collections-1.0.630.tgz#e84a8993979b8891905a6260be0ec0e8ac72912c"
