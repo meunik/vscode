@@ -11,10 +11,10 @@ const emit = defineEmits(['fechar', 'abrir-seletor-temas'])
 const { selecionarTema, preferenciaTema } = useTemas()
 
 const opcoes = [
-  { id: 'dark', nome: 'Escuro', icone: '🌙' },
-  { id: 'light', nome: 'Claro', icone: '☀️' },
-  { id: 'sistema', nome: 'Sistema', icone: '💻' },
-  { id: 'temas', nome: 'Temas', icone: '🎨' }
+  { id: 'dark', nome: 'Escuro', icone: 'line-md:sunny-filled-loop-to-moon-filled-loop-transition' },
+  { id: 'light', nome: 'Claro', icone: 'line-md:sun-rising-twotone-loop' },
+  { id: 'sistema', nome: 'Sistema', icone: 'line-md:computer-twotone' },
+  { id: 'temas', nome: 'Temas', icone: 'line-md:paint-drop-half-twotone' }
 ]
 
 const selecionarOpcao = async (opcao) => {
@@ -46,7 +46,7 @@ onUnmounted(() => document.removeEventListener('click', handleClickFora))
       @click.stop="selecionarOpcao(opcao)"
       :title="opcao.nome"
     >
-      <span class="text-base w-5 text-center shrink-0">{{ opcao.icone }}</span>
+      <UIcon :name="opcao.icone" class="text-base w-5 text-center shrink-0" />
       <span class="flex-1">{{ opcao.nome }}</span>
       <span v-if="preferenciaTema === opcao.id" class="text-borda-destaque font-bold text-sm">✓</span>
     </div>

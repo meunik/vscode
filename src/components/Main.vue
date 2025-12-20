@@ -19,6 +19,3 @@ const mostrarPainel = computed(() => abaAtiva.value !== null)
     </div>
   </main>
 </template>
-
-<style scoped>
-</style>

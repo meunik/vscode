@@ -27,20 +27,20 @@ const handleAtivarAba = (aba) => {
         <div
           v-for="aba in abas"
           :key="aba.id"
-          class="flex items-center gap-2 px-5 py-1 cursor-pointer select-none hover:bg-hover"
+          class="flex items-center gap-1 pl-3 pr-1 py-1 cursor-pointer select-none hover:bg-hover group"
           @click="handleAtivarAba(aba)"
         >
-          <span class="text-xs shrink-0">📄</span>
+          <UIcon name="line-md:file-document-filled" class="text-[16px] shrink-0" />
           <span class="flex-1 whitespace-nowrap overflow-hidden text-ellipsis text-[13px]">{{ aba.titulo }}</span>
-          <button class="flex items-center justify-center w-4.5 h-4.5 bg-transparent border-none text-texto-secundario text-lg cursor-pointer rounded p-0 leading-none opacity-0 transition-opacity hover:bg-hover hover:text-texto-principal group-hover:opacity-100" @click.stop="handleFecharAba(aba)">
-            ×
+          <button class="items-center justify-center w-4.5 h-4.5 bg-transparent border-none text-texto-secundario text-lg cursor-pointer rounded p-0 leading-none hidden hover:bg-hover hover:text-texto-principal group-hover:flex" @click.stop="handleFecharAba(aba)">
+            <UIcon name="lucide-x" class="w-4 shrink-0" />
           </button>
         </div>
       </div>
     </div>
     <div class="mb-2">
-      <div class="px-2 py-2 pt-2 pb-1 text-[11px] font-semibold text-texto-secundario uppercase tracking-wider">VSCODE2</div>
-      <div class="mt-1">
+      <div class="px-2 py-2 pt-2 pb-0 text-[11px] font-semibold text-texto-secundario uppercase tracking-wider">VSCODE2</div>
+      <div>
         <ItemArvore
           v-for="item in estruturaArquivos"
           :key="item.id"

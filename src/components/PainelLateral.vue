@@ -46,6 +46,3 @@ const tituloAba = computed(() => {
     <div class="absolute top-0 right-0 w-1 h-full cursor-ew-resize z-10 hover:bg-borda-destaque" @mousedown="iniciarRedimensionamento"></div>
   </div>
 </template>
-
-<style scoped>
-</style>

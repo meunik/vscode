@@ -39,4 +39,4 @@ const fecharAbaComEvento = (evento, id) => {
 </template>
 
 <style scoped>
-</style>
+</style
