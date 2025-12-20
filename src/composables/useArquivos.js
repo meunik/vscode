@@ -5,9 +5,34 @@ let proximoId = 1
 const estruturaArquivos = ref([
   {
     id: proximoId++,
-    nome: 'src',
+    nome: 'Profissional',
     tipo: 'pasta',
     aberta: true,
+    caminho: 'Profissional',
+    filhos: [
+      {
+        id: proximoId++,
+        nome: 'GitHub',
+        tipo: 'pasta',
+        aberta: true,
+        caminho: 'Profissional/GitHub',
+        filhos: [
+          {
+            id: proximoId++,
+            nome: 'Projeto.js',
+            tipo: 'arquivo',
+            caminho: 'Profissional/GitHub/Projeto.js',
+            conteudo: 'export function useAbas() {\n  // implementação\n}'
+          },
+        ]
+      }
+    ]
+  },
+  {
+    id: proximoId++,
+    nome: 'src',
+    tipo: 'pasta',
+    aberta: false,
     caminho: 'src',
     filhos: [
       {
