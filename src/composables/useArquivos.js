@@ -147,9 +147,7 @@ const estruturaArquivos = ref([
 
 function encontrarItemPorCaminho(caminho, itens = estruturaArquivos.value) {
   for (const item of itens) {
-    if (item.caminho === caminho) {
-      return item
-    }
+    if (item.caminho === caminho) return item
     if (item.tipo === 'pasta' && item.filhos) {
       const encontrado = encontrarItemPorCaminho(caminho, item.filhos)
       if (encontrado) return encontrado
@@ -181,6 +179,19 @@ function atualizarRepositorios() {
   }))
 }
 
+function recolherTodasPastas() {
+  const recolher = (itens) => {
+    itens.forEach(item => {
+      if (item.tipo === 'pasta') {
+        item.aberta = false
+        if (item.filhos && item.filhos.length > 0) recolher(item.filhos)
+      }
+    })
+  }
+  
+  recolher(estruturaArquivos.value)
+}
+
 export function useArquivos() {
   const githubStore = useGithubStore()
   
@@ -191,6 +202,7 @@ export function useArquivos() {
   return {
     estruturaArquivos,
     encontrarItemPorCaminho,
-    alternarPasta
+    alternarPasta,
+    recolherTodasPastas
   }
 }

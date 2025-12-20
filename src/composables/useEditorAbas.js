@@ -63,6 +63,11 @@ export function useEditorAbas() {
     }
   }
 
+  const fecharTodasAbas = () => {
+    abas.value = []
+    abaAtivaId.value = null
+  }
+
   return {
     abas,
     abaAtivaId,
@@ -71,6 +76,7 @@ export function useEditorAbas() {
     fecharAba,
     ativarAba,
     obterAbaAtiva,
-    atualizarConteudo
+    atualizarConteudo,
+    fecharTodasAbas
   }
 }

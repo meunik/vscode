@@ -53,7 +53,7 @@ const handleClick = () => {
 <template>
   <div>
     <div
-      class="flex items-center py-1 pr-0.5 gap-1 cursor-pointer select-none text-texto-principal"
+      class="flex items-center py-0.5 pr-0.5 gap-1 cursor-pointer select-none text-texto-principal"
       :class="[
         item.tipo === 'pasta' ? 'font-medium' : '',
         estaAtivo ? 'bg-ativo' : 'hover:bg-hover'
