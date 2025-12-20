@@ -1,5 +1,6 @@
 <script setup>
 import { computed } from 'vue'
+import { obterIconeArquivo } from '@/utils/icones'
 
 const props = defineProps({
   item: {
@@ -21,6 +22,11 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['alternarPasta', 'abrirArquivo'])
+
+const iconeArquivo = computed(() => {
+  if (props.item.tipo === 'pasta') return null
+  return obterIconeArquivo(props.item.nome)
+})
 
 const estaAtivo = computed(() => {
   if (props.item.tipo === 'arquivo' && props.abaAtivaId) {
@@ -58,7 +64,7 @@ const handleClick = () => {
       <UIcon v-if="item.tipo === 'pasta'" :name="item.aberta ? 'i-lucide-chevron-down' : 'i-lucide-chevron-right'" class="w-4 shrink-0" />
       <UIcon v-else name="" class="w-4 shrink-0" />
       <UIcon v-if="item.tipo === 'pasta'" name="line-md:folder" class="text-[16px] shrink-0" />
-      <UIcon v-else name="line-md:file-document-filled" class="text-[16px] shrink-0" />
+      <UIcon v-else :name="iconeArquivo" class="text-[16px] shrink-0" />
       <span class="flex-1 text-[13px] tresPontinhos">{{ item.nome }}</span>
     </div>
     <div v-if="item.tipo === 'pasta' && item.aberta && item.filhos">
