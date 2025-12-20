@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, defineEmits } from 'vue'
+import { computed } from 'vue'
 
 const props = defineProps({
   item: {
@@ -9,10 +9,26 @@ const props = defineProps({
   nivel: {
     type: Number,
     default: 0
+  },
+  abaAtivaId: {
+    type: Number,
+    default: null
+  },
+  abas: {
+    type: Array,
+    default: () => []
   }
 })
 
 const emit = defineEmits(['alternarPasta', 'abrirArquivo'])
+
+const estaAtivo = computed(() => {
+  if (props.item.tipo === 'arquivo' && props.abaAtivaId) {
+    const abaAtiva = props.abas.find(aba => aba.id === props.abaAtivaId)
+    return abaAtiva && abaAtiva.caminho === props.item.caminho
+  }
+  return false
+})
 
 const alternarPasta = () => {
   if (props.item.tipo === 'pasta') emit('alternarPasta', props.item)
@@ -31,8 +47,11 @@ const handleClick = () => {
 <template>
   <div>
     <div
-      class="flex items-center py-1 pr-3 gap-1 cursor-pointer select-none text-texto-principal hover:bg-hover"
-      :class="[ item.tipo === 'pasta' ? 'font-medium' : '' ]"
+      class="flex items-center py-1 pr-3 gap-1 cursor-pointer select-none text-texto-principal"
+      :class="[
+        item.tipo === 'pasta' ? 'font-medium' : '',
+        estaAtivo ? 'bg-ativo' : 'hover:bg-hover'
+      ]"
       :style="{ paddingLeft: (10 + nivel * 12) + 'px' }"
       @click="handleClick"
     >
@@ -48,6 +67,8 @@ const handleClick = () => {
         :key="filho.id"
         :item="filho"
         :nivel="nivel + 1"
+        :aba-ativa-id="abaAtivaId"
+        :abas="abas"
         @alternarPasta="emit('alternarPasta', $event)"
         @abrirArquivo="emit('abrirArquivo', $event)"
       />

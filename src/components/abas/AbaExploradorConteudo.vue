@@ -4,7 +4,7 @@ import { useEditorAbas } from '@/composables/useEditorAbas'
 import ItemArvore from './ItemArvore.vue'
 
 const { estruturaArquivos, alternarPasta } = useArquivos()
-const { abas, abrirArquivo, ativarAba, fecharAba } = useEditorAbas()
+const { abas, abrirArquivo, ativarAba, fecharAba, abaAtivaId } = useEditorAbas()
 
 const handleAbrirArquivo = (item) => {
   abrirArquivo(item.caminho, item.nome, item.conteudo || '')
@@ -27,7 +27,8 @@ const handleAtivarAba = (aba) => {
         <div
           v-for="aba in abas"
           :key="aba.id"
-          class="flex items-center gap-1 pl-3 pr-1 py-1 cursor-pointer select-none hover:bg-hover group"
+          class="flex items-center gap-1 pl-3 pr-1 py-1 cursor-pointer select-none group"
+          :class="[abaAtivaId === aba.id ? 'bg-ativo' : 'hover:bg-hover']"
           @click="handleAtivarAba(aba)"
         >
           <UIcon name="line-md:file-document-filled" class="text-[16px] shrink-0" />
@@ -46,6 +47,8 @@ const handleAtivarAba = (aba) => {
           :key="item.id"
           :item="item"
           :nivel="0"
+          :aba-ativa-id="abaAtivaId"
+          :abas="abas"
           @alternarPasta="alternarPasta"
           @abrirArquivo="handleAbrirArquivo"
         />
