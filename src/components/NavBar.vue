@@ -3,9 +3,11 @@ import Icon from '@/assets/icons/Icon.vue'
 import { useAbas } from '@/composables/useAbas'
 import { ref } from 'vue'
 import MenuConfiguracoes from './MenuConfiguracoes.vue'
+import SeletorTemas from './SeletorTemas.vue'
 
 const { abaAtiva, alternarAba } = useAbas()
 const menuAberto = ref(false)
+const seletorTemasAberto = ref(false)
 
 const abas = [
   { nome: 'explorador', icone: 'explorador' },
@@ -21,6 +23,14 @@ const alternarMenu = () => {
 
 const fecharMenu = () => {
   menuAberto.value = false
+}
+
+const abrirSeletorTemas = () => {
+  seletorTemasAberto.value = true
+}
+
+const fecharSeletorTemas = () => {
+  seletorTemasAberto.value = false
 }
 </script>
 
@@ -51,7 +61,8 @@ const fecharMenu = () => {
       >
         <Icon name="engrenagem" :size="24" />
       </button>
-      <MenuConfiguracoes :aberto="menuAberto" @fechar="fecharMenu" />
+      <MenuConfiguracoes :aberto="menuAberto" @fechar="fecharMenu" @abrir-seletor-temas="abrirSeletorTemas" />
     </div>
+    <SeletorTemas v-if="seletorTemasAberto" @fechar="fecharSeletorTemas" />
   </div>
 </template>

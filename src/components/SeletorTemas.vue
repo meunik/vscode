@@ -12,15 +12,11 @@ const selecionarTemaEspecifico = (tema) => {
 }
 
 const handleClickFora = (evento) => {
-  if (!evento.target.closest('.seletor-temas')) {
-    emit('fechar')
-  }
+  if (!evento.target.closest('.seletor-temas')) emit('fechar')
 }
 
 const handleEscape = (evento) => {
-  if (evento.key === 'Escape') {
-    emit('fechar')
-  }
+  if (evento.key === 'Escape') emit('fechar')
 }
 
 onMounted(() => {
@@ -35,15 +31,15 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="fixed inset-0 bg-black/50 flex items-start justify-center pt-15 z-2000">
+  <div class="fixed inset-0 bg-black/50 flex items-start justify-center pt-6 z-30">
     <div class="bg-secundario border border-borda-secundaria rounded-md shadow-[0_8px_24px_rgba(0,0,0,0.4)] w-125 max-w-[90vw] max-h-[70vh] overflow-hidden flex flex-col">
-      <div class="flex items-center justify-between px-4 py-3 border-b border-borda-secundaria">
+      <div class="flex items-center justify-between pl-4 px-1 py-1 border-b border-borda-secundaria">
         <h3 class="m-0 text-sm font-semibold text-texto-titulo">Selecionar Tema de Cores</h3>
         <button 
           class="bg-transparent border-none text-icone-normal text-2xl cursor-pointer p-0 w-6 h-6 flex items-center justify-center rounded transition-all hover:bg-hover hover:text-icone-hover"
           @click="emit('fechar')"
         >
-          ×
+          <UIcon name="lucide-x" class="w-4 shrink-0" />
         </button>
       </div>
       <div class="overflow-y-auto p-2">
