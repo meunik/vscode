@@ -1,6 +1,7 @@
 {
   "informacoesPessoais": {
     "nome": "Marcos Paulo",
+    "sobreNome": "Chagas da Silva",
     "cargo": "Desenvolvedor Full Stack",
     "email": "marcostrab@hotmail.com",
     "telefone": "(00) 00000-0000",
@@ -32,55 +33,74 @@
     {
       "categoria": "Frontend",
       "itens": [
-        { "nome": "Vue.js", "nivel": 90 },
-        { "nome": "JavaScript", "nivel": 85 },
-        { "nome": "TypeScript", "nivel": 75 },
-        { "nome": "HTML5/CSS3", "nivel": 90 },
-        { "nome": "Tailwind CSS", "nivel": 80 }
+        { "nome": "Vue.js", "icone": "vuejs" },
+        { "nome": "JavaScript", "icone": "javascript" },
+        { "nome": "TypeScript", "icone": "typescript" },
+        { "nome": "React Native", "icone": "reactnative" },
+        { "nome": "HTML5/CSS3", "icone": "html5" },
+        { "nome": "Tailwind CSS", "icone": "tailwindcss" },
+        { "nome": "Bootstrap", "icone": "bootstrap" },
+        { "nome": "jQuery", "icone": "jquery" }
       ]
     },
     {
       "categoria": "Backend",
       "itens": [
-        { "nome": "Laravel", "nivel": 85 },
-        { "nome": "PHP", "nivel": 85 },
-        { "nome": "Node.js", "nivel": 70 },
-        { "nome": "MySQL", "nivel": 80 },
-        { "nome": "PostgreSQL", "nivel": 70 }
+        { "nome": "Laravel", "icone": "laravel" },
+        { "nome": "PHP", "icone": "php" },
+        { "nome": "Node.js", "icone": "nodejs" },
+        { "nome": "Python", "icone": "python" },
+        { "nome": "MySQL", "icone": "mysql" }
       ]
     },
     {
       "categoria": "Ferramentas",
       "itens": [
-        { "nome": "Git/GitHub", "nivel": 85 },
-        { "nome": "Docker", "nivel": 70 },
-        { "nome": "VS Code", "nivel": 95 },
-        { "nome": "Linux", "nivel": 75 }
+        { "nome": "Git", "icone": "git" },
+        { "nome": "Docker", "icone": "docker" },
+        { "nome": "Figma", "icone": "figma" },
+        { "nome": "Copilot", "icone": "githubcopilot" },
+        { "nome": "Linux", "icone": "linux" },
+        { "nome": "MacOS", "icone": "apple" }
       ]
     }
   ],
   "experiencia": [
     {
       "cargo": "Desenvolvedor Full Stack",
-      "empresa": "Empresa XYZ",
-      "periodo": "Jan 2022 - Presente",
-      "descricao": "Desenvolvimento de aplicações web utilizando Vue.js e Laravel.",
+      "empresa": "SPDM - Complexo Regulador do Município do Rio de Janeiro",
+      "periodo": "03/2022 - Presente",
+      "descricao": "Trabalho Full Stack no desenvolvimento de sistemas para auxiliar a área da saúde do Município do Rio de Janeiro, na qual utilizo tecnologias como: GIT, Figma, JavaScript, Vue.js, Tailwind Css, BootstrapVue, PHP(5.3 e 8), Laravel(8+), MySQL, Docker.",
       "realizacoes": [
-        "Desenvolvimento de sistema de gestão com Vue 3",
-        "Implementação de APIs RESTful com Laravel",
-        "Otimização de queries SQL reduzindo tempo de resposta em 40%"
+        "Desenvolvimento da pagina inicial do portal da regulação e mais 11 projetos internos.",
+        "Implementação de melhorias na interface do usuário utilizando Vue 3 e Tailwind CSS, resultando em uma melhor experiência para os usuários finais."
       ]
     },
     {
-      "cargo": "Desenvolvedor Frontend",
-      "empresa": "Empresa ABC",
-      "periodo": "Jun 2020 - Dez 2021",
-      "descricao": "Criação de interfaces responsivas e interativas.",
+      "cargo": "Desenvolvedor Backend",
+      "empresa": "Viva Rio - Complexo Regulador do Município do Rio de Janeiro",
+      "periodo": "06/2021 - 02/2022",
+      "descricao": "Desenvolvo sistemas web, na qual utilizo tecnologias como: GIT, PHP(5.3 e 8), Laravel(8+) e MySQL.",
       "realizacoes": [
-        "Migração de projeto de Vue 2 para Vue 3",
-        "Implementação de design system com Tailwind CSS",
-        "Redução de bundle size em 30%"
+        "Coordenei a migração de sistemas legado php para Laravel, melhorando a performance em 30%."
       ]
+    },
+    {
+      "cargo": "Estagiário / Desenvolvedor Júnior Full Stack",
+      "empresa": "Desenvolvedor Web, B2Fly",
+      "periodo": "06/2019 - 05/2021",
+      "descricao": "Auxiliei no desenvolvimento de sistemas web, na qual utilizei tecnologias como: PHP(5.6 e 7), Laravel(5+), Lumen e MySQL.",
+      "realizacoes": [
+        "Desenvolvimento de um sistema de gestão de clientes e vendas (CRM) utilizando Laravel e MySQL.",
+        "Implementação de melhorias em sistemas existentes, resultando em um aumento de 20% na eficiência do sistema."
+      ]
+    },
+    {
+      "cargo": "Auxiliar De Serviços Notariais",
+      "empresa": "22º Ofício De Notas - RJ",
+      "periodo": "04/2016 - 05/2019",
+      "descricao": "Trabalhava em Atendimento ao cliente, lidando diretamente com documentos como DUT, Declarações, Comunicações de venda, Apostila de Haya e outros. Prestativamente auxiliava em assuntos gerais Informáticos, navegação em Browser, manutenção de micros, Word, planilhas de Excel e outros.",
+      "realizacoes": []
     }
   ],
   "formacao": [
