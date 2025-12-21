@@ -6,15 +6,14 @@ import { useGithubStore } from '@/stores/github'
 import ItemArvore from '@/components/abas/ItemArvore.vue'
 import EditoresAbertos from '@/components/abas/EditoresAbertos.vue'
 
-const { estruturaArquivos, itemSelecionado, ocultarArquivoAtivo, alternarPasta, selecionarItem, desselecionarItem, criarNovoArquivo, criarNovaPasta, recolherTodasPastas } = useArquivos()
+const { estruturaArquivos, itemSelecionado, ocultarArquivoAtivo, alternarPasta, selecionarItem, desselecionarItem, expandirCaminhoParaArquivo, criarNovoArquivo, criarNovaPasta, recolherTodasPastas } = useArquivos()
 const { abas, abrirArquivo, abaAtivaId } = useEditorAbas()
 const githubStore = useGithubStore()
 
 watch(abaAtivaId, () => {
-  if (itemSelecionado.value && itemSelecionado.value.tipo === 'pasta') {
-    desselecionarItem()
-  }
-  ocultarArquivoAtivo.value = false
+  // Encontra a aba ativa e expande o caminho até o arquivo
+  const abaAtiva = abas.value.find(aba => aba.id === abaAtivaId.value)
+  if (abaAtiva && abaAtiva.caminho) expandirCaminhoParaArquivo(abaAtiva.caminho)
 })
 
 const handleAbrirArquivo = async (item) => {
@@ -31,9 +30,7 @@ const handleAbrirArquivo = async (item) => {
 
 const handleNovoArquivo = () => {
   const arquivo = criarNovoArquivo()
-  if (arquivo) {
-    abrirArquivo(arquivo.caminho, arquivo.nome, arquivo.conteudo || '')
-  }
+  if (arquivo) abrirArquivo(arquivo.caminho, arquivo.nome, arquivo.conteudo || '')
 }
 
 const handleNovaPasta = () => {
