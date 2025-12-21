@@ -2,8 +2,8 @@
 import { useArquivos } from '@/composables/useArquivos'
 import { useEditorAbas } from '@/composables/useEditorAbas'
 import { useGithubStore } from '@/stores/github'
-import ItemArvore from './ItemArvore.vue'
-import EditoresAbertos from './EditoresAbertos.vue'
+import ItemArvore from '@/components/abas/ItemArvore.vue'
+import EditoresAbertos from '@/components/abas/EditoresAbertos.vue'
 
 const { estruturaArquivos, alternarPasta, recolherTodasPastas } = useArquivos()
 const { abas, abrirArquivo, abaAtivaId } = useEditorAbas()
@@ -13,6 +13,8 @@ const handleAbrirArquivo = async (item) => {
   if (item.isGithubRepo) {
     const readme = await githubStore.buscarReadme(item.repoData)
     abrirArquivo(item.caminho, item.nome, readme, 'markdown', item.repoData)
+  } else if (item.caminho === 'Profissional/Curriculo.md') {
+    abrirArquivo(item.caminho, item.nome, item.conteudo || '', 'curriculo-visualizacao')
   } else abrirArquivo(item.caminho, item.nome, item.conteudo || '')
 }
 </script>

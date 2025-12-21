@@ -1,11 +1,13 @@
 <script setup>
 import Icon from '@/assets/icons/Icon.vue'
 import { useAbas } from '@/composables/useAbas'
+import { useEditorAbas } from '@/composables/useEditorAbas'
 import { ref } from 'vue'
-import MenuConfiguracoes from './MenuConfiguracoes.vue'
-import SeletorTemas from './SeletorTemas.vue'
+import MenuConfiguracoes from '@/components/MenuConfiguracoes.vue'
+import SeletorTemas from '@/components/SeletorTemas.vue'
 
-const { abaAtiva, alternarAba } = useAbas()
+const { abaAtiva, alternarAba, fecharAba } = useAbas()
+const { adicionarAba } = useEditorAbas()
 const menuAberto = ref(false)
 const seletorTemasAberto = ref(false)
 
@@ -32,6 +34,11 @@ const abrirSeletorTemas = () => {
 const fecharSeletorTemas = () => {
   seletorTemasAberto.value = false
 }
+
+const abrirEditorCurriculo = () => {
+  fecharAba()
+  adicionarAba('Editor de Currículo', '', 'curriculo', 'curriculo-editor')
+}
 </script>
 
 <template>
@@ -48,6 +55,15 @@ const fecharSeletorTemas = () => {
         :title="aba.nome"
       >
         <Icon :name="aba.icone" :size="24" />
+      </button>
+    </div>
+    <div class="flex flex-col">
+      <button
+        @click="abrirEditorCurriculo"
+        class="flex items-center justify-center h-12 w-full cursor-pointer transition-colors hover:text-icone-hover text-lg border-x-2 border-x-transparent text-icone-normal"
+        title="Editar Currículo"
+      >
+        <UIcon name="line-md:file-document-filled" class="text-[24px]" />
       </button>
     </div>
     <div class="relative">

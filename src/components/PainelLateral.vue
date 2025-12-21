@@ -3,11 +3,11 @@ import { useAbas } from '@/composables/useAbas'
 import { useRedimensionar } from '@/composables/useRedimensionar'
 import { computed } from 'vue'
 
-import AbaExploradorConteudo from './abas/AbaExploradorConteudo.vue'
-import AbaPesquisaConteudo from './abas/AbaPesquisaConteudo.vue'
-import AbaGitConteudo from './abas/AbaGitConteudo.vue'
-import AbaExtensoesConteudo from './abas/AbaExtensoesConteudo.vue'
-import AbaCameraConteudo from './abas/AbaCameraConteudo.vue'
+import AbaExploradorConteudo from '@/components/abas/AbaExploradorConteudo.vue'
+import AbaPesquisaConteudo from '@/components/abas/AbaPesquisaConteudo.vue'
+import AbaGitConteudo from '@/components/abas/AbaGitConteudo.vue'
+import AbaExtensoesConteudo from '@/components/abas/AbaExtensoesConteudo.vue'
+import AbaCameraConteudo from '@/components/abas/AbaCameraConteudo.vue'
 
 const { abaAtiva } = useAbas()
 const { largura, iniciarRedimensionamento } = useRedimensionar(250, 180, 600)

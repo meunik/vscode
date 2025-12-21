@@ -1,7 +1,7 @@
 <script setup>
-import PainelLateral from './PainelLateral.vue'
-import EditorAbas from './EditorAbas.vue'
-import EditorConteudo from './EditorConteudo.vue'
+import PainelLateral from '@/components/PainelLateral.vue'
+import EditorAbas from '@/components/EditorAbas.vue'
+import EditorConteudo from '@/components/EditorConteudo.vue'
 import { useAbas } from '@/composables/useAbas'
 import { computed } from 'vue'
 

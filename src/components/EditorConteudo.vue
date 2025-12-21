@@ -1,7 +1,9 @@
 <script setup>
 import { computed } from 'vue'
 import { useEditorAbas } from '@/composables/useEditorAbas'
-import MarkdownViewer from './MarkdownViewer.vue'
+import MarkdownViewer from '@/components/MarkdownViewer.vue'
+import EditorCurriculoConteudo from '@/components/curriculo/EditorCurriculoConteudo.vue'
+import Curriculo from '@/components/curriculo/Curriculo.vue'
 
 const { abas, abaAtivaId } = useEditorAbas()
 
@@ -22,8 +24,10 @@ const abaAtual = computed(() => {
       <div class="px-4 pt-2 pb-0.5 bg-principal border-b border-borda-secundaria text-texto-principal text-xs">
         <span class="font-mono">{{ abaAtual.caminho || abaAtual.titulo }}</span>
       </div>
-      <div class="flex-1" :class="abaAtual.tipo === 'markdown' ? 'overflow-auto' : 'overflow-hidden'">
-        <MarkdownViewer v-if="abaAtual.tipo === 'markdown'" :conteudo="abaAtual.conteudo" />
+      <div class="flex-1" :class="abaAtual.tipo === 'markdown' || abaAtual.tipo === 'curriculo' || abaAtual.tipo === 'curriculo-visualizacao' ? 'overflow-auto' : 'overflow-hidden'">
+        <EditorCurriculoConteudo v-if="abaAtual.tipo === 'curriculo'" />
+        <Curriculo v-else-if="abaAtual.tipo === 'curriculo-visualizacao'" />
+        <MarkdownViewer v-else-if="abaAtual.tipo === 'markdown'" :conteudo="abaAtual.conteudo" />
         <textarea
           v-else
           v-model="abaAtual.conteudo"

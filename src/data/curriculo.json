@@ -1,0 +1,126 @@
+{
+  "informacoesPessoais": {
+    "nome": "Marcos Paulo",
+    "cargo": "Desenvolvedor Full Stack",
+    "email": "marcostrab@hotmail.com",
+    "telefone": "(00) 00000-0000",
+    "localizacao": "Brasil",
+    "foto": "https://avatars.githubusercontent.com/u/50606021?v=4",
+    "resumo": "Desenvolvedor Full Stack com experiência em Vue.js e Laravel, apaixonado por criar soluções elegantes e eficientes."
+  },
+  "links": [
+    {
+      "tipo": "github",
+      "titulo": "GitHub",
+      "url": "https://github.com/meunik",
+      "icone": "mdi:github"
+    },
+    {
+      "tipo": "linkedin",
+      "titulo": "LinkedIn",
+      "url": "https://linkedin.com/in/seu-perfil",
+      "icone": "mdi:linkedin"
+    },
+    {
+      "tipo": "portfolio",
+      "titulo": "Portfolio",
+      "url": "https://marcospaulo.dev",
+      "icone": "mdi:web"
+    }
+  ],
+  "habilidades": [
+    {
+      "categoria": "Frontend",
+      "itens": [
+        { "nome": "Vue.js", "nivel": 90 },
+        { "nome": "JavaScript", "nivel": 85 },
+        { "nome": "TypeScript", "nivel": 75 },
+        { "nome": "HTML5/CSS3", "nivel": 90 },
+        { "nome": "Tailwind CSS", "nivel": 80 }
+      ]
+    },
+    {
+      "categoria": "Backend",
+      "itens": [
+        { "nome": "Laravel", "nivel": 85 },
+        { "nome": "PHP", "nivel": 85 },
+        { "nome": "Node.js", "nivel": 70 },
+        { "nome": "MySQL", "nivel": 80 },
+        { "nome": "PostgreSQL", "nivel": 70 }
+      ]
+    },
+    {
+      "categoria": "Ferramentas",
+      "itens": [
+        { "nome": "Git/GitHub", "nivel": 85 },
+        { "nome": "Docker", "nivel": 70 },
+        { "nome": "VS Code", "nivel": 95 },
+        { "nome": "Linux", "nivel": 75 }
+      ]
+    }
+  ],
+  "experiencia": [
+    {
+      "cargo": "Desenvolvedor Full Stack",
+      "empresa": "Empresa XYZ",
+      "periodo": "Jan 2022 - Presente",
+      "descricao": "Desenvolvimento de aplicações web utilizando Vue.js e Laravel.",
+      "realizacoes": [
+        "Desenvolvimento de sistema de gestão com Vue 3",
+        "Implementação de APIs RESTful com Laravel",
+        "Otimização de queries SQL reduzindo tempo de resposta em 40%"
+      ]
+    },
+    {
+      "cargo": "Desenvolvedor Frontend",
+      "empresa": "Empresa ABC",
+      "periodo": "Jun 2020 - Dez 2021",
+      "descricao": "Criação de interfaces responsivas e interativas.",
+      "realizacoes": [
+        "Migração de projeto de Vue 2 para Vue 3",
+        "Implementação de design system com Tailwind CSS",
+        "Redução de bundle size em 30%"
+      ]
+    }
+  ],
+  "educacao": [
+    {
+      "curso": "Sistema De Informação",
+      "instituicao": "Universidade Estácio de Sá (Nova América) | Rio de Janeiro",
+      "periodo": "Formado em 07/2022",
+      "status": "Concluído"
+    },
+    {
+      "curso": "Matemática",
+      "instituicao": "UERJ Maracanã | Rio de Janeiro",
+      "periodo": "Incompleto",
+      "status": "Incompleto"
+    }
+  ],
+  "projetos": [
+    {
+      "nome": "SeilaColor Theme",
+      "descricao": "Tema dark com acentos rosa para VS Code",
+      "tecnologias": ["VS Code API", "JSON", "CSS"],
+      "url": "https://marketplace.visualstudio.com/items?itemName=SeilaColor.seilacolor"
+    },
+    {
+      "nome": "Portfolio VSCode",
+      "descricao": "Portfolio interativo que simula o VS Code",
+      "tecnologias": ["Vue 3", "Vite", "Tailwind CSS"],
+      "url": "https://marcospaulo.dev"
+    }
+  ],
+  "idiomas": [
+    { "idioma": "Português", "nivel": "Nativo" },
+    { "idioma": "Inglês", "nivel": "Intermediário" }
+  ],
+  "configuracoes": {
+    "corPrimaria": "#007acc",
+    "corSecundaria": "#1e1e1e",
+    "fontePrincipal": "Segoe UI",
+    "mostrarFoto": true,
+    "mostrarNivelHabilidades": true,
+    "layoutColunas": 2
+  }
+}

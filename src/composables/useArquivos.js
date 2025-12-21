@@ -6,6 +6,13 @@ let proximoId = 1
 const estruturaArquivos = ref([
   {
     id: proximoId++,
+    nome: 'Curriculo.md',
+    tipo: 'arquivo',
+    caminho: 'Profissional/Curriculo.md',
+    conteudo: ''
+  },
+  {
+    id: proximoId++,
     nome: 'Profissional',
     tipo: 'pasta',
     aberta: true,
