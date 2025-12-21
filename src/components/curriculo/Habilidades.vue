@@ -21,7 +21,7 @@ defineProps({
       <div class="space-y-1">
         <div v-for="(item, itemIdx) in categoria.itens" :key="itemIdx" class="space-y-1">
           <div class="flex items-center gap-1 text-sm">
-            <UIcon :name="`devicon:${item.icone}`" class="text-[16px]" />
+            <UIcon :name="item.icone" class="text-[16px]" />
             <span class="text-texto-principal">{{ item.nome }}</span>
           </div>
         </div>

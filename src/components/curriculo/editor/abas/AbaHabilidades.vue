@@ -37,8 +37,13 @@ const removerItem = (catIndex, itemIndex) => emit('removerItem', catIndex, itemI
       </div>
       <div class="space-y-2">
         <div class="flex gap-2">
-          <span class="flex-1 px-1 font-light text-texto-principal">devicon:Icone</span>
-          <span class="flex-1 px-1 font-light text-texto-principal">Stack</span>
+          <span class="flex-1 flex items-center gap-1 px-1 font-light text-texto-principal group">
+            Ícone
+            <a href="https://icones.js.org/" class="text-[12px] hidden group-hover:inline" target="_blank" rel="noopener" title="Lista de ícones">
+              <UIcon name="lucide:external-link" />
+            </a>
+          </span>
+          <span class="flex-1 flex items-center px-1 font-light text-texto-principal">Stack</span>
           <button 
             @click="removerItem(catIdx, itemIdx)" 
             class="px-2 py-1.5 bg-red-900/30 text-red-400 rounded text-xs hover:bg-red-900/50 opacity-0"

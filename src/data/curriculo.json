@@ -44,35 +44,35 @@
     {
       "categoria": "Frontend",
       "itens": [
-        { "nome": "Vue.js", "icone": "vuejs" },
-        { "nome": "JavaScript", "icone": "javascript" },
-        { "nome": "TypeScript", "icone": "typescript" },
-        { "nome": "React Native", "icone": "reactnative" },
-        { "nome": "HTML5/CSS3", "icone": "html5" },
-        { "nome": "Tailwind CSS", "icone": "tailwindcss" },
-        { "nome": "Bootstrap", "icone": "bootstrap" },
-        { "nome": "jQuery", "icone": "jquery" }
+        { "nome": "Vue.js", "icone": "devicon:vuejs" },
+        { "nome": "JavaScript", "icone": "devicon:javascript" },
+        { "nome": "TypeScript", "icone": "devicon:typescript" },
+        { "nome": "React Native", "icone": "devicon:reactnative" },
+        { "nome": "HTML5/CSS3", "icone": "devicon:html5" },
+        { "nome": "Tailwind CSS", "icone": "devicon:tailwindcss" },
+        { "nome": "Bootstrap", "icone": "devicon:bootstrap" },
+        { "nome": "jQuery", "icone": "devicon:jquery" }
       ]
     },
     {
       "categoria": "Backend",
       "itens": [
-        { "nome": "Laravel", "icone": "laravel" },
-        { "nome": "PHP", "icone": "php" },
-        { "nome": "Node.js", "icone": "nodejs" },
-        { "nome": "Python", "icone": "python" },
-        { "nome": "MySQL", "icone": "mysql" }
+        { "nome": "Laravel", "icone": "devicon:laravel" },
+        { "nome": "PHP", "icone": "devicon:php" },
+        { "nome": "Node.js", "icone": "devicon:nodejs" },
+        { "nome": "Python", "icone": "devicon:python" },
+        { "nome": "MySQL", "icone": "devicon:mysql" }
       ]
     },
     {
       "categoria": "Ferramentas",
       "itens": [
-        { "nome": "Git", "icone": "git" },
-        { "nome": "Docker", "icone": "docker" },
-        { "nome": "Figma", "icone": "figma" },
-        { "nome": "Copilot", "icone": "githubcopilot" },
-        { "nome": "Linux", "icone": "linux" },
-        { "nome": "MacOS", "icone": "apple" }
+        { "nome": "Git", "icone": "devicon:git" },
+        { "nome": "Docker", "icone": "devicon:docker" },
+        { "nome": "Figma", "icone": "devicon:figma" },
+        { "nome": "Copilot", "icone": "devicon:githubcopilot" },
+        { "nome": "Linux", "icone": "devicon:linux" },
+        { "nome": "MacOS", "icone": "devicon:apple" }
       ]
     }
   ],
