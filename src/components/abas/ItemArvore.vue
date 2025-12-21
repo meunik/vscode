@@ -18,10 +18,14 @@ const props = defineProps({
   abas: {
     type: Array,
     default: () => []
+  },
+  itemSelecionado: {
+    type: Object,
+    default: null
   }
 })
 
-const emit = defineEmits(['alternarPasta', 'abrirArquivo'])
+const emit = defineEmits(['alternarPasta', 'abrirArquivo', 'selecionarItem'])
 
 const iconeArquivo = computed(() => {
   if (props.item.tipo === 'pasta') return null
@@ -36,12 +40,23 @@ const estaAtivo = computed(() => {
   return false
 })
 
+const estaSelecionado = computed(() => {
+  if (!props.itemSelecionado) return false
+  return props.itemSelecionado.caminho === props.item.caminho
+})
+
 const alternarPasta = () => {
-  if (props.item.tipo === 'pasta') emit('alternarPasta', props.item)
+  if (props.item.tipo === 'pasta') {
+    emit('alternarPasta', props.item)
+    emit('selecionarItem', props.item)
+  }
 }
 
 const abrirArquivo = () => {
-  if (props.item.tipo === 'arquivo') emit('abrirArquivo', props.item)
+  if (props.item.tipo === 'arquivo') {
+    emit('abrirArquivo', props.item)
+    emit('selecionarItem', props.item)
+  }
 }
 
 const handleClick = () => {
@@ -56,7 +71,7 @@ const handleClick = () => {
       class="flex items-center py-0.5 pr-0.5 gap-1 cursor-pointer select-none text-texto-principal"
       :class="[
         item.tipo === 'pasta' ? 'font-medium' : '',
-        estaAtivo ? 'bg-ativo' : 'hover:bg-hover'
+        estaAtivo || estaSelecionado ? 'bg-ativo' : 'hover:bg-hover'
       ]"
       :style="{ paddingLeft: (10 + nivel * 12) + 'px' }"
       @click="handleClick"
@@ -75,8 +90,10 @@ const handleClick = () => {
         :nivel="nivel + 1"
         :aba-ativa-id="abaAtivaId"
         :abas="abas"
+        :item-selecionado="itemSelecionado"
         @alternarPasta="emit('alternarPasta', $event)"
         @abrirArquivo="emit('abrirArquivo', $event)"
+        @selecionarItem="emit('selecionarItem', $event)"
       />
     </div>
   </div>

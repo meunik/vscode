@@ -13,7 +13,7 @@ const { inicializarTema } = useTemas()
 
 onMounted(() => {
   inicializarTema()
-  adicionarAba('Bem-vindo.txt', 'Bem-vindo ao VSCode do Marcos!\n\nComece explorando os arquivos ou criando um novo arquivo.')
+  adicionarAba('Bem-vindo', '', 'componente', 'bem-vindo', { componente: 'BemVindo' })
 })
 </script>
 

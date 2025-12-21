@@ -21,7 +21,8 @@ export function useEditorAbas() {
       conteudo,
       tipo,
       caminho,
-      metadados
+      metadados,
+      ...(metadados || {})
     }
     abas.value.push(novaAba)
     abaAtivaId.value = novaAba.id

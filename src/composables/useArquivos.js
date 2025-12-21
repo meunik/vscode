@@ -3,6 +3,7 @@ import { useGithubStore } from '@/stores/github'
 
 let proximoId = 1
 
+const itemSelecionado = ref(null)
 const estruturaArquivos = ref([
   {
     id: proximoId++,
@@ -170,6 +171,75 @@ function alternarPasta(item) {
   }
 }
 
+function selecionarItem(item) {
+  itemSelecionado.value = item
+}
+
+function criarNovoArquivo() {
+  let nomePadrao = 'novo-arquivo.txt'
+  const nomeArquivo = prompt('Nome do arquivo:', nomePadrao)
+  
+  if (!nomeArquivo || !nomeArquivo.trim()) return
+  
+  const novoArquivo = {
+    id: proximoId++,
+    nome: nomeArquivo,
+    tipo: 'arquivo',
+    caminho: '',
+    conteudo: ''
+  }
+  
+  // Se tiver um item selecionado que seja pasta, adiciona dentro dela
+  if (itemSelecionado.value && itemSelecionado.value.tipo === 'pasta') {
+    const pastaDestino = encontrarItemPorCaminho(itemSelecionado.value.caminho)
+    if (pastaDestino) {
+      novoArquivo.caminho = `${pastaDestino.caminho}/${nomeArquivo}`
+      if (!pastaDestino.filhos) pastaDestino.filhos = []
+      pastaDestino.filhos.push(novoArquivo)
+      pastaDestino.aberta = true
+    }
+  } else {
+    // Adiciona na raiz
+    novoArquivo.caminho = nomeArquivo
+    estruturaArquivos.value.push(novoArquivo)
+  }
+  
+  return novoArquivo
+}
+
+function criarNovaPasta() {
+  let nomePadrao = 'nova-pasta'
+  const nomePasta = prompt('Nome da pasta:', nomePadrao)
+  
+  if (!nomePasta || !nomePasta.trim()) return
+  
+  const novaPasta = {
+    id: proximoId++,
+    nome: nomePasta,
+    tipo: 'pasta',
+    aberta: false,
+    caminho: '',
+    filhos: []
+  }
+  
+  // Se tiver um item selecionado que seja pasta, adiciona dentro dela
+  if (itemSelecionado.value && itemSelecionado.value.tipo === 'pasta') {
+    const pastaDestino = encontrarItemPorCaminho(itemSelecionado.value.caminho)
+    if (pastaDestino) {
+      novaPasta.caminho = `${pastaDestino.caminho}/${nomePasta}`
+      if (!pastaDestino.filhos) pastaDestino.filhos = []
+      pastaDestino.filhos.push(novaPasta)
+      pastaDestino.aberta = true
+    }
+  } else {
+    // Adiciona na raiz
+    novaPasta.caminho = nomePasta
+    estruturaArquivos.value.push(novaPasta)
+  }
+  
+  return novaPasta
+}
+
 function atualizarRepositorios() {
   const githubStore = useGithubStore()
   const pastaGithub = encontrarItemPorCaminho('Profissional/GitHub')
@@ -208,8 +278,12 @@ export function useArquivos() {
   
   return {
     estruturaArquivos,
+    itemSelecionado,
     encontrarItemPorCaminho,
     alternarPasta,
+    selecionarItem,
+    criarNovoArquivo,
+    criarNovaPasta,
     recolherTodasPastas
   }
 }
