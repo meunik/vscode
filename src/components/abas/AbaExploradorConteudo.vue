@@ -33,7 +33,7 @@ const handleNovaPasta = () => {
 <template>
   <div class="text-texto-principal text-[13px] h-full overflow-hidden flex flex-col">
     <EditoresAbertos />
-    <div class="overflow-hidden">
+    <div class="h-full overflow-hidden flex flex-col">
       <div class="flex items-center justify-between px-2 py-2 pt-2 pb-0 text-[11px] font-semibold text-texto-secundario uppercase tracking-wider group">
         <span>DIRETÓRIO</span>
         <div class="flex items-center gap-1">
@@ -60,7 +60,7 @@ const handleNovaPasta = () => {
           </button>
         </div>
       </div>
-      <div class="h-full overflow-auto sm-scrollbar">
+      <div class="h-full overflow-auto sm-scrollbar pb-5">
         <ItemArvore
           v-for="item in estruturaArquivos"
           :key="item.id"
