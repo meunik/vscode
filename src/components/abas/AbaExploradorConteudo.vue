@@ -1,15 +1,26 @@
 <script setup>
+import { watch } from 'vue'
 import { useArquivos } from '@/composables/useArquivos'
 import { useEditorAbas } from '@/composables/useEditorAbas'
 import { useGithubStore } from '@/stores/github'
 import ItemArvore from '@/components/abas/ItemArvore.vue'
 import EditoresAbertos from '@/components/abas/EditoresAbertos.vue'
 
-const { estruturaArquivos, itemSelecionado, alternarPasta, selecionarItem, criarNovoArquivo, criarNovaPasta, recolherTodasPastas } = useArquivos()
+const { estruturaArquivos, itemSelecionado, ocultarArquivoAtivo, alternarPasta, selecionarItem, desselecionarItem, criarNovoArquivo, criarNovaPasta, recolherTodasPastas } = useArquivos()
 const { abas, abrirArquivo, abaAtivaId } = useEditorAbas()
 const githubStore = useGithubStore()
 
+watch(abaAtivaId, () => {
+  if (itemSelecionado.value && itemSelecionado.value.tipo === 'pasta') {
+    desselecionarItem()
+  }
+  ocultarArquivoAtivo.value = false
+})
+
 const handleAbrirArquivo = async (item) => {
+  desselecionarItem()
+  ocultarArquivoAtivo.value = false
+  
   if (item.isGithubRepo) {
     const readme = await githubStore.buscarReadme(item.repoData)
     abrirArquivo(item.caminho, item.nome, readme, 'markdown', item.repoData)
@@ -60,7 +71,7 @@ const handleNovaPasta = () => {
           </button>
         </div>
       </div>
-      <div class="h-full overflow-auto sm-scrollbar pb-5">
+      <div class="h-full overflow-auto sm-scrollbar pb-5" @click="desselecionarItem">
         <ItemArvore
           v-for="item in estruturaArquivos"
           :key="item.id"
@@ -69,6 +80,7 @@ const handleNovaPasta = () => {
           :aba-ativa-id="abaAtivaId"
           :abas="abas"
           :item-selecionado="itemSelecionado"
+          :ocultar-arquivo-ativo="ocultarArquivoAtivo"
           @alternarPasta="alternarPasta"
           @abrirArquivo="handleAbrirArquivo"
           @selecionarItem="selecionarItem"

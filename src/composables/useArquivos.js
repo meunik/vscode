@@ -4,6 +4,7 @@ import { useGithubStore } from '@/stores/github'
 let proximoId = 1
 
 const itemSelecionado = ref(null)
+const ocultarArquivoAtivo = ref(false)
 const estruturaArquivos = ref([
   {
     id: proximoId++,
@@ -173,6 +174,12 @@ function alternarPasta(item) {
 
 function selecionarItem(item) {
   itemSelecionado.value = item
+  ocultarArquivoAtivo.value = false
+}
+
+function desselecionarItem() {
+  itemSelecionado.value = null
+  ocultarArquivoAtivo.value = true
 }
 
 function criarNovoArquivo() {
@@ -277,11 +284,13 @@ export function useArquivos() {
   watch(() => githubStore.repositorios, atualizarRepositorios, { immediate: true })
   
   return {
+    ocultarArquivoAtivo,
     estruturaArquivos,
     itemSelecionado,
     encontrarItemPorCaminho,
     alternarPasta,
     selecionarItem,
+    desselecionarItem,
     criarNovoArquivo,
     criarNovaPasta,
     recolherTodasPastas

@@ -59,9 +59,7 @@ export function useEditorAbas() {
 
   const atualizarConteudo = (id, novoConteudo) => {
     const aba = abas.value.find(aba => aba.id === id)
-    if (aba) {
-      aba.conteudo = novoConteudo
-    }
+    if (aba) aba.conteudo = novoConteudo
   }
 
   const fecharTodasAbas = () => {

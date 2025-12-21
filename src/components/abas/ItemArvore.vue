@@ -22,6 +22,10 @@ const props = defineProps({
   itemSelecionado: {
     type: Object,
     default: null
+  },
+  ocultarArquivoAtivo: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -34,6 +38,8 @@ const iconeArquivo = computed(() => {
 
 const estaAtivo = computed(() => {
   if (props.item.tipo === 'arquivo' && props.abaAtivaId) {
+    if (props.ocultarArquivoAtivo) return false
+    if (props.itemSelecionado && props.itemSelecionado.tipo === 'pasta') return false
     const abaAtiva = props.abas.find(aba => aba.id === props.abaAtivaId)
     return abaAtiva && abaAtiva.caminho === props.item.caminho
   }
@@ -42,7 +48,8 @@ const estaAtivo = computed(() => {
 
 const estaSelecionado = computed(() => {
   if (!props.itemSelecionado) return false
-  return props.itemSelecionado.caminho === props.item.caminho
+  if (props.item.tipo === 'pasta') return props.itemSelecionado.caminho === props.item.caminho
+  return false
 })
 
 const alternarPasta = () => {
@@ -53,10 +60,7 @@ const alternarPasta = () => {
 }
 
 const abrirArquivo = () => {
-  if (props.item.tipo === 'arquivo') {
-    emit('abrirArquivo', props.item)
-    emit('selecionarItem', props.item)
-  }
+  if (props.item.tipo === 'arquivo') emit('abrirArquivo', props.item)
 }
 
 const handleClick = () => {
@@ -74,7 +78,7 @@ const handleClick = () => {
         estaAtivo || estaSelecionado ? 'bg-ativo' : 'hover:bg-hover'
       ]"
       :style="{ paddingLeft: (10 + nivel * 12) + 'px' }"
-      @click="handleClick"
+      @click.stop="handleClick"
     >
       <UIcon v-if="item.tipo === 'pasta'" :name="item.aberta ? 'i-lucide-chevron-down' : 'i-lucide-chevron-right'" class="w-4 shrink-0" />
       <UIcon v-else name="" class="w-4 shrink-0" />
@@ -87,6 +91,7 @@ const handleClick = () => {
         v-for="filho in item.filhos"
         :key="filho.id"
         :item="filho"
+        :ocultar-arquivo-ativo="ocultarArquivoAtivo"
         :nivel="nivel + 1"
         :aba-ativa-id="abaAtivaId"
         :abas="abas"
