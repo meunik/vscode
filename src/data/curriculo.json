@@ -136,11 +136,8 @@
     { "idioma": "Inglês", "nivel": "Intermediário" }
   ],
   "configuracoes": {
-    "corPrimaria": "#007acc",
-    "corSecundaria": "#1e1e1e",
-    "fontePrincipal": "Segoe UI",
+    "atualizacao": "21/12/2025",
     "mostrarFoto": true,
-    "mostrarNivelHabilidades": true,
-    "layoutColunas": 2
+    "mostrarNivelHabilidades": true
   }
 }

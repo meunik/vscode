@@ -54,7 +54,7 @@ onMounted(() => carregarDados())
 
     <!-- Footer -->
     <div class="pt-8 border-t border-borda-principal text-center text-xs text-texto-secundario">
-      <p>Currículo atualizado em {{ new Date().toLocaleDateString('pt-BR') }}</p>
+      <p>Currículo atualizado em {{ dados.configuracoes.atualizacao }}</p>
     </div>
   </div>
 </template>

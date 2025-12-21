@@ -17,9 +17,7 @@ const handleWheel = (evento) => {
 
 <template>
   <div class="flex h-8.75 bg-secundario border-b border-borda-principal overflow-x-auto overflow-y-hidden [&::-webkit-scrollbar]:h-0" @wheel.prevent="handleWheel">
-    <div v-if="abas.length === 0" class="flex items-center px-4 text-texto-secundario text-[13px]">
-      Nenhum arquivo aberto
-    </div>
+    <div v-if="abas.length === 0" class="flex items-center px-4 text-texto-secundario text-[13px]" />
     <div v-else class="flex flex-1">
       <div
         v-for="aba in abas"

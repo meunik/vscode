@@ -16,7 +16,7 @@ const abaAtual = computed(() => {
   <div class="flex-1 flex flex-col bg-principal overflow-hidden">
     <div v-if="!abaAtual" class="flex items-center justify-center w-full h-full text-texto-secundario">
       <div class="text-center">
-        <h2 class="text-2xl font-normal m-0 mb-3 text-texto-principal">Bem-vindo ao VS Code</h2>
+        <h2 class="text-2xl font-normal m-0 mb-3 text-texto-principal">Bem-vindo ao site do Marcos</h2>
         <p class="text-sm m-0">Abra um arquivo para começar a editar</p>
       </div>
     </div>

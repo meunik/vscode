@@ -33,18 +33,13 @@ function selecionarTema(tema) {
 
 function inicializarTema() {
   const temaSalvo = localStorage.getItem('tema')
-  if (temaSalvo) {
-    selecionarTema(temaSalvo)
-  } else {
-    selecionarTema('sistema')
-  }
+  if (temaSalvo) selecionarTema(temaSalvo)
+  else selecionarTema('sistema')
 }
 
 if (typeof window !== 'undefined') {
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-    if (preferenciaTema.value === 'sistema') {
-      aplicarTema(e.matches ? 'dark' : 'light')
-    }
+    if (preferenciaTema.value === 'sistema') aplicarTema(e.matches ? 'dark' : 'light')
   })
 }
 
