@@ -3,7 +3,6 @@ import { ref, onMounted } from 'vue'
 
 import curriculoData from '@/data/curriculo.json'
 import InfoPessoais from '@/components/curriculo/InfoPessoais.vue'
-import Links from '@/components/curriculo/Links.vue'
 import Habilidades from '@/components/curriculo/Habilidades.vue'
 import Experiencia from '@/components/curriculo/Experiencia.vue'
 import Formacao from '@/components/curriculo/Formacao.vue'
@@ -39,7 +38,6 @@ onMounted(() => carregarDados())
     <div class="flex gap-4 w-full p-4">
       <div class="flex flex-col gap-4 w-6/12">
         <InfoPessoais :dados="dados" />
-        <!-- <Links :dados="dados" /> -->
         <Habilidades :dados="dados" />
         <Formacao :dados="dados" />
       </div>

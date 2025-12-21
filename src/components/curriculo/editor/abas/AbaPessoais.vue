@@ -62,7 +62,7 @@ defineProps({
       <textarea 
         v-model="dados.resumo" 
         rows="4" 
-        class="w-full px-3 py-2 bg-secundario border border-borda-principal rounded text-sm text-texto-principal focus:outline-none focus:border-borda-destaque transition-colors resize-none"
+        class="w-full px-3 py-2 bg-secundario border border-borda-principal rounded text-sm text-texto-principal focus:outline-none focus:border-borda-destaque transition-colors sm-scrollbar"
       ></textarea>
     </div>
   </div>

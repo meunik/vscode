@@ -2,31 +2,42 @@
   "informacoesPessoais": {
     "nome": "Marcos Paulo",
     "sobreNome": "Chagas da Silva",
+    "arroba": "meunik",
     "cargo": "Desenvolvedor Full Stack",
     "email": "marcostrab@hotmail.com",
-    "telefone": "(00) 00000-0000",
-    "localizacao": "Brasil",
     "foto": "https://avatars.githubusercontent.com/u/50606021?v=4",
-    "resumo": "Desenvolvedor Full Stack com experiência em Vue.js e Laravel, apaixonado por criar soluções elegantes e eficientes."
+    "resumo": "Tenho 6 anos de experiência em desenvolvedor web. Atualmente trabalho no Complexo Regulador do Município do Rio de Janeiro, no qual atuo como Full Stack no desenvolvimento de sistemas para auxiliar a área da saúde do Município do Rio de Janeiro. Já trabalhei e trabalho com as tecnologias: PHP, Laravel, Lumen, MySQL, HTML, CSS, JavaScript, Vue.js, Figma, jQuery. No meu trabalho anterior desenvolvi um sistema de RH, utilizado por 72 clínicas particulares espalhadas pelo Brasil, com mais de 12 mil funcionários inseridos no sistema. Também fiz um sistema para acompanhamento diário de diálises realizadas por 19 clínicas."
   },
   "links": [
     {
-      "tipo": "github",
-      "titulo": "GitHub",
-      "url": "https://github.com/meunik",
-      "icone": "mdi:github"
+      "tipo": "cidade",
+      "titulo": "Rio de Janeiro/RJ",
+      "url": null,
+      "icone": "grommet-icons:location"
+    },
+    {
+      "tipo": "email",
+      "titulo": "marcostrab@hotmail.com",
+      "url": "mailto:marcostrab@hotmail.com",
+      "icone": "grommet-icons:mail"
     },
     {
       "tipo": "linkedin",
       "titulo": "LinkedIn",
-      "url": "https://linkedin.com/in/seu-perfil",
-      "icone": "mdi:linkedin"
+      "url": "https://www.linkedin.com/in/marcospaulo505058185/",
+      "icone": "grommet-icons:linkedin"
     },
     {
-      "tipo": "portfolio",
-      "titulo": "Portfolio",
-      "url": "https://marcospaulo.dev",
-      "icone": "mdi:web"
+      "tipo": "instagram",
+      "titulo": "meunikmp",
+      "url": "https://www.instagram.com/meunikmp",
+      "icone": "grommet-icons:instagram"
+    },
+    {
+      "tipo": "github",
+      "titulo": "GitHub",
+      "url": "https://github.com/meunik",
+      "icone": "grommet-icons:github"
     }
   ],
   "habilidades": [

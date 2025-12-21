@@ -8,19 +8,16 @@ defineProps({
 </script>
 
 <template>
-<div v-if="dados.links.length > 0" class="mb-8">
-  <div class="flex flex-wrap gap-3">
-    <a 
-      v-for="(link, idx) in dados.links" 
-      :key="idx"
-      :href="link.url"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="flex items-center gap-2 px-4 py-2 bg-secundario border border-borda-principal rounded hover:border-destaque transition-colors text-sm"
-    >
-      <UIcon :name="link.icone" class="text-base" />
-      <span>{{ link.titulo }}</span>
+<div v-if="dados.links.length > 0" class="flex flex-col text-texto-secundario">
+  <template v-for="link in dados.links" :key="index">
+    <a v-if="link.url" :href="link.url" class="flex items-center gap-2">
+      <UIcon :name="link.icone" class="text-[18px]" />
+      <span class="hover:text-texto-destaque hover:underline">{{ link.titulo }}</span>
     </a>
-  </div>
+    <span v-else class="flex items-center gap-2">
+      <UIcon :name="link.icone" class="text-[18px]" />
+      <span>{{ link.titulo }}</span>
+    </span>
+  </template>
 </div>
 </template>

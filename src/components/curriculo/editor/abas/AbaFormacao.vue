@@ -50,6 +50,7 @@ const removerFormacao = (index) => emit('remover', index)
           <option value="Concluído">Concluído</option>
           <option value="Em andamento">Em andamento</option>
           <option value="Trancado">Trancado</option>
+          <option value="Incompleto">Incompleto</option>
         </select>
       </div>
     </div>

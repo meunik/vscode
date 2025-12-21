@@ -16,13 +16,16 @@ defineProps({
     <span class="text-texto-destaque">.txt</span>
   </h3>
   <p class="m-0 bg-secundario p-4 rounded">
+    {{ dados.informacoesPessoais.resumo }}
+  </p>
+  <!-- <p class="m-0 bg-secundario p-4 rounded">
     Tenho 4 anos de experiência em desenvolvedor web. Atualmente trabalho no Complexo Regulador do Município do Rio de Janeiro, no qual atuo como Full Stack no desenvolvimento de sistemas para auxiliar a área da saúde do Município do Rio de Janeiro. Já trabalhei e trabalho com as tecnologias: 
     <span class="d-contents text-php">PHP</span>, 
     <span class="d-contents text-laravel">Laravel</span>, 
     <span class="d-contents text-lumen">Lumen</span>, 
     <span class="d-contents text-mysql">MySQL</span>, 
-    <span class="d-contents text-html">HTML<!----></span>, 
-    <span class="d-contents text-css">CSS<!----></span>, 
+    <span class="d-contents text-html">HTML</span>, 
+    <span class="d-contents text-css">CSS</span>, 
     <span class="d-contents text-javascript">JavaScript</span>, 
     <span class="d-contents text-vue">Vue.js</span>, 
     <span class="d-contents text-html">
@@ -33,7 +36,7 @@ defineProps({
       <span class="contents figma-a">a</span>
     </span>, 
     <span class="d-contents text-jquery">jQuery</span>. No meu trabalho anterior desenvolvi um sistema de RH, utilizado por 72 clínicas particulares espalhadas pelo Brasil, com mais de 12 mil funcionários inseridos no sistema. Também fiz um sistema para acompanhamento diário de diálises realizadas por 19 clínicas.
-  </p>
+  </p> -->
 </div>
 </template>
 
