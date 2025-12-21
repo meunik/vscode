@@ -11,7 +11,7 @@ const abas = [
   { id: 'links', titulo: 'Links', icone: 'line-md:link' },
   { id: 'habilidades', titulo: 'Habilidades', icone: 'line-md:briefcase-check-filled' },
   { id: 'experiencia', titulo: 'Experiência', icone: 'line-md:lightbulb-filled' },
-  { id: 'educacao', titulo: 'Educação', icone: 'line-md:clipboard-twotone' },
+  { id: 'formacao', titulo: 'Formação', icone: 'line-md:clipboard-twotone' },
   { id: 'projetos', titulo: 'Projetos', icone: 'line-md:briefcase-twotone' },
   { id: 'idiomas', titulo: 'Idiomas', icone: 'line-md:chat-round-dots' }
 ]
@@ -73,7 +73,7 @@ const gerarMarkdown = () => {
   })
   
   md += '---\n\n## 🎓 Educação\n\n'
-  d.educacao.forEach(edu => md += `### ${edu.curso}\n**${edu.instituicao}** • ${edu.periodo} • ${edu.status}\n\n`)
+  d.formacao.forEach(edu => md += `### ${edu.curso}\n**${edu.instituicao}** • ${edu.periodo} • ${edu.status}\n\n`)
   
   if (d.projetos.length > 0) {
     md += '---\n\n## 🚀 Projetos\n\n'
@@ -105,8 +105,8 @@ const adicionarExperiencia = () => dados.value.experiencia.push({ cargo: 'Novo C
 const removerExperiencia = (index) => dados.value.experiencia.splice(index, 1)
 const adicionarRealizacao = (expIndex) => dados.value.experiencia[expIndex].realizacoes.push('Nova realização')
 const removerRealizacao = (expIndex, realIndex) => dados.value.experiencia[expIndex].realizacoes.splice(realIndex, 1)
-const adicionarEducacao = () => dados.value.educacao.push({ curso: 'Novo Curso', instituicao: 'Nova Instituição', periodo: 'Ano - Ano', status: 'Em andamento' })
-const removerEducacao = (index) => dados.value.educacao.splice(index, 1)
+const adicionarFormacao = () => dados.value.formacao.push({ curso: 'Novo Curso', instituicao: 'Nova Instituição', periodo: 'Ano - Ano', status: 'Em andamento' })
+const removerFormacao = (index) => dados.value.formacao.splice(index, 1)
 const adicionarProjeto = () => dados.value.projetos.push({ nome: 'Novo Projeto', descricao: 'Descrição do projeto', tecnologias: [], url: 'https://' })
 const removerProjeto = (index) => dados.value.projetos.splice(index, 1)
 const adicionarTecnologia = (projIndex) => dados.value.projetos[projIndex].tecnologias.push('Nova Tecnologia')
@@ -215,11 +215,11 @@ onMounted(() => carregarDados())
           <button @click="adicionarExperiencia" class="w-full py-2.5 border-2 border-dashed border-borda-principal rounded text-sm text-texto-secundario hover:border-destaque hover:text-destaque transition-colors">+ Adicionar Experiência</button>
         </div>
 
-        <div v-show="abaSelecionada === 'educacao'" class="space-y-4">
-          <div v-for="(edu, idx) in dados.educacao" :key="idx" class="p-4 bg-secundario border border-borda-principal rounded">
+        <div v-show="abaSelecionada === 'formacao'" class="space-y-4">
+          <div v-for="(edu, idx) in dados.formacao" :key="idx" class="p-4 bg-secundario border border-borda-principal rounded">
             <div class="flex items-center justify-between mb-3">
               <h4 class="text-sm font-semibold">{{ edu.curso }}</h4>
-              <button @click="removerEducacao(idx)" class="px-2 py-1 bg-red-900/30 text-red-400 rounded text-xs hover:bg-red-900/50">Remover</button>
+              <button @click="removerFormacao(idx)" class="px-2 py-1 bg-red-900/30 text-red-400 rounded text-xs hover:bg-red-900/50">Remover</button>
             </div>
             <div class="space-y-3">
               <input v-model="edu.curso" type="text" placeholder="Curso" class="w-full px-3 py-2 bg-principal border border-borda-principal rounded text-sm text-texto-principal focus:outline-none focus:border-destaque" />
@@ -232,7 +232,7 @@ onMounted(() => carregarDados())
               </select>
             </div>
           </div>
-          <button @click="adicionarEducacao" class="w-full py-2.5 border-2 border-dashed border-borda-principal rounded text-sm text-texto-secundario hover:border-destaque hover:text-destaque transition-colors">+ Adicionar Educação</button>
+          <button @click="adicionarFormacao" class="w-full py-2.5 border-2 border-dashed border-borda-principal rounded text-sm text-texto-secundario hover:border-destaque hover:text-destaque transition-colors">+ Adicionar Educação</button>
         </div>
 
         <div v-show="abaSelecionada === 'projetos'" class="space-y-4">
