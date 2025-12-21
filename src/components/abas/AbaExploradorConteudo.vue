@@ -24,7 +24,7 @@ const handleAbrirArquivo = async (item) => {
     <EditoresAbertos />
     <div class="overflow-hidden">
       <div class="flex items-center justify-between px-2 py-2 pt-2 pb-0 text-[11px] font-semibold text-texto-secundario uppercase tracking-wider group">
-        <span>VSCODE2</span>
+        <span>DIRETÓRIO</span>
         <button 
           class="flex items-center justify-center w-5 h-5 bg-transparent border-none text-texto-secundario cursor-pointer rounded hover:bg-hover hover:text-texto-principal transition-colors"
           @click="recolherTodasPastas"
