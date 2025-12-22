@@ -75,7 +75,7 @@
 
 @layer base {
   .caixa {
-    @apply w-full max-w-375 h-full flex flex-col bg-principal text-principal rounded-lg overflow-hidden;
+    @apply w-full max-w-375 h-full flex flex-col bg-principal text-principal rounded-none sm:rounded-lg overflow-hidden;
   }
   .rodape {
     @apply bg-principal text-principal w-full flex justify-end items-center h-6 relative text-sm;

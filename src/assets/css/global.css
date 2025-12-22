@@ -42,3 +42,9 @@ body, html, #app {
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
 } */
+
+@media (width < 40rem) {
+  #app {
+    padding: 0px;
+  }
+}
