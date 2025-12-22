@@ -8,14 +8,6 @@ const ocultarArquivoAtivo = ref(false)
 const estruturaArquivos = ref([
   {
     id: proximoId++,
-    nome: 'BemVindo.vue',
-    tipo: 'arquivo',
-    caminho: 'BemVindo.vue',
-    tipoEditor: 'componente',
-    componente: 'bemVindo/BemVindo'
-  },
-  {
-    id: proximoId++,
     nome: 'Curriculo.md',
     tipo: 'arquivo',
     caminho: 'Profissional/Curriculo.md',

@@ -87,6 +87,7 @@ const handleNovaPasta = () => {
           :abas="abas"
           :item-selecionado="itemSelecionado"
           :ocultar-arquivo-ativo="ocultarArquivoAtivo"
+          :carregando-repositorios="githubStore.carregando"
           @alternarPasta="alternarPasta"
           @abrirArquivo="handleAbrirArquivo"
           @selecionarItem="selecionarItem"

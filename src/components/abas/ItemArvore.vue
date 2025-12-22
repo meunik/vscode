@@ -26,6 +26,10 @@ const props = defineProps({
   ocultarArquivoAtivo: {
     type: Boolean,
     default: false
+  },
+  carregandoRepositorios: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -50,6 +54,10 @@ const estaSelecionado = computed(() => {
   if (!props.itemSelecionado) return false
   if (props.item.tipo === 'pasta') return props.itemSelecionado.caminho === props.item.caminho
   return false
+})
+
+const ehPastaGithub = computed(() => {
+  return props.item.tipo === 'pasta' && props.item.caminho === 'Profissional/GitHub'
 })
 
 const alternarPasta = () => {
@@ -85,6 +93,7 @@ const handleClick = () => {
       <UIcon v-if="item.tipo === 'pasta'" name="line-md:folder" class="text-[16px] shrink-0" />
       <UIcon v-else :name="iconeArquivo" class="text-[16px] shrink-0" />
       <span class="flex-1 text-[13px] tresPontinhos">{{ item.nome }}</span>
+      <UIcon v-if="ehPastaGithub && carregandoRepositorios" name="line-md:loading-twotone-loop" class="text-[14px] shrink-0 text-texto-secundario" />
     </div>
     <div v-if="item.tipo === 'pasta' && item.aberta && item.filhos">
       <ItemArvore
@@ -96,6 +105,7 @@ const handleClick = () => {
         :aba-ativa-id="abaAtivaId"
         :abas="abas"
         :item-selecionado="itemSelecionado"
+        :carregando-repositorios="carregandoRepositorios"
         @alternarPasta="emit('alternarPasta', $event)"
         @abrirArquivo="emit('abrirArquivo', $event)"
         @selecionarItem="emit('selecionarItem', $event)"

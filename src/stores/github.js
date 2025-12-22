@@ -27,6 +27,7 @@ export const useGithubStore = defineStore('github', {
   state: () => ({
     repositorios: [],
     carregando: false,
+    carregandoReadme: {},
     erro: null,
     readmes: {}
   }),
@@ -66,6 +67,8 @@ export const useGithubStore = defineStore('github', {
         return this.readmes[chave]
       }
 
+      this.carregandoReadme[chave] = true
+
       try {
         const resposta = await axios.get(`https://api.github.com/repos/${chave}/readme`, {
           headers: { Accept: 'application/vnd.github.raw' }
@@ -76,6 +79,8 @@ export const useGithubStore = defineStore('github', {
         const mensagemPadrao = `# ${repo.name}\n\nRepositório sem README.md`
         this.readmes[chave] = mensagemPadrao
         return mensagemPadrao
+      } finally {
+        this.carregandoReadme[chave] = false
       }
     }
   }
