@@ -9,7 +9,7 @@ defineProps({
 
 <template>
 <div v-if="dados.experiencia.length > 0" class="flex flex-col gap-2">
-  <h3 class="flex items-center gap-1 text-[12px] font-light text-texto-principal">
+  <h3 class="flex flex-wrap items-center gap-1 text-[12px] font-light text-texto-principal">
     <span>meunik</span>
     <span class="text-texto-destaque">/</span>
     <span class="font-normal">HISTÓRICO PROFISSIONAL</span>

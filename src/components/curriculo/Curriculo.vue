@@ -35,13 +35,13 @@ onMounted(() => carregarDados())
       </button>
     </div>
 
-    <div class="flex gap-4 w-full p-4">
-      <div class="flex flex-col gap-4 w-6/12">
+    <div class="flex flex-wrap sm:flex-nowrap gap-4 w-full p-4">
+      <div class="flex flex-col gap-4 w-full sm:w-4/12">
         <InfoPessoais :dados="dados" />
         <Habilidades :dados="dados" />
         <Formacao :dados="dados" />
       </div>
-      <div class="flex flex-col gap-4 w-full">
+      <div class="flex flex-col gap-4 w-full sm:w-8/12">
         <Readme :dados="dados" />
         <Resumo :dados="dados" />
         <Experiencia :dados="dados" />
