@@ -232,7 +232,8 @@ function criarNovoArquivo() {
     tipo: 'arquivo',
     caminho: '',
     tipoEditor,
-    conteudo: ''
+    conteudo: '',
+    naoSalvarNoHistorico: true
   }
   
   // Se tiver um item selecionado que seja pasta, adiciona dentro dela

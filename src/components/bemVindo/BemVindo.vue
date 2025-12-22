@@ -28,6 +28,7 @@ const abrirCurriculo = () => {
 
 const abrirArquivoRecente = async (item) => {
   const arquivo = encontrarItemPorCaminho(item.caminho)
+  
   if (arquivo) {
     let conteudo = arquivo.conteudo || ''
     
@@ -44,6 +45,13 @@ const abrirArquivoRecente = async (item) => {
     
     abrirArquivo(arquivo.caminho, arquivo.nome, conteudo, arquivo.tipoEditor || 'texto', metadados)
     expandirCaminhoParaArquivo(arquivo.caminho)
+  } else {
+    const metadados = {
+      componente: item.componente,
+      componenteProps: item.componenteProps
+    }
+    
+    abrirArquivo(item.caminho, item.titulo, '', item.tipoEditor || 'componente', metadados)
   }
 }
 </script>

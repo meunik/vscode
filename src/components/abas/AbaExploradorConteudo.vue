@@ -30,7 +30,8 @@ const handleAbrirArquivo = async (item) => {
     componente: item.componente,
     componenteProps: item.componenteProps,
     isGithubRepo: item.isGithubRepo,
-    repoData: item.repoData
+    repoData: item.repoData,
+    naoSalvarNoHistorico: item.naoSalvarNoHistorico
   }
   
   abrirArquivo(item.caminho, item.nome, conteudo, item.tipoEditor || 'texto', metadados)

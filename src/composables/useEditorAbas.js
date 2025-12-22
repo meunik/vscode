@@ -24,13 +24,15 @@ const salvarHistorico = () => {
 }
 
 const adicionarAoHistorico = (aba) => {
-  if (aba.tipoEditor === 'componente' || !aba.caminho) return
+  if (aba.naoSalvarNoHistorico || !aba.caminho) return
   historicoRecente.value = historicoRecente.value.filter(item => item.caminho !== aba.caminho)
 
   historicoRecente.value.unshift({
     caminho: aba.caminho,
     titulo: aba.titulo,
     tipoEditor: aba.tipoEditor,
+    componente: aba.componente,
+    componenteProps: aba.componenteProps,
     timestamp: Date.now()
   })
   
@@ -58,7 +60,6 @@ export function useEditorAbas() {
       conteudo,
       tipoEditor,
       caminho,
-      metadados,
       ...(metadados || {})
     }
     abas.value.push(novaAba)
