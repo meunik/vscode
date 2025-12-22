@@ -2,8 +2,57 @@ import { ref } from 'vue'
 
 const abas = ref([])
 const abaAtivaId = ref(null)
+const historicoRecente = ref([])
 
 let proximoId = 1
+
+// Carrega histórico do localStorage
+const carregarHistorico = () => {
+  try {
+    const salvos = localStorage.getItem('historico-abas-recentes')
+    if (salvos) {
+      historicoRecente.value = JSON.parse(salvos)
+    }
+  } catch (e) {
+    console.error('Erro ao carregar histórico:', e)
+  }
+}
+
+// Salva histórico no localStorage
+const salvarHistorico = () => {
+  try {
+    localStorage.setItem('historico-abas-recentes', JSON.stringify(historicoRecente.value))
+  } catch (e) {
+    console.error('Erro ao salvar histórico:', e)
+  }
+}
+
+// Adiciona item ao histórico (máximo 10)
+const adicionarAoHistorico = (aba) => {
+  // Não adiciona se for a aba de Bem-vindo
+  if (aba.tipo === 'componente' || !aba.caminho) return
+  
+  // Remove duplicatas (se já existe)
+  historicoRecente.value = historicoRecente.value.filter(item => item.caminho !== aba.caminho)
+  
+  // Adiciona no início
+  historicoRecente.value.unshift({
+    caminho: aba.caminho,
+    titulo: aba.titulo,
+    tipo: aba.tipo,
+    timestamp: Date.now()
+  })
+  
+  // Mantém apenas os 10 mais recentes
+  if (historicoRecente.value.length > 10) {
+    historicoRecente.value = historicoRecente.value.slice(0, 10)
+  }
+  
+  salvarHistorico()
+}
+
+// Carrega histórico ao inicializar
+carregarHistorico()
 
 export function useEditorAbas() {
   const adicionarAba = (titulo, conteudo = '', tipo = 'texto', caminho = null, metadados = null) => {
@@ -26,6 +75,10 @@ export function useEditorAbas() {
     }
     abas.value.push(novaAba)
     abaAtivaId.value = novaAba.id
+    
+    // Adiciona ao histórico
+    adicionarAoHistorico(novaAba)
+    
     return novaAba
   }
 
@@ -66,10 +119,11 @@ export function useEditorAbas() {
     abas.value = []
     abaAtivaId.value = null
   }
-
+  
   return {
     abas,
     abaAtivaId,
+    historicoRecente,
     adicionarAba,
     abrirArquivo,
     fecharAba,

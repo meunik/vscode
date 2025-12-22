@@ -1,11 +1,37 @@
 <script setup>
 import { ref } from 'vue'
 import { obterIconeArquivo } from '@/utils/icones'
+import { useEditorAbas } from '@/composables/useEditorAbas'
+import { useArquivos } from '@/composables/useArquivos'
 
 import curriculoData from '@/data/curriculo.json'
 import Links from '@/components/curriculo/Links.vue'
 
 const dados = ref(JSON.parse(JSON.stringify(curriculoData)))
+
+const { abrirArquivo, historicoRecente } = useEditorAbas()
+const { encontrarItemPorCaminho, expandirCaminhoParaArquivo } = useArquivos()
+
+const abrirCurriculo = () => {
+  abrirArquivo('Profissional/Curriculo.md', 'Curriculo.md', '', 'curriculo-visualizacao')
+  expandirCaminhoParaArquivo('Profissional/Curriculo.md')
+}
+
+const abrirArquivoRecente = (item) => {
+  const arquivo = encontrarItemPorCaminho(item.caminho)
+  if (arquivo) {
+    let tipo = item.tipo || 'texto'
+    let conteudo = arquivo.conteudo || ''
+    
+    // Tratamento especial para Curriculo.md
+    if (item.caminho === 'Profissional/Curriculo.md') {
+      tipo = 'curriculo-visualizacao'
+    }
+    
+    abrirArquivo(item.caminho, item.titulo, conteudo, tipo)
+    expandirCaminhoParaArquivo(item.caminho)
+  }
+}
 </script>
 
 <template>
@@ -20,7 +46,10 @@ const dados = ref(JSON.parse(JSON.stringify(curriculoData)))
       <div class="flex flex-col">
         <h2 class="text-4xl font-bold text-texto-secundario">Iniciar</h2>
         <ul class="pl-8 mt-2 space-y-1">
-          <li class="flex items-center gap-1 cursor-pointer text-texto-destaque hover:text-texto-destaque/70">
+          <li 
+            class="flex items-center gap-1 cursor-pointer text-texto-destaque hover:text-texto-destaque/70"
+            @click="abrirCurriculo"
+          >
             <UIcon :name="obterIconeArquivo('Curriculo.md')" class="text-[20px] shrink-0" />
             Currículo.md
           </li>
@@ -28,9 +57,20 @@ const dados = ref(JSON.parse(JSON.stringify(curriculoData)))
       </div>
       <div class="flex flex-col">
         <h2 class="text-4xl font-bold text-texto-secundario">Recente</h2>
-        <div>
-          <span class=""></span>
-        </div>
+        <ul class="pl-8 mt-2 space-y-1">
+          <li 
+            v-for="item in historicoRecente" 
+            :key="item.caminho"
+            class="flex items-center gap-1 cursor-pointer text-texto-destaque hover:text-texto-destaque/70"
+            @click="abrirArquivoRecente(item)"
+          >
+            <UIcon :name="obterIconeArquivo(item.titulo)" class="text-[20px] shrink-0" />
+            {{ item.titulo }}
+          </li>
+          <li v-if="historicoRecente.length === 0" class="text-texto-secundario text-sm">
+            Nenhum arquivo recente
+          </li>
+        </ul>
       </div>
     </div>
     
