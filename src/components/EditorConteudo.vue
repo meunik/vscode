@@ -4,7 +4,7 @@ import { useEditorAbas } from '@/composables/useEditorAbas'
 import MarkdownViewer from '@/components/MarkdownViewer.vue'
 import EditorCurriculoConteudo from '@/components/curriculo/editor/EditorCurriculoConteudo.vue'
 import Curriculo from '@/components/curriculo/Curriculo.vue'
-import BemVindo from '@/components/BemVindo.vue'
+import BemVindo from '@/components/bemVindo/BemVindo.vue'
 
 const { abas, abaAtivaId } = useEditorAbas()
 
