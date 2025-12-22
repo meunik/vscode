@@ -37,7 +37,9 @@ const fecharSeletorTemas = () => {
 
 const abrirEditorCurriculo = () => {
   fecharAba()
-  adicionarAba('Editor de Currículo', '', 'curriculo', 'curriculo-editor')
+  adicionarAba('Editor de Currículo', '', 'componente', 'curriculo-editor', {
+    componente: 'curriculo/editor/EditorCurriculoConteudo'
+  })
 }
 </script>
 

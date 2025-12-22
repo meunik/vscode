@@ -19,7 +19,8 @@ const estruturaArquivos = ref([
     nome: 'Curriculo.md',
     tipo: 'arquivo',
     caminho: 'Profissional/Curriculo.md',
-    tipoEditor: 'curriculo-visualizacao'
+    tipoEditor: 'componente',
+    componente: 'curriculo/Curriculo'
   },
   {
     id: proximoId++,
@@ -168,8 +169,8 @@ const estruturaArquivos = ref([
     nome: 'README.md',
     tipo: 'arquivo',
     caminho: 'README.md',
-    tipoEditor: 'markdown',
-    conteudo: '# VS Code Clone\n\nUma réplica do VS Code usando Vue 3'
+    tipoEditor: 'componente',
+    componente: 'bemVindo/Readme'
   }
 ])
 

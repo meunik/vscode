@@ -17,7 +17,11 @@ const githubStore = useGithubStore()
 const abrirCurriculo = () => {
   const arquivo = encontrarItemPorCaminho('Profissional/Curriculo.md')
   if (arquivo) {
-    abrirArquivo(arquivo.caminho, arquivo.nome, '', arquivo.tipoEditor || 'curriculo-visualizacao')
+    const metadados = {
+      componente: arquivo.componente,
+      componenteProps: arquivo.componenteProps
+    }
+    abrirArquivo(arquivo.caminho, arquivo.nome, '', arquivo.tipoEditor || 'componente', metadados)
     expandirCaminhoParaArquivo(arquivo.caminho)
   }
 }

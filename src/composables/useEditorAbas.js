@@ -15,7 +15,6 @@ const carregarHistorico = () => {
   }
 }
 
-// Salva histórico no localStorage
 const salvarHistorico = () => {
   try {
     localStorage.setItem('historico-abas-recentes', JSON.stringify(historicoRecente.value))
