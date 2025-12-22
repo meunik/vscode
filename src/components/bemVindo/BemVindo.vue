@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { obterIconeArquivo } from '@/utils/icones'
 import { useEditorAbas } from '@/composables/useEditorAbas'
 import { useArquivos } from '@/composables/useArquivos'
+import { useGithubStore } from '@/stores/github'
 
 import curriculoData from '@/data/curriculo.json'
 import Links from '@/components/curriculo/Links.vue'
@@ -11,17 +12,24 @@ const dados = ref(JSON.parse(JSON.stringify(curriculoData)))
 
 const { abrirArquivo, historicoRecente } = useEditorAbas()
 const { encontrarItemPorCaminho, expandirCaminhoParaArquivo } = useArquivos()
+const githubStore = useGithubStore()
 
 const abrirCurriculo = () => {
   abrirArquivo('Profissional/Curriculo.md', 'Curriculo.md', '', 'curriculo-visualizacao')
   expandirCaminhoParaArquivo('Profissional/Curriculo.md')
 }
 
-const abrirArquivoRecente = (item) => {
+const abrirArquivoRecente = async (item) => {
   const arquivo = encontrarItemPorCaminho(item.caminho)
   if (arquivo) {
     let tipo = item.tipo || 'texto'
     let conteudo = arquivo.conteudo || ''
+    
+    // Se for arquivo do GitHub, carrega o conteúdo
+    if (arquivo.isGithubRepo && arquivo.repoData) {
+      conteudo = await githubStore.buscarReadme(arquivo.repoData)
+    }
+    
     if (item.caminho === 'Profissional/Curriculo.md') tipo = 'curriculo-visualizacao'
     abrirArquivo(item.caminho, item.titulo, conteudo, tipo)
     expandirCaminhoParaArquivo(item.caminho)
@@ -70,7 +78,10 @@ const abrirArquivoRecente = (item) => {
     </div>
     
     <div class="col-start-4 col-end-5 row-start-2 flex flex-col">
-      <h2 class="text-4xl font-bold text-texto-secundario">Resumo</h2>
+      <h2 class="text-4xl font-bold text-texto-secundario">
+        Resumo
+        <span class="text-2xl font-light">sobre mim</span>
+      </h2>
       <div class="flex flex-col gap-2 py-4">
         <div class="flex items-center gap-4">
           <img 
@@ -103,6 +114,8 @@ const abrirArquivoRecente = (item) => {
       </div>
     </div>
 
-    <div class="col-start-2 col-end-5 row-start-3 text-center text-sm">Um projeto de portfolio interativo</div>
+    <div class="col-start-2 col-end-5 row-start-3 text-center text-sm text-texto-secundario">
+      Um projeto de portfolio interativo
+    </div>
   </div>
 </template>
