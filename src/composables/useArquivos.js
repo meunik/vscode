@@ -150,11 +150,19 @@ const estruturaArquivos = ref([
   },
   {
     id: proximoId++,
+    nome: 'Setup.html',
+    tipo: 'arquivo',
+    caminho: 'Setup.html',
+    tipoEditor: 'componente',
+    componente: 'bemVindo/Setup'
+  },
+  {
+    id: proximoId++,
     nome: 'package.json',
     tipo: 'arquivo',
     caminho: 'package.json',
     tipoEditor: 'texto',
-    conteudo: '{\n  "name": "vscode2",\n  "version": "1.0.0"\n}'
+    conteudo: '{\n  "name": "vscode2",\n  "version": "2.0.0"\n}'
   },
   {
     id: proximoId++,
