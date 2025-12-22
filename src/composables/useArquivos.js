@@ -184,21 +184,15 @@ function desselecionarItem() {
 
 function expandirCaminhoParaArquivo(caminho) {
   if (!caminho) return
-  
-  // Divide o caminho em partes (ex: "src/components/layout/Header.vue" => ["src", "components", "layout"])
   const partes = caminho.split('/')
-  
-  // Para cada parte do caminho (exceto a última que é o arquivo), abre a pasta
+
   let caminhoAcumulado = ''
   for (let i = 0; i < partes.length - 1; i++) {
     caminhoAcumulado += (i > 0 ? '/' : '') + partes[i]
     const pasta = encontrarItemPorCaminho(caminhoAcumulado)
-    if (pasta && pasta.tipo === 'pasta') {
-      pasta.aberta = true
-    }
+    if (pasta && pasta.tipo === 'pasta') pasta.aberta = true
   }
-  
-  // Limpa seleção de pasta e mostra o arquivo ativo
+
   itemSelecionado.value = null
   ocultarArquivoAtivo.value = false
 }

@@ -22,12 +22,7 @@ const abrirArquivoRecente = (item) => {
   if (arquivo) {
     let tipo = item.tipo || 'texto'
     let conteudo = arquivo.conteudo || ''
-    
-    // Tratamento especial para Curriculo.md
-    if (item.caminho === 'Profissional/Curriculo.md') {
-      tipo = 'curriculo-visualizacao'
-    }
-    
+    if (item.caminho === 'Profissional/Curriculo.md') tipo = 'curriculo-visualizacao'
     abrirArquivo(item.caminho, item.titulo, conteudo, tipo)
     expandirCaminhoParaArquivo(item.caminho)
   }
@@ -107,8 +102,7 @@ const abrirArquivoRecente = (item) => {
         <UIcon name="devicon:reactnative" class="text-[28px]" />
       </div>
     </div>
-    
-    <!-- Footer: ocupa colunas 2-4, linha 3 (se necessário) -->
+
     <div class="col-start-2 col-end-5 row-start-3 text-center text-sm">Um projeto de portfolio interativo</div>
   </div>
 </template>
