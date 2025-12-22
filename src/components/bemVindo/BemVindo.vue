@@ -35,7 +35,7 @@ const dados = ref(JSON.parse(JSON.stringify(curriculoData)))
     </div>
     
     <div class="col-start-4 col-end-5 row-start-2 flex flex-col">
-      <h2 class="text-4xl font-bold">Resumo</h2>
+      <h2 class="text-4xl font-bold text-texto-secundario">Resumo</h2>
       <div class="flex flex-col gap-2 py-4">
         <div class="flex items-center gap-4">
           <img 
