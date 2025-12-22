@@ -23,7 +23,6 @@ declare module 'vue' {
     AbaPesquisaConteudo: typeof import('./src/components/abas/AbaPesquisaConteudo.vue')['default']
     AbaPessoais: typeof import('./src/components/curriculo/editor/abas/AbaPessoais.vue')['default']
     BemVindo: typeof import('./src/components/bemVindo/BemVindo.vue')['default']
-    'BemVindo copy': typeof import('./src/components/bemVindo/BemVindo copy.vue')['default']
     copy: typeof import('./src/components/curriculo/Resumo copy.vue')['default']
     Curriculo: typeof import('./src/components/curriculo/Curriculo.vue')['default']
     EditorAbas: typeof import('./src/components/EditorAbas.vue')['default']
