@@ -8,10 +8,18 @@ const ocultarArquivoAtivo = ref(false)
 const estruturaArquivos = ref([
   {
     id: proximoId++,
+    nome: 'BemVindo.vue',
+    tipo: 'arquivo',
+    caminho: 'BemVindo.vue',
+    tipoEditor: 'componente',
+    componente: 'bemVindo/BemVindo'
+  },
+  {
+    id: proximoId++,
     nome: 'Curriculo.md',
     tipo: 'arquivo',
     caminho: 'Profissional/Curriculo.md',
-    conteudo: ''
+    tipoEditor: 'curriculo-visualizacao'
   },
   {
     id: proximoId++,
@@ -42,6 +50,7 @@ const estruturaArquivos = ref([
         nome: 'App.vue',
         tipo: 'arquivo',
         caminho: 'src/App.vue',
+        tipoEditor: 'texto',
         conteudo: '<template>\n  <div id="app">\n    <h1>App Vue</h1>\n  </div>\n</template>'
       },
       {
@@ -49,6 +58,7 @@ const estruturaArquivos = ref([
         nome: 'main.js',
         tipo: 'arquivo',
         caminho: 'src/main.js',
+        tipoEditor: 'texto',
         conteudo: 'import { createApp } from "vue"\nimport App from "./App.vue"\n\ncreateApp(App).mount("#app")'
       },
       {
@@ -63,6 +73,7 @@ const estruturaArquivos = ref([
             nome: 'NavBar.vue',
             tipo: 'arquivo',
             caminho: 'src/components/NavBar.vue',
+            tipoEditor: 'texto',
             conteudo: '<template>\n  <nav>NavBar</nav>\n</template>'
           },
           {
@@ -70,6 +81,7 @@ const estruturaArquivos = ref([
             nome: 'Main.vue',
             tipo: 'arquivo',
             caminho: 'src/components/Main.vue',
+            tipoEditor: 'texto',
             conteudo: '<template>\n  <main>Main</main>\n</template>'
           },
           {
@@ -84,6 +96,7 @@ const estruturaArquivos = ref([
                 nome: 'Header.vue',
                 tipo: 'arquivo',
                 caminho: 'src/components/layout/Header.vue',
+                tipoEditor: 'texto',
                 conteudo: '<template>\n  <header>Header</header>\n</template>'
               },
               {
@@ -91,6 +104,7 @@ const estruturaArquivos = ref([
                 nome: 'Footer.vue',
                 tipo: 'arquivo',
                 caminho: 'src/components/layout/Footer.vue',
+                tipoEditor: 'texto',
                 conteudo: '<template>\n  <footer>Footer</footer>\n</template>'
               }
             ]
@@ -109,6 +123,7 @@ const estruturaArquivos = ref([
             nome: 'useAbas.js',
             tipo: 'arquivo',
             caminho: 'src/composables/useAbas.js',
+            tipoEditor: 'texto',
             conteudo: 'export function useAbas() {\n  // implementação\n}'
           },
           {
@@ -116,6 +131,7 @@ const estruturaArquivos = ref([
             nome: 'TesteDeNomeGrandeDeArquivo.js',
             tipo: 'arquivo',
             caminho: 'src/composables/useEditorAbas.js',
+            tipoEditor: 'texto',
             conteudo: 'export function useEditorAbas() {\n  // implementação\n}'
           }
         ]
@@ -134,6 +150,7 @@ const estruturaArquivos = ref([
         nome: 'index.html',
         tipo: 'arquivo',
         caminho: 'public/index.html',
+        tipoEditor: 'texto',
         conteudo: '<!DOCTYPE html>\n<html>\n<head>\n  <title>App</title>\n</head>\n<body>\n  <div id="app"></div>\n</body>\n</html>'
       }
     ]
@@ -143,6 +160,7 @@ const estruturaArquivos = ref([
     nome: 'package.json',
     tipo: 'arquivo',
     caminho: 'package.json',
+    tipoEditor: 'texto',
     conteudo: '{\n  "name": "vscode2",\n  "version": "1.0.0"\n}'
   },
   {
@@ -150,6 +168,7 @@ const estruturaArquivos = ref([
     nome: 'README.md',
     tipo: 'arquivo',
     caminho: 'README.md',
+    tipoEditor: 'markdown',
     conteudo: '# VS Code Clone\n\nUma réplica do VS Code usando Vue 3'
   }
 ])
@@ -203,11 +222,15 @@ function criarNovoArquivo() {
   
   if (!nomeArquivo || !nomeArquivo.trim()) return
   
+  const extensao = nomeArquivo.split('.').pop().toLowerCase()
+  const tipoEditor = extensao === 'md' ? 'markdown' : 'texto'
+  
   const novoArquivo = {
     id: proximoId++,
     nome: nomeArquivo,
     tipo: 'arquivo',
     caminho: '',
+    tipoEditor,
     conteudo: ''
   }
   
@@ -273,6 +296,7 @@ function atualizarRepositorios() {
     nome: repo.nomeArquivo,
     tipo: 'arquivo',
     caminho: `Profissional/GitHub/${repo.nomeArquivo}`,
+    tipoEditor: 'markdown',
     isGithubRepo: true,
     repoData: repo
   }))

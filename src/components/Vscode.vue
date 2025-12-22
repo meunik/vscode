@@ -13,7 +13,7 @@ const { inicializarTema } = useTemas()
 
 onMounted(() => {
   inicializarTema()
-  adicionarAba('Bem-vindo', '', 'componente', 'bem-vindo', { componente: 'BemVindo' })
+  adicionarAba('Bem-vindo', '', 'componente', 'BemVindo.vue', { componente: 'bemVindo/BemVindo' })
 })
 </script>
 

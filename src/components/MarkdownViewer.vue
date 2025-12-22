@@ -284,7 +284,7 @@ const elementosRenderizados = computed(() => parseMarkdown())
 </script>
 
 <template>
-  <div class="p-6 text-texto-principal leading-relaxed max-w-4xl">
+  <div class="p-6 text-texto-principal leading-relaxed">
     <div v-for="(elemento, indice) in elementosRenderizados" :key="indice">
       <h1 v-if="elemento.tipo === 'h1'" class="text-3xl font-bold mb-4 text-texto-titulo border-b border-borda-secundaria pb-2 flex items-center gap-2 flex-wrap" v-html="formatarTexto(elemento.conteudo)"></h1>
       <h2 v-else-if="elemento.tipo === 'h2'" class="text-2xl font-bold mb-3 mt-6 text-texto-titulo border-b border-borda-secundaria pb-2 flex items-center gap-2 flex-wrap" v-html="formatarTexto(elemento.conteudo)"></h2>

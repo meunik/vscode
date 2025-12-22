@@ -1,15 +1,32 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, defineAsyncComponent } from 'vue'
 import { useEditorAbas } from '@/composables/useEditorAbas'
 import MarkdownViewer from '@/components/MarkdownViewer.vue'
 import EditorCurriculoConteudo from '@/components/curriculo/editor/EditorCurriculoConteudo.vue'
 import Curriculo from '@/components/curriculo/Curriculo.vue'
-import BemVindo from '@/components/bemVindo/BemVindo.vue'
 
 const { abas, abaAtivaId } = useEditorAbas()
 
+const componentes = import.meta.glob('@/components/**/*.vue')
+
 const abaAtual = computed(() => {
   return abas.value.find(aba => aba.id === abaAtivaId.value)
+})
+
+const componenteDinamico = computed(() => {
+  if (!abaAtual.value || abaAtual.value.tipoEditor !== 'componente' || !abaAtual.value.componente) {
+    return null
+  }
+  
+  const caminhoCompleto = `/src/components/${abaAtual.value.componente}.vue`
+  const componenteLoader = componentes[caminhoCompleto]
+  
+  if (!componenteLoader) {
+    console.error(`Componente não encontrado: ${caminhoCompleto}`)
+    return null
+  }
+  
+  return defineAsyncComponent(componenteLoader)
 })
 </script>
 
@@ -25,11 +42,15 @@ const abaAtual = computed(() => {
       <div class="px-4 pt-2 pb-0.5 bg-principal border-b border-borda-secundaria text-texto-principal text-xs">
         <span class="font-mono">{{ abaAtual.caminho || abaAtual.titulo }}</span>
       </div>
-      <div class="flex-1" :class="abaAtual.tipo === 'markdown' || abaAtual.tipo === 'curriculo' || abaAtual.tipo === 'curriculo-visualizacao' || abaAtual.tipo === 'componente' ? 'overflow-auto' : 'overflow-hidden'">
-        <EditorCurriculoConteudo v-if="abaAtual.tipo === 'curriculo'" />
-        <Curriculo v-else-if="abaAtual.tipo === 'curriculo-visualizacao'" />
-        <BemVindo v-else-if="abaAtual.tipo === 'componente' && abaAtual.componente === 'BemVindo'" />
-        <MarkdownViewer v-else-if="abaAtual.tipo === 'markdown'" :conteudo="abaAtual.conteudo" />
+      <div class="flex-1" :class="['markdown', 'curriculo', 'curriculo-visualizacao', 'componente'].includes(abaAtual.tipoEditor) ? 'overflow-auto' : 'overflow-hidden'">
+        <EditorCurriculoConteudo v-if="abaAtual.tipoEditor === 'curriculo'" />
+        <Curriculo v-else-if="abaAtual.tipoEditor === 'curriculo-visualizacao'" />
+        <component 
+          v-else-if="abaAtual.tipoEditor === 'componente' && componenteDinamico" 
+          :is="componenteDinamico"
+          v-bind="abaAtual.componenteProps || {}"
+        />
+        <MarkdownViewer v-else-if="abaAtual.tipoEditor === 'markdown'" :conteudo="abaAtual.conteudo" />
         <textarea
           v-else
           v-model="abaAtual.conteudo"

@@ -25,14 +25,13 @@ const salvarHistorico = () => {
 }
 
 const adicionarAoHistorico = (aba) => {
-  // Não adiciona se for a aba de Bem-vindo
-  if (aba.tipo === 'componente' || !aba.caminho) return
+  if (aba.tipoEditor === 'componente' || !aba.caminho) return
   historicoRecente.value = historicoRecente.value.filter(item => item.caminho !== aba.caminho)
 
   historicoRecente.value.unshift({
     caminho: aba.caminho,
     titulo: aba.titulo,
-    tipo: aba.tipo,
+    tipoEditor: aba.tipoEditor,
     timestamp: Date.now()
   })
   
@@ -45,7 +44,7 @@ const adicionarAoHistorico = (aba) => {
 carregarHistorico()
 
 export function useEditorAbas() {
-  const adicionarAba = (titulo, conteudo = '', tipo = 'texto', caminho = null, metadados = null) => {
+  const adicionarAba = (titulo, conteudo = '', tipoEditor = 'texto', caminho = null, metadados = null) => {
     if (caminho) {
       const abaExistente = abas.value.find(aba => aba.caminho === caminho)
       if (abaExistente) {
@@ -58,7 +57,7 @@ export function useEditorAbas() {
       id: proximoId++,
       titulo,
       conteudo,
-      tipo,
+      tipoEditor,
       caminho,
       metadados,
       ...(metadados || {})
@@ -70,8 +69,8 @@ export function useEditorAbas() {
     return novaAba
   }
 
-  const abrirArquivo = (caminho, titulo, conteudo = '', tipo = 'texto', metadados = null) => {
-    return adicionarAba(titulo, conteudo, tipo, caminho, metadados)
+  const abrirArquivo = (caminho, titulo, conteudo = '', tipoEditor = 'texto', metadados = null) => {
+    return adicionarAba(titulo, conteudo, tipoEditor, caminho, metadados)
   }
 
   const fecharAba = (id) => {

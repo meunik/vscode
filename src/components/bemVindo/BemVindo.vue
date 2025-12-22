@@ -15,24 +15,31 @@ const { encontrarItemPorCaminho, expandirCaminhoParaArquivo } = useArquivos()
 const githubStore = useGithubStore()
 
 const abrirCurriculo = () => {
-  abrirArquivo('Profissional/Curriculo.md', 'Curriculo.md', '', 'curriculo-visualizacao')
-  expandirCaminhoParaArquivo('Profissional/Curriculo.md')
+  const arquivo = encontrarItemPorCaminho('Profissional/Curriculo.md')
+  if (arquivo) {
+    abrirArquivo(arquivo.caminho, arquivo.nome, '', arquivo.tipoEditor || 'curriculo-visualizacao')
+    expandirCaminhoParaArquivo(arquivo.caminho)
+  }
 }
 
 const abrirArquivoRecente = async (item) => {
   const arquivo = encontrarItemPorCaminho(item.caminho)
   if (arquivo) {
-    let tipo = item.tipo || 'texto'
     let conteudo = arquivo.conteudo || ''
     
-    // Se for arquivo do GitHub, carrega o conteúdo
     if (arquivo.isGithubRepo && arquivo.repoData) {
       conteudo = await githubStore.buscarReadme(arquivo.repoData)
     }
     
-    if (item.caminho === 'Profissional/Curriculo.md') tipo = 'curriculo-visualizacao'
-    abrirArquivo(item.caminho, item.titulo, conteudo, tipo)
-    expandirCaminhoParaArquivo(item.caminho)
+    const metadados = {
+      componente: arquivo.componente,
+      componenteProps: arquivo.componenteProps,
+      isGithubRepo: arquivo.isGithubRepo,
+      repoData: arquivo.repoData
+    }
+    
+    abrirArquivo(arquivo.caminho, arquivo.nome, conteudo, arquivo.tipoEditor || 'texto', metadados)
+    expandirCaminhoParaArquivo(arquivo.caminho)
   }
 }
 </script>

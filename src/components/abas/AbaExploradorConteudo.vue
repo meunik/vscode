@@ -20,12 +20,20 @@ const handleAbrirArquivo = async (item) => {
   desselecionarItem()
   ocultarArquivoAtivo.value = false
   
-  if (item.isGithubRepo) {
-    const readme = await githubStore.buscarReadme(item.repoData)
-    abrirArquivo(item.caminho, item.nome, readme, 'markdown', item.repoData)
-  } else if (item.caminho === 'Profissional/Curriculo.md') {
-    abrirArquivo(item.caminho, item.nome, item.conteudo || '', 'curriculo-visualizacao')
-  } else abrirArquivo(item.caminho, item.nome, item.conteudo || '')
+  let conteudo = item.conteudo || ''
+  
+  if (item.isGithubRepo && item.repoData) {
+    conteudo = await githubStore.buscarReadme(item.repoData)
+  }
+  
+  const metadados = {
+    componente: item.componente,
+    componenteProps: item.componenteProps,
+    isGithubRepo: item.isGithubRepo,
+    repoData: item.repoData
+  }
+  
+  abrirArquivo(item.caminho, item.nome, conteudo, item.tipoEditor || 'texto', metadados)
 }
 
 const handleNovoArquivo = () => {
