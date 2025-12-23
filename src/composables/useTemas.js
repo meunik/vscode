@@ -8,7 +8,8 @@ const temas = [
   { id: 'light', nome: 'Light', tipo: 'claro' },
   { id: 'monokai', nome: 'Monokai', tipo: 'escuro' },
   { id: 'dracula', nome: 'Dracula', tipo: 'escuro' },
-  { id: 'solarized', nome: 'Solarized Light', tipo: 'claro' }
+  { id: 'solarized', nome: 'Solarized Light', tipo: 'claro' },
+  { id: 'seilaColor', nome: 'SeilaColor', tipo: 'escuro' }
 ]
 
 function aplicarTema(tema) {

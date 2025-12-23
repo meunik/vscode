@@ -16,6 +16,8 @@
   --bg-botao: #0e639c;
   --bg-botao-hover: #1177bb;
   --bg-input: #3c3c3c;
+  --bg-header: #1e1e1e;
+  --bg-footer: #1e1e1e;
   
   --texto-principal: #cccccc;
   --texto-secundario: #858585;
@@ -50,6 +52,8 @@
   --color-botao: var(--bg-botao);
   --color-botao-hover: var(--bg-botao-hover);
   --color-input: var(--bg-input);
+  --color-header: var(--bg-header);
+  --color-footer: var(--bg-footer);
 
   --color-texto-principal: var(--texto-principal);
   --color-texto-secundario: var(--texto-secundario);

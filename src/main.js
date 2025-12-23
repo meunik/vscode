@@ -6,6 +6,7 @@ import '@/assets/css/light.css'
 import '@/assets/css/monokai.css'
 import '@/assets/css/dracula.css'
 import '@/assets/css/solarized.css'
+import '@/assets/css/seilaColor.css'
 import App from './App.vue'
 
 import ui from '@nuxt/ui/vue-plugin'

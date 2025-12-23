@@ -1,0 +1,55 @@
+.seilaColor {
+  /* Backgrounds */
+  --bg-principal: #1d1d1d;
+  --bg-secundario: #252526;
+  --bg-terciario: #2d2d30;
+  --bg-navbar: #252526;
+  --bg-hover: rgba(255, 24, 154, 0.28);
+  --bg-ativo: #ff189b1f;
+  --bg-botao: rgba(255, 24, 154, 0.53);
+  --bg-botao-hover: #ff189a;
+  --bg-input: #1e1e1e;
+  --bg-header: #000000;
+  --bg-footer: #000000;
+  
+  /* Textos */
+  --texto-principal: #cccccc;
+  --texto-secundario: rgba(204, 204, 204, 0.7);
+  --texto-titulo: #ffffff;
+  --texto-destaque: #ff189a;
+  
+  /* Bordas */
+  --borda-principal: #45454500;
+  --borda-secundaria: #3f3f46;
+  --borda-destaque: rgba(255, 24, 154, 0.53);
+  
+  /* Ícones */
+  --icone-normal: #cccccc;
+  --icone-hover: #ffffff;
+  --icone-ativo: #ff189a;
+  
+  /* Abas */
+  --aba-bg: #1d1d1d;
+  --aba-bg-ativa: #252526;
+  --aba-borda-ativa: rgba(255, 24, 154, 0.53);
+  --aba-texto: rgba(204, 204, 204, 0.7);
+  --aba-texto-ativo: #ffffff;
+  
+  /* Navbar */
+  --navbar-borda-ativa: rgba(255, 24, 154, 0.53);
+  
+  /* Cores adicionais específicas do tema */
+  --destaque: #ff189a;
+  --destaque-alpha: rgba(255, 24, 154, 0.53);
+  --destaque-hover: rgba(255, 24, 154, 0.28);
+  --destaque-claro: #ff7cc6;
+  --destaque-escuro: #ba1773;
+  
+  --erro: #f48771;
+  --aviso: #cca700;
+  --info: #75beff;
+  --sucesso: #89d185;
+  
+  --selecao: rgba(255, 24, 154, 0.23);
+  --linha-ativa: rgba(255, 24, 154, 0.08);
+}

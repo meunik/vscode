@@ -16,7 +16,7 @@ const handleWheel = (evento) => {
 </script>
 
 <template>
-  <div class="flex h-8.75 bg-secundario border-b border-borda-principal overflow-x-auto overflow-y-hidden [&::-webkit-scrollbar]:h-0" @wheel.prevent="handleWheel">
+  <div class="flex h-8.75 bg-secundario border-none border-borda-principal overflow-x-auto overflow-y-hidden [&::-webkit-scrollbar]:h-0" @wheel.prevent="handleWheel">
     <div v-if="abas.length === 0" class="flex items-center px-4 text-texto-secundario text-[13px]" />
     <div v-else class="flex flex-1">
       <div
@@ -25,8 +25,8 @@ const handleWheel = (evento) => {
         class="flex items-center gap-2 pl-3 pr-1 border-r border-borda-principal text-[13px] cursor-pointer select-none min-w-30 max-w-50 transition-colors"
         :class="[
           aba.id === abaAtivaId 
-            ? 'bg-aba-bg-ativa text-aba-texto-ativo border-t border-t-aba-borda-ativa' 
-            : 'bg-aba-bg text-aba-texto hover:bg-hover/50'
+            ? 'bg-aba-bg text-aba-texto-ativo border-t border-t-aba-borda-ativa' 
+            : 'bg-aba-bg-ativa text-aba-texto hover:bg-hover/50'
         ]"
         @click="ativarAba(aba.id)"
       >
