@@ -33,6 +33,7 @@ declare module 'vue' {
     Experiencia: typeof import('./src/components/curriculo/Experiencia.vue')['default']
     Footer: typeof import('./src/components/layout/Footer.vue')['default']
     Formacao: typeof import('./src/components/curriculo/Formacao.vue')['default']
+    Fotos: typeof import('./src/components/Fotos.vue')['default']
     Habilidades: typeof import('./src/components/curriculo/Habilidades.vue')['default']
     Header: typeof import('./src/components/layout/Header.vue')['default']
     Idiomas: typeof import('./src/components/curriculo/Idiomas.vue')['default']

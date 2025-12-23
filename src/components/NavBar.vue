@@ -12,29 +12,39 @@ const menuAberto = ref(false)
 const seletorTemasAberto = ref(false)
 
 const abas = [
-  { nome: 'explorador', icone: 'explorador' },
-  { nome: 'pesquisa', icone: 'pesquisa' },
-  { nome: 'git', icone: 'git' },
-  { nome: 'extensoes', icone: 'extensoes' },
-  { nome: 'camera', icone: 'camera' },
+  { nome: 'explorador', icone: 'explorador', acao: 'alternarAba' },
+  { nome: 'pesquisa', icone: 'pesquisa', acao: 'alternarAba' },
+  { nome: 'git', icone: 'git', acao: 'alternarAba' },
+  { nome: 'extensoes', icone: 'extensoes', acao: 'alternarAba' },
+  { 
+    nome: 'camera', 
+    icone: 'camera', 
+    acao: 'abrirComponente',
+    dadosAba: {
+      titulo: 'Fotos',
+      caminho: '',
+      tipo: 'componente',
+      id: 'fotos',
+      opcoes: {
+        componente: 'Fotos'
+      }
+    }
+  },
 ]
 
-const alternarMenu = () => {
-  menuAberto.value = !menuAberto.value
+const handleClickAba = (aba) => {
+  if (aba.acao === 'alternarAba') alternarAba(aba.nome)
+  if (aba.acao === 'abrirComponente') {
+    fecharAba()
+    const { titulo, caminho, tipo, id, opcoes } = aba.dadosAba
+    adicionarAba(titulo, caminho, tipo, id, opcoes)
+  }
 }
 
-const fecharMenu = () => {
-  menuAberto.value = false
-}
-
-const abrirSeletorTemas = () => {
-  seletorTemasAberto.value = true
-}
-
-const fecharSeletorTemas = () => {
-  seletorTemasAberto.value = false
-}
-
+const alternarMenu = () => menuAberto.value = !menuAberto.value
+const fecharMenu = () => menuAberto.value = false
+const abrirSeletorTemas = () => seletorTemasAberto.value = true
+const fecharSeletorTemas = () => seletorTemasAberto.value = false
 const abrirEditorCurriculo = () => {
   fecharAba()
   adicionarAba('Editor de Currículo', '', 'componente', 'curriculo-editor', {
@@ -49,17 +59,17 @@ const abrirEditorCurriculo = () => {
       <button
         v-for="aba in abas"
         :key="aba.nome"
-        @click="alternarAba(aba.nome)"
+        @click="handleClickAba(aba)"
         class="flex items-center justify-center h-12 w-full cursor-pointer transition-colors hover:text-icone-hover text-lg"
         :class="[
-          abaAtiva === aba.nome ? 'text-icone-ativo border-x-2 border-l-navbar-borda-ativa border-r-transparent' : 'border-x-2 border-x-transparent text-icone-normal'
+          (aba.acao === 'alternarAba' && abaAtiva === aba.nome) ? 'text-icone-ativo border-x-2 border-l-navbar-borda-ativa border-r-transparent' : 'border-x-2 border-x-transparent text-icone-normal'
         ]"
         :title="aba.nome"
       >
         <Icon :name="aba.icone" :size="24" />
       </button>
     </div>
-    <div class="flex flex-col">
+    <!-- <div class="flex flex-col">
       <button
         @click="abrirEditorCurriculo"
         class="flex items-center justify-center h-12 w-full cursor-pointer transition-colors hover:text-icone-hover text-lg border-x-2 border-x-transparent text-icone-normal"
@@ -67,7 +77,7 @@ const abrirEditorCurriculo = () => {
       >
         <UIcon name="line-md:file-document-filled" class="text-[24px]" />
       </button>
-    </div>
+    </div> -->
     <div class="relative">
       <button
         class="botao-configuracoes flex items-center justify-center h-12 w-full cursor-pointer transition-colors hover:text-icone-hover text-lg"
