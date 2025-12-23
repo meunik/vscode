@@ -1,27 +1,5 @@
 [
   {
-    "id": "cf_marcospaulo.dev",
-    "hostname": "marcospaulo.dev",
-    "nome": "marcospaulo",
-    "url": "https://marcospaulo.dev",
-    "icone": null,
-    "corFundo": null,
-    "posicao": 0,
-    "novo": false,
-    "personalizado": false
-  },
-  {
-    "id": "cf_tabeliaodigital.marcospaulo.dev",
-    "hostname": "tabeliaodigital.marcospaulo.dev",
-    "nome": "tabeliaodigital",
-    "url": "https://tabeliaodigital.marcospaulo.dev",
-    "icone": null,
-    "corFundo": null,
-    "posicao": 1,
-    "novo": false,
-    "personalizado": false
-  },
-  {
     "id": "cf_fileshare.marcospaulo.dev",
     "hostname": "fileshare.marcospaulo.dev",
     "nome": "fileshare",
@@ -29,17 +7,6 @@
     "icone": null,
     "corFundo": null,
     "posicao": 2,
-    "novo": false,
-    "personalizado": false
-  },
-  {
-    "id": "cf_flv.marcospaulo.dev",
-    "hostname": "flv.marcospaulo.dev",
-    "nome": "flv",
-    "url": "https://flv.marcospaulo.dev",
-    "icone": null,
-    "corFundo": null,
-    "posicao": 3,
     "novo": false,
     "personalizado": false
   },
@@ -62,105 +29,6 @@
     "icone": null,
     "corFundo": null,
     "posicao": 5,
-    "novo": false,
-    "personalizado": false
-  },
-  {
-    "id": "cf_cut.marcospaulo.dev",
-    "hostname": "cut.marcospaulo.dev",
-    "nome": "cut",
-    "url": "https://cut.marcospaulo.dev",
-    "icone": null,
-    "corFundo": null,
-    "posicao": 6,
-    "novo": false,
-    "personalizado": false
-  },
-  {
-    "id": "cf_nas.marcospaulo.dev",
-    "hostname": "nas.marcospaulo.dev",
-    "nome": "nas",
-    "url": "https://nas.marcospaulo.dev",
-    "icone": null,
-    "corFundo": null,
-    "posicao": 7,
-    "novo": false,
-    "personalizado": false
-  },
-  {
-    "id": "cf_drive.marcospaulo.dev",
-    "hostname": "drive.marcospaulo.dev",
-    "nome": "drive",
-    "url": "https://drive.marcospaulo.dev",
-    "icone": null,
-    "corFundo": null,
-    "posicao": 8,
-    "novo": false,
-    "personalizado": false
-  },
-  {
-    "id": "cf_fotos.marcospaulo.dev",
-    "hostname": "fotos.marcospaulo.dev",
-    "nome": "fotos",
-    "url": "https://fotos.marcospaulo.dev",
-    "icone": null,
-    "corFundo": null,
-    "posicao": 9,
-    "novo": false,
-    "personalizado": false
-  },
-  {
-    "id": "cf_pass.marcospaulo.dev",
-    "hostname": "pass.marcospaulo.dev",
-    "nome": "pass",
-    "url": "https://pass.marcospaulo.dev",
-    "icone": null,
-    "corFundo": null,
-    "posicao": 10,
-    "novo": false,
-    "personalizado": false
-  },
-  {
-    "id": "cf_notes.marcospaulo.dev",
-    "hostname": "notes.marcospaulo.dev",
-    "nome": "notes",
-    "url": "https://notes.marcospaulo.dev",
-    "icone": null,
-    "corFundo": null,
-    "posicao": 11,
-    "novo": false,
-    "personalizado": false
-  },
-  {
-    "id": "cf_tv.marcospaulo.dev",
-    "hostname": "tv.marcospaulo.dev",
-    "nome": "tv",
-    "url": "https://tv.marcospaulo.dev",
-    "icone": null,
-    "corFundo": null,
-    "posicao": 12,
-    "novo": false,
-    "personalizado": false
-  },
-  {
-    "id": "cf_draw.marcospaulo.dev",
-    "hostname": "draw.marcospaulo.dev",
-    "nome": "draw",
-    "url": "https://draw.marcospaulo.dev",
-    "icone": null,
-    "corFundo": null,
-    "posicao": 13,
-    "novo": false,
-    "personalizado": false
-  },
-  {
-    "id": "cf_router.marcospaulo.dev",
-    "hostname": "router.marcospaulo.dev",
-    "nome": "router",
-    "url": "https://router.marcospaulo.dev",
-    "icone": null,
-    "corFundo": null,
-    "posicao": 14,
     "novo": false,
     "personalizado": false
   }
