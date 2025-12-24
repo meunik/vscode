@@ -37,6 +37,7 @@ declare module 'vue' {
     Habilidades: typeof import('./src/components/curriculo/Habilidades.vue')['default']
     Header: typeof import('./src/components/layout/Header.vue')['default']
     Idiomas: typeof import('./src/components/curriculo/Idiomas.vue')['default']
+    IframeViewer: typeof import('./src/components/IframeViewer.vue')['default']
     InfoPessoais: typeof import('./src/components/curriculo/InfoPessoais.vue')['default']
     ItemArvore: typeof import('./src/components/abas/ItemArvore.vue')['default']
     Layout: typeof import('./src/components/layout/Layout.vue')['default']

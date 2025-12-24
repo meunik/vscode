@@ -3,6 +3,7 @@ import { computed, defineAsyncComponent } from 'vue'
 import { useEditorAbas } from '@/composables/useEditorAbas'
 import { useGithubStore } from '@/stores/github'
 import MarkdownViewer from '@/components/MarkdownViewer.vue'
+import IframeViewer from '@/components/IframeViewer.vue'
 
 const { abas, abaAtivaId } = useEditorAbas()
 const githubStore = useGithubStore()
@@ -46,13 +47,18 @@ const estaCarregandoConteudo = computed(() => {
       <div class="px-4 pt-2 pb-0.5 bg-principal border-b border-borda-secundaria text-texto-principal text-xs">
         <span class="font-mono">{{ abaAtual.caminho || abaAtual.titulo }}</span>
       </div>
-      <div class="flex-1" :class="['markdown', 'componente'].includes(abaAtual.tipoEditor) ? 'overflow-auto' : 'overflow-hidden'">
+      <div class="flex-1" :class="['markdown', 'componente', 'iframe'].includes(abaAtual.tipoEditor) ? 'overflow-auto' : 'overflow-hidden'">
         <div v-if="estaCarregandoConteudo" class="flex items-center justify-center h-full">
           <div class="flex flex-col items-center gap-2 text-texto-secundario">
             <UIcon name="line-md:loading-twotone-loop" class="text-[32px]" />
             <span class="text-sm">Carregando conteúdo...</span>
           </div>
         </div>
+        <IframeViewer 
+          v-else-if="abaAtual.tipoEditor === 'iframe'" 
+          :url="abaAtual.url"
+          :passar-tema="abaAtual.passarTema || false"
+        />
         <component 
           v-else-if="componenteDinamico" 
           :is="componenteDinamico"
