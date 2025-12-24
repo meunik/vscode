@@ -9,7 +9,7 @@
 [![TailwindCSS](https://img.shields.io/badge/Tailwind-4.1-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)](LICENSE)
 
-[✨ Ver Demo](https://seu-site.com) • [📝 Sobre](#sobre) • [🚀 Features](#features) • [🛠️ Tecnologias](#tecnologias)
+[✨ Ver Demo](https://marcospaulo.dev) • [📝 Sobre](#sobre) • [🚀 Features](#features) • [🛠️ Tecnologias](#tecnologias)
 
 ---
 
