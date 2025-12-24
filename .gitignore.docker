@@ -1,0 +1,4 @@
+# Docker deploy
+.env.docker
+*.tar
+*.tar.gz

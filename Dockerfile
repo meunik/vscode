@@ -1,29 +1,31 @@
+# Etapa de build
+FROM node:20-alpine as build
+
+WORKDIR /app
+
+# Copiar package.json e yarn.lock
+COPY package.json yarn.lock ./
+
+# Instalar dependências
+RUN yarn install --frozen-lockfile
+
+# Copiar código fonte
+COPY . .
+
+# Build da aplicação
+RUN yarn build
+
+# Etapa de produção
 FROM nginx:alpine
 
-# Instala Git e Bash
-RUN apk add --no-cache git bash
+# Copiar arquivos buildados
+COPY --from=build /app/dist /usr/share/nginx/html
 
-# Configura Nginx para servir de /var/www/html
-RUN mkdir -p /var/www/html \
-    && rm -rf /etc/nginx/conf.d/default.conf \
-    && echo 'server { \
-        listen 80; \
-        server_name _; \
-        root /var/www/html; \
-        index index.html; \
-        location / { \
-            try_files $uri $uri/ =404; \
-        } \
-    }' > /etc/nginx/conf.d/default.conf
+# Copiar configuração customizada do nginx
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Copia scripts
-COPY update.sh /update.sh
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /update.sh /entrypoint.sh
-
-# Define variável de ambiente
-ENV REPO_URL=""
-
+# Expor porta 80
 EXPOSE 80
 
-ENTRYPOINT ["/entrypoint.sh"]
+CMD ["nginx", "-g", "daemon off;"]
+

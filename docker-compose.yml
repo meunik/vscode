@@ -1,7 +1,22 @@
-version: "3.8"
+version: '3.8'
+
 services:
-  meusite:
-    build: .
-    container_name: meusite
+  vscode2-app:
+    image: ${DOCKER_IMAGE_NAME:-vscode2}:${DOCKER_IMAGE_TAG:-latest}
+    container_name: vscode2-app
+    restart: unless-stopped
     ports:
-      - "9001:80"
+      - "${PORT:-8080}:80"
+    networks:
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.vscode2.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.vscode2.entrypoints=websecure"
+      - "traefik.http.routers.vscode2.tls.certresolver=letsencrypt"
+      - "traefik.http.services.vscode2.loadbalancer.server.port=80"
+
+networks:
+  web:
+    external: true
+
