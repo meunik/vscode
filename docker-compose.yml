@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  meusite:
+    build: .
+    container_name: meusite
+    ports:
+      - "9001:80"
