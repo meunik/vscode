@@ -1,6 +1,6 @@
 <script setup>
 import { useEditorAbas } from '@/composables/useEditorAbas'
-import { ref } from 'vue'
+import Icon from '@/assets/icons/Icon.vue'
 
 const { abas, abaAtivaId, ativarAba, fecharAba } = useEditorAbas()
 
@@ -17,7 +17,7 @@ const handleWheel = (evento) => {
 
 <template>
   <div class="flex h-8.75 bg-secundario border-none border-borda-principal overflow-x-auto overflow-y-hidden [&::-webkit-scrollbar]:h-0" @wheel.prevent="handleWheel">
-    <div v-if="abas.length === 0" class="flex items-center px-4 text-texto-secundario text-[13px]" />
+    <div v-if="abas.length === 0" class="flex items-center px-4 text-texto-secundario text-[13px]"></div>
     <div v-else class="flex flex-1">
       <div
         v-for="aba in abas"
@@ -30,6 +30,9 @@ const handleWheel = (evento) => {
         ]"
         @click="ativarAba(aba.id)"
       >
+        <Icon v-if="aba.icone?.tipo === 'icon'" :name="aba.icone.valor" :size="16" class="shrink-0" />
+        <UIcon v-else-if="aba.icone?.tipo === 'uicon'" :name="aba.icone.valor" class="w-4 h-4 shrink-0" />
+        <img v-else-if="aba.icone?.tipo === 'img'" :src="aba.icone.valor" :alt="aba.titulo" class="w-4 h-4 shrink-0 object-contain" />
         <span class="flex-1 whitespace-nowrap overflow-hidden text-ellipsis">{{ aba.titulo }}</span>
         <button 
           class="flex items-center justify-center w-5 h-5 border-none text-icone-normal text-xl cursor-pointer rounded p-0 leading-none hover:bg-hover hover:text-icone-hover"
@@ -41,6 +44,3 @@ const handleWheel = (evento) => {
     </div>
   </div>
 </template>
-
-<style scoped>
-</style

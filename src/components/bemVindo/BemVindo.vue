@@ -4,6 +4,7 @@ import { obterIconeArquivo } from '@/utils/icones'
 import { useEditorAbas } from '@/composables/useEditorAbas'
 import { useArquivos } from '@/composables/useArquivos'
 import { useGithubStore } from '@/stores/github'
+import Icon from '@/assets/icons/Icon.vue'
 
 import curriculoData from '@/data/curriculo.json'
 import Links from '@/components/curriculo/Links.vue'
@@ -19,7 +20,11 @@ const abrirCurriculo = () => {
   if (arquivo) {
     const metadados = {
       componente: arquivo.componente,
-      componenteProps: arquivo.componenteProps
+      componenteProps: arquivo.componenteProps,
+      icone: {
+        tipo: 'uicon',
+        valor: obterIconeArquivo(arquivo.nome)
+      }
     }
     abrirArquivo(arquivo.caminho, arquivo.nome, '', arquivo.tipoEditor || 'componente', metadados)
     expandirCaminhoParaArquivo(arquivo.caminho)
@@ -40,7 +45,11 @@ const abrirArquivoRecente = async (item) => {
       componente: arquivo.componente,
       componenteProps: arquivo.componenteProps,
       isGithubRepo: arquivo.isGithubRepo,
-      repoData: arquivo.repoData
+      repoData: arquivo.repoData,
+      icone: {
+        tipo: 'uicon',
+        valor: obterIconeArquivo(arquivo.nome)
+      }
     }
     
     abrirArquivo(arquivo.caminho, arquivo.nome, conteudo, arquivo.tipoEditor || 'texto', metadados)
@@ -48,7 +57,11 @@ const abrirArquivoRecente = async (item) => {
   } else {
     const metadados = {
       componente: item.componente,
-      componenteProps: item.componenteProps
+      componenteProps: item.componenteProps,
+      icone: item.icone || {
+        tipo: 'uicon',
+        valor: obterIconeArquivo(item.titulo)
+      }
     }
     
     abrirArquivo(item.caminho, item.titulo, '', item.tipoEditor || 'componente', metadados)
@@ -79,7 +92,7 @@ const abrirArquivoRecente = async (item) => {
           </ul>
         </div>
         <div class="flex flex-col">
-          <h2 class="text-2xl sm:text-4xl font-bold text-texto-secundario">Recente</h2>
+          <h2 class="text-2xl sm:text-4xl font-bold text-texto-secundario">Recentes</h2>
           <ul class="pl-4 sm:pl-8 mt-2 space-y-1">
             <li 
               v-for="item in historicoRecente" 
@@ -87,7 +100,10 @@ const abrirArquivoRecente = async (item) => {
               class="flex items-center gap-1 cursor-pointer text-texto-destaque hover:text-texto-destaque/70 text-sm sm:text-base"
               @click="abrirArquivoRecente(item)"
             >
-              <UIcon :name="obterIconeArquivo(item.titulo)" class="text-[18px] sm:text-[20px] shrink-0" />
+              <Icon v-if="item.icone?.tipo === 'icon'" :name="item.icone.valor" :size="20" class="shrink-0" />
+              <UIcon v-else-if="item.icone?.tipo === 'uicon'" :name="item.icone.valor" class="text-[18px] sm:text-[20px] shrink-0" />
+              <img v-else-if="item.icone?.tipo === 'img'" :src="item.icone.valor" :alt="item.titulo" class="w-4.5 h-4.5 sm:w-5 sm:h-5 shrink-0 object-contain" />
+              <UIcon v-else :name="obterIconeArquivo(item.titulo)" class="text-[18px] sm:text-[20px] shrink-0" />
               {{ item.titulo }}
             </li>
             <li v-if="historicoRecente.length === 0" class="text-texto-secundario text-sm">

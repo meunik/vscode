@@ -3,6 +3,7 @@ import { watch } from 'vue'
 import { useArquivos } from '@/composables/useArquivos'
 import { useEditorAbas } from '@/composables/useEditorAbas'
 import { useGithubStore } from '@/stores/github'
+import { obterIconeArquivo } from '@/utils/icones'
 import ItemArvore from '@/components/abas/ItemArvore.vue'
 import EditoresAbertos from '@/components/abas/EditoresAbertos.vue'
 
@@ -31,7 +32,11 @@ const handleAbrirArquivo = async (item) => {
     componenteProps: item.componenteProps,
     isGithubRepo: item.isGithubRepo,
     repoData: item.repoData,
-    naoSalvarNoHistorico: item.naoSalvarNoHistorico
+    naoSalvarNoHistorico: item.naoSalvarNoHistorico,
+    icone: {
+      tipo: 'uicon',
+      valor: obterIconeArquivo(item.nome)
+    }
   }
   
   abrirArquivo(item.caminho, item.nome, conteudo, item.tipoEditor || 'texto', metadados)

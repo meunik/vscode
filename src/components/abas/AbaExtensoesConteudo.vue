@@ -20,13 +20,13 @@ const filtrarServers = () => {
 }
 
 const abrirServer = (server) => {
-  adicionarAba(
-    server.nome,
-    '',
-    'iframe',
-    server.url,
-    { url: server.url }
-  )
+  adicionarAba(server.nome, '', 'iframe', server.url, { 
+    url: server.url,
+    icone: {
+      tipo: 'img',
+      valor: getIconeUrl(server.icone)
+    }
+  })
 }
 
 const getIconeUrl = (nomeIcone) => {

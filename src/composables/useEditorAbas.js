@@ -33,6 +33,7 @@ const adicionarAoHistorico = (aba) => {
     tipoEditor: aba.tipoEditor,
     componente: aba.componente,
     componenteProps: aba.componenteProps,
+    icone: aba.icone,
     timestamp: Date.now()
   })
   

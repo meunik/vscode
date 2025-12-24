@@ -26,7 +26,11 @@ const abas = [
       tipo: 'componente',
       id: 'fotos',
       opcoes: {
-        componente: 'Fotos'
+        componente: 'Fotos',
+        icone: {
+          tipo: 'icon',
+          valor: 'camera'
+        }
       }
     }
   },
@@ -48,7 +52,11 @@ const fecharSeletorTemas = () => seletorTemasAberto.value = false
 const abrirEditorCurriculo = () => {
   fecharAba()
   adicionarAba('Editor de Currículo', '', 'componente', 'curriculo-editor', {
-    componente: 'curriculo/editor/EditorCurriculoConteudo'
+    componente: 'curriculo/editor/EditorCurriculoConteudo',
+    icone: {
+      tipo: 'uicon',
+      valor: 'line-md:file-document-filled'
+    }
   })
 }
 </script>

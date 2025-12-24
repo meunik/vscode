@@ -2,6 +2,7 @@
 import { useEditorAbas } from '@/composables/useEditorAbas'
 import { obterIconeArquivo } from '@/utils/icones'
 import { ref, computed, onMounted, onUnmounted } from 'vue'
+import Icon from '@/assets/icons/Icon.vue'
 
 const { abas, ativarAba, fecharAba, abaAtivaId, fecharTodasAbas } = useEditorAbas()
 
@@ -86,7 +87,10 @@ onUnmounted(() => {
           :class="[abaAtivaId === aba.id ? 'bg-ativo' : 'hover:bg-hover']"
           @click="handleAtivarAba(aba)"
         >
-          <UIcon :name="obterIconeArquivo(aba.titulo)" class="text-[16px] shrink-0" />
+          <Icon v-if="aba.icone?.tipo === 'icon'" :name="aba.icone.valor" :size="16" class="shrink-0" />
+          <UIcon v-else-if="aba.icone?.tipo === 'uicon'" :name="aba.icone.valor" class="w-4 h-4 shrink-0" />
+          <img v-else-if="aba.icone?.tipo === 'img'" :src="aba.icone.valor" :alt="aba.titulo" class="w-4 h-4 shrink-0 object-contain" />
+          <UIcon v-else :name="obterIconeArquivo(aba.titulo)" class="text-[16px] shrink-0" />
           <span class="flex-1 whitespace-nowrap overflow-hidden text-ellipsis text-[13px]">{{ aba.titulo }}</span>
           <button class="items-center justify-center w-4.5 h-4.5 bg-transparent border-none text-texto-secundario text-lg cursor-pointer rounded p-0 leading-none hidden hover:bg-hover hover:text-texto-principal group-hover:flex" @click.stop="handleFecharAba(aba)">
             <UIcon name="lucide-x" class="w-4 shrink-0" />
