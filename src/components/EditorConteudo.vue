@@ -2,13 +2,23 @@
 import { computed, defineAsyncComponent } from 'vue'
 import { useEditorAbas } from '@/composables/useEditorAbas'
 import { useGithubStore } from '@/stores/github'
-import MarkdownViewer from '@/components/MarkdownViewer.vue'
-import IframeViewer from '@/components/IframeViewer.vue'
 
 const { abas, abaAtivaId } = useEditorAbas()
 const githubStore = useGithubStore()
 
-const componentes = import.meta.glob('@/components/**/*.vue')
+// Componentes especiais carregados dinamicamente apenas quando necessários
+const MarkdownViewer = defineAsyncComponent(() => import('@/components/MarkdownViewer.vue'))
+const IframeViewer = defineAsyncComponent(() => import('@/components/IframeViewer.vue'))
+
+// Mapa de componentes que podem ser carregados dinamicamente
+const componentesDisponiveis = {
+  'bemVindo/BemVindo': () => import('@/components/bemVindo/BemVindo.vue'),
+  'bemVindo/Readme': () => import('@/components/bemVindo/Readme.vue'),
+  'bemVindo/Setup': () => import('@/components/bemVindo/Setup.vue'),
+  'curriculo/Curriculo': () => import('@/components/curriculo/Curriculo.vue'),
+  'curriculo/editor/EditorCurriculoConteudo': () => import('@/components/curriculo/editor/EditorCurriculoConteudo.vue'),
+  'Fotos': () => import('@/components/Fotos.vue'),
+}
 
 const abaAtual = computed(() => {
   return abas.value.find(aba => aba.id === abaAtivaId.value)
@@ -17,11 +27,10 @@ const abaAtual = computed(() => {
 const componenteDinamico = computed(() => {
   if (!abaAtual.value || !abaAtual.value.componente) return null
   
-  const caminhoCompleto = `/src/components/${abaAtual.value.componente}.vue`
-  const componenteLoader = componentes[caminhoCompleto]
+  const componenteLoader = componentesDisponiveis[abaAtual.value.componente]
   
   if (!componenteLoader) {
-    console.error(`Componente não encontrado: ${caminhoCompleto}`)
+    console.warn(`Componente não encontrado no mapa: ${abaAtual.value.componente}`)
     return null
   }
   

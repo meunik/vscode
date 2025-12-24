@@ -9,7 +9,7 @@ import Formacao from '@/components/curriculo/Formacao.vue'
 import Projetos from '@/components/curriculo/Projetos.vue'
 import Idiomas from '@/components/curriculo/Idiomas.vue'
 import Resumo from '@/components/curriculo/Resumo.vue'
-import Readme from '@/components/curriculo/Readme.vue'
+import CurriculoReadme from '@/components/curriculo/CurriculoReadme.vue'
 
 const dados = ref(JSON.parse(JSON.stringify(curriculoData)))
 
@@ -42,7 +42,7 @@ onMounted(() => carregarDados())
         <Formacao :dados="dados" />
       </div>
       <div class="flex flex-col gap-4 w-full sm:w-8/12">
-        <Readme :dados="dados" />
+        <CurriculoReadme :dados="dados" />
         <Resumo :dados="dados" />
         <Experiencia :dados="dados" />
         <!-- <Projetos :dados="dados" />

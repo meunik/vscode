@@ -25,6 +25,7 @@ declare module 'vue' {
     AbaProjetos: typeof import('./src/components/curriculo/editor/abas/AbaProjetos.vue')['default']
     BemVindo: typeof import('./src/components/bemVindo/BemVindo.vue')['default']
     Curriculo: typeof import('./src/components/curriculo/Curriculo.vue')['default']
+    CurriculoReadme: typeof import('./src/components/curriculo/CurriculoReadme.vue')['default']
     EditorAbas: typeof import('./src/components/EditorAbas.vue')['default']
     EditorConteudo: typeof import('./src/components/EditorConteudo.vue')['default']
     EditorCurriculoConteudo: typeof import('./src/components/curriculo/editor/EditorCurriculoConteudo.vue')['default']
