@@ -77,7 +77,7 @@ const abrirEditorCurriculo = () => {
         <Icon :name="aba.icone" :size="24" />
       </button>
     </div>
-    <div class="flex flex-col">
+    <!-- <div class="flex flex-col">
       <button
         @click="abrirEditorCurriculo"
         class="flex items-center justify-center h-12 w-full cursor-pointer transition-colors hover:text-icone-hover text-lg border-x-2 border-x-transparent text-icone-normal"
@@ -85,7 +85,7 @@ const abrirEditorCurriculo = () => {
       >
         <UIcon name="line-md:file-document-filled" class="text-[24px]" />
       </button>
-    </div>
+    </div> -->
     <div class="relative">
       <button
         class="botao-configuracoes flex items-center justify-center h-12 w-full cursor-pointer transition-colors hover:text-icone-hover text-lg"

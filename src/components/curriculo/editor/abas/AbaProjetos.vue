@@ -51,8 +51,14 @@ const removerTecnologia = (projIndex, techIndex) => emit('removerTecnologia', pr
           class="w-full px-3 py-2 bg-principal border border-borda-principal rounded text-sm text-texto-principal focus:outline-none focus:border-borda-destaque transition-colors" 
         />
         <div class="space-y-2 pt-2 border-t border-borda-principal">
-          <label class="block text-xs font-medium text-texto-secundario">Tecnologias</label>
-          <div v-for="(tech, tIdx) in proj.tecnologias" :key="tIdx" class="flex gap-2">
+          <label class="flex-1 flex items-center gap-1 text-xs font-medium text-texto-secundario group">
+            Stacks (ícones)
+            <a href="https://icones.js.org/" class="text-[12px] hidden group-hover:inline" target="_blank" rel="noopener" title="Lista de ícones">
+              <UIcon name="lucide:external-link" />
+            </a>
+          </label>
+          <div v-for="(tech, tIdx) in proj.tecnologias" :key="tIdx" class="flex gap-2 items-center">
+            <UIcon :name="tech" class="text-[20px]" />
             <input 
               v-model="proj.tecnologias[tIdx]" 
               type="text" 
@@ -60,16 +66,16 @@ const removerTecnologia = (projIndex, techIndex) => emit('removerTecnologia', pr
             />
             <button 
               @click="removerTecnologia(idx, tIdx)" 
-              class="px-2 py-1.5 bg-red-900/30 text-red-400 rounded text-xs hover:bg-red-900/50"
+              class="px-2 py-1.5 bg-red-900/30 text-red-400 rounded text-xs hover:bg-red-900/50 hover:cursor-pointer transition-colors"
             >
-              ×
+              <UIcon name="lucide:trash-2" class="text-[16px]" />
             </button>
           </div>
           <button 
             @click="adicionarTecnologia(idx)" 
             class="w-full py-1.5 border border-dashed border-borda-principal rounded text-xs text-texto-secundario hover:border-borda-destaque hover:text-texto-destaque hover:cursor-pointer transition-colors"
           >
-            + Tecnologia
+            + Stacks
           </button>
         </div>
       </div>

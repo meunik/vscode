@@ -112,10 +112,17 @@ const adicionarHabilidadeItem = (catIndex) => dados.value.habilidades[catIndex].
 const removerHabilidadeItem = (catIndex, itemIndex) => dados.value.habilidades[catIndex].itens.splice(itemIndex, 1)
 
 // Manipuladores de Experiência
-const adicionarExperiencia = () => dados.value.experiencia.push({ cargo: 'Novo Cargo', empresa: 'Nova Empresa', periodo: 'Mês Ano - Mês Ano', descricao: 'Descrição', realizacoes: [] })
+const adicionarExperiencia = () => dados.value.experiencia.push({ cargo: 'Novo Cargo', empresa: 'Nova Empresa', periodo: 'Mês Ano - Mês Ano', descricao: 'Descrição', realizacoes: [], stacks: [] })
 const removerExperiencia = (index) => dados.value.experiencia.splice(index, 1)
 const adicionarRealizacao = (expIndex) => dados.value.experiencia[expIndex].realizacoes.push('Nova realização')
 const removerRealizacao = (expIndex, realIndex) => dados.value.experiencia[expIndex].realizacoes.splice(realIndex, 1)
+const adicionarStack = (expIndex) => {
+  if (!dados.value.experiencia[expIndex].stacks) {
+    dados.value.experiencia[expIndex].stacks = []
+  }
+  dados.value.experiencia[expIndex].stacks.push('devicon:laravel')
+}
+const removerStack = (expIndex, stackIndex) => dados.value.experiencia[expIndex].stacks.splice(stackIndex, 1)
 
 // Manipuladores de Formação
 const adicionarFormacao = () => dados.value.formacao.push({ curso: 'Novo Curso', instituicao: 'Nova Instituição', periodo: 'Ano - Ano', status: 'Em andamento' })
@@ -209,6 +216,8 @@ onMounted(() => carregarDados())
           @remover="removerExperiencia"
           @adicionar-realizacao="adicionarRealizacao"
           @remover-realizacao="removerRealizacao"
+          @adicionar-stack="adicionarStack"
+          @remover-stack="removerStack"
         />
         
         <AbaFormacao 

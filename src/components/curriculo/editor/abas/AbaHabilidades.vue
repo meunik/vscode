@@ -52,12 +52,15 @@ const removerItem = (catIndex, itemIndex) => emit('removerItem', catIndex, itemI
           </button>
         </div>
         <div v-for="(item, itemIdx) in cat.itens" :key="itemIdx" class="flex gap-2">
-          <input 
-            v-model="item.icone" 
-            type="text" 
-            placeholder="Icone" 
-            class="flex-1 px-3 py-1.5 bg-principal border border-borda-principal rounded text-xs text-texto-principal focus:outline-none focus:border-borda-destaque transition-colors" 
-          />
+          <div class="flex gap-2 items-center flex-1">
+            <UIcon :name="item.icone" class="text-[20px]" />
+            <input 
+              v-model="item.icone" 
+              type="text" 
+              placeholder="Icone" 
+              class="flex-1 px-3 py-1.5 bg-principal border border-borda-principal rounded text-xs text-texto-principal focus:outline-none focus:border-borda-destaque transition-colors" 
+            />
+          </div>
           <input 
             v-model="item.nome" 
             type="text" 

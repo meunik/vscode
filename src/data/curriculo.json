@@ -173,15 +173,15 @@
   ],
   "projetos": [
     {
-      "nome": "SeilaColor Theme",
+      "nome": "SeilaColor",
       "descricao": "Tema dark com acentos rosa para VS Code",
-      "tecnologias": ["VS Code API", "JSON", "CSS"],
+      "tecnologias": ["devicon:vscode", "vscode-icons:file-type-light-json", "devicon:css3"],
       "url": "https://marketplace.visualstudio.com/items?itemName=SeilaColor.seilacolor"
     },
     {
-      "nome": "Portfolio VSCode",
+      "nome": "Meu Site Pessoal",
       "descricao": "Portfolio interativo que simula o VS Code",
-      "tecnologias": ["Vue 3", "Vite", "Tailwind CSS"],
+      "tecnologias": ["devicon:vscode", "devicon:vuejs", "devicon:tailwindcss", "devicon:docker"],
       "url": "https://marcospaulo.dev"
     }
   ],
