@@ -42,6 +42,14 @@ const estaCarregandoConteudo = computed(() => {
   const chave = `${abaAtual.value.repoData.owner.login}/${abaAtual.value.repoData.name}`
   return githubStore.carregandoReadme[chave] || false
 })
+
+const caminhoDaAba = computed(() => {
+  return abaAtual.value?.caminho || abaAtual.value?.titulo || ''
+})
+
+const ehUrl = computed(() => {
+  return caminhoDaAba.value.startsWith('http://') || caminhoDaAba.value.startsWith('https://')
+})
 </script>
 
 <template>
@@ -54,7 +62,16 @@ const estaCarregandoConteudo = computed(() => {
     </div>
     <div v-else class="flex flex-col h-full">
       <div class="px-4 pt-2 pb-0.5 bg-principal border-b border-borda-secundaria text-texto-principal text-xs">
-        <span class="font-mono">{{ abaAtual.caminho || abaAtual.titulo }}</span>
+        <a 
+          v-if="ehUrl" 
+          :href="caminhoDaAba" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="font-mono text-texto-destaque hover:underline"
+        >
+          {{ caminhoDaAba }}
+        </a>
+        <span v-else class="font-mono">{{ caminhoDaAba }}</span>
       </div>
       <div class="flex-1" :class="['markdown', 'componente', 'iframe'].includes(abaAtual.tipoEditor) ? 'overflow-auto' : 'overflow-hidden'">
         <div v-if="estaCarregandoConteudo" class="flex items-center justify-center h-full">

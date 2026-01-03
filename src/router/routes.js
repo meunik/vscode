@@ -19,19 +19,35 @@ export const routes = [
       caminho: 'Setup.html'
     }
   },
+  // {
+  //   path: '/fotos',
+  //   name: 'fotos',
+  //   component: Vscode,
+  //   meta: { 
+  //     tipo: 'componente',
+  //     dados: {
+  //       titulo: 'Fotos',
+  //       id: 'fotos',
+  //       componente: 'Fotos',
+  //       icone: {
+  //         tipo: 'icon',
+  //         valor: 'camera'
+  //       }
+  //     }
+  //   }
+  // },
   {
-    path: '/fotos',
+    path: '/fotos/:pathMatch(.*)*',
     name: 'fotos',
     component: Vscode,
     meta: { 
-      tipo: 'componente',
+      tipo: 'iframe',
       dados: {
-        titulo: 'Fotos',
-        id: 'fotos',
-        componente: 'Fotos',
+        titulo: 'fotos',
+        urlBase: 'https://fotos.marcospaulo.dev/s/fotos',
         icone: {
-          tipo: 'icon',
-          valor: 'camera'
+          tipo: 'img',
+          valor: '1765055625336.png'
         }
       }
     }
@@ -41,14 +57,14 @@ export const routes = [
     redirect: '/fileshare'
   },
   {
-    path: '/fileshare',
+    path: '/fileshare/:pathMatch(.*)*',
     name: 'fileshare',
     component: Vscode,
     meta: { 
       tipo: 'iframe',
       dados: {
         titulo: 'FileShare',
-        url: 'https://fileshare.marcospaulo.dev',
+        urlBase: 'https://fileshare.marcospaulo.dev',
         icone: {
           tipo: 'img',
           valor: '1765055625336.png'
@@ -61,14 +77,14 @@ export const routes = [
     redirect: '/youtube'
   },
   {
-    path: '/youtube',
+    path: '/youtube/:pathMatch(.*)*',
     name: 'YouTube Downloader',
     component: Vscode,
     meta: { 
       tipo: 'iframe',
       dados: {
         titulo: 'YouTube Downloader',
-        url: 'https://yd.marcospaulo.dev',
+        urlBase: 'https://yd.marcospaulo.dev',
         icone: {
           tipo: 'img',
           valor: '1765055250293.png'
@@ -81,14 +97,14 @@ export const routes = [
     redirect: '/qrcode'
   },
   {
-    path: '/qrcode',
+    path: '/qrcode/:pathMatch(.*)*',
     name: 'QR Code Generator',
     component: Vscode,
     meta: { 
       tipo: 'iframe',
       dados: {
         titulo: 'QR Code Generator',
-        url: 'https://qr.marcospaulo.dev',
+        urlBase: 'https://qr.marcospaulo.dev',
         icone: {
           tipo: 'img',
           valor: '1765055036423.png'

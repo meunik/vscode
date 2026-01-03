@@ -20,30 +20,40 @@ const getIconeUrl = (nomeIcone) => {
   return new URL(`../assets/extensoes/${nomeIcone}`, import.meta.url).href
 }
 
+const arquivo = (meta) => {
+  const arquivo = encontrarItemPorCaminho(meta.caminho)
+  if (arquivo) adicionarAba(arquivo.nome, arquivo.caminho, arquivo.tipo, arquivo.icone, arquivo)
+}
+
+const componente = (meta) => {
+  const { titulo, id, componente, icone } = meta.dados
+  adicionarAba(titulo, '', 'componente', id, { componente, icone })
+}
+
+const iframe = (meta) => {
+  const { titulo, url, urlBase, icone } = meta.dados
+  const pathMatch = route.params.pathMatch
+  const subPath = pathMatch ? '/' + (Array.isArray(pathMatch) ? pathMatch.join('/') : pathMatch) : ''
+  const urlFinal = urlBase ? urlBase + subPath : url
+  const iconeProcessado = icone.tipo === 'img' ? { ...icone, valor: getIconeUrl(icone.valor) } : icone
+  adicionarAba(titulo, '', 'iframe', urlFinal, { url: urlFinal, icone: iconeProcessado })
+}
+
+const bemVindo = () => {
+  adicionarAba('Bem-vindo', '', 'componente', 'BemVindo.vue', { 
+    componente: 'bemVindo/BemVindo',
+    naoSalvarNoHistorico: true
+  })
+}
+
 onMounted(() => {
   inicializarTema()
   
   const meta = route.meta
-  
-  if (meta.tipo === 'arquivo') {
-    const arquivo = encontrarItemPorCaminho(meta.caminho)
-    if (arquivo) adicionarAba(arquivo.nome, arquivo.caminho, arquivo.tipo, arquivo.icone, arquivo)
-
-  } else if (meta.tipo === 'componente') {
-    const { titulo, id, componente, icone } = meta.dados
-    adicionarAba(titulo, '', 'componente', id, { componente, icone })
-
-  } else if (meta.tipo === 'iframe') {
-    const { titulo, url, icone } = meta.dados
-    const iconeProcessado = icone.tipo === 'img' ? { ...icone, valor: getIconeUrl(icone.valor) } : icone
-    adicionarAba(titulo, '', 'iframe', url, { url, icone: iconeProcessado })
-
-  } else {
-    adicionarAba('Bem-vindo', '', 'componente', 'BemVindo.vue', { 
-      componente: 'bemVindo/BemVindo',
-      naoSalvarNoHistorico: true
-    })
-  }
+  if (meta.tipo === 'arquivo') arquivo(meta)
+  else if (meta.tipo === 'componente') componente(meta)
+  else if (meta.tipo === 'iframe') iframe(meta)
+  else bemVindo()
 })
 </script>
 
