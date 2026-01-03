@@ -2,6 +2,10 @@ import Vscode from '@/components/Vscode.vue'
 
 export const routes = [
   {
+    path: '/c',
+    redirect: '/curriculo'
+  },
+  {
     path: '/curriculo',
     name: 'curriculo',
     component: Vscode,
