@@ -131,12 +131,12 @@
         "devicon:mysql",
         "devicon:git",
         "devicon:docker",
-        "devicon:appstore",
-        "devicon:googleplay"
+        "logos:apple-app-store",
+        "logos:google-play-icon"
       ]
     },
     {
-      "cargo": "Auxiliar De Serviços Notariais",
+      "cargo": "Auxiliar de Serviços Notariais / Desenvolvedor",
       "empresa": "22º Ofício De Notas - RJ",
       "periodo": "04/2016 - 05/2019 + Freelas",
       "descricao": "Trabalhava em Atendimento ao cliente. Prestativamente auxiliava em assuntos gerais Informáticos, navegação em Browser, manutenção de micros, Word, planilhas de Excel e outros. Futuramente **responsável pelo desenvolvimento completo do site institucional do cartório, com foco em performance, acessibilidade, SEO e conformidade legal**.",
@@ -145,7 +145,16 @@
         "**SEO avançado**, alcançando **1ª posição no Google** para buscas relacionadas ao cartório + número 22.",
         "Conduzi a adequação à **LGPD** após notificação da **ANPD**, com **criptografia AES-256 (MySQL TDE)** e **TLS 1.3**, sistema de **consentimento rastreável** e **documentação para auditoria**, entregando o projeto **100% em conformidade no prazo regulatório**."
       ],
-      "stacks": []
+      "stacks": [
+        "devicon:php",
+        "devicon:laravel",
+        "devicon:vuejs",
+        "devicon:typescript",
+        "devicon:tailwindcss",
+        "devicon:mysql",
+        "devicon:git",
+        "devicon:docker"
+      ]
     }
   ],
   "formacao": [

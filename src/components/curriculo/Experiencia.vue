@@ -31,7 +31,7 @@ defineProps({
       </div>
 
       <div v-if="exp.realizacoes.length > 0" class="">
-        <MarkdownViewer :conteudo="'- ' + exp.realizacoes.join('\n- ')" class="text-texto-secundario" />
+        <MarkdownViewer :conteudo="'- ' + exp.realizacoes.join('\n- ')" class="text-texto-secundario [&_strong]:text-texto-principal" />
       </div>
 
       <div v-if="exp.stacks && exp.stacks.length > 0" class="flex flex-wrap gap-2">
@@ -42,3 +42,10 @@ defineProps({
   </div>
 </div>
 </template>
+
+<style>
+.conteudo-dinamico strong {
+  color: red;
+  font-weight: 700;
+}
+</style>

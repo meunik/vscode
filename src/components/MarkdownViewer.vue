@@ -341,7 +341,7 @@ const elementosRenderizados = computed(() => parseMarkdown())
 
 <template>
   <div :class="[props.class]">
-    <div v-for="(elemento, indice) in elementosRenderizados" :key="indice">
+    <template v-for="(elemento, indice) in elementosRenderizados" :key="indice">
       <h1 v-if="elemento.tipo === 'h1'" class="text-3xl font-bold mb-4 text-texto-titulo border-b border-borda-secundaria pb-2" v-html="formatarTexto(elemento.conteudo)"></h1>
       <h2 v-else-if="elemento.tipo === 'h2'" class="text-2xl font-bold mb-3 mt-6 text-texto-titulo border-b border-borda-secundaria pb-2" v-html="formatarTexto(elemento.conteudo)"></h2>
       <h3 v-else-if="elemento.tipo === 'h3'" class="text-xl font-bold mb-2 mt-5 text-texto-titulo" v-html="formatarTexto(elemento.conteudo)"></h3>
@@ -373,7 +373,7 @@ const elementosRenderizados = computed(() => parseMarkdown())
       <div v-else-if="elemento.tipo === 'html'" class="mb-4" v-html="elemento.conteudo"></div>
       <hr v-else-if="elemento.tipo === 'linha'" class="my-6 border-t border-borda-secundaria" />
       <div v-else-if="elemento.tipo === 'espaco'" class="h-2"></div>
-    </div>
+    </template>
   </div>
 </template>
 

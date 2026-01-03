@@ -1,4 +1,5 @@
 .dracula {
+  /* Backgrounds */
   --bg-principal: #282a36;
   --bg-secundario: #2d2f3a;
   --bg-terciario: #343746;
@@ -11,24 +12,29 @@
   --bg-header: #282a36;
   --bg-footer: #282a36;
   
+  /* Textos */
   --texto-principal: #f8f8f2;
   --texto-secundario: #6272a4;
   --texto-titulo: #ffffff;
   --texto-destaque: #8be9fd;
   
+  /* Bordas */
   --borda-principal: #343746;
   --borda-secundaria: #44475a;
   --borda-destaque: #bd93f9;
   
+  /* Ícones */
   --icone-normal: #6272a4;
   --icone-hover: #f8f8f2;
   --icone-ativo: #ff79c6;
   
-  --aba-bg: #343746;
-  --aba-bg-ativa: #282a36;
+  /* Abas */
+  --aba-bg: #282a36;
+  --aba-bg-ativa: #343746;
   --aba-borda-ativa: #bd93f9;
   --aba-texto: #6272a4;
   --aba-texto-ativo: #f8f8f2;
   
+  /* Navbar */
   --navbar-borda-ativa: #bd93f9;
 }

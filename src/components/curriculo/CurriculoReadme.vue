@@ -31,9 +31,12 @@ defineProps({
       <UIcon name="devicon:javascript" class="text-[28px]" />
       <UIcon name="devicon:typescript" class="text-[28px]" />
       <UIcon name="devicon:tailwindcss" class="text-[28px]" />
+      <UIcon name="devicon:bootstrap" class="text-[28px]" />
       <UIcon name="devicon:docker" class="text-[28px]" />
       <UIcon name="devicon:python" class="text-[28px]" />
       <UIcon name="devicon:reactnative" class="text-[28px]" />
+      <UIcon name="logos:apple-app-store" class="text-[28px]" />
+      <UIcon name="logos:google-play-icon" class="text-[28px]" />
     </div>
   </div>
 </div>

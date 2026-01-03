@@ -1,4 +1,5 @@
 ﻿.dark {
+  /* Backgrounds */
   --bg-principal: #1e1e1e;
   --bg-secundario: #252526;
   --bg-terciario: #2d2d30;
@@ -9,24 +10,29 @@
   --bg-botao-hover: #1177bb;
   --bg-input: #3c3c3c;
   
+  /* Textos */
   --texto-principal: #cccccc;
   --texto-secundario: #858585;
   --texto-titulo: #ffffff;
   --texto-destaque: #4fc3f7;
   
+  /* Bordas */
   --borda-principal: #1e1e1e;
   --borda-secundaria: #3c3c3c;
   --borda-destaque: #007acc;
   
+  /* Ícones */
   --icone-normal: #858585;
   --icone-hover: #cccccc;
   --icone-ativo: #ffffff;
   
-  --aba-bg: #2d2d30;
-  --aba-bg-ativa: #1e1e1e;
+  /* Abas */
+  --aba-bg: #1d1d1d;
+  --aba-bg-ativa: #252526;
   --aba-borda-ativa: #007acc;
-  --aba-texto: #969696;
+  --aba-texto: rgba(204, 204, 204, 0.7);
   --aba-texto-ativo: #ffffff;
   
+  /* Navbar */
   --navbar-borda-ativa: #007acc;
 }

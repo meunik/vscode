@@ -1,4 +1,5 @@
 ﻿.light {
+  /* Backgrounds */
   --bg-principal: #ffffff;
   --bg-secundario: #f3f3f3;
   --bg-terciario: #e8e8e8;
@@ -11,24 +12,29 @@
   --bg-header: #ffffff;
   --bg-footer: #ffffff;
   
+  /* Textos */
   --texto-principal: #3c3c3c;
   --texto-secundario: #6a6a6a;
   --texto-titulo: #000000;
   --texto-destaque: #0066b8;
   
+  /* Bordas */
   --borda-principal: #d4d4d4;
   --borda-secundaria: #e0e0e0;
   --borda-destaque: #007acc;
   
+  /* Ícones */
   --icone-normal: #6a6a6a;
   --icone-hover: #3c3c3c;
   --icone-ativo: #000000;
   
-  --aba-bg: #ececec;
-  --aba-bg-ativa: #ffffff;
+  /* Abas */
+  --aba-bg: #ffffff;
+  --aba-bg-ativa: #ececec;
   --aba-borda-ativa: #007acc;
   --aba-texto: #6a6a6a;
   --aba-texto-ativo: #3c3c3c;
   
+  /* Navbar */
   --navbar-borda-ativa: #007acc;
 }
