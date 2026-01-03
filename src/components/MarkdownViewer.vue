@@ -72,6 +72,10 @@ const props = defineProps({
   conteudo: {
     type: String,
     required: true
+  },
+  class: {
+    type: String,
+    default: 'text-texto-principal'
   }
 })
 
@@ -150,15 +154,67 @@ const extrairBlocoCodigo = (indiceInicial) => {
 }
 
 const extrairLista = (indiceInicial) => {
-  const itens = [linhas.value[indiceInicial].slice(2)]
-  let i = indiceInicial + 1
+  const itens = []
+  let i = indiceInicial
   
-  while (i < linhas.value.length && (linhas.value[i].startsWith('- ') || linhas.value[i].startsWith('* '))) {
-    itens.push(linhas.value[i].slice(2))
+  const processarItem = (linha) => {
+    const indentacao = linha.search(/\S/)
+    const conteudo = linha.trim().slice(2) // Remove '- ' ou '* '
+    return { indentacao, conteudo }
+  }
+  
+  while (i < linhas.value.length) {
+    const linha = linhas.value[i]
+    if (!linha.match(/^\s*[-*]\s/)) break
+    
+    const item = processarItem(linha)
+    itens.push(item)
     i++
   }
   
-  return { itens, proximoIndice: i }
+  // Converter lista plana em estrutura hierárquica
+  const construirHierarquia = (items, indiceBase = 0) => {
+    const resultado = []
+    let idx = 0
+    
+    while (idx < items.length) {
+      const itemAtual = items[idx]
+      
+      if (itemAtual.indentacao === indiceBase) {
+        // Item no nível atual
+        const subItens = []
+        let proximoIdx = idx + 1
+        
+        // Procurar subitens (com maior indentação)
+        while (proximoIdx < items.length && items[proximoIdx].indentacao > indiceBase) {
+          proximoIdx++
+        }
+        
+        // Se houver subitens, processar recursivamente
+        if (proximoIdx > idx + 1) {
+          const subLista = items.slice(idx + 1, proximoIdx)
+          const menorIndentacao = Math.min(...subLista.map(it => it.indentacao))
+          subItens.push(...construirHierarquia(subLista, menorIndentacao))
+          idx = proximoIdx
+        } else {
+          idx++
+        }
+        
+        resultado.push({
+          conteudo: itemAtual.conteudo,
+          subItens
+        })
+      } else {
+        idx++
+      }
+    }
+    
+    return resultado
+  }
+  
+  const itensHierarquicos = construirHierarquia(itens, Math.min(...itens.map(it => it.indentacao)))
+  
+  return { itens: itensHierarquicos, proximoIndice: i }
 }
 
 const extrairBadgesInline = (indiceInicial) => {
@@ -284,15 +340,31 @@ const elementosRenderizados = computed(() => parseMarkdown())
 </script>
 
 <template>
-  <div class="p-6 text-texto-principal leading-relaxed">
+  <div :class="[props.class]">
     <div v-for="(elemento, indice) in elementosRenderizados" :key="indice">
-      <h1 v-if="elemento.tipo === 'h1'" class="text-3xl font-bold mb-4 text-texto-titulo border-b border-borda-secundaria pb-2 flex items-center gap-2 flex-wrap" v-html="formatarTexto(elemento.conteudo)"></h1>
-      <h2 v-else-if="elemento.tipo === 'h2'" class="text-2xl font-bold mb-3 mt-6 text-texto-titulo border-b border-borda-secundaria pb-2 flex items-center gap-2 flex-wrap" v-html="formatarTexto(elemento.conteudo)"></h2>
-      <h3 v-else-if="elemento.tipo === 'h3'" class="text-xl font-bold mb-2 mt-5 text-texto-titulo flex items-center gap-2 flex-wrap" v-html="formatarTexto(elemento.conteudo)"></h3>
-      <h4 v-else-if="elemento.tipo === 'h4'" class="text-lg font-bold mb-2 mt-4 text-texto-titulo flex items-center gap-2 flex-wrap" v-html="formatarTexto(elemento.conteudo)"></h4>
-      <p v-else-if="elemento.tipo === 'paragrafo'" class="mb-4 text-texto-principal flex items-center gap-2 flex-wrap" v-html="formatarTexto(elemento.conteudo)"></p>
-      <ul v-else-if="elemento.tipo === 'lista'" class="mb-4 ml-6 list-disc text-texto-principal space-y-1">
-        <li v-for="(item, idx) in elemento.itens" :key="idx" v-html="formatarTexto(item)"></li>
+      <h1 v-if="elemento.tipo === 'h1'" class="text-3xl font-bold mb-4 text-texto-titulo border-b border-borda-secundaria pb-2" v-html="formatarTexto(elemento.conteudo)"></h1>
+      <h2 v-else-if="elemento.tipo === 'h2'" class="text-2xl font-bold mb-3 mt-6 text-texto-titulo border-b border-borda-secundaria pb-2" v-html="formatarTexto(elemento.conteudo)"></h2>
+      <h3 v-else-if="elemento.tipo === 'h3'" class="text-xl font-bold mb-2 mt-5 text-texto-titulo" v-html="formatarTexto(elemento.conteudo)"></h3>
+      <h4 v-else-if="elemento.tipo === 'h4'" class="text-lg font-bold mb-2 mt-4 text-texto-titulo" v-html="formatarTexto(elemento.conteudo)"></h4>
+      <p v-else-if="elemento.tipo === 'paragrafo'" class="mb-2" v-html="formatarTexto(elemento.conteudo)"></p>
+      <ul v-else-if="elemento.tipo === 'lista'" :class="['mb-4', 'ml-6', 'list-disc', 'space-y-1']">
+        <template v-for="(item, idx) in elemento.itens" :key="idx">
+          <li>
+            <span v-html="formatarTexto(item.conteudo || item)"></span>
+            <ul v-if="item.subItens && item.subItens.length > 0" class="ml-6 list-disc space-y-1 mt-1">
+              <template v-for="(subItem, subIdx) in item.subItens" :key="subIdx">
+                <li>
+                  <span v-html="formatarTexto(subItem.conteudo || subItem)"></span>
+                  <ul v-if="subItem.subItens && subItem.subItens.length > 0" class="ml-6 list-disc space-y-1 mt-1">
+                    <li v-for="(subSubItem, subSubIdx) in subItem.subItens" :key="subSubIdx">
+                      <span v-html="formatarTexto(subSubItem.conteudo || subSubItem)"></span>
+                    </li>
+                  </ul>
+                </li>
+              </template>
+            </ul>
+          </li>
+        </template>
       </ul>
       <div v-else-if="elemento.tipo === 'badges'" class="mb-4 flex items-center gap-2 flex-wrap">
         <span v-for="(badge, idx) in elemento.badges" :key="idx" v-html="formatarTexto(badge)"></span>

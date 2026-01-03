@@ -6,7 +6,7 @@
     "cargo": "Desenvolvedor Full Stack",
     "email": "marcostrab@hotmail.com",
     "foto": "https://avatars.githubusercontent.com/u/50606021?v=4",
-    "resumo": "Tenho 6 anos de experiência em desenvolvedor web. Atualmente trabalho no Complexo Regulador do Município do Rio de Janeiro, no qual atuo como Full Stack no desenvolvimento de sistemas para auxiliar a área da saúde do Município do Rio de Janeiro. Já trabalhei e trabalho com as tecnologias: PHP, Laravel, Lumen, MySQL, HTML, CSS, JavaScript, Vue.js, Figma, jQuery. No meu trabalho anterior desenvolvi um sistema de RH, utilizado por 72 clínicas particulares espalhadas pelo Brasil, com mais de 12 mil funcionários inseridos no sistema. Também fiz um sistema para acompanhamento diário de diálises realizadas por 19 clínicas."
+    "resumo": "Desenvolvedor **Full Stack** com **6+ anos de experiência** em sistemas web de médio e grande porte, com forte atuação em **saúde pública**, **sistemas críticos**, **modernização de legados** e **entregas orientadas a negócio**. Experiência sólida com **PHP/Laravel**, **Vue.js**, **Docker**, **MySQL** e integração com **APIs governamentais**. Perfil autônomo, com visão de produto, foco em performance, segurança (LGPD) e escalabilidade."
   },
   "links": [
     {
@@ -81,37 +81,71 @@
       "cargo": "Desenvolvedor Full Stack",
       "empresa": "SPDM - Complexo Regulador do Município do Rio de Janeiro",
       "periodo": "03/2022 - Presente",
-      "descricao": "Trabalho Full Stack no desenvolvimento de sistemas para auxiliar a área da saúde do Município do Rio de Janeiro, na qual utilizo tecnologias como: GIT, Figma, JavaScript, Vue.js, Tailwind Css, BootstrapVue, PHP(5.3 e 8), Laravel(8+), MySQL, Docker.",
+      "descricao": "Atuação no desenvolvimento e manutenção de sistemas utilizados por **hospitais municipais, clínicas da família e UPAs**, integrados ao ecossistema de saúde pública do RJ.",
       "realizacoes": [
-        "Desenvolvimento da pagina inicial do portal da regulação e mais 11 projetos internos.",
-        "Implementação de melhorias na interface do usuário utilizando Vue 3 e Tailwind CSS, resultando em uma melhor experiência para os usuários finais."
+        "Desenvolvimento e manutenção de **+11 sistemas internos**, incluindo o **portal principal da regulação**.",
+        "Integração com APIs governamentais de saúde (**SISGER**, **VITACARE**, **CADWEB**).",
+        "Modernização de interfaces utilizando Vue 3 + Tailwind CSS, elevando usabilidade e padronização visual.",
+        "**Migração de sistemas legados em PHP puro para Laravel**, além de estruturação de novos projetos já no framework.",
+        "Criação de **pipelines de CI/CD** para backend e frontend, automatizando deploy e reduzindo falhas.",
+        "Atuação com **autonomia técnica** na definição de arquitetura e início de novos projetos."
+      ],
+      "stacks": [
+        "devicon:php",
+        "devicon:laravel",
+        "devicon:vuejs",
+        "devicon:javascript",
+        "devicon:tailwindcss",
+        "devicon:bootstrap",
+        "devicon:mysql",
+        "devicon:git",
+        "devicon:docker"
       ]
     },
     {
       "cargo": "Desenvolvedor Backend",
       "empresa": "Viva Rio - Complexo Regulador do Município do Rio de Janeiro",
       "periodo": "06/2021 - 02/2022",
-      "descricao": "Desenvolvo sistemas web, na qual utilizo tecnologias como: GIT, PHP(5.3 e 8), Laravel(8+) e MySQL.",
-      "realizacoes": [
-        "Coordenei a migração de sistemas legado php para Laravel, melhorando a performance em 30%."
-      ]
+      "descricao": "Coordenei a **migração** de sistemas legado **PHP** para **Laravel**, e auxiliei na criação de novos projeto já em laravel.",
+      "realizacoes": [],
+      "stacks": [ "devicon:php", "devicon:laravel", "devicon:mysql", "devicon:git" ]
     },
     {
-      "cargo": "Estagiário / Desenvolvedor Júnior Full Stack",
-      "empresa": "Desenvolvedor Web, B2Fly",
-      "periodo": "06/2019 - 05/2021",
-      "descricao": "Auxiliei no desenvolvimento de sistemas web, na qual utilizei tecnologias como: PHP(5.6 e 7), Laravel(5+), Lumen e MySQL.",
+      "cargo": "Estagiário / Desenvolvedor Full Stack / DevOps",
+      "empresa": "B2Fly",
+      "periodo": "06/2019 - 05/2021 + Freelas",
+      "descricao": "Atuação em projetos web e mobile, com foco em **deploy**, manutenção evolutiva e suporte a sistemas em produção. Responsável pela publicação e atualização de aplicações nas lojas **App Store** (**iOS**) e **Google Play** (**Android**), além de melhorias contínuas em sistemas novos e legados.",
       "realizacoes": [
-        "Desenvolvimento de um sistema de gestão de clientes e vendas (CRM) utilizando Laravel e MySQL.",
-        "Implementação de melhorias em sistemas existentes, resultando em um aumento de 20% na eficiência do sistema."
+        "**Responsável por deploy web** e publicação de aplicativos nas lojas **App Store** (**iOS**) e **Google Play** (**Android**).",
+        "Implementação de melhorias em sistemas novos e legados.",
+        "Desenvolvimento de novas funcionalidades e suporte contínuo à operação."
+      ],
+      "stacks": [
+        "devicon:php",
+        "devicon:laravel",
+        "devicon:lumen",
+        "devicon:vuejs",
+        "devicon:javascript",
+        "devicon:tailwindcss",
+        "devicon:bootstrap",
+        "devicon:mysql",
+        "devicon:git",
+        "devicon:docker",
+        "devicon:appstore",
+        "devicon:googleplay"
       ]
     },
     {
       "cargo": "Auxiliar De Serviços Notariais",
       "empresa": "22º Ofício De Notas - RJ",
-      "periodo": "04/2016 - 05/2019",
-      "descricao": "Trabalhava em Atendimento ao cliente, lidando diretamente com documentos como DUT, Declarações, Comunicações de venda, Apostila de Haya e outros. Prestativamente auxiliava em assuntos gerais Informáticos, navegação em Browser, manutenção de micros, Word, planilhas de Excel e outros.",
-      "realizacoes": []
+      "periodo": "04/2016 - 05/2019 + Freelas",
+      "descricao": "Trabalhava em Atendimento ao cliente. Prestativamente auxiliava em assuntos gerais Informáticos, navegação em Browser, manutenção de micros, Word, planilhas de Excel e outros. Futuramente **responsável pelo desenvolvimento completo do site institucional do cartório, com foco em performance, acessibilidade, SEO e conformidade legal**.",
+      "realizacoes": [
+        "Desenvolvimento site moderno e responsivo, dinâmico, com temas Dark, Light e automático conforme sistema do usuário.",
+        "**SEO avançado**, alcançando **1ª posição no Google** para buscas relacionadas ao cartório + número 22.",
+        "Conduzi a adequação à **LGPD** após notificação da **ANPD**, com **criptografia AES-256 (MySQL TDE)** e **TLS 1.3**, sistema de **consentimento rastreável** e **documentação para auditoria**, entregando o projeto **100% em conformidade no prazo regulatório**."
+      ],
+      "stacks": []
     }
   ],
   "formacao": [

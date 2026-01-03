@@ -73,7 +73,7 @@ const estaCarregandoConteudo = computed(() => {
           :is="componenteDinamico"
           v-bind="abaAtual.componenteProps || {}"
         />
-        <MarkdownViewer v-else-if="abaAtual.tipoEditor === 'markdown'" :conteudo="abaAtual.conteudo" />
+        <MarkdownViewer v-else-if="abaAtual.tipoEditor === 'markdown'" :conteudo="abaAtual.conteudo" class="p-6 text-texto-principal leading-relaxed" />
         <textarea
           v-else
           v-model="abaAtual.conteudo"

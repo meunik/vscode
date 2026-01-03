@@ -1,4 +1,6 @@
 <script setup>
+import MarkdownViewer from '../MarkdownViewer.vue'
+
 defineProps({
   dados: {
     type: Object,
@@ -15,9 +17,9 @@ defineProps({
     <span class="font-normal">RESUMO PROFISSIONAL</span>
     <span class="text-texto-destaque">.txt</span>
   </h3>
-  <p class="m-0 bg-secundario p-4 rounded">
-    {{ dados.informacoesPessoais.resumo }}
-  </p>
+  <div class="bg-secundario rounded overflow-hidden p-4">
+    <MarkdownViewer :conteudo="dados.informacoesPessoais.resumo" />
+  </div>
   <!-- <p class="m-0 bg-secundario p-4 rounded">
     Tenho 4 anos de experiência em desenvolvedor web. Atualmente trabalho no Complexo Regulador do Município do Rio de Janeiro, no qual atuo como Full Stack no desenvolvimento de sistemas para auxiliar a área da saúde do Município do Rio de Janeiro. Já trabalhei e trabalho com as tecnologias: 
     <span class="d-contents text-php">PHP</span>, 

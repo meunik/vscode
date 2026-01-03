@@ -51,7 +51,7 @@ onMounted(() => carregarDados())
     </div>
 
     <!-- Footer -->
-    <div class="pt-8 border-t border-borda-principal text-center text-xs text-texto-secundario">
+    <div class="pt-0 pb-0.5 border-t border-borda-principal text-center text-xs text-texto-secundario">
       <p>Currículo atualizado em {{ dados.configuracoes.atualizacao }}</p>
     </div>
   </div>
