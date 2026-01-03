@@ -37,6 +37,14 @@ export const routes = [
   //   }
   // },
   {
+    path: '/ft',
+    redirect: '/fotos'
+  },
+  {
+    path: '/foto',
+    redirect: '/fotos'
+  },
+  {
     path: '/fotos/:pathMatch(.*)*',
     name: 'fotos',
     component: Vscode,
@@ -46,8 +54,8 @@ export const routes = [
         titulo: 'fotos',
         urlBase: 'https://fotos.marcospaulo.dev/s/fotos',
         icone: {
-          tipo: 'img',
-          valor: '1765055625336.png'
+          tipo: 'icon',
+          valor: 'camera'
         }
       }
     }
