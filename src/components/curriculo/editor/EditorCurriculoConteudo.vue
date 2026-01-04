@@ -318,6 +318,7 @@ const removerIdioma = (index) => {
           @remover="removerIdioma"
         />
       </div>
+    </div>
     </template>
   </div>
 </template>
