@@ -12,6 +12,9 @@ RUN yarn install --frozen-lockfile
 # Copiar código fonte
 COPY . .
 
+# Definir variável de ambiente para produção
+ENV VITE_API_URL=https://api.marcospaulo.dev/api
+
 # Build da aplicação
 RUN yarn build
 
