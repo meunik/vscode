@@ -4,16 +4,17 @@ import { useArquivos } from '@/composables/useArquivos'
 import { useEditorAbas } from '@/composables/useEditorAbas'
 import { useGithubStore } from '@/stores/github'
 import { usePesquisa } from '@/composables/usePesquisa'
+import { useServers } from '@/composables/useApi'
 import { obterIconeArquivo } from '@/utils/icones'
 import Icon from '@/assets/icons/Icon.vue'
-import serversData from '@/data/server.json'
 
 const { encontrarItemPorCaminho, expandirCaminhoParaArquivo, estruturaArquivos } = useArquivos()
 const { abrirArquivo } = useEditorAbas()
 const githubStore = useGithubStore()
 const { termoPesquisa } = usePesquisa()
 
-const servers = ref(serversData)
+const { servers: serversData, loading, error } = useServers()
+const servers = computed(() => serversData.value || [])
 
 // Função recursiva para coletar todos os arquivos da estrutura
 const coletarArquivos = (items, lista = []) => {

@@ -1,8 +1,11 @@
 <script setup>
-import { ref } from 'vue'
-import setupData from '@/data/setup.json'
+import { ref, computed } from 'vue'
+import { useSetup } from '@/composables/useApi'
+import LoadingMessage from '@/components/common/LoadingMessage.vue'
+import ErrorMessage from '@/components/common/ErrorMessage.vue'
 
-const setup = ref(setupData)
+const { setup: setupData, loading, error } = useSetup()
+const setup = computed(() => setupData.value || {})
 
 const cores = {
   blue: 'bg-blue-500/10 border-blue-500/30 text-blue-400',
@@ -14,15 +17,26 @@ const cores = {
   orange: 'bg-orange-500/10 border-orange-500/30 text-orange-400'
 }
 
-const totalArmazenamento = setup.value.armazenamento.reduce((acc, item) => {
-  const valor = parseFloat(item.capacidade)
-  return acc + valor
-}, 0)
+const totalArmazenamento = computed(() => {
+  if (!setup.value.armazenamento) return 0
+  return setup.value.armazenamento.reduce((acc, item) => {
+    const valor = parseFloat(item.capacidade)
+    return acc + valor
+  }, 0)
+})
 </script>
 
 <template>
   <div class="h-full w-full overflow-auto bg-principal p-6">
-    <div class="max-w-350 mx-auto space-y-6">
+    <div v-if="loading" class="h-full flex items-center justify-center">
+      <LoadingMessage message="Carregando setup..." />
+    </div>
+
+    <div v-else-if="error" class="h-full flex items-center justify-center">
+      <ErrorMessage message="Erro ao carregar setup" />
+    </div>
+
+    <div v-else-if="setup.cpu" class="max-w-350 mx-auto space-y-6">
       
       <div class="text-center mb-8">
         <h1 class="text-4xl font-bold text-texto-principal mb-2">Meu Setup</h1>

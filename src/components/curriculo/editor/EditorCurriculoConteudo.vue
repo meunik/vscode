@@ -1,6 +1,6 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import curriculoData from '@/data/curriculo.json'
+import { ref, computed, onMounted } from 'vue'
+import { useCurriculo } from '@/composables/useApi'
 import AbaPessoais from './abas/AbaPessoais.vue'
 import AbaLinks from './abas/AbaLinks.vue'
 import AbaHabilidades from './abas/AbaHabilidades.vue'
@@ -8,8 +8,23 @@ import AbaExperiencia from './abas/AbaExperiencia.vue'
 import AbaFormacao from './abas/AbaFormacao.vue'
 import AbaProjetos from './abas/AbaProjetos.vue'
 import AbaIdiomas from './abas/AbaIdiomas.vue'
+import LoadingMessage from '@/components/common/LoadingMessage.vue'
+import ErrorMessage from '@/components/common/ErrorMessage.vue'
 
-const dados = ref(JSON.parse(JSON.stringify(curriculoData)))
+const { curriculo, loading, error } = useCurriculo()
+const dados = computed(() => {
+  if (!curriculo.value) return null
+  // Prioriza dados salvos no localStorage
+  const salvos = localStorage.getItem('curriculo-dados')
+  if (salvos) {
+    try {
+      return JSON.parse(salvos)
+    } catch (e) {
+      console.error('Erro ao carregar dados do localStorage:', e)
+    }
+  }
+  return curriculo.value
+})
 const abaSelecionada = ref('pessoais')
 
 const abas = [
@@ -22,18 +37,8 @@ const abas = [
   { id: 'idiomas', titulo: 'Idiomas', icone: 'line-md:chat-round-dots' }
 ]
 
-const carregarDados = () => {
-  const salvos = localStorage.getItem('curriculo-dados')
-  if (salvos) {
-    try {
-      dados.value = JSON.parse(salvos)
-    } catch (e) {
-      console.error('Erro ao carregar dados:', e)
-    }
-  }
-}
-
 const salvarDados = async () => {
+  if (!dados.value) return
   localStorage.setItem('curriculo-dados', JSON.stringify(dados.value))
   const { encontrarItemPorCaminho } = await import('@/composables/useArquivos.js').then(m => m.useArquivos())
   const arquivo = encontrarItemPorCaminho('Profissional/Curriculo.md')
@@ -43,13 +48,18 @@ const salvarDados = async () => {
 
 const resetarParaPadrao = () => {
   if (confirm('Tem certeza que deseja resetar todos os dados para o padrão?')) {
-    dados.value = JSON.parse(JSON.stringify(curriculoData))
+    if (curriculo.value) {
+      const copiaFresca = JSON.parse(JSON.stringify(curriculo.value))
+      localStorage.setItem('curriculo-dados', JSON.stringify(copiaFresca))
+      window.location.reload() // Recarrega para pegar os novos dados
+    }
     localStorage.removeItem('curriculo-dados')
     alert('Dados resetados!')
   }
 }
 
 const gerarMarkdown = () => {
+  if (!dados.value) return ''
   const d = dados.value
   let md = `# ${d.informacoesPessoais.nome}\n## ${d.informacoesPessoais.cargo}\n\n`
   
@@ -102,49 +112,114 @@ const gerarMarkdown = () => {
 }
 
 // Manipuladores de Links
-const adicionarLink = () => dados.value.links.push({ tipo: 'novo', titulo: 'Novo Link', url: 'https://', icone: 'mdi:link' })
-const removerLink = (index) => dados.value.links.splice(index, 1)
+const adicionarLink = () => {
+  if (!dados.value) return
+  dados.value.links.push({ tipo: 'novo', titulo: 'Novo Link', url: 'https://', icone: 'mdi:link' })
+}
+const removerLink = (index) => {
+  if (!dados.value) return
+  dados.value.links.splice(index, 1)
+}
 
 // Manipuladores de Habilidades
-const adicionarHabilidadeCategoria = () => dados.value.habilidades.push({ categoria: 'Nova Categoria', itens: [] })
-const removerHabilidadeCategoria = (index) => dados.value.habilidades.splice(index, 1)
-const adicionarHabilidadeItem = (catIndex) => dados.value.habilidades[catIndex].itens.push({ nome: 'Nova Habilidade', nivel: 50 })
-const removerHabilidadeItem = (catIndex, itemIndex) => dados.value.habilidades[catIndex].itens.splice(itemIndex, 1)
+const adicionarHabilidadeCategoria = () => {
+  if (!dados.value) return
+  dados.value.habilidades.push({ categoria: 'Nova Categoria', itens: [] })
+}
+const removerHabilidadeCategoria = (index) => {
+  if (!dados.value) return
+  dados.value.habilidades.splice(index, 1)
+}
+const adicionarHabilidadeItem = (catIndex) => {
+  if (!dados.value) return
+  dados.value.habilidades[catIndex].itens.push({ nome: 'Nova Habilidade', nivel: 50 })
+}
+const removerHabilidadeItem = (catIndex, itemIndex) => {
+  if (!dados.value) return
+  dados.value.habilidades[catIndex].itens.splice(itemIndex, 1)
+}
 
 // Manipuladores de Experiência
-const adicionarExperiencia = () => dados.value.experiencia.push({ cargo: 'Novo Cargo', empresa: 'Nova Empresa', periodo: 'Mês Ano - Mês Ano', descricao: 'Descrição', realizacoes: [], stacks: [] })
-const removerExperiencia = (index) => dados.value.experiencia.splice(index, 1)
-const adicionarRealizacao = (expIndex) => dados.value.experiencia[expIndex].realizacoes.push('Nova realização')
-const removerRealizacao = (expIndex, realIndex) => dados.value.experiencia[expIndex].realizacoes.splice(realIndex, 1)
+const adicionarExperiencia = () => {
+  if (!dados.value) return
+  dados.value.experiencia.push({ cargo: 'Novo Cargo', empresa: 'Nova Empresa', periodo: 'Mês Ano - Mês Ano', descricao: 'Descrição', realizacoes: [], stacks: [] })
+}
+const removerExperiencia = (index) => {
+  if (!dados.value) return
+  dados.value.experiencia.splice(index, 1)
+}
+const adicionarRealizacao = (expIndex) => {
+  if (!dados.value) return
+  dados.value.experiencia[expIndex].realizacoes.push('Nova realização')
+}
+const removerRealizacao = (expIndex, realIndex) => {
+  if (!dados.value) return
+  dados.value.experiencia[expIndex].realizacoes.splice(realIndex, 1)
+}
 const adicionarStack = (expIndex) => {
+  if (!dados.value) return
   if (!dados.value.experiencia[expIndex].stacks) {
     dados.value.experiencia[expIndex].stacks = []
   }
   dados.value.experiencia[expIndex].stacks.push('devicon:laravel')
 }
-const removerStack = (expIndex, stackIndex) => dados.value.experiencia[expIndex].stacks.splice(stackIndex, 1)
+const removerStack = (expIndex, stackIndex) => {
+  if (!dados.value) return
+  dados.value.experiencia[expIndex].stacks.splice(stackIndex, 1)
+}
 
 // Manipuladores de Formação
-const adicionarFormacao = () => dados.value.formacao.push({ curso: 'Novo Curso', instituicao: 'Nova Instituição', periodo: 'Ano - Ano', status: 'Em andamento' })
-const removerFormacao = (index) => dados.value.formacao.splice(index, 1)
+const adicionarFormacao = () => {
+  if (!dados.value) return
+  dados.value.formacao.push({ curso: 'Novo Curso', instituicao: 'Nova Instituição', periodo: 'Ano - Ano', status: 'Em andamento' })
+}
+const removerFormacao = (index) => {
+  if (!dados.value) return
+  dados.value.formacao.splice(index, 1)
+}
 
 // Manipuladores de Projetos
-const adicionarProjeto = () => dados.value.projetos.push({ nome: 'Novo Projeto', descricao: 'Descrição do projeto', tecnologias: [], url: 'https://' })
-const removerProjeto = (index) => dados.value.projetos.splice(index, 1)
-const adicionarTecnologia = (projIndex) => dados.value.projetos[projIndex].tecnologias.push('Nova Tecnologia')
-const removerTecnologia = (projIndex, techIndex) => dados.value.projetos[projIndex].tecnologias.splice(techIndex, 1)
+const adicionarProjeto = () => {
+  if (!dados.value) return
+  dados.value.projetos.push({ nome: 'Novo Projeto', descricao: 'Descrição do projeto', tecnologias: [], url: 'https://' })
+}
+const removerProjeto = (index) => {
+  if (!dados.value) return
+  dados.value.projetos.splice(index, 1)
+}
+const adicionarTecnologia = (projIndex) => {
+  if (!dados.value) return
+  dados.value.projetos[projIndex].tecnologias.push('Nova Tecnologia')
+}
+const removerTecnologia = (projIndex, techIndex) => {
+  if (!dados.value) return
+  dados.value.projetos[projIndex].tecnologias.splice(techIndex, 1)
+}
 
 // Manipuladores de Idiomas
-const adicionarIdioma = () => dados.value.idiomas.push({ idioma: 'Novo Idioma', nivel: 'Básico' })
-const removerIdioma = (index) => dados.value.idiomas.splice(index, 1)
-
-onMounted(() => carregarDados())
+const adicionarIdioma = () => {
+  if (!dados.value) return
+  dados.value.idiomas.push({ idioma: 'Novo Idioma', nivel: 'Básico' })
+}
+const removerIdioma = (index) => {
+  if (!dados.value) return
+  dados.value.idiomas.splice(index, 1)
+}
 </script>
 
 <template>
   <div class="h-full flex flex-col bg-principal text-texto-principal">
     
-    <div class="flex items-center justify-between px-4 py-3 bg-secundario border-b border-borda-principal">
+    <div v-if="loading" class="h-full flex items-center justify-center">
+      <LoadingMessage message="Carregando currículo..." />
+    </div>
+
+    <div v-else-if="error" class="h-full flex items-center justify-center">
+      <ErrorMessage message="Erro ao carregar currículo" />
+    </div>
+
+    <template v-else-if="dados">
+      <div class="flex items-center justify-between px-4 py-3 bg-secundario border-b border-borda-principal">
       <div class="flex items-center gap-2 text-sm font-semibold">
         <UIcon name="line-md:file-document-filled" class="text-[18px]" />
         <span>Editor de Currículo</span>
@@ -243,6 +318,6 @@ onMounted(() => carregarDados())
           @remover="removerIdioma"
         />
       </div>
-    </div>
+    </template>
   </div>
 </template>

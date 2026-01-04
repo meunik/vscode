@@ -1,15 +1,18 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { obterIconeArquivo } from '@/utils/icones'
 import { useEditorAbas } from '@/composables/useEditorAbas'
 import { useArquivos } from '@/composables/useArquivos'
 import { useGithubStore } from '@/stores/github'
+import { useCurriculo } from '@/composables/useApi'
 import Icon from '@/assets/icons/Icon.vue'
+import LoadingMessage from '@/components/common/LoadingMessage.vue'
+import ErrorMessage from '@/components/common/ErrorMessage.vue'
 
-import curriculoData from '@/data/curriculo.json'
 import Links from '@/components/curriculo/Links.vue'
 
-const dados = ref(JSON.parse(JSON.stringify(curriculoData)))
+const { curriculo, loading, error } = useCurriculo()
+const dados = computed(() => curriculo.value || {})
 
 const { abrirArquivo, historicoRecente } = useEditorAbas()
 const { encontrarItemPorCaminho, expandirCaminhoParaArquivo } = useArquivos()
@@ -118,36 +121,49 @@ const abrirArquivoRecente = async (item) => {
           Resumo
           <span class="text-lg sm:text-2xl font-light">sobre mim</span>
         </h2>
-        <div class="flex flex-col gap-2 py-4">
-          <div class="flex flex-col sm:flex-row items-center sm:items-center gap-4">
-            <img 
-              :src="dados.informacoesPessoais.foto" 
-              :alt="dados.informacoesPessoais.nome"
-              class="w-20 sm:w-28 rounded-full border border-destaque object-cover"
-            />
-            <h1 class="text-xl sm:text-3xl font-bold text-texto-principal text-center sm:text-left">
-              {{ dados.informacoesPessoais.nome }}
-              <span class="text-lg sm:text-2xl font-light block sm:inline">{{ dados.informacoesPessoais.sobreNome }}</span>
-            </h1>
+        
+        <div v-if="loading" class="flex items-center justify-center gap-2 py-8 text-texto-secundario">
+          <UIcon name="line-md:loading-loop" class="text-3xl" />
+          <p>Carregando...</p>
+        </div>
+
+        <div v-else-if="error" class="flex items-center justify-center gap-2 py-8 text-red-400">
+          <UIcon name="line-md:alert" class="text-3xl" />
+          <p>Erro ao carregar dados</p>
+        </div>
+
+        <template v-else-if="dados.informacoesPessoais">
+          <div class="flex flex-col gap-2 py-4">
+            <div class="flex flex-col sm:flex-row items-center sm:items-center gap-4">
+              <img 
+                :src="dados.informacoesPessoais.foto" 
+                :alt="dados.informacoesPessoais.nome"
+                class="w-20 sm:w-28 rounded-full border border-destaque object-cover"
+              />
+              <h1 class="text-xl sm:text-3xl font-bold text-texto-principal text-center sm:text-left">
+                {{ dados.informacoesPessoais.nome }}
+                <span class="text-lg sm:text-2xl font-light block sm:inline">{{ dados.informacoesPessoais.sobreNome }}</span>
+              </h1>
+            </div>
+            <h2 class="text-lg sm:text-xl text-destaque text-center sm:text-left">{{ dados.informacoesPessoais.cargo }}</h2>
           </div>
-          <h2 class="text-lg sm:text-xl text-destaque text-center sm:text-left">{{ dados.informacoesPessoais.cargo }}</h2>
-        </div>
-        <Links :dados="dados" />
-        <hr class="border-borda-destaque my-2">
-        <div class="flex gap-3 sm:gap-4 flex-wrap items-center justify-center sm:justify-start">
-          <span class="text-base sm:text-lg tracking-wider font-light w-full sm:w-auto text-center sm:text-left">Stacks:</span>
-          <UIcon name="devicon:vuejs" class="text-[24px] sm:text-[28px]" />
-          <UIcon name="devicon:php" class="text-[24px] sm:text-[28px]" />
-          <UIcon name="devicon:laravel" class="text-[24px] sm:text-[28px]" />
-          <UIcon name="devicon:mysql" class="text-[24px] sm:text-[28px]" />
-          <UIcon name="devicon:git" class="text-[24px] sm:text-[28px]" />
-          <UIcon name="devicon:javascript" class="text-[24px] sm:text-[28px]" />
-          <UIcon name="devicon:typescript" class="text-[24px] sm:text-[28px]" />
-          <UIcon name="devicon:tailwindcss" class="text-[24px] sm:text-[28px]" />
-          <UIcon name="devicon:docker" class="text-[24px] sm:text-[28px]" />
-          <UIcon name="devicon:python" class="text-[24px] sm:text-[28px]" />
-          <UIcon name="devicon:reactnative" class="text-[24px] sm:text-[28px]" />
-        </div>
+          <Links :dados="dados" />
+          <hr class="border-borda-destaque my-2">
+          <div class="flex gap-3 sm:gap-4 flex-wrap items-center justify-center sm:justify-start">
+            <span class="text-base sm:text-lg tracking-wider font-light w-full sm:w-auto text-center sm:text-left">Stacks:</span>
+            <UIcon name="devicon:vuejs" class="text-[24px] sm:text-[28px]" />
+            <UIcon name="devicon:php" class="text-[24px] sm:text-[28px]" />
+            <UIcon name="devicon:laravel" class="text-[24px] sm:text-[28px]" />
+            <UIcon name="devicon:mysql" class="text-[24px] sm:text-[28px]" />
+            <UIcon name="devicon:git" class="text-[24px] sm:text-[28px]" />
+            <UIcon name="devicon:javascript" class="text-[24px] sm:text-[28px]" />
+            <UIcon name="devicon:typescript" class="text-[24px] sm:text-[28px]" />
+            <UIcon name="devicon:tailwindcss" class="text-[24px] sm:text-[28px]" />
+            <UIcon name="devicon:docker" class="text-[24px] sm:text-[28px]" />
+            <UIcon name="devicon:python" class="text-[24px] sm:text-[28px]" />
+            <UIcon name="devicon:reactnative" class="text-[24px] sm:text-[28px]" />
+          </div>
+        </template>
       </div>
 
       <div class="py-6 sm:col-start-2 sm:col-end-5 sm:row-start-3 text-center text-xs sm:text-sm text-texto-secundario">
